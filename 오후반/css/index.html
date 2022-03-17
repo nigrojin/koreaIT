@@ -1,0 +1,639 @@
+
+<!-- CSS selector 선택자 -->
+
+<!-- <style>
+    /* p {
+        color: grey
+    } */
+    
+    /* class 선택자 */
+    /* .center {
+        text-align: center;
+    } */
+    p.center {
+        text-align: center;
+    }
+
+    #red {
+        color: red;
+    }
+
+    /* p span {
+        font-weight: bold;
+    } */
+    .text-bold {
+        font-weight: bold;
+    }
+    .text-bold .red {
+        color: red;
+    }
+
+</style> -->
+
+<!-- <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+</p>
+
+<p class="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+
+<h2 class="center">Lorem ipsum dolor</h2>
+
+<p id="red">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+
+<p>
+    <span>hello</span> world
+</p>
+
+<p class="text-bold">
+    <span class="red">hello</span> world
+</p>
+
+
+<hr> -->
+
+
+<!-- <style>
+p span {
+    font-weight: bold;
+}
+
+/* p span span {
+    color: red;
+} */
+
+p span .red {
+    color: red;
+}
+</style>
+
+
+
+<p>
+    <span>
+        <span class="red">hello</span>
+        <span>world</span>
+    </span>
+</p> -->
+
+
+<!-- <style>
+    h1, p, small {
+        color: grey;
+    }
+</style>
+
+<h1>hello world</h1>
+<p>Welcome to CSS</p>
+<small>Style</small> -->
+
+
+<!-- <style>
+    .info div:first-child {
+        font-weight: bold;
+    }
+</style>
+
+<div class="user">
+    <h1>John</h1>
+    <div class="info">
+        <div>Age: 30</div>
+        <div>Password: 123</div>
+    </div>
+</div> -->
+
+<!-- <style>
+    * {
+      font-weight: bold;  
+    }
+</style>
+
+<h2>hello world</h2>
+
+<p>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Natus corporis dolor ipsum inventore amet repellendus, sint aliquid id assumenda, 
+    suscipit illum! Amet id libero culpa distinctio ratione non dolores similique.
+</p>
+
+<div class="example">hello world</div> -->
+
+<!-- <style>
+/* 자식선택자  */
+div > span {
+    color: #ff0000;
+}
+
+</style>
+
+<div>
+    <h2><span>hello</span> world</h2>
+    <span>Welcome to CSS</span>
+</div> -->
+
+<!-- <style>
+    /* h1 {
+        color: red;
+    } */
+
+    h1 {
+        /* RGB (red, green , blue) */
+        /* 0 - 255 */
+        color: rgb(255, 0 ,0)
+    }
+    p {
+        color: rgb(0, 0, 255);
+    }
+    span {
+        /* alpha - opacity (투명도) */
+        /* 0 - 1 */
+        /* 0은 가장 투명, 1은 투명하지 않음 */
+        color: rgba(0, 0, 255, 0.1)
+    }
+</style>
+
+<h1>hello world</h1>
+<p>Welcome to CSS</p>
+<span>Style</span> -->
+
+<!-- <style>
+    h1 {
+        /* HEX */
+        /* hexadecimal 16진수 */
+        /* 0 - 9, a - f */
+        color: #ffffff;
+        background-color: black;
+    }
+    p {
+        /* black */
+        /* color: #000000; */
+        color: #000
+    }
+    span {
+        /* color: #ffcc99 */
+        /* 3 HEX Color */
+        color: #fc9;
+        /* 6 HEX Color */
+        background-color: #bb5588
+    }
+</style>
+
+<h1>hello world</h1>
+<p>Welcome to CSS</p>
+<span>Style</span> -->
+
+<!-- <style>
+    div {
+        background: green;
+        /* alpha - 투명도 (opacity) */
+        /* rgba(r, g, b, opacity) */
+        opacity: 0.5;
+    }
+</style>
+
+<div>
+    hello world
+</div> -->
+
+
+<!-- <style>
+    .bold.red {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+
+<p class="bold red">hello class</p>
+
+<p class="red">hello world</p> -->
+
+<!-- <style>
+    div p:first-child {
+        /* 3 HEX Color */
+        color: #ddd;
+        /* rgba(red, green, blue, opacity) */
+        background-color: rgba(0, 255, 0, 1)
+    }
+    /* > 자식선택자 */
+    div p:last-child > span {
+        /* 6 Hex Color */
+        color: #ff0000;
+    }
+</style>
+
+<div>
+    <p>first paragraph</p>
+    <p>second paragraph</p>
+    <p>third paragraph</p>
+    <p>
+        <span>fourth</span> paragraph
+    </p>
+</div> -->
+
+<!-- <style>
+
+p {
+    color: #000000;
+}
+
+:not(p) {
+    color: #ff0000
+}
+
+</style>
+
+<h1>This is heading</h1>
+
+<p>This is paragraph</p>
+
+<a href="https://www.google.com">Go to Google</a> -->
+
+
+<!-- <style>
+    div {
+        /* background-image: url('../img/cloud.jpg'); */
+        border: 1px dashed black;
+        /* background-size: cover; */
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+
+<div></div> -->
+
+<!-- <h1>Border</h1>
+
+<style>
+    .dotted {
+        border: 4px dotted grey;
+    }
+    .dashed {
+        border: 3px dashed blue;
+        background-color: rgba(0, 255, 0, 0.5);
+    }
+    .solid {
+        border: 5px solid #ddd
+    }
+
+    .top {
+        border-top: 3px solid rgb(255, 0, 0)
+    }
+    .left {
+        border-left: 5px dashed #000;
+    }
+    .right {
+        border-right: 5px solid #333;
+        background-color: #888;
+    }
+    .bottom {
+        border-bottom: 3px dotted silver;
+    }
+</style>
+
+<p class="dotted">점선</p>
+<p class="dashed">점선 2</p>
+<p class="solid">실선</p>
+
+<p class="top">위에 선</p>
+<p class="left">왼쪽 선</p>
+<p class="right">오른쪽 선</p>
+<p class="bottom">밑에 선</p> -->
+
+<!-- <style>
+    div {
+        border: 1px solid;
+        /* margin-top: 50px;
+        margin-left: 25px; */
+        /* margin: 50px; */
+        
+        /* margin: top,bottom left,right */
+        /* margin: 50px 0; */
+        /* margin: 0 50px; */
+        /* margin: top right bottom left; */
+        /* margin: 50px 0px 0px 25px; */
+        /* margin: top right bottom (right) */
+        /* margin: 50px 0px 0px; */
+        margin: 50px 25px 0px;
+    }
+</style>
+
+<h1>Margin 마진</h1>
+
+
+<div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, sunt? 
+    Laudantium, obcaecati adipisci deleniti quae perferendis id fugit illum rem nostrum eum. 
+    Earum quaerat dignissimos totam at aut cupiditate quo.
+</div> -->
+
+
+<!-- Margin collapse 마진이 중복되지 않는다. -->
+<!-- <h1>Heading 1</h1>
+<h1>Heading 2</h1> -->
+
+<!-- <h2>Heading 1</h2>
+<h2>Heading 2</h2> -->
+
+<!-- <style>
+    div {
+        border: 1px solid;
+        /* padding: 50px; */
+        /* padding: 50px 0; */
+        padding: 50px 25px 0;
+    }
+</style>
+
+<h1>Padding 패딩</h1>
+
+<div>
+    Div element
+</div> -->
+
+<!-- <style>
+    div {
+        border: 1px solid;
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<h1>Width Height (넓이와 높이)</h1>
+
+<div></div> -->
+
+<!-- <style>
+    div {
+        height: 100px;
+        width: 500px;
+        background-color: #ddd;
+        border: 1px solid;
+    }
+</style>
+
+<div>
+    div element
+</div> -->
+
+
+<!-- <style>
+    div {
+        height: 100px;
+        /* 최대 넓이값 */
+        max-width: 700px;
+        background-color: #ddd;
+        border: 1px solid;
+        padding: 25px;
+    }
+</style>
+
+<div>div element</div> -->
+
+<!-- <style>
+    div {
+        border: 1px solid;
+        background: #ddd;
+        max-height: 100px;
+        /* height: 100px; */
+        /* height: 500px; */
+    }
+</style>
+
+<div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Harum deserunt, veritatis est rerum quasi, dolores nemo vel beatae sed, 
+    ratione impedit temporibus. 
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Harum deserunt, veritatis est rerum quasi, dolores nemo vel beatae sed, 
+    ratione impedit temporibus. 
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Harum deserunt, veritatis est rerum quasi, dolores nemo vel beatae sed, 
+    ratione impedit temporibus. 
+</div> -->
+
+
+<!-- <style>
+    div {
+        width: 200px;
+        height: 200px;
+        border: 1px dashed;
+        background: #ddd;
+    }
+    
+    @media (max-width: 600px) {
+        div {
+            background-color: red;
+        }
+    }
+</style>
+
+<h1>@media rule(반응형)</h1>
+
+
+<div>
+
+</div> -->
+
+<!-- <style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: #ddd;
+        /* margin: 0 auto */
+        margin: auto;
+    }
+</style>
+
+
+<div>div element</div> -->
+
+<!-- <style>
+
+    p {
+        /* text-align: center; */
+        /* 기본값 */
+        /* text-align: left; */
+        text-align: right;
+    }
+
+</style>
+
+<h1>Text (문자) CSS</h1>
+
+<p>paragraph element</p> -->
+
+<!-- <style>
+    p.space {
+        /* 글자 간격 */
+        letter-spacing: 5px;
+    }
+    p.word-space {
+        word-spacing: 10px;
+    }
+    p.height {
+        /* 줄 간격 */
+        line-height: 50px;
+    }
+</style>
+
+<p>paragraph element</p>
+
+<p class="space">paragraph element</p>
+<p class="word-space">paragraph element</p>
+
+<p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+    Error quasi earum repudiandae minima dolor, sunt sint magni, <br>
+    nobis excepturi vero neque, autem incidunt! Vitae ratione nihil explicabo neque, <br>
+    voluptate perspiciatis!
+</p>
+<p class="height">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+    Veniam nesciunt architecto numquam cum debitis reprehenderit optio veritatis iste, <br>
+    suscipit doloremque fuga. <br>
+    Ipsam repellendus minima omnis nostrum deleniti labore neque culpa. 
+</p> -->
+
+<!-- <style>
+    p {
+        /* 기본값 */
+        /* white-space: wrap; */
+        white-space: nowrap;
+    }
+</style>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti sint neque deleniti cum illum! Aut, earum adipisci fugiat a labore consequuntur! Enim porro cupiditate, deserunt ullam commodi eius consectetur at!</p> -->
+
+<!-- <h1>Font Family 폰트 패밀리</h1>
+
+<ul>
+    <li>
+        <h3>Serif</h3>
+        <p>공식적이고 우아한 글씨체. 문자의 가장자리에 작은 획이 있습니다.</p>
+    </li>
+    <li>
+        <h3>Sans-serif</h3>
+        <p>끝 부분이 획이 없고 현대적이고 최소한의 디자인</p>
+    </li>
+    <li>
+        <h3>Monospace</h3>
+        <p>문자의 넓이가 동일하다. 기계적인 모습을 보임</p>
+    </li>
+    <li>Cursive</li>
+    <li>Fantasy</li>
+</ul>
+
+<style>
+    p {
+        font-size: 30px;
+    }
+    .p1 {
+        /* font-family: 우선순위1, 우선순위2, ... , 폰트패밀리 */
+        font-family: "Times New Roman", Times, serif;
+    }
+    .p2 {
+        font-family: Arial, Hevetica, sans-serif;
+    }
+    .p3 {
+        font-family: "Lucida Console", "Courier New", monospace;
+    }
+</style>
+
+
+<p class="p1">This is paragraph 1</p>
+<p class="p2">This is paragraph 2</p>
+<p class="p3">This is paragraph 3</p> -->
+
+
+<!-- <style>
+    button {
+        background: #0d8bf2;
+        opacity: 0.8;
+        color: white;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: 1;
+    }
+
+    .margin-left {
+        margin-left: 10px;
+    }
+</style>
+
+<h1>Example</h1>
+<p>저장하시겠습니까?</p>
+
+<button>저장</button>
+<button class="margin-left">취소</button> -->
+
+
+<!-- <style>
+    button {
+        padding: 10px 15px;
+        background-color: #0d8bf2;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
+    button:hover {
+        opacity: 1;
+    }
+
+    .margin-left {
+        margin-left: 10px;
+    }
+</style>
+
+<h1>Example</h1>
+<p>저장하시겠습니까?</p>
+
+<button>저장</button>
+<button class="margin-left">취소</button> -->
+
+
+<!-- <style>
+    table {
+        border: 1px solid #ddd;
+        width: 100%;
+    }
+    th {
+        text-align: left;
+    }
+    th, td {
+        /* border: 1px dashed; */
+        padding: 16px;
+    }
+</style>
+
+
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Points</th>
+    </tr>
+    <tr>
+        <td>Jill</td>
+        <td>Smith</td>
+        <td>50</td>
+    </tr>
+    <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td>94</td>
+    </tr>
+    <tr>
+        <td>Adam</td>
+        <td>Johnson</td>
+        <td>67</td>
+    </tr>
+</table> -->
+

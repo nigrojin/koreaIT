@@ -1,0 +1,376 @@
+
+<!-- <h1>Hello World</h1> -->
+
+<!-- DOM - Document Object Model 추상적인 개념 -->
+<!-- DOM tree - tree모양을 한 object -->
+
+<!-- heading 제목 -->
+<!-- <h1>Hello World!</h1>
+<h2>Hello World!</h2>
+<h3>Hello World!</h3>
+<h4>Hello World!</h4>
+<h5>Hello World!</h5> -->
+
+<!-- paragraph 문장 문단 -->
+<p>hello world hello world hello world</p>
+
+<p>
+    <!-- bold -->
+    <b>Lorem ipsum dolor,</b>  
+    <!-- attribute 속성 -->
+    <span style="color: red;">
+        <!-- italic  -->
+        <i>sit amet consectetur</i> adipisicing elit.
+    </span>
+    Magni deserunt magnam dolores,
+    <br><br>
+    quia delectus modi explicabo error ex perspiciatis 
+    sed nisi molestias, animi, 
+    quas exercitationem harum expedita dolorum autem qui.
+</p>
+
+<!-- anchor -->
+<!-- attribute 속성 -->
+<h3>기존 탭에서 이동</h3>
+<a href="https://www.google.com">Go to Google</a>
+<!-- 새로운 탭에서 이동 -->
+<h3>새로운 탭에서 이동</h3>
+<a href="https://www.google.com" target="_blank">Go to Google.</a>
+<h3>default 기존 탭에서 이동</h3>
+<a href="https://www.google.com" target="_self">Go to Google</a>
+<a href="mailto:tvvmvn@gmail.com">메일보내기</a>
+<a href="tel:12345678">전화걸기</a>
+
+<hr>
+
+<!-- Unordered List -->
+<h3>과일리스트</h3>
+<ul style="list-style-type: none;">
+    <!-- list item -->
+    <li>사과</li>
+    <li>키위</li>
+    <li>딸기</li>
+</ul>
+
+
+<!-- Ordered List -->
+<h3>과일리스트</h3>
+<ol>
+    <li>사과</li>
+    <li>키위</li>
+    <li>딸기</li>
+</ol>
+
+<hr>
+
+<!-- Data list -->
+<dl>
+    <!-- Data title -->
+    <dt>서울</dt>
+    <!-- Data description -->
+    <dd>한국의 수도</dd>
+
+    <!-- Data title -->
+    <dt>도쿄</dt>
+    <!-- Data description -->
+    <dd>일본의 수도</dd>
+</dl>
+
+<hr>
+
+<!-- Inline CSS  -->
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<!-- 표, 엑셀 -->
+<table>
+    <!-- Table row -->
+    <tr>
+        <!-- table head -->
+       <th>이름</th> 
+       <th>연락처</th>
+       <th>주소</th>
+    </tr>
+    <tr>
+        <!-- table data -->
+        <td>유재석</td>
+        <td>01012345678</td>
+        <td>서울 성동구</td>
+    </tr>
+    <tr>
+       <!-- table data -->
+       <td>박명수</td>
+       <td>01012345678</td>
+       <td>서울 강남구</td>
+    </tr>
+</table>
+
+<hr>
+
+<table>
+    <tr>
+        <th>이름</th>
+        <th colspan="2">주소</th>
+    </tr>
+    <tr>
+        <td>유재석</td>
+        <td>서울시 성동구</td>
+        <td>무도아파트 1동</td>
+    </tr>
+    <tr>
+        <td>박명수</td>
+        <td>서울시 강남구</td>
+        <td>무도빌라 1동</td>
+    </tr>
+</table>
+
+<hr>
+
+<table>
+    <tr>
+        <th>이름</th>
+        <td>유재석</td>
+    </tr>
+    <tr>
+        <th>주소</th>
+        <td>서울시 성동구</td>
+    </tr>
+    <tr>
+        <th>연락처</th>
+        <td>01012345678</td>
+    </tr>
+</table>
+
+<hr>
+
+<table>
+    <tr>
+        <th>이름</th>
+        <td>유재석</td>
+    </tr>
+    <tr>
+        <th rowspan="2">주소</th>
+        <td>서울시 성동구</td>
+    </tr>
+    <tr>
+        <!-- <th>상세주소</th> -->
+        <td>무도아파트 1동</td>
+    </tr>
+</table>
+
+<hr>
+
+<!-- Form -->
+
+<!-- 검색 Form -->
+<!-- HTTP Method -->
+<!-- 1 GET - 데이터가 주소창으로 전달된다 eg) 검색, 게시글 가져오기 -->
+<!-- 2 POST - 데이터가 내부적으로 전달된다 eg) 로그인, 회원가입, CRUD -->
+<!-- 3 PUT
+4 DELETE -->
+
+<form action="/search.php" method="GET">
+    <h1>Google</h1>
+    <input type="text" placeholder="검색어를 입력하세요">
+    <button>검색</button>
+</form>
+
+<hr>
+
+<form action="/login.php" method="POST">
+    <h1>로그인</h1>
+    <!-- divide -->
+    <div>
+        <label for="">아이디</label>
+        <!-- name: 서버에 필요한 값 -->
+        <input type="text" placeholder="아이디를 입력하세요" 
+        name="username">
+    </div>
+    <div>
+        <label for="">비밀번호</label>
+        <input type="text" placeholder="비밀번호를 입력하세요" name="password">
+    </div>
+    <div>
+        <input type="checkbox" name="remember-me">
+        <label for="">자동로그인</label>
+    </div>
+    <div>
+        <button type="submit">로그인</button>
+    </div>
+</form>
+
+<hr>
+
+<form action="">
+    <h1>블로그 작성하기</h1>  
+    <div class="form-group">
+        <label for="">제목</label>
+        <input type="text" name="title" placeholder="제목을 입력하세요">
+    </div> 
+    <div class="form-group">
+        <textarea name="content" id="" cols="30" rows="10" placeholder="내용을 입력하세요"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="">파일 업로드</label>
+        <input type="file" name="myfile" multiple>
+    </div>
+    <div class="form-group">
+        <button type="submit">등록하기</button>
+    </div>
+</form>
+
+<hr>
+
+<!-- GET - 검색, 게시물 가져오기 등. 주소창으로 전달 -->
+<!-- POST - 용량이 크고 민감한 정보 -->
+<form action="/upload.php" method="POST">
+    <h1>상품업로드</h1>
+
+    <div class="form-group">
+        <label for="">상품명</label>
+        <!-- name - value -->
+        <input type="text" name="product-name" value="" placeholder="상품명을 입력하세요">
+    </div>
+
+    <div class="form-group">
+        <label for="">카테고리</label>
+        <!-- category - acc -->
+        <select name="category" id="">
+            <option value="outer">아우터</option>
+            <option value="pants">팬츠</option>
+            <option value="acc">악세서리</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="">가격</label>
+        <input type="text" placeholder="$" name="cost">
+    </div>
+
+    <div class="form-group">
+        <label for="">수량</label>
+        <input type="number" name="quantity">
+    </div>
+    
+    <div class="form-group">
+        <label for="">상품 설명</label>
+        <br>
+        <textarea name="description" id="" cols="30" rows="10" placeholder="상품 설명을 입력하세요"></textarea>
+    </div>
+
+    <div class="form-group">
+        <button type="submit">저장</button>
+        <button type="submit">취소</button>
+    </div>
+</form>
+
+<hr>
+
+<form action="/reservation.php" method="POST">
+    <h1>숙박 예약</h1>
+
+    <div class="form-group">
+        <label for="">체크인</label>
+        <input type="date" name="check-in">
+        <label for="">시간</label>
+        <input type="time" nam="check-in-time">
+    </div>
+
+    <div class="form-group">
+        <label for="">체크아웃</label>
+        <input type="date" name="check-out">
+        <label for="">시간</label>
+        <input type="time" name="check-out-time">
+    </div>
+
+    <div class="form-group">
+        <!-- member = 선택한 값 -->
+        <!-- member = family2 -->
+        <input type="radio" name="member" value="adult1">
+        <label for="">성인 1명</label>
+
+        <input type="radio" name="member" id="" value="adult2">
+        <label for="">성인 2명</label>
+
+        <input type="radio" name="member" id="" value="family1">
+        <label for="">성인2명 어린이1명</label>
+
+        <input type="radio" name="member" id="" value="family2">
+        <label for="">성인2명 어린이2명</label>
+    </div>
+
+    <div class="form-group">
+        <label for="">가격 범위</label>
+        <input type="range" min="0" max="100">
+    </div>
+</form>
+
+<br>
+
+<h1>HTML Entity (HTML 엔티티)</h1>
+
+HTML Reserved Words (HTML에서 사용되는 문자들)
+
+<p>less than: < </p>
+
+<h1>HTML Reserved word</h1>
+<!-- HTML에서 이미 사용되고 있는 문자들.  -->
+<ul>
+    <li>less than: <</li>
+    <li>greater than: ></li>
+    <li>quoation: "</li>
+    <li>apostrophe: '</li>
+    <li>ampersand: &</li>
+    <li>non-breaking space: </li>
+</ul>
+
+<h1>HTML Entity</h1>
+<!-- 위에 문자들은 Entity(엔티티)를 사용하여 표시하는 것을 권고함 -->
+<ul>
+    <li>less than: &lt;</li>
+    <li>greather than: &gt;</li>
+    <li>quotation: &quot;</li>
+    <li>apostrophe: &apos;</li>
+    <li>ampersand: &amp;</li>
+    <li>non-breaking space: &nbsp;</li>
+</ul>
+
+
+<h1>Entity(엔티티)의 종류</h1>
+
+<ul>
+    <li>
+        <h2>Entity name (엔티티 이름)</h2>
+        <p>& 으로 시작한다</p>
+        <p>HTML Reserved word (HTML에서 사용되는 문자를 대체하기 위해 사용)</p>
+    </li>
+    <li>
+        <h2>Entity number (엔티티 숫자)</h2>
+        <p>&# 으로 시작한다</p>
+        <p>Symbol이나 emoji(이모티콘)을 표현하기 위해 사용.</p>
+        <p style="font-size: 48px">&#128516; &#128514;</p>
+    </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

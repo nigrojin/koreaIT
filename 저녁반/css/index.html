@@ -1,0 +1,254 @@
+<!-- <h1>Hello CSS</h1>
+
+<style>
+    p {
+        color: red;
+    }
+</style>
+
+<p>paragraph 1</p> -->
+
+
+<!-- Inline CSS -->
+<!-- <style>
+    .red {
+        color: red;
+    }
+    .text-blue {
+        color: blue;
+    }
+    #alert {
+        color: red;
+        font-size: 40px;
+    }
+
+</style>
+
+<h1>CSS Selector (CSS 선택자)</h1>
+
+<p class="red">red paragraph</p>
+
+<p class="text-blue">blue paragraph</p>
+
+<p id="alert">위험</p> -->
+
+<!-- <style>
+    .list-none {
+        list-style-type: none;
+    }
+    /* 한칸 띄어쓰기: 자손선택자 */
+    .list-none li {
+        color: grey;
+    }
+</style>
+
+<h1>프론트엔드</h1>
+
+<ul class="list-none">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+</ul>
+
+<ul>
+    <li>사과</li>
+    <li>배</li>
+    <li>딸기</li>
+</ul> -->
+
+<!-- <style>
+    ul li h3 {
+        font-weight: normal;
+    }
+
+    ul li .text-yellow {
+        color: goldenrod;
+    }
+    ul li .text-red {
+        color: red;
+    }
+    .text-blue {
+        color: blue;
+    }
+    ul li p .text-bold {
+        font-weight: bold;
+    }
+
+</style>
+
+<h1>자동차</h1>
+<h3>각국의 자동차들</h3>
+
+<ul>
+    <li>
+        <h3>볼보</h3>
+        <p class="text-yellow"><span class="text-bold">스웨덴</span> 자동차</p>
+    </li>
+    <li>
+        <h3>BMW</h3>
+        <p class="text-red"><span class="text-bold">독일</span> 자동차</p>
+    </li>
+    <li>
+        <h3>현대</h3>
+        <p class="text-blue"> <span class="text-bold">국산</span> 자동차</p>
+    </li>
+</ul> -->
+
+
+<!-- <style>
+    .text-bold {
+        font-weight: bold;
+    }
+    /* p, small {
+      color: grey;  
+    } */
+    /* p, small.text-bold {
+        color: grey;
+    } */
+    small.text-grey {
+        color: grey;
+    }
+</style>
+
+<h1>현대자동차</h1>
+
+<p class="text-bold">제네시스</p>
+<p>스타리아</p>
+<p>캐스퍼</p>
+
+<small class="text-bold text-grey">Made in Korea</small>
+<br>
+<small>Hyundai</small> -->
+
+<!-- <style>
+    /* 자손선택자 */
+    /* div p { 
+        color: grey;
+    } */
+    /* 자식선택자 */
+    div > p { 
+        color: grey;
+    }
+    div > p .font-italic {
+        font-style: italic;
+    }
+
+    /* div ul li > .text-gold
+    ul li > .text-gold
+    li > .text-gold */
+    /* li > .text-gold {
+        color: gold
+    }  */
+    /* 자손은 자식도 포함한다 */
+    li .text-gold {
+        color: gold;
+    }
+    .text-red {
+        color: red;
+    }
+    /* .text-blue {
+        color: blue;
+    }
+    .background-red {
+        background-color: red;
+    } */
+    /* 2가지 클래스를 모두 가진 element를 선택함 */
+    .text-blue.background-red {
+        color: blue;
+        background-color: red;
+    }
+</style>
+
+<div>
+    <h1>자동차</h1>
+    <p>나라별 <span class="font-italic">자동차 브랜드</span></p>
+    <ul>
+        <li>
+            <h3>볼보</h3>
+            <p class="text-gold">스웨덴 자동차</p>
+        </li>
+        <li>
+            <h3>BMW</h3>
+            <p class="text-red">독일 자동차</p>
+        </li>
+        <li>
+            <h3>현대</h3>
+            <p class="text-blue background-red">국산 자동차</p>
+        </li>
+    </ul>
+</div> -->
+
+<!-- <h1>CSS Color 표시방법</h1> -->
+
+<!-- <style>
+    .text-gold {
+        color: gold;
+    }
+    .text-red {
+        /* rgb(red, green, blue) */
+        /* 0-255 */
+        color: rgb(255, 0, 0)
+    }
+    .text-blue {
+        color: blue;
+        /* rgba(red, green, blue, opacity) */
+        /* opacity (투명도)는 0-1의 값을 갖는다. */
+        /* 0은 완전투명, 1은 투명하지 않음 */
+        background-color: rgba(255, 0, 0, 0.5);
+    }
+    .text-grey {
+        /* color: grey; */
+        /* HEX Color Hexadecimal(16 진수)로 색상을 표현함 */
+        /* 0-9, a-f */
+        /* # + 6자리 16진수 */
+        /* color: #3cb371; */
+
+        /* 3자리 HEX Color */
+        /* color: #dddddd */
+        /* color: #ebebeb; */
+        /* color: #ffcc99;  */
+        color: fc9;
+    }
+</style>
+
+<h1>나라별 자동차 브랜드</h1>
+<p class="text-grey">나라별 자동차를 알아보자.</p>
+<ul>
+    <li>
+        <h3>볼보</h3>
+        <p class="text-gold">스웨덴 자동차</p>
+    </li>
+    <li>
+        <h3>BMW</h3>
+        <p class="text-red">독일 자동차</p>
+    </li>
+    <li>
+        <h3>현대</h3>
+        <p class="text-blue">국산 자동차</p>
+    </li>
+</ul> -->
+
+<style>
+    /* 클래스 선택자는 .으로 시작 */
+    .text-gold {
+        
+    }
+    /* 아이디 선택자는 #으로 시작 */
+    #text-blue {
+
+    }
+</style>
+
+<a href="#hyundai"></a>
+
+<h3>볼보</h3>
+<p class="text-gold">스웨덴 자동차</p>
+
+<h3>현대</h3>
+<p id="text-blue"></p>
+
+<!-- JavaScript는 HTML과 CSS를 조작한다 -->
+document.getElementsByClassName('text-gold');
+document.getElementById('text-blue');
+
+
