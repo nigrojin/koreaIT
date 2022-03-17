@@ -637,4 +637,606 @@ p {
     </tr>
 </table> -->
 
-<h1>hello 3/17</h1>
+<!-- <h1>강의자료</h1>
+<p>매일 업데이트 됩니다</p>
+<h1>https://github.com/nigrojin/koreaIT</h1> -->
+
+
+<!-- <style>
+
+form {
+    /* border: 1px dashed; */
+    width: 250px;
+    /* 좌우가 같은 마진 */
+    /* margin: 0 auto; */
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+}
+
+</style>
+
+<form action="/search.php" method="GET">
+    <h1>Google</h1>
+    <input type="text" name="q" placeholder="검색어를 입력하세요">
+    <button type="submit">검색</button>
+</form>
+
+q는 Name -->
+<!-- 사과는 Value -->
+<!-- <h1>https://www.google.com/search?q=사과</h1>  -->
+
+<!-- <style>
+    li {
+        font-size: 24px;
+    }
+    div, p, span, small {
+        border: 1px dashed;
+    }
+</style> -->
+
+<!-- <h1>Diplay 속성</h1>
+
+<ul>
+    <li>display: block</li>
+    <li>display: inline</li>
+    <li>display: inline-block</li>
+    <li>display: none</li>
+</ul> -->
+
+<!-- display: block -->
+<!-- 넓이를 모두 차지한다 -->
+<!-- <div>divide</div>
+<p>paragraph</p> -->
+
+<!-- <style>
+    span, small, button {
+        padding: 10px;
+        margin: 10px;
+    }
+</style> -->
+
+<!-- display: inline -->
+<!-- 필요한 만큼의 넓이만 차지한다 -->
+<!-- <span>span 1</span>
+<span>span 2</span>
+<small>small 1</small> -->
+
+<!-- display: inline-block -->
+<!-- inline과 block의 조합 -->
+<!-- <button>button</button> -->
+
+<!-- <style>
+    nav {
+        background-color: #ddd;
+    }
+    nav a {
+        padding: 10px;
+        display: inline-block;
+        /* display: inline; */
+        /* css에서 수정가능 */
+        /* display: block; */
+    }
+</style> -->
+
+<!-- anchor 태그는 display: inline -->
+<!-- <nav>
+    <a href="">홈</a>
+    <a href="">About</a>
+    <a href="">상품소개</a>
+</nav> -->
+
+<!-- inline -->
+<!-- span, a, small -->
+<!-- inline-block -->
+<!-- button, input -->
+<!-- block -->
+<!-- div, p, form, nav, header, footer,  -->
+
+<!-- <style>
+    button {
+        padding: 10px;
+        border: none;
+        background-color: #ddd;
+    }
+
+    a:active {
+        color: green;
+    }
+    a:visited {
+        color: red;
+    }
+
+    /* Pseudo-class는 :hover */
+    button:hover {
+        background-color: #888;
+    }
+    p:first-child {
+        color: blue
+    }
+</style>
+
+<h1>Pseudo-class (가짜 클래스)</h1>
+
+
+<button>저장</button>
+
+<br>
+
+<a href="">Google</a>
+
+<div>
+    <p>paragraph 1</p>
+    <p>paragraph 2</p>
+</div> -->
+
+<!-- <h1>CSS [속성] 선택자 </h1>
+
+<style>
+    input[type=text] {
+        border: 3px solid green;
+        padding: 5px;
+    }
+    input[type=number] {
+        border: 3px solid grey;
+        padding: 5px;
+    }
+    a[target=_blank] {
+        color: green;
+    }
+    button[type=submit] {
+        border: none;
+    }
+</style>
+
+
+<input type="text">
+<input type="number">
+
+<hr>
+
+<a href="">Google</a>
+<a href="" target="_blank">Naver</a>
+
+<button type="submit">저장</button>
+<button>취소</button> -->
+
+<!-- <h1>!important</h1> -->
+
+
+<!-- <style>
+
+/* p {
+    color: red!important;
+} */
+
+p {
+    color: green!important;
+}
+
+p {
+    color: red!important;
+}
+
+</style> -->
+
+<!-- tag의 style이 css보다 우선된다 -->
+<!-- <p style="color: blue">paragraph 1</p> -->
+
+<!-- <style>
+    div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+    }
+    .left {
+        float: left;
+    }
+    .right {
+        float: right;
+    }
+</style>
+
+<h1>Float (떠있다)</h1>
+<div class="none"></div>
+<div class="left"></div>
+<div class="right"></div> -->
+
+<!-- <style>
+    nav {
+        border: 1px dashed;
+        overflow: hidden;
+    }
+    nav a {
+        padding: 10px;
+        float: left;
+        display: inline;
+    }
+</style>
+
+<nav>
+    <a href="">Home</a>
+    <a href="">About</a>
+    <a href="">Blog</a>
+</nav> -->
+
+<!-- <h1>Position 속성</h1>
+
+<ol>
+    <li>position: static, 기본값</li>
+    <li>position: relative, 원래 위치에서 상대적이다</li>
+    <li>position: fixed, 뷰포트를 기준으로 위치한다 </li>
+    <li>position: absolute, 가까운 조상에 상대적이다</li>
+    <li>position: sticky, 스크롤 포지션에 따라 위치한다</li>
+</ol>
+
+<style>
+    div {
+        border: 1px solid;
+        width: 100p;
+        height: 100px;
+    }
+    .static {
+        position: static;
+        left: 50px;
+    }
+    .relative1 {
+        position: relative;
+        left: 50px;
+    }
+    .relative2 {
+        position: relative;
+    }
+    .relative2 p {
+        border: 1px solid red;
+        position: absolute;
+        top: 50%; left: 50%;
+        margin: 0
+    }
+    .fixed {
+        position: fixed;
+        top: 0; left:0;
+        background-color: #888;
+    }
+</style>
+
+<div class="static">static</div>
+
+<div class="relative1">relative 1</div>
+
+<div class="relative2">
+    <p>paragraph</p>
+</div>
+
+<div class="fixed">fixed</div> -->
+
+
+<!-- <h1>z-index 속성</h1>
+
+<style>
+    .container {
+        position: relative;
+        border: 1px dashed;
+    }
+
+    .black-box {
+        position: absolute;
+        background-color: #333;
+        color: #fff;
+        width: 100px;
+        height: 100px;
+        left: 10px; top: 0;
+        z-index: 1;
+    }
+    .green-box {
+        position: absolute;
+        background-color: green;
+        color: #fff;
+        width: 50px;
+        height: 50px;
+        left: 0; top: 0;
+    }
+</style> -->
+
+
+<!-- <div class="gray-box">Gray</div> -->
+<!-- <div class="container">
+    <div class="black-box">Black</div>
+    <div class="green-box">Green</div>
+</div> -->
+
+
+<!-- <h1>overflow 속성</h1>
+
+<dl>
+    <dt>overflow: visible</dt>
+    <dd>기본값. 넘치는 부분을 보여준다</dd>
+
+    <dt>overflow: hidden</dt>
+    <dd>넘치는 부분을 가린다</dd>
+    
+    <dt>overflow: scroll</dt>
+    <dd>넘치는 부분을 스크롤로 처리한다, 가로 세로 모두</dd>
+
+    <dt>overflow: auto</dt>
+    <dd>가로 세로 중 넘치는 부분만 스크롤로 처리한다</dd>
+</dl>
+
+<style>
+    div {
+        height: 50px;
+        background-color: #ddd;
+    }
+    /* 기본 값 */
+    .visible {
+        overflow: visible;
+    }
+    .hidden {
+        overflow: hidden;
+    }
+    .scroll {
+        overflow: scroll
+    }
+    .auto {
+        overflow: auto;
+    }
+</style> -->
+
+
+<!-- <div class="visible">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam modi reprehenderit assumenda consequatur ea aperiam. Hic eius cum veniam corporis, consequuntur culpa accusantium nam assumenda, voluptatem, blanditiis ipsa facilis explicabo?
+</div> -->
+
+
+
+<!-- <div class="hidden">
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis perspiciatis asperiores adipisci fugit. Consectetur earum, illum beatae nulla odit, voluptas fuga consequuntur possimus minima odio ad esse molestias eligendi recusandae.
+</div> -->
+
+<!-- <div class="scroll">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla reiciendis, quos nisi consequatur veniam, corrupti iusto animi eius, blanditiis nam architecto nihil optio. Corrupti ex veniam, voluptatum tenetur dolor non.
+</div>
+
+<br><br>
+
+<div class="auto">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum culpa iste fugiat aperiam unde explicabo vero veniam dignissimos dolore tenetur ipsam quae, dolores asperiores nesciunt itaque perferendis ipsa. Aliquid, nemo!
+</div> -->
+
+
+<!-- <style>
+    input, select, button {
+        width: 100%;
+        padding: 10px;
+    }
+    .form-group {
+        margin-top: 10px;
+    }
+    button {
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        /* 선의 모서리 부분을 둥글게 처리 */
+        border-radius: 4px;
+    }
+    /* Pseudo-class 가짜 클래스 */
+    button:hover {
+        background-color: #45a049;
+    }
+
+</style>
+
+<form action="" method="POST">
+    <h1>Form</h1>
+    <div class="form-group">
+        <label for="">First Name</label>
+        <input type="text" name="fname" placeholder="Your name..">
+    </div>
+    <div class="form-group">
+        <label for="">Last Name</label>
+        <input type="text" name="lname" placeholder="Your last name..">
+    </div>
+    <div class="form-group">
+        <label for="">Country</label>
+        <select name="country" id="">
+            <option value="australia">Australia</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <button type="submit">Submit</button>
+    </div>
+</form> -->
+
+
+<!-- <style>
+    .bg-image {
+        height: 500px;
+        /* border: 1px solid; */
+        background-image: url('../img/cloud.jpg');
+        /* 이미지를 엘리먼트 크기에 맞춤 */
+        background-size: cover;
+        /* 이미지의 가운데를 기준으로 위치한다 */
+        background-position: center;
+        position: relative;
+    }
+    .bg-text {
+        /* border: 1px dashed red; */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%)
+    }
+</style>
+
+<div class="bg-image">
+    <div class="bg-text">
+        <h1>Heading</h1>
+        <p>paragraph</p>
+    </div>
+</div> --> 
+
+<!-- <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .row {
+        min-height: 500px;
+
+        width: 1000px;
+        max-width: 100%;
+
+        margin: 0 auto;
+    }
+
+    header {
+        background-color: #ddd;
+        padding: 25px;
+    }
+    footer {
+        background-color: #333;
+        color: white;
+        padding: 25px;
+        text-align: center;
+    }
+
+    nav {
+        float: left;
+        width: 100%;
+    }
+    nav a {
+        display: block;
+        padding: 10px;
+        background: dodgerblue;
+        color: white;
+    }
+    .main {
+        float: left;
+        width: 100%;
+        padding: 10px;
+    }
+    /* clearfix */
+    .row::after {
+        content: "";
+        display: block;
+        clear: left;
+    }
+
+    @media (min-width: 601px) {
+        nav {
+            width: 25%;
+        }
+        .main {
+            width: 75%;
+        }
+    }
+</style>
+
+
+<header>
+    <h1>현대자동차</h1>
+</header>
+
+<div class="row">
+    <nav>
+        <a href="">제네시스</a>
+        <a href="">아반떼</a>
+        <a href="">캐스퍼</a>
+    </nav>
+    <div class="main">
+        <h2>캐스퍼</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio cupiditate molestias voluptates exercitationem ut aspernatur laborum quidem porro voluptatum, debitis impedit beatae perferendis. Dolorem ullam itaque, reiciendis nulla consequatur corporis.</p>
+    </div>
+</div>
+
+<footer>
+    <small>2022 현대자동차</small>
+</footer> -->
+
+<!-- <style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    div {
+        width: 100px;
+        height: 100px;
+        border: 1px dashed;
+        padding: 10px;
+    }
+    .content-box {
+        /* 기본값 */
+        box-sizing: content-box;
+    }
+    .border-box {
+        /* 더 기본값처럼 쓴다 */
+        box-sizing: border-box;
+    }
+    
+</style>
+
+<div style="padding: 0;"></div>
+
+<div class="content-box"></div>
+
+<div class="border-box"></div> -->
+
+
+<!-- <style>
+    .hero-image {
+        background-image: url('../img/cloud.jpg');
+        background-size: cover;
+        height: 500px;
+        background-position: center;
+        position: relative;
+    }
+    .hero-text {
+        position: absolute;
+    }
+    .top-left {
+        top:0; left: 0
+    }
+    .top-right {
+        top:0; right: 0
+    }
+    .center {
+        top: 50%; 
+        left: 50%;
+        /* translateX(-50%), translateY(-50%) */
+        transform: translate(-50%, -50%);
+    }
+    .bottom-left {
+        bottom: 0; left: 0
+    }
+    .bottom-right {
+        bottom: 0; right: 0
+    }
+    
+</style>
+
+
+
+<div class="hero-image">
+    <span class="hero-text top-left">top left</span>
+    <span class="hero-text top-right">top right</span>
+    <span class="hero-text center">center</span>
+    <span class="hero-text bottom-left">bottom left</span>
+    <span class="hero-text bottom-right">bottom right</span>
+</div> -->
+
