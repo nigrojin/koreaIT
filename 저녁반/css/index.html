@@ -228,27 +228,446 @@
     </li>
 </ul> -->
 
-<style>
-    /* 클래스 선택자는 .으로 시작 */
-    .text-gold {
-        
-    }
-    /* 아이디 선택자는 #으로 시작 */
-    #text-blue {
 
+<!-- <h1>강의자료</h1>
+<h1>매일 업데이트 됩니다</h1>
+<h1>https://github.com/nigrojin/koreaIT</h1> -->
+
+<!-- <h1>Margin 마진(여백)</h1> -->
+
+<!-- <style>
+    div {
+        width: 100px; 
+        height: 100px;
+        border: 1px dashed;
+        /* margin: 50px; */
+        /* margin-left: 50px; */
+        /* margin-top: 50px; */
+        /* margin-bottom: 50px; */
+
+        /* 위아래는 50px, 좌우는 0 */
+        /* margin: 50px 0; */
+        /* 위아래는 0, 좌우는 50px */
+        /* margin: 0 50px; */
+
+        /* 위 오른쪽 아래 왼쪽 */
+        /* margin: 50px 0 0 50px; */
+        
+        /* 위 오른쪽 아래 (오른쪽) */
+        /* margin: 50px 0 0; */
+        /* 위 오른쪽 아래 (오른쪽 값) */
+        margin: 50px 50px 50px;
     }
 </style>
 
-<a href="#hyundai"></a>
 
-<h3>볼보</h3>
-<p class="text-gold">스웨덴 자동차</p>
+<div></div> -->
 
-<h3>현대</h3>
-<p id="text-blue"></p>
 
-<!-- JavaScript는 HTML과 CSS를 조작한다 -->
-document.getElementsByClassName('text-gold');
-document.getElementById('text-blue');
+<!-- <h1>heading 1</h1>
+<h1>Margin collapse</h1> -->
 
+<!-- <h1>Padding 패딩</h1>
+<h2>요소 내부의 공간</h2> -->
+
+<!-- <style>
+    div {
+        width: 100px;
+        height: 100px;
+        border: 1px dashed;
+    }
+    .padding {
+        /* padding: 10px; */
+        
+        /* padding-top: 10px;
+        padding-bottom: 5px;
+        padding-left: 15px;
+        padding-right: 20px; */
+        
+        /* 위아래는 50px, 좌우는 0 */
+        /* padding: 50px 0; */
+
+        /* 위 50 오른쪽 0 아래는 25 왼쪽 0 */
+        padding: 50px 0 25px;
+    }
+</style>
+
+<div></div>
+<div class="padding"></div> -->
+
+<!-- <style>
+    div {
+        width: 100px;
+        height: 100px;
+        border: 10px solid;
+        padding: 10px;
+    }
+    .content-box {
+        /* 기본값 */
+        box-sizing: content-box;
+    }
+    .border-box {
+        /* 기본값처럼 사용함 */
+        box-sizing: border-box;
+    }
+</style>
+
+<div style="padding: 0;">패딩없음</div> -->
+
+<!-- <div class="content-box">content-box</div>
+
+<div class="border-box">border-box</div>  -->
+
+<!-- <h1>Width Height (넓이, 높이)</h1>
+
+<style>
+    div {
+        border: 1px dashed;
+        width: 300px;
+        /* max-width: 700px; */
+        /* height: 200px; */
+        /* max-height: 200px; */
+        min-height: 200px;
+    }
+</style>
+
+<div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi repudiandae quae perspiciatis blanditiis, quas quasi aperiam minus vitae asperiores, qui ex omnis at consequuntur culpa laborum quo possimus nihil itaque!
+</div> -->
+
+<!-- <h1>Font family 폰트 패밀리</h1>
+
+<style>
+    li {
+        font-size: 24px;
+    }
+</style> -->
+
+<!-- Ordered list -->
+<!-- list item -->
+<!-- <ol>
+    <li>Serif 우아하고 공식적인 느낌. 가장자리에 작은 획이 있다</li>
+    <li>Sans-serif 현대적이고 미니멀한 느낌을 준다</li>
+    <li>Monospace 문자가 모두 같은 넓이를 가지고 있다. 기계적인 느낌을 준다</li>
+    <li>Cursive 사람이 쓴 것 같은 글씨체</li>
+    <li>Fantasy 장식적이고 재미있는 글씨체</li>
+</ol> -->
+
+<!-- <style>
+    p {
+        font-size: 24px;
+    }
+    .serif {
+        /* 우선순위1, 우선순위2, ..., 폰트패밀리 */
+        font-family: "Times New Roman", Times, serif;
+    }
+    .sans-serif {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .monospace {
+        font-family: "Lucida Console", "Courier New", monospace;
+    }
+</style>
+
+
+<p class="serif">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+<p class="sans-serif">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+<p class="monospace">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p> -->
+
+<!-- <h1>Position 속성</h1> -->
+
+<!-- data list -->
+<!-- <dl> -->
+    <!-- data title -->
+    <!-- <dt>position: static</dt> -->
+    <!-- data description -->
+    <!-- <dd>기본값. 페이지의 자연스러운 흐름대로 위치한다</dd>
+
+    <dt>position: relative</dt>
+    <dd>원래 자신의 위치에 상대적이다</dd>
+
+    <dt>position: absolute</dt>
+    <dd>가까운 조상의 엘리먼트에 상대적이다</dd>
+
+    <dt>position: fixed</dt>
+    <dd>뷰포트에 상대적이다</dd>
+</dl>
+
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        border: 1px dashed;
+    }
+    .static {
+        /* 기본값, 생략 가능하다 */
+        position: static;
+        /* 적용되지 않음 */
+        left: 50px;
+    }
+    .relative {
+        position: relative;
+        left: 50px;
+    }
+    .absolute {
+        position: absolute;
+        background-color: #ddd;
+        top: 25px; left: 10px;
+        width: 50px;
+        height: 50px;
+    }
+    .fixed {
+        position: fixed;
+        background-color: navy;
+        bottom: 0; right: 0;
+        /* width: 100%; */
+    }
+</style>
+
+
+<div class="static">static</div>
+<div class="relative">relative</div>
+
+<div class="relative" style="left: 0;">
+    <div class="absolute">
+        absolute
+    </div>
+</div>
+
+<div class="fixed">fixed</div> -->
+
+
+<!-- <h1>z-index 속성</h1>
+
+<style>
+    .relative {
+        height: 200px;
+        border: 1px dashed;
+    }
+    .absolute {
+        position: absolute;
+        width: 100px; 
+        height: 100px;
+        border: 1px dashed;
+    }
+
+    .red {
+        background-color: red;
+        z-index: 1000;
+    }
+    .blue {
+        background-color: blue;
+        left: 50px;
+        z-index: 1000;
+    }
+</style>
+
+<div class="relative">
+    <div class="absolute red">absolute 1</div>
+    <div class="absolute blue">absolute 2</div>
+</div> -->
+
+<!-- <h1>overflow 속성 (넘치는 부분 처리)</h1>
+
+<ul>
+    <li>overflow: visible, 기본값. 넘치는 부분을 보이게 한다</li>
+    <li>overflow: hidden, 넘치는 부분을 숨긴다</li>
+    <li>overflow: scroll, 넘치는 부분을 가로세로 모두 스크롤로 처리한다</li>
+    <li>overflow: auto 넘치는 부분만 스크롤로 처리한다</li>
+</ul> -->
+
+<!-- <style>
+    div {
+        margin-top: 10px;
+        width: 200px; 
+        height: 100px;
+        border: 1px dashed;
+    }
+    .visible {
+        /* 기본값. 생략 가능 */
+        overflow: visible;
+    }
+    .hidden {
+        overflow: hidden;
+    }
+    .scroll {
+        overflow: scroll;
+    }
+    .auto {
+        overflow: auto;
+    }
+</style> -->
+
+<!-- <div class="visible">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Fugiat beatae quaerat at nisi culpa nobis doloremque molestias accusantium adipisci 
+    sequi quis aspernatur soluta sit excepturi eveniet vel deleniti, rerum numquam.
+</div> -->
+
+<!-- <div class="hidden">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Fugiat beatae quaerat at nisi culpa nobis doloremque molestias accusantium adipisci 
+    sequi quis aspernatur soluta sit excepturi eveniet vel deleniti, rerum numquam.
+</div>
+
+<div class="scroll">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Fugiat beatae quaerat at nisi culpa nobis doloremque molestias accusantium adipisci 
+    sequi quis aspernatur soluta sit excepturi eveniet vel deleniti, rerum numquam.
+</div>
+
+<div class="auto">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Fugiat beatae quaerat at nisi culpa nobis doloremque molestias accusantium adipisci 
+    sequi quis aspernatur soluta sit excepturi eveniet vel deleniti, rerum numquam.
+</div> -->
+
+<!-- <h1>Display 속성</h1>
+
+<ul>
+    <li>display: block</li>
+    <li>display: inline</li>
+    <li>display: inline-block</li>
+</ul>
+
+<style>
+    div {
+        border: 1px dashed;
+        display: block;
+        margin: 25px;
+    }
+    span {
+        border: 1px dashed;
+        margin: 25px;
+        /* display: inline; */
+        display: inline;
+    }
+    button {
+        margin: 25px;
+        display: inline-block;
+    }
+</style>
+
+<h2>display: block</h2>
+<div>divide</div>
+<div>divide</div> -->
+<!-- div, h1~h5, p, form, nav, header, footer, ... -->
+
+<!-- <h2>display: inline</h2>
+<span>span</span>
+<span>span</span> -->
+<!-- span, small, a, ... -->
+
+<!-- <h2>display: inline-block</h2>
+<button>button</button>
+<button>button</button> -->
+<!-- button, input, ... -->
+
+<!-- <style>
+    button {
+        padding: 12px 15px;
+        border: none;
+        background-color: #2196F3;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0b7dda;
+    }
+    .margin-left {
+        margin-left: 10px;
+
+    }
+
+</style>
+
+<h1>저장하시겠습니까?</h1>
+
+<button type="submit">저장</button>
+<button class="margin-left">취소</button> -->
+
+<!-- <style>
+    button {
+        /* 패딩 - 요소의 크기 */
+        padding: 10px 15px;
+    }
+    .margin-left {
+        /* 마진 - 요소 사이의 여백 */
+        margin-left: 10px;
+    }
+</style>
+
+
+<h1>저장하시겠습니까?</h1>
+
+
+<button>저장</button>
+<button class="margin-left">취소</button> -->
+
+
+<!-- <style>
+    .hero-image {
+        height: 200px;
+        background-color: #ddd;
+        position: relative;
+    }
+    .hero-text {
+        position: absolute;
+    }
+    .top-left {
+        top:0; left: 0
+    }
+    .top-right {
+        top:0; right: 0
+    }
+    .bottom-left {
+        bottom: 0; left: 0
+    }
+    .bottom-right {
+        bottom: 0; right: 0
+    }
+</style>
+
+
+
+<div class="hero-image">
+    <span class="hero-text top-left">top left</span>
+    <span class="hero-text top-right">top right</span>
+
+    <span class="hero-text bottom-left">bottom left</span>
+    <span class="hero-text bottom-right">bottom right</span>
+</div>  -->
+
+
+<style>
+    .relative {
+        height: 200px;
+        background-color: #ddd;
+        position: relative;
+    }
+    .absolute {
+        position: absolute;
+    }
+    .top-left { top: 0; left: 0 }
+    .top-right { top: 0; right: 0 }
+    .bottom-left { bottom: 0; left: 0 }
+    .bottom-right { bottom: 0; right: 0 }
+    .center {
+        top: 50%;
+        left: 50%;
+        /* transform: translate(x, y) */
+        /* transform: translate(-50%, -50%); */
+        border: 1px dashed;
+    }
+</style>
+
+<div class="relative">
+    <div class="absolute center">center</div>
+    <div class="absolute center" style="transform: translate(-50%, -50%)">center</div>
+    <span class="absolute top-left">top-left</span>
+    <span class="absolute top-right">top-right</span>
+    <span class="absolute bottom-left">bottom-left</span>
+    <span class="absolute bottom-right">bottom-right</span>
+</div>
 
