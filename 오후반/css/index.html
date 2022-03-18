@@ -1525,7 +1525,7 @@ p {
     </main>
 </div> -->
 
-<style>
+<!-- <style>
     .modal {
         background-color: rgba(0, 0, 0, 0.5);
         position: fixed;
@@ -1584,4 +1584,225 @@ p {
             </a>
         </div>
     </form>
+</div> -->
+
+
+<!-- <style>
+    body {
+        margin: 0;
+    }
+    img {
+        /* 이미지가 밖으로 나오지 않도록 부모태그의 100%를 차지한다 */
+        width: 100%;
+        padding: 2px;
+    }
+    .col {
+        float: left;
+        width: 100%;
+        /* border: 5px dashed; */
+        box-sizing: border-box;
+        padding-right: 5px;
+        /* margin-right: 5px; */
+    }
+
+    @media (min-width: 600px) {
+        .col {
+            width: 50%;
+        }
+    }
+
+    @media (min-width: 800px) {
+        .col {
+            width: 25%;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="../../img/cloud.jpg" alt="">
+            <img src="../../img/fall.jpg" alt="">
+            <img src="../../img/tree.jpg" alt="">
+        </div>
+        <div class="col">
+            <img src="../../img/cloud.jpg" alt="">
+            <img src="../../img/fall.jpg" alt="">
+            <img src="../../img/tree.jpg" alt="">
+        </div>
+        <div class="col">
+            <img src="../../img/cloud.jpg" alt="">
+            <img src="../../img/fall.jpg" alt="">
+            <img src="../../img/tree.jpg" alt="">
+        </div>
+        <div class="col">
+            <img src="../../img/cloud.jpg" alt="">
+            <img src="../../img/fall.jpg" alt="">
+            <img src="../../img/tree.jpg" alt="">
+        </div>
+    </div>
+</div> -->
+
+<!-- <style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    ul {
+        list-style-type: none;
+        margin: 10px;
+        /* 수평, 수직, blur(흐림), spread(퍼짐), 색상 */
+        box-shadow: 3px 3px 3px  #ddd, -3px -3px 3px #ddd
+    }
+    li:first-child {
+        font-size: 20px;
+        margin: 10px 0;
+        background-color: #333;
+        color: #fff;
+    }
+    li:last-child button {
+        padding: 10px;
+        width: 100%;
+    }
+    li {
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+    }
+    .row {
+        /* border: 1px dashed; */
+    }
+    /* Pseudo-element (가짜 엘리먼트) */
+    /* clear-fix */
+    .row::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .col {
+        float: left;
+        width: 33.33333%;
+        /* border: 1px dashed; */
+        padding: 10px;
+    }
+
+    @media (max-width: 600px) {
+        .col {
+            width: 100%;
+        }
+    }
+</style>
+
+
+<div class="row">
+    <div class="col">
+        <ul>
+            <li>Basic</li>
+            <li>list item</li>
+            <li>list item</li>
+            <li>list item</li>
+            <li>list item</li>
+            <li><button>Sign up</button></li>
+        </ul>
+    </div>
+    <div class="col">
+        <ul>
+            <li>Premium</li>
+            <li>list item</li>
+            <li>list item</li>
+            <li>list item</li>
+            <li>list item</li>
+            <li><button>Sign up</button></li>
+        </ul>
+    </div>
+    <div class="col">
+        <ul>
+            <li>Pro</li>
+            <li>list item</li>
+            <li>list item</li>
+            <li>list item</li>
+            <li>list item</li>
+            <li><button>Sign up</button></li>
+        </ul>
+    </div>
+</div> -->
+
+<style>
+    .modal {
+        position: fixed;
+        top: 0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        display: none;
+    }
+    .modal-content {
+        background-color: rgb(255,255,255);
+        width: 400px;
+        margin: 50px auto 0;
+        padding: 10px;
+        box-sizing: border-box;
+        position: relative;
+    }
+    input[type=text] {
+        width: 100%;
+        padding: 10px;
+    }
+    .form-group {
+        margin-top: 10px;
+    }
+    .close-btn {
+        position:absolute;
+        top: -30px; right: 0;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    /* float 제거 */
+    .btn-group::after {
+        content: '';
+        display: block;
+        clear: both;
+    } 
+    .btn-group button {
+        float: left;
+        width: 50%;
+        padding: 10px;
+    }
+</style>
+
+<h1>Sign Up</h1>
+
+<button onclick="document.querySelector('.modal').style.display = 'block';">회원가입</button>
+
+<div class="modal">
+    <form action="" class="modal-content">
+        <span onclick="document.querySelector('.modal').style.display = 'none';" class="close-btn">&times;</span>
+        <h1>회원가입</h1>
+        <div class="form-group">
+            <label for="">아이디</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label for="">비밀번호</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label for="">비밀번호 확인</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <input type="checkbox">
+            <label for="">비밀번호 기억하기</label>
+        </div>
+        <div class="form-group">
+            
+            <small>회원가입하는 경우 <a href="">약관</a>에 동의하는 것으로 간주합니다.</small>
+        </div>
+        <div class="form-group btn-group">
+            <button>취소</button>
+            <button>회원가입</button>
+        </div>
+    </form>
 </div>
+
