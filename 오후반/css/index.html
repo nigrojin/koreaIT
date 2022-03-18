@@ -1226,48 +1226,341 @@ p {
     }
     .bottom-right {
         bottom: 0; right: 0
-    }<style>
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-}
+    }
+-->
 
-.pagination a.active {
-  background-color: dodgerblue;
-  color: white;
-}
 
-.pagination a:hover:not(.active) {background-color: #ddd;}
+<!-- <style>
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+    .pagination {
+        /* border: 1px dashed; */
+    }
+    .page {
+        /* border: 1px dashed; */
+        padding: 10px 15px;
+        display: inline-block;
+        transition: 0.5s;
+    }
+    /* Pseudo class (가짜 클래스) - :hover, :not() */
+    .page:hover:not(.active) {
+        background-color: #ddd;
+    }
+    .active {
+        background-color: gold;
+        color: #fff
+    }
 </style>
-</head>
-<body>
 
-<h2>Pagination</h2>
-<p>Responsive pagination with hover effects:</p>
+
+<h1>Pagination 페이지</h1>
 
 <div class="pagination">
-  <a href="#">&laquo;</a>
-  <a href="#">1</a>
-  <a class="active" href="#">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#">6</a>
-  <a href="#">&raquo;</a>
-</div>
-    
-</style>
-
-
-<div class="hero-image">
-    <span class="hero-text top-left">top left</span>
-    <span class="hero-text top-right">top right</span>
-    <span class="hero-text center">center</span>
-    <span class="hero-text bottom-left">bottom left</span>
-    <span class="hero-text bottom-right">bottom right</span>
+    <a href="" class="page">&lt;</a>
+    <a href="" class="page">1</a>
+    <a href="" class="page active">2</a>
+    <a href="" class="page">3</a>
+    <a href="" class="page">4</a>
+    <a href="" class="page">5</a>
+    <a href="" class="page">&gt;</a>
 </div> -->
 
 
+<!-- <h1>Table CSS</h1>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th {
+        background-color: #555;
+        color:#fff
+    }
+    th, td {
+        /* border: 1px dashed; */
+        padding: 16px;
+        /* 글자의 간격 */
+        letter-spacing: 10px;
+    }
+    /* even은 짝수, odd 홀수 */
+    tr:nth-child(even) {
+        background-color: #ddd
+    }
+</style>
+
+<table>
+    <h1>현대자동차</h1>
+    <tr>
+        <th>이름</th>
+        <th>디자인</th>
+        <th>가격</th>
+    </tr>
+    <tr>
+        <td>제네시스</td>
+        <td>90점</td>
+        <td>100원</td>
+    </tr>
+    <tr>
+        <td>아반떼</td>
+        <td>70점</td>
+        <td>50원</td>
+    </tr>
+    <tr>
+        <td>캐스퍼</td>
+        <td>80점</td>
+        <td>30원</td>
+    </tr>
+</table> -->
+
+<!-- <style>
+    nav {
+        border: 1px dashed;
+        overflow: auto;
+        background-color: #555;
+
+    }
+    a {
+        /* border: 1px dashed; */
+        float: left;
+        padding: 10px;
+        display: inline;
+        background-color: #555;
+        color: #fff;
+        text-decoration: none;
+        transition: 0.5s
+    }
+    a:hover {
+        background-color: #222;
+    }
+
+</style>
+
+
+<nav>
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">게시물</a>
+    <a href="">연락하기</a>
+</nav> -->
+
+<!-- <style>
+    nav {
+        border: 1px dashed;
+        background-color: #555;
+        overflow: auto;
+    }
+    a {
+        float: left;
+        padding: 10px;
+        background-color: #555;
+        text-decoration: none;
+        color: #fff;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: 600px) {
+        a {
+            width: 100%;
+        }
+    }
+
+</style>
+
+<nav>
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">게시물</a>
+    <a href="">연락하기</a>
+</nav>  -->
+
+
+<!-- <style>
+    nav {
+        /* viewport 기준으로 위치한다 */
+        position: fixed;
+        top: 0; left: 0;
+        width: 280px;
+        height: 100%;
+        background-color: #ddd;
+    }
+    nav a {
+        display: block;
+        padding: 10px;
+        transition: .5s;
+    }
+    nav a:hover {
+        background-color: #555;
+    }
+    main {
+        margin-left: 280px;
+    }
+</style>
+
+
+<nav>
+    <h1>Menu</h1>
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">게시물</a>
+    <a href="">연락하기</a>
+</nav>  
+
+<main>
+    <h1>소개</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur doloribus quidem molestiae laudantium deleniti impedit dicta harum expedita nemo aperiam. Praesentium mollitia eveniet vel excepturi cum asperiores incidunt accusamus! Iure?</p>
+</main> -->
+
+<!-- <style>
+    /* absolute는 가까운 조상(ancestor)에 상대적으로 위치한다 */
+    /* 조상이 없을 경우 body에 상대적으로 위치한다 */
+    /* fixed는 viewport를 기준으로 위치한다 */
+    .container {
+        width: 200px;
+        height: 200px;
+        border: 5px dashed;
+        position: relative;
+    }
+    img {
+        width: 100%;
+        /* object-fit: cover; */
+    }
+    .overlay {
+        position: absolute;
+        background-color: #ddd;
+
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: 0.5s
+    }
+    .container:hover .overlay {
+        opacity: 1;
+    }
+    .text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+
+
+<div class="container">
+    <img src="../img/cloud.jpg" alt="">
+    <div class="overlay">
+        <div class="text">안녕하세요</div>
+    </div>
+</div> -->
+
+
+<!-- <style>
+    img {
+        width: 100%;
+        transition: 0.5s;
+    }
+    .container {
+        width: 50%;
+        border: 5px solid;
+        position: relative;
+    }
+    /* 이미지는 흐려지게 */
+    .container:hover img {
+        opacity: 0.3;
+    }
+    /* 글자는 선명해지게 */
+    .container:hover .text {
+        opacity: 1;
+    }
+    .text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: .5s;
+    }
+</style>
+
+
+<div class="container">
+    <img src="../img/cloud.jpg" alt="">
+    <div class="text">안녕하세요</div>
+</div> -->
+
+<!-- <style>
+    .wrap {
+        min-height: 1000px;
+    }
+    header {
+        background-color: rgba(0,0,0,0.8);
+        color: #fff;
+        position: fixed;
+        width: 100%;
+        text-align: center;
+        /* top: 0; left: 0 */
+        bottom: 0; left: 0;
+    }
+    /* main {
+        margin-top: 100px;
+    } */
+</style>
+
+
+<div class="wrap">
+    <header>
+        <h1>header</h1>
+    </header>
+
+    <main>
+        <h1>현대자동차</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero culpa maxime illo corporis, eveniet asperiores vel exercitationem, iusto, minus labore repellat rem ullam. Quaerat, minima ad et illum dicta provident!
+        </p>
+    </main>
+</div> -->
+
+<style>
+    .modal {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        
+    }
+    .modal-content {
+        border: 1px dashed;
+        background-color: #fff;
+        width: 400px;
+        margin: 100px auto;
+    }
+</style>
+
+
+<h1>Modal 로그인</h1>
+<button onclick="document.querySelector('.modal').style.display='block'">Login</button>
+
+<div class="modal">
+    <form action="" class="modal-content">
+        <h1>로그인</h1>
+        <div class="form-group">
+            <label for="">아이디</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label for="">비밀번호</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <button>로그인</button>
+        </div>
+    </form>
+</div>
