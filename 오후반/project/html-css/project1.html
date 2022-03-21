@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .bg-black {
+            background-color: #000;
+            color: #fff;
+        }
+        nav {
+            padding: 10px;
+            background-color: #000;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: #000;
+        }
+        .bg-image .left-text {
+            bottom: 15px;
+            left: 15px;
+            display: none;
+        }
+        .bg-image .right-text {
+            bottom: 15px;
+            right: 15px;
+        }
+        .padding-48 {
+            padding: 48px 0;
+        }
+        .post-it {
+            background-color: #ddd;
+            padding: 15px;
+            border-left: 5px solid silver;
+        }
+        .menu {
+            /* box-shadow: h / v / blur / spread / color / inset */
+            /* box-shadow: 수평 / 수직 / 흐림 / 퍼짐 / 색 / 안쪽 */
+            box-shadow: 5px 5px 5px 5px #888, -5px -5px 5px 5px #888;
+        }
+        .menu-btn-group {
+            box-shadow: 5px 0 5px 5px #888;
+            padding: 10px;
+        }
+        .menu-btn-group a:first-child {
+            color: #fff;
+            background-color: #777;
+        }
+        footer {
+            background-color: #ddd;
+        }
+        @media (min-width: 501px) {
+            .bg-image .left-text {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation, 메뉴바 -->
+    <nav class="border float-container">
+        <a href="" class="left width-25 text-center bg-black">홈</a>
+        <a href="" class="left width-25 text-center bg-black">카페 소개</a>
+        <a href="" class="left width-25 text-center bg-black">메뉴</a>
+        <a href="" class="left width-25 text-center bg-black">위치</a>
+    </nav>
+
+    <!-- Hero image, 메인 이미지 --> 
+    <div class="bg-image" style="background-image: url('../../../img/project1/coffeehouse.jpeg'); background-color: #ddd;">
+        <div class="bg-text">
+            <h1 style="font-size: 60px; color: #fff;">the <br> Cafe</h1>
+        </div>
+        <span class="left-text absolute bg-black">영업시간 오전6시-오후5시</span>
+        <span class="right-text absolute" style="color: #fff;">인천 부평구 </span>
+    </div>
+
+    <!-- About, 카페 소개 -->
+    <div id="about" style="max-width: 700px; margin: auto">
+        <h3 class="padding-48 text-center">
+            <span class="bg-black">카페 소개</span>
+        </h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro impedit dolorum distinctio molestiae alias aspernatur numquam suscipit vero voluptate atque, natus reprehenderit nulla modi aliquam necessitatibus! Ullam in corporis beatae!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore tenetur architecto, earum quod repellendus inventore beatae voluptates nostrum culpa iste suscipit officiis quos dolores sequi temporibus id necessitatibus nisi dicta!</p>
+
+        <div class="post-it">
+            <p><q>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</q> Nisi nemo accusantium nihil quisquam adipisci illo corporis, mollitia enim temporibus velit voluptatem</p>
+            <p>commodi quasi deserunt ea repudiandae omnis, ducimus minima reprehenderit?</p>
+        </div>
+
+        <br>
+
+        <img src="../../../img/project1/coffeeshop.jpeg" alt="">
+        <p><b>영업시간</b> 오전 8시부터 오후 5시</p>
+        <p><b>위치</b> 인천광역시 부평구</p>
+    </div>
+
+    <!-- menu, 카페 메뉴 -->
+    <div id="menu" style="max-width: 700px; margin: auto;">
+        <h3 class="padding-48 text-center">
+            <span class="bg-black">메뉴</span>
+        </h3>
+
+        <div class="menu">
+            <div class="menu-btn-group float-container">
+                <a href="" class="left width-50 text-center">식품</a>
+                <a href="" class="left width-50 text-center">음료</a>
+            </div>
+            <div class="padding-48">
+                <h3>hello world</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil cupiditate quibusdam dolor ducimus in tempora ratione</p>
+                <br>
+                <h3>hello world</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil cupiditate quibusdam dolor ducimus in tempora ratione</p>
+                <br>
+                <h3>hello world</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil cupiditate quibusdam dolor ducimus in tempora ratione</p>
+                <br>
+                <h3>hello world</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil cupiditate quibusdam dolor ducimus in tempora ratione</p>
+                <br>
+                <h3>hello world</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil cupiditate quibusdam dolor ducimus in tempora ratione</p>
+            </div>
+        </div>
+        <br>
+        <img src="../../../img/project1/coffeehouse2.jpeg" alt="">
+    </div>
+
+    <!-- where, 카페 위치 -->
+    <div id="where" style="max-width: 700px; margin: auto;">
+        <h3 class="padding-48 text-center">
+            <span class="bg-black">위치</span>
+        </h3>
+        <br>
+        <img src="../../../img/project1/map.jpeg" alt="">
+        <p><span class="bg-black">Lorem</span>  ipsum dolor sit amet consectetur, adipisicing elit. Voluptate deserunt tenetur neque placeat asperiores dolore quibusdam soluta mollitia labore commodi dicta necessitatibus at repellendus nisi vero, deleniti ipsum voluptatem eveniet?</p>
+
+        <p><b>Lorem</b> ipsum dolor sit amet consectetur adipisicing elit. Totam velit eius</p>
+
+        <form action="">
+            <div class="form-group">
+                <label for=""></label>
+                <input type="text" class="width-100" placeholder="이름">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for=""></label>
+                <input type="number" class="width-100" placeholder="인원">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for=""></label>
+                <input type="date" class="width-100" placeholder="">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for=""></label>
+                <input type="text" class="width-100" placeholder="메시지 / 요청사항">
+            </div>
+            <br>
+            <div class="form-group">
+                <button class="bg-black">메시지 보내기</button>
+            </div>
+        </form>
+    </div>
+
+    <footer class="padding-48">
+        <p class="text-center">2022 카페</p>
+    </footer>
+    
+</body>
+</html>
