@@ -640,7 +640,7 @@
 </div>  -->
 
 
-<style>
+<!-- <style>
     .relative {
         height: 200px;
         background-color: #ddd;
@@ -670,4 +670,329 @@
     <span class="absolute bottom-left">bottom-left</span>
     <span class="absolute bottom-right">bottom-right</span>
 </div>
+ -->
+ 
+ <!-- <style>
+     /* selector:pseudo-class */
+     /* 선택자:가짜 클래스 */
+     a:hover {
+         background-color: blue;
+     }
+     a:visited {
+         color: red;
+     }
+     a:active {
+         background-color: gold;
+     }
+     li:first-child {
+         color: #888;
+     }
+     li:nth-child(3) {
+         color: green;
+     }
+     li:last-child {
+         color: blue;
+     }
+ </style>
 
+ <h1>Pseudo class (가짜 클래스)</h1>
+
+ 
+ <a href="">구글</a>
+
+ <h1>현대자동차</h1>
+ <ul>
+     <li>제네시스</li>
+     <li>아반떼</li>
+     <li>캐스퍼</li>
+     <li>코나</li>
+ </ul> -->
+
+ <!-- <style>
+     /* selector::Pseudo-element  */
+     /* 선택자::가짜 엘리먼트 */
+     p::before {
+         content: '1.';
+     }
+     p::first-line {
+         color: red;
+     }
+     p::first-letter {
+         font-size: 20px;
+     }
+     p::after {
+         content: '끝';
+     }
+ </style>
+
+ <h1>Pseudo element (가짜 엘리먼트)</h1>
+
+ <p>
+     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+     Aperiam optio dolore dolor magnam repellendus iure quo tenetur deserunt accusamus accusantium eius commodi veniam, 
+     unde tempore inventore, cum rem magni officiis.
+</p> -->
+
+
+<!-- <style>
+    h1 {
+        color: blue!important;
+    }
+
+    h1 {
+        color: red!important;
+    }
+</style>
+
+
+<h1>!important</h1>
+<p>!important를 쓰는 css는 가장 우선시된다.</p> -->
+
+<!-- css보다 style속성이 더 우선된다 -->
+<!-- <h1 style="color: green;">현대자동차</h1> -->
+
+<!-- <style>
+    div {
+        width: 100px; 
+        height: 100px;
+        border: 5px dashed;
+        padding: 10px;
+    }
+    .content-box {
+        /* default, 기본값 */
+        box-sizing: content-box;
+    }
+    .border-box {
+        /* border-box가 더 기본값처럼 사용된다 */
+        box-sizing: border-box;
+    }
+</style>
+
+<h1>box-sizing</h1>
+<p>border와 padding을 엘리먼트의 넓이 안에 적용시킬 것인지 밖에 적용시킬 것인지</p>
+
+
+
+<div class="no-box-sizing">1</div>
+<br>
+<div class="content-box">2</div>
+<br>
+<div class="border-box">3</div> -->
+
+<!-- <h1>float 떠있다</h1> -->
+<!-- <p>왼쪽 또는 오른쪽으로 떠있게 한다</p> -->
+
+
+<!-- <h1>heading 1</h1>
+<p>paragraph</p>
+<div>hello world</div>
+<button>저장</button>
+<span>span</span>
+<a href="">링크</a> -->
+
+<!-- <style>
+    p {
+        border: 1px dashed;
+    }
+</style>
+
+<p>
+    <img src="../../img/bunny.jpg" alt="" width="200">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, 
+</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit,</p>
+
+
+<br>
+
+<p style="overflow: auto;">
+    <img src="../../img/bunny.jpg" alt="" width="200" style="float: left;">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, 
+</p>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit,</p> -->
+
+<!-- <style>
+    p {
+        border: 1px dashed;
+    }
+    /* clearfix, float을 없엔다 */
+    p::after {
+        content: "";
+        display: block;
+        /* float: left와 right 모두 없엔다 */
+        clear: both;
+    }
+    img {
+        /* float: left or right */
+        float: right;
+    }
+</style>
+
+<p>
+    <img src="../../img/bunny.jpg" alt="" width="200">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, hic commodi! Commodi, praesentium nam consequuntur mollitia neque unde sit a excepturi, hic reiciendis quaerat exercitationem porro tempora. Harum, quam neque.
+</p>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus placeat voluptatibus eum accusamus obcaecati laborum aliquid maxime id quos maiores officiis, at sequi! Aspernatur voluptates ratione deleniti pariatur molestias? Pariatur.</p> -->
+
+<!-- <style>
+    .container {
+        background-color: #ddd;
+    }
+    .item {
+        border: 1px dashed;
+        float: left;
+        width: 50%;
+        box-sizing: border-box;
+    }
+
+</style>
+
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+</div> -->
+
+<!-- <style>
+    header {
+        background-color: dodgerblue;
+        padding: 10px;
+    }
+    footer {
+        background-color: #ddd;
+        text-align: center;
+        padding: 48px 0;
+    }
+    .container::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    nav {
+        float: left;
+        width: 100%;
+    }
+    main {
+        float: left;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    nav a {
+        background-color: dodgerblue;
+        color: #fff;
+        padding: 10px;
+        margin-top: 10px;
+        display: block;
+    }
+    /* 반응형에서는 @media 키워드를 사용한다 */
+    @media (min-width: 501px) {
+        nav {
+            width: 25%;
+        }
+        main {
+            width: 75%;
+            padding: 15px;
+        }
+    }
+</style>
+
+<header>
+    <h1>현대자동차</h1>
+</header>
+
+<div class="container">
+    <nav>
+        <a href="">제네시스</a>
+        <a href="">아반떼</a>
+        <a href="">코나</a>
+        <a href="">캐스퍼</a>
+    </nav>
+    <main>
+        <h2>캐스퍼</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Consectetur dicta ut maxime quaerat. 
+            Aperiam vitae, alias ipsam placeat corporis dolores accusantium velit suscipit ab recusandae, 
+            autem ducimus animi fugiat inventore?
+        </p>
+    </main>
+</div>
+
+<footer>2022 현대자동차</footer> -->
+
+<style>
+    a {
+        text-decoration: none;
+    }
+    nav {
+        border: 1px dashed;
+        background-color: #333;
+    }
+    /* nav::after {
+        content: "";
+        display: block;
+        clear: both;
+    } */
+    nav a {
+        border: 1px dashed red;
+        float: left;
+        padding: 10px;
+        color: #fff;
+    }
+    /* selector:pseudo-class:pseudo-class */
+    /* 선택자:가짜 클래스:가짜 클래스 */
+    nav a:hover:not(.active) {
+        background-color: #888;
+        color: #333;
+    }
+    .active {
+        background-color: green;
+    }
+</style>
+
+<nav>
+    <a href="" class="active">홈</a>
+    <a href="">소개</a>
+    <a href="">게시판</a>
+    <a href="">연락하기</a>
+    <div style="clear: both;"></div>
+</nav>
+
+<!-- <h1>inline-block으로 할 경우</h1>
+<p>엘리먼트 사이에 여백이 생긴다(넓이를 완전히 컨트롤 할 수 없음)</p>
+<style>
+    nav {
+        border: 1px dashed;
+    }
+    nav a {
+        border: 1px dashed;
+        padding: 10px;
+        display: inline-block;
+    }
+</style>
+
+<nav>
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">게시판</a>
+    <a href="">연락하기</a>
+</nav> -->
+
+<!-- <style>
+    nav {
+        display: flex;
+        border: 1px dashed;
+    }
+    nav a {
+        border: 1px dashed;
+        padding: 10px;
+    }
+</style>
+
+<nav>
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">게시판</a>
+    <a href="">연락하기</a>
+</nav> -->
