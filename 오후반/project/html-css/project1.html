@@ -7,8 +7,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         .bg-black {
             background-color: #000;
+            padding: 5px;
             color: #fff;
         }
         nav {
@@ -22,7 +26,6 @@
         .bg-image .left-text {
             bottom: 15px;
             left: 15px;
-            display: none;
         }
         .bg-image .right-text {
             bottom: 15px;
@@ -52,21 +55,17 @@
         footer {
             background-color: #ddd;
         }
-        @media (min-width: 501px) {
-            .bg-image .left-text {
-                display: block;
-            }
-        }
     </style>
 </head>
 <body>
 
     <!-- Navigation, 메뉴바 -->
-    <nav class="border float-container">
-        <a href="" class="left width-25 text-center bg-black">홈</a>
-        <a href="" class="left width-25 text-center bg-black">카페 소개</a>
-        <a href="" class="left width-25 text-center bg-black">메뉴</a>
-        <a href="" class="left width-25 text-center bg-black">위치</a>
+    <nav class="border float-container fixed-top">
+        <!-- #id로 이동 -->
+        <a href="#" class="left width-25 text-center bg-black">홈</a>
+        <a href="#about" class="left width-25 text-center bg-black">카페 소개</a>
+        <a href="#menu" class="left width-25 text-center bg-black">메뉴</a>
+        <a href="#where" class="left width-25 text-center bg-black">위치</a>
     </nav>
 
     <!-- Hero image, 메인 이미지 --> 
@@ -74,12 +73,12 @@
         <div class="bg-text">
             <h1 style="font-size: 60px; color: #fff;">the <br> Cafe</h1>
         </div>
-        <span class="left-text absolute bg-black">영업시간 오전6시-오후5시</span>
+        <span class="left-text absolute bg-black hide-mobile">영업시간 오전6시-오후5시</span>
         <span class="right-text absolute" style="color: #fff;">인천 부평구 </span>
     </div>
 
     <!-- About, 카페 소개 -->
-    <div id="about" style="max-width: 700px; margin: auto">
+    <div id="about" style="max-width: 700px; margin: auto; padding: 0 15px;">
         <h3 class="padding-48 text-center">
             <span class="bg-black">카페 소개</span>
         </h3>
@@ -99,8 +98,8 @@
     </div>
 
     <!-- menu, 카페 메뉴 -->
-    <div id="menu" style="max-width: 700px; margin: auto;">
-        <h3 class="padding-48 text-center">
+    <div id="menu" style="max-width: 700px; margin: auto; padding: 0 15px;">
+        <h3 class="text-center padding-48">
             <span class="bg-black">메뉴</span>
         </h3>
 
@@ -109,7 +108,7 @@
                 <a href="" class="left width-50 text-center">식품</a>
                 <a href="" class="left width-50 text-center">음료</a>
             </div>
-            <div class="padding-48">
+            <div class="" style="padding: 48px 10px;">
                 <h3>hello world</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil cupiditate quibusdam dolor ducimus in tempora ratione</p>
                 <br>
@@ -131,7 +130,7 @@
     </div>
 
     <!-- where, 카페 위치 -->
-    <div id="where" style="max-width: 700px; margin: auto;">
+    <div id="where" style="max-width: 700px; margin: auto; padding: 0 15px;">
         <h3 class="padding-48 text-center">
             <span class="bg-black">위치</span>
         </h3>
@@ -163,12 +162,12 @@
             </div>
             <br>
             <div class="form-group">
-                <button class="bg-black">메시지 보내기</button>
+                <button class="bg-black" style="padding: 15px;">메시지 보내기</button>
             </div>
         </form>
     </div>
 
-    <footer class="padding-48">
+    <footer class="padding-48" style="margin-top: 50px;">
         <p class="text-center">2022 카페</p>
     </footer>
     

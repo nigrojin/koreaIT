@@ -1805,7 +1805,7 @@ p {
     </form>
 </div> -->
 
-<style>
+<!-- <style>
     /* 부모의 100%; */
     .container {
         /* border: 5px dashed; */
@@ -1826,11 +1826,192 @@ p {
 </style>
 
 <div class="container">
-    <!-- 이미지와 text는 같은 레벨에 있다 -->
     <img src="../../img/project1/coffeehouse.jpeg" alt="">
     <div class="text">
         <h1>Heading</h1>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste, quidem obcaecati. Hic rem vel voluptate possimus soluta, numquam fugit doloremque nobis error itaque accusamus excepturi quasi quam sit cumque iure.</p>
     </div>
-</div>
+</div> -->
 
+<!-- <style>
+    nav {
+        border: 1px dashed;
+    }
+    /* Pseudo element (가짜 엘리먼트) */
+    nav::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    nav a {
+        border: 1px dashed;
+        float: left;
+        padding: 10px;
+    }
+    form {
+        margin: 0;
+    }
+    .right {
+        border: 1px dashed red;
+        float: right;
+    }
+    input, button {
+        padding: 7px;
+    }
+</style>
+
+<nav>
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">게시판</a>
+
+    <div class="right">
+        <form action="">
+            <input type="text">
+            <button>검색</button>
+        </form>
+    </div>
+</nav> -->
+
+
+<!-- <style>
+    * {
+        /* 기본값보다 더 기본값으로 사용된다. */
+        box-sizing: border-box;
+    }
+    /* 버튼, input */
+    .inline-block {
+        border: 1px dashed;
+        display: inline-block;
+        width: 32%;
+        height: 100px;
+        padding: 10px;
+    }
+    /* float은 반응형 개발에 주로 사용된다 */
+    .left {
+        border: 1px dashed;
+        float: left;
+        width: 33.33333%;
+        height: 100px;
+        padding: 10px;
+    }
+</style>
+
+
+<div class="inline-block">1</div>
+<div class="inline-block">2</div>
+<div class="inline-block">3</div>
+
+<br><br>
+
+<div class="container">
+    <div class="left">1</div>
+    <div class="left">2</div>
+    <div class="left">3</div>
+</div> -->
+
+<!-- <style>
+    .flex-container {
+        display: flex;
+    }
+    .flex {
+        width: 33.33333%;
+        height: 100px;
+        border: 1px dashed;
+    }
+</style>
+
+<div class="flex-container">
+    <div class="flex">1</div>
+    <div class="flex">2</div>
+    <div class="flex">3</div>
+</div> -->
+
+<!-- <h1>FONTAWESOME 아이콘 라이브러리</h1>
+
+<h1>fontawesome.com</h1>
+
+<script src="https://kit.fontawesome.com/4fb6dd7406.js" crossorigin="anonymous"></script>
+
+<style>
+    .fa-brands {
+        font-size: 100px;
+    }
+</style>
+<i class="fa-brands fa-app-store"></i>
+<i class="fa-brands fa-apple"></i>
+
+<i class="fa-brands fa-cc-visa"></i>
+
+<h1>부트스트랩</h1>
+<h1>getbootrap.com</h1> -->
+
+<!-- <style>
+    a {
+        text-decoration: none;
+    }
+    nav {
+        background-color: #333;
+    }
+    nav::after {
+        content: '';
+        display: block;
+        clear: left;
+    }
+    nav > a {
+        color: #fff;
+        float: left;
+        padding: 10px;
+    }
+    .dropdown {
+        float: left;
+    }
+    .dropdown-content {
+        position: absolute;
+        display: none;
+        box-shadow: 1px 1px 3px 3px #ddd;
+        width: 200px;
+        background-color: #fff;
+    }
+    .dropdown-content a {
+        padding: 10px;
+        display: block;
+    }
+    button {
+        padding: 10px;
+        /* inherit: 부모로부터 상속받는다 */
+        background-color: inherit;
+        color: #fff;
+        border: none;
+        /* 1em은 브라우저의 기본 글자 크기 */
+        font-size: 1em;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+</style>
+
+<nav>
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <div class="dropdown">
+        <button class="dropbtn">메뉴</button>
+        <div class="dropdown-content">
+            <a href="">메뉴 1</a>
+            <a href="">메뉴 2</a>
+            <a href="">메뉴 3</a>
+        </div>
+    </div>
+</nav> -->
+
+
+<h1>vw: viewport width</h1>
+<h1>반응형 글자크기</h1>
+<hr>
+
+<!-- viewport의 10% (500px일 경우 50px) -->
+<p style="font-size: 10vw">Hello World</p>
+<!-- viewport의 5% (500px일 경우 25px) -->
+<p style="font-size: 5vw">Hello World</p>
+<!-- viewport의 1% (500px일 경우 5px) -->
+<p style="font-size: 1vw">Hello World</p>

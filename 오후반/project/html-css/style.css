@@ -18,6 +18,12 @@ input[type=text],
 input[type=number],
 input[type=date] {
    padding: 10px; 
+   border: 1px solid #ddd;
+   border-radius: 5px;
+}
+
+button {
+    padding: 12px 15px;
 }
 
 .border {
@@ -29,10 +35,14 @@ input[type=date] {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 1;
 }
 
 .left {
     float: left;
+}
+.right {
+    float: right;
 }
 
 .width-25 {
@@ -45,7 +55,6 @@ input[type=date] {
     width: 100%;
 }
 
-/* Pseudo element(가짜 엘리먼트) */
 .float-container::after {
     content: "";
     display: block;
@@ -59,7 +68,7 @@ input[type=date] {
 .bg-image {
     background-size: cover;
     background-position: center;
-    height: 600px;
+    height: 750px;
     position: relative;
 }
 
@@ -72,4 +81,30 @@ input[type=date] {
 
 .absolute {
     position: absolute;
+    top: 0; 
+    left:0;
+}
+.relative {
+    position: relative;
+}
+
+.hide-mobile {
+    display: none;
+}
+
+/* 태블릿 */
+@media (min-width: 501px) {
+    .hide-mobile {
+        display: block;
+    }
+    .tablet-50 {
+        width: 50%;
+    }
+}
+
+/* PC 버전 */
+@media (min-width: 701px) {
+    .pc-25 {
+        width: 25%;
+    }
 }
