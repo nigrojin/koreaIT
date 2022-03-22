@@ -921,7 +921,7 @@
 
 <footer>2022 현대자동차</footer> -->
 
-<style>
+<!-- <style>
     a {
         text-decoration: none;
     }
@@ -957,7 +957,7 @@
     <a href="">게시판</a>
     <a href="">연락하기</a>
     <div style="clear: both;"></div>
-</nav>
+</nav> -->
 
 <!-- <h1>inline-block으로 할 경우</h1>
 <p>엘리먼트 사이에 여백이 생긴다(넓이를 완전히 컨트롤 할 수 없음)</p>
@@ -996,3 +996,397 @@
     <a href="">게시판</a>
     <a href="">연락하기</a>
 </nav> -->
+
+
+<!-- <style>
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+    nav {
+        /* border: 1px dashed; */
+        background-color: #333;
+    }
+    
+    nav::after {
+        content: "";
+        display: block;
+        clear: left;
+    }
+
+    nav a {
+        float: left;
+        padding: 10px;
+        /* border: 1px dashed; */
+        box-sizing: border-box;
+    }
+    nav a:hover {
+        background-color: dodgerblue;
+    }
+
+    /* @media 반응형을 할 때 사용하는 키워드 */
+    @media (max-width: 500px) {
+        nav a {
+            width: 100%;
+        }
+    }
+</style>
+
+<nav>
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">블로그</a>
+</nav> -->
+
+<!-- <style>
+    nav {
+        border: 1px dashed;
+    }
+    .search-container {
+        /* border: 1px dashed; */
+    }
+    nav a {
+        float: left;
+        padding: 10px;
+    }
+    nav::after {
+        content: "";
+        display: block;
+        /* left와 right 모두 clear 해야함 */
+        clear: both;
+    }
+    .search-container {
+        float: right;
+    }
+    form {
+        margin: 0;
+    }
+    input, button {
+        padding: 8px;
+    }
+</style>
+
+<nav>
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">블로그</a>
+    <div class="search-container">
+        <form action="">
+            <input type="text">
+            <button>검색</button>
+        </form>
+    </div>
+</nav> 
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci facere dignissimos exercitationem excepturi! Vitae quia, corrupti id beatae modi nesciunt magni, excepturi voluptates placeat, fugiat amet! Vel esse est deleniti.</p> -->
+
+<!-- <style>
+    body {
+        /* margin: 0; */
+    }
+    .side-bar {
+        background-color: #ddd;
+        border: 1px dashed;
+        width: 280px;
+        position: fixed;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    a {
+        /* 부모 태그의 넓이를 100% 차지함 */
+        display: block;
+        padding: 10px;
+        border: 1px dashed;
+    }
+    main {
+        margin-left: 280px;
+        min-height: 2000px;
+    }
+
+</style>
+
+<div class="side-bar">
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">블로그</a>
+</div>
+
+<main>
+    <h1>소개</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque at earum perferendis excepturi quos qui, soluta quo dolores nesciunt explicabo error facilis consequuntur accusamus ipsa iusto quam repudiandae, illum maiores.</p>
+</main> -->
+
+
+<!-- <h1>https://github.com/nigrojin/koreaIT</h1> -->
+
+
+<!-- 상대경로 -->
+<!-- 현재 파일을 기준으로 -->
+<!-- 절대경로 -->
+<!-- file:///C:/Users/Administrator/Documents/ -->
+
+<!-- <style>
+    .container {
+        border: 5px dashed;
+        width: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+    img {
+        float: left;
+        width: 33.33333%;
+    }
+</style>
+
+
+<div class="container">
+    <img src="../../img/cloud.jpg" alt="">
+    <img src="../../img/fall.jpg" alt="">
+    <img src="../../img/tree.jpg" alt="">
+</div> -->
+
+<!-- 
+<style>
+    button {
+        width: 32%;
+    }
+</style>
+
+<button>button</button>
+<button>button</button>
+<button>button</button> -->
+
+<!-- <style>
+    form {
+        /* border: 1px dashed; */
+        padding: 15px;
+    }
+    .form-group {
+        margin-top: 15px;
+    }
+    input, select, button {
+        width: 100%;
+        padding: 10px;
+        border-radius: 3px;
+    }
+    input, select {
+        margin: 5px 0;
+        border: 1px solid #ddd;   
+    }
+    button {
+        border: none;
+        background-color: dodgerblue;
+        color: #fff;
+    }
+</style>
+
+<form action="">
+    <div class="form-group">
+        <label for="">이름</label>
+        <input type="text">
+    </div>
+    <div class="form-group">
+        <label for="">성</label>
+        <input type="text">
+    </div>
+    <div class="form-group">
+        <label for="">성별</label>
+        <select name="" id="">
+            <option value="">남</option>
+            <option value="">여</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <button>저장</button>
+    </div>
+</form> -->
+
+<!-- <style>
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+    .pagination {
+        /* border: 1px dashed; */
+        /* background-color: #ddd; */
+    }
+    .pagination a {
+        border: 1px dashed;
+        display: inline-block;
+        padding: 7px 10px;
+    }
+    .pagination a:hover {
+        background-color: #ddd;
+    }
+</style>
+
+<div class="pagination">
+    Entity name(엔티티 네임): & + entity_name -->
+    <!-- HTML reserver words(html에서 사용되는 기호들)을 대체하기 위해 사용함
+    <a href="">&lt;</a>
+    <a href="">1</a>
+    <a href="">2</a>
+    <a href="">3</a>
+    <a href="">4</a>
+    <a href="">5</a>
+    <a href="">&gt;</a>
+</div> -->
+
+<!-- <style>
+    .container {
+        width: 90%;
+        border: 5px dashed;
+        position: relative;
+    }
+    img {
+        width: 100%;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #ddd;
+        width: 100%;
+        height: 100%;
+        /* opacity 0(완전투명) 1(완전불투명) */
+        opacity: 0;
+        transition: 1s;
+    }
+    /* 자손선택자 */
+    /* Pseudo class (가짜 클래스) */
+    .container:hover .overlay  {
+        opacity: 1;
+    }
+    .text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /* 자신의 크기만큼 왼쪽, 위로 50% 이동 */
+        transform: translate(-50%, -50%)
+    }
+    /* .container:hover img {
+        visibility: hidden;
+    } */
+</style>
+
+<div class="container">
+    <img src="../../img/cloud.jpg" alt="">
+    <div class="overlay">
+        <div class="text">안녕하세요</div>
+    </div>
+</div> -->
+
+<!-- <style>
+    /* selector:pseudo-class:pseudo-class */
+    /* 선택자:가짜클래스:가짜클래스 */
+    p:hover:not(.active) {
+        color: red;
+    }
+</style>
+
+<h1>현대자동차</h1>
+<p>제네시스</p>
+<p class="active">아반떼</p>
+<p>코나</p>
+<p>캐스퍼</p> -->
+
+
+<!-- <a href="https://www.google.com">
+    <img src="../../img/bunny.jpg" alt="">
+</a> -->
+
+<!-- <style>
+    .container {
+        border: 5px dashed red;
+        width: 80%;
+        position: relative;
+    }
+    img {
+        width: 100%;
+    }
+    .overlay {
+        background-color: #ddd;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        transition: 1s;
+    }
+
+    .container:hover .overlay {
+        height: 100%;
+    }
+    .container:hover .overlay .text {
+        /* 보이게 */
+        display: block;
+    }
+    .text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* 안보이게 */
+        display: none;
+    }
+</style>
+
+<div class="container">
+    <img src="../../img/tree.jpg" alt="">
+    <div class="overlay">
+        <div class="text">안녕하세요</div>
+    </div>
+</div> -->
+
+<!-- <style>
+    div {
+        width: 100px;
+        height: 100px;
+        border: 1px dashed;
+        font-size: 30px
+    }
+    div:first-child {
+        display: block;
+    }
+    div:nth-child(2) {
+        /* visibility: hidden; */
+        display: none;
+    }
+    div:nth-child(3) {
+        /* display: none; */
+    }
+</style>
+
+<div class="">1</div>
+<div class="">2</div>
+<div class="">3</div>
+<div class="">4</div>
+
+<button disabled style="padding: 10px;">button</button> -->
+
+<style> 
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: relative;
+      animation-name: pizza;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+    }
+    @keyframes pizza {
+      0%   {background-color:red; left:0px; top:0px;}
+      25%  {background-color:yellow; left:200px; top:0px;}
+      50%  {background-color:blue; left:200px; top:200px;}
+      75%  {background-color:green; left:0px; top:200px;}
+      100% {background-color:red; left:0px; top:0px;}
+    }
+    </style>
+
+    
+    <h1>CSS Animation</h1>
+    
+    <p>The animation-iteration-count property can be set to infinite to let the animation run for ever:</p>
+    
+    <div></div>
