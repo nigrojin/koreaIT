@@ -1365,7 +1365,7 @@
 
 <button disabled style="padding: 10px;">button</button> -->
 
-<style> 
+<!-- <style> 
     div {
       width: 100px;
       height: 100px;
@@ -1382,11 +1382,324 @@
       75%  {background-color:green; left:0px; top:200px;}
       100% {background-color:red; left:0px; top:0px;}
     }
-    </style>
+</style>
 
-    
-    <h1>CSS Animation</h1>
-    
-    <p>The animation-iteration-count property can be set to infinite to let the animation run for ever:</p>
-    
-    <div></div>
+
+<h1>CSS Animation</h1>
+
+<p>The animation-iteration-count property can be set to infinite to let the animation run for ever:</p>
+
+<div></div> -->
+
+<!-- <style>
+    a {
+        text-decoration: none;
+    }
+    /* 자식선택자 (>) */
+    /* 자손선택자 (" ") */
+    nav > a {
+        color: #fff;
+    }
+    nav a {
+        /* border: 1px dashed; */
+        float: left;
+        padding: 10px;
+    }
+    nav {
+        /* border:1px dashed; */
+        background-color: #333;
+    }
+    nav::after {
+        content: "";
+        display: block;
+        clear: left;
+    }
+    .dropdown {
+        /* border: 1px dashed; */
+        float: left;
+    }
+    .dropdown-content a {
+        color: #000;
+    }
+    .dropdown-content {
+        border: 1px solid red;
+        position: absolute;
+        width: 100px;
+        display: none;
+        /* top: 0; left: 0; */
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropdown-content div {
+        padding: 10px;
+    }
+    .dropbtn {
+        padding: 10px;
+        /* inherit 부모 태그에서 상속받는다 (nav에서 상속받음) */
+        background-color: inherit;
+        color: #fff;
+    }
+</style> 
+
+<nav>
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">메뉴</a>
+    <div class="dropdown">
+        <button class="dropbtn">더보기</button>
+        <div class="dropdown-content">
+            <div class=""><a href="">메뉴1</a></div>
+            <div class=""><a href="">메뉴2</a></div>
+            <div class=""><a href="">메뉴3</a></div>
+        </div>
+    </div>
+</nav> -->
+
+<!-- <style>
+    .nav {
+        border: 1px dashed;
+    }
+    .nav::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .nav a {
+       border: 1px dashed;   
+       padding: 10px;
+       float: left;  
+    }
+
+    nav {
+        border: 1px dashed;
+    }
+    nav::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    nav a {
+       border: 1px dashed;   
+       padding: 10px;
+       float: left;  
+    }
+</style>
+
+<div class="nav">
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">게시판</a>
+</div>
+
+<nav>
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">게시판</a>
+</nav> -->
+
+<!-- <style>
+    .nav {
+        position: fixed;
+        top: 0; left: 0;
+        width: 280px;
+        background-color: #ddd;
+        height: 100%;
+    }
+    .nav a {
+        display: block;
+    }
+</style>
+
+<aside class="nav">
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">블로그</a>
+</aside> -->
+
+
+<!-- <nav class="nav"></nav> -->
+
+<!-- <style>
+    aside {
+        border: 1px dashed;
+    }
+    .nav {
+        color: red;
+    }
+</style>
+
+<aside class="nav">
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">블로그</a>
+</aside> -->
+
+
+<!-- <main></main>
+<div class="main"></div> -->
+
+<!-- <style>
+    body {
+        min-height: 2000px;
+    }
+    .nav {
+        border: 1px dashed;
+        width: 280px;
+        position: fixed;
+        top: 0; left: 0;
+    }
+</style>
+
+<aside class="nav">
+    <a href="">홈</a>
+    <a href="">소개</a>
+    <a href="">블로그</a>
+</aside> -->
+
+<!-- <style>
+    /* 초기화 */
+    a {
+        text-decoration: none;
+    }
+    .dropdown {
+        border: 5px dashed ;
+    }
+    .dropbtn {
+        border: 1px dashed;
+        padding: 10px;
+    }
+    .dropdown-content {
+        border: 1px dashed red;
+        position: absolute;
+        display: none;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropdown-content a {
+        display: block;
+        padding: 10px;
+    }
+</style>
+
+
+<div class="dropdown">
+    <button class="dropbtn">메뉴</button>
+    <div class="dropdown-content">
+        <a href="">메뉴 1</a>
+        <a href="">메뉴 2</a>
+        <a href="">메뉴 3</a>
+    </div>
+</div> -->
+
+<!-- <style>
+    h1 {
+        margin: 0;
+    }
+    body {
+        height: 2000px;
+    }
+    .header {
+        border: 1px dashed;
+        position: fixed;
+        width: 100%;
+        top: 0; left: 0;
+        background-color: #ddd;
+        z-index: 1;
+    }
+    .nav {
+        border: 1px dashed;
+        position: fixed;
+        top: 0; left: 0;
+        width: 280px;
+        height: 100%;
+        background: #888;
+    }
+    .nav a {
+        display: block;
+        padding: 10px;
+    }
+    .nav-inner {
+        margin-top: 100px;
+    }
+</style>
+
+
+<div class="header">
+    <h1>Header</h1>
+</div>
+
+<aside class="nav">
+    <div class="nav-inner">
+        <a href="">홈</a>
+        <a href="">소개</a>
+        <a href="">블로그</a>
+    </div>
+</aside> -->
+
+<style>
+    img {
+        float: left;
+        width: 33.33333%;
+    }
+    .apple {
+        border: 5px solid red;
+    }
+</style>
+
+
+<!-- <div class="container">
+    <img id="photo" src="../../img/cloud.jpg" alt="구름">
+    <img src="../../img/fall.jpg" alt="가을">
+    <img src="../../img/tree.jpg" alt="나무">
+</div> -->
+
+
+<!-- src(source, 이미지 주소) alt(alternative, 설명) -->
+
+
+<!-- 상대경로 -->
+<!-- 현재 파일을 기준으로  -->
+<!-- ../../img/cloud.jpg -->
+<!-- <img class="apple" id="photo" src="../../img/cloud.jpg" alt="구름"> -->
+
+<!-- 절대경로 -->
+<!-- root부터 시작 -->
+<!-- file:///C:/Users/Administrator/Documents/bunny/img/cloud.jpg -->
+<!-- <img src="file:///C:/Users/Administrator/Documents/bunny/img/cloud.jpg" alt=""> -->
+
+<!-- <style>
+    img {
+        width: 200px;
+    }
+</style>
+
+
+<a href="https://www.google.com">
+    <img src="file:///C:/Users/Administrator/Documents/토끼/bunny.jpg" alt="" >
+</a> -->
+
+<!-- <style>
+    /* universal selector (전체선택자) */
+    * {
+        padding: 0; margin: 0;
+    }
+    ul {
+        list-style-type: none;
+    }
+</style>
+
+<ul>
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+</ul> -->
+
+
+
+
+
+
+
+
