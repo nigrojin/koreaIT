@@ -598,9 +598,7 @@
     }
 </style>
 
-
 <h1>저장하시겠습니까?</h1>
-
 
 <button>저장</button>
 <button class="margin-left">취소</button> -->
@@ -1638,7 +1636,7 @@
     </div>
 </aside> -->
 
-<style>
+<!-- <style>
     img {
         float: left;
         width: 33.33333%;
@@ -1646,7 +1644,7 @@
     .apple {
         border: 5px solid red;
     }
-</style>
+</style> -->
 
 
 <!-- <div class="container">
@@ -1695,6 +1693,307 @@
     <li>b</li>
     <li>c</li>
 </ul> -->
+
+<!-- <style>
+    .container {
+        border: 5px dashed;
+        position: relative;
+    }
+    /* 가짜 클래스 */
+    .container:hover img {
+        opacity: 0.5;
+        /* transition: 0.5s; */
+    }
+    .container:hover .text {
+        opacity: 1;
+    }
+    .text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ddd;
+        padding: 10px;
+        /* opacity 0 (완전투명) 1(완전불투명) */
+        opacity: 0;
+        transition: 0.5s;
+    }
+
+    img {
+        width: 100%;
+        /* 애니메이션 효과 */
+        /* 이미지 opacity 값의 변화 시간 */
+        transition: 0.5s;
+    }
+
+
+</style>
+
+<div class="container">
+    <img src="../../img/cloud.jpg" alt="">
+    <div class="text">안녕하세요</div>
+</div> -->
+
+<!-- <style>
+    * {
+        /* box-sizing: content-box; */
+        /* 더 기본값으로 많이 쓴다 */
+        box-sizing: border-box;
+    }
+    .modal {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; 
+        height: 100%;
+        /* rgb, rgba, HEXColor, colorName, */
+        /* rgba(red, green, blue, opacity(투명도)) */
+        background-color: rgba(0, 0, 0, 0.5);
+        /* 공간도 차지하지 않고 보이지 않는다 */
+        /* 보이지 않는다 visibility: hidden; */
+        display: none;
+    }
+    .modal-content {
+        background-color: #fff;
+        width: 400px;
+        /* 위아래, 좌우 */
+        margin: 100px auto 0;
+        padding: 15px;
+        position: relative;
+    }
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer
+    }
+    .form-group {
+        margin-top: 15px;
+    }
+    input[type=text] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        outline: none;
+    }
+    .login-btn {
+        padding: 10px;
+        width: 100%;
+    }
+</style> -->
+
+<!-- <h1>로그인</h1>
+
+<button onclick="document.getElementById('modal01').style.display='block'">로그인</button>
+
+<div id="modal01" class="modal">
+    <form action="" class="modal-content">
+        <span class="close-btn" onclick="document.getElementById('modal01').style.display='none'">&times;</span>
+        <h1>로그인</h1>
+        <div class="form-group">
+            <label for="">아이디</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label for="">비밀번호</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <button class="login-btn" type="submit">로그인</button>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" name="" id="">
+            <label for="">비밀번호 기억하기</label>
+        </div>
+        <div class="form-group">
+            <a href=""><small>비밀번호를 잊으셨나요?</small></a>
+        </div>
+    </form>
+</div> -->
+
+<!-- <style>
+    table {
+        border: 1px solid #ddd;
+        width: 100%;
+        /* td 선 제거 */
+        border-collapse: collapse;
+    }
+    th {
+        background-color: #333;
+        color: #fff;
+    }
+    th, td {
+        padding: 16px;
+    }
+    /* even 짝수행, odd 홀수행 */
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+</style>
+
+<h1>현대자동차</h1>
+<table>
+    <tr>
+        <th>이름</th>
+        <th>디자인</th>
+        <th>가격</th>
+    </tr>
+    <tr>
+        <td>제네시스</td>
+        <td>100점</td>
+        <td>1000원</td>
+    </tr>
+    <tr>
+        <td>스타리아</td>
+        <td>90점</td>
+        <td>700원</td>
+    </tr>
+    <tr>
+        <td>캐스퍼</td>
+        <td>80점</td>
+        <td>500원</td>
+    </tr>
+</table> -->
+
+
+<!-- <style>
+    /* 두 클래스 모두 가진 요소 선택 */
+    .container {
+        border: 1px dashed;
+        width: 300px;
+        height: 300px;
+        position: relative;
+    }
+    .relative {
+        border: 1px solid blue;
+        width: 50px;
+        height: 50px;
+        position: relative;
+        top: 0; left: 50px;
+    }
+    .absolute {
+        border: 1px solid red;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 0; left: 50px;
+    }
+</style>
+
+
+<div class="container">
+    <h1>hello</h1>
+    <h2>world</h2>
+    <div class="relative"></div>
+    <div class="absolute"></div>
+</div> -->
+
+<!-- <style>
+    .container img {
+        /* 넓이를 완전히 통제할 수 있다 */
+        float: left;
+        width: 33.33333%;
+        padding: 5px;
+        /* padding, border를 안으로 */
+        box-sizing: border-box;
+    }
+</style>
+
+<div class="container">
+    <img src="../../img/cloud.jpg" alt="">
+    <img src="../../img/tree.jpg" alt="">
+    <img src="../../img/fall.jpg" alt="">
+</div> -->
+
+<!-- <style>
+    img {
+        width: 200px; 
+        height: 200px;
+        object-fit: cover;
+    }
+</style>
+
+<img src="../../img/cloud.jpg" alt=""> -->
+
+<!-- <style>
+    button {
+        /* padding: 10px; */
+        width: 49%;
+    }
+</style>
+
+<button>저장</button>
+<button>취소</button> -->
+
+
+<style>
+    .modal {
+        /* viewport(화면)에 상대적인 위치 */
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        /* rgba(red, green, blue, opacity) */
+        background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+        background-color: #fff;
+        width: 400px;
+        /* 위 왼쪽 아래 (왼쪽) */
+        margin: 100px auto 0;
+        padding: 10px;
+        box-sizing: border-box;
+        position: relative;
+    }
+    .close-btn {
+        position: absolute;
+        top: -35px; right: 0;
+        cursor: pointer;
+        font-size: 24px;
+    }
+    input[type=text] {
+        width: 100%;
+        padding: 10px;
+    }
+    .form-group {
+        margin-top: 15px;
+    }
+    .btn-group button {
+        float: left;
+        width: 50%;
+        padding: 8px;
+    }
+    .btn-group::after {
+        content: "";
+        display: block;
+        clear: left;
+    }
+</style>
+
+
+<h1>로그인</h1>
+<button>로그인</button>
+
+<div class="modal">
+    <form action="" class="modal-content">
+        <h1>로그인</h1>
+        <!-- 엔티티 네임: & + entity name(엔티티 네임) -->
+        <!-- Entity number(엔티티 넘버): &# + Entity number(엔티티 넘버) -->
+        <span class="close-btn">&times;</span>
+        <div class="form-group">
+            <label for="">아이디</label>
+            <input type="text">
+        </div>
+        <div class="form-group btn-group">
+            <button>취소</button>
+            <button>가입</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+
 
 
 
