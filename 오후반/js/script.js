@@ -459,18 +459,464 @@ JavaScript
 // console.log(fruits)
 // console.log(numbers)
 
-var cars = [ // 0 부터 시작
-    { name: '레이', color: '은색' }, // index 0
-    { name: '제네시스', color: '검은색' }, // index 1
-    { name: '볼보', color: '흰색' } // index 2
-] 
+// var cars = [ // 0 부터 시작
+//     { name: '레이', color: '은색' }, // index 0
+//     { name: '제네시스', color: '검은색' }, // index 1
+//     { name: '볼보', color: '흰색' } // index 2
+// ] 
 
-console.log(cars)
+// console.log(cars)
 
-console.log(cars[2]) 
-console.log(cars[2].color)
+// console.log(cars[2]) 
+// console.log(cars[2].color)
 
-console.log(cars.length)
+// console.log(cars.length)
+
+// Callback, 다른 함수의 parameter(인자)가 되는 함수
+
+
+// // declare 함수 정의
+// function myCallback() {
+//     console.log(2)
+// }
+
+// // declare 함수 정의
+// function myFunction(cb) { 
+//     console.log(1)
+//     cb()
+// }
+
+// // invoke 함수 호출
+// myFunction(myCallback) // cb => myCallback()
+
+// function myCallback() {
+//     return 'hello'
+// }
+
+// function myFunction(cb) {
+//     console.log(cb())
+// }
+
+// // myFunction(myCallback()) // error 
+// myFunction(myCallback) // ok
+
+// function myCallback(data) {
+//     return data
+// }
+
+// function myFunction(cb) {
+//     console.log(cb('hello'))
+// }
+
+// myFunction(function(data) {
+//     myCallback(data)
+// })
+
+
+// Data type (데이터 타입)
+// String 문자
+// Number 숫자
+// undefined 정의되지 않음
+// null
+// boolean - true or false
+
+// Object
+// Array 
+
+// var fruit = 'apple'
+
+// 문자열의 길이
+// console.log(fruit.length)
+
+// var fruits = 'apple, banana, mango' // index(인덱스) 0부터 시작함
+
+// console.log(fruits.slice(7, 13)) // 7번째 글자부터 13번째 글자 전까지
+// console.log(fruits.slice(7)) // 7번째 글자부터 끝까지
+
+// console.log(fruits.substring(7, 13)) // 7번째 글자부터 13번째 글자 전까지
+// console.log(fruits.substr(7, 6)) // 7번째 글자부터 6개 추출
+
+// var text = 'HTML/CSS is fun';
+
+// // Uppercase 대문자
+// // Lowercase 소문자
+// // CamelCase 낙타의 등
+// var newText = text.replace('HTML/CSS', 'JavaScript'); // replace(바꿀 글자, 대체 글자)
+
+// console.log(newText)
+
+// var js = 'javaScript'; // lowerCamelCase, UpperCamelCase
+
+// var uc = js.toUpperCase()
+// var lc = js.toLowerCase() 
+
+// console.log(uc)
+// console.log(lc)
+
+// var h = 'HTML/CSS'
+
+// var js = 'JavaScript'
+
+// 문자열을 합친다
+// var result = h.concat(" ", js);
+
+// console.log(result)
+// console.log(h + " " + js)
+
+// var h = "     HTML/CSS JavaScript    "
+
+// // 양쪽에 있는 여백을 없엔다
+// var result = h.trim();
+
+// console.log(result);
+
+
+// var js = 'JavaScript' // 0번째 부터 시작
+
+// // var result = js.charAt(0); // 0번째 글자
+// var result = js[0] // 문자[index], 0번째 글자
+
+// console.log(result)
+
+// var fruits = 'apple, banana, mango';
+
+// var result = fruits.split(','); // return array (배열을 반환한다)
+
+// console.log(result);
+
+// var url = 'google.com/search/q?=사과'
+
+// var result = url.split('/');
+
+// console.log(result[0]);
+
+// var h = 'html css javaScript';
+
+// // var result = h.indexOf('css'); // 순서를 반환한다
+
+// // var result = h.indexOf('x'); // 글자가 없으면 -1 반환
+
+// // var result = h.indexOf('l'); 
+
+// // var result = h.indexOf('t'); // 1개 이상일 경우 앞에 문자의 INDEX 반환
+
+
+// // var result = h.search('h');
+// // var result = h.search('H'); // -1
+
+// console.log(result)
+
+// var num = 2022
+
+// console.log(num)
+// console.log(typeof num)
+
+// console.log(num.toString()) // toString() 값을 문자열로 변환
+// console.log(typeof num.toString())
+
+// console.log(typeof '2022') // 값은 숫자, 타입은 문자
+// console.log(Number('2022'))
+// console.log(typeof Number('2022'))
+
+// console.log(Number(true)) // 1
+// console.log(Number(false)) // 0
+
+// console.log(Number('javaScript')) // NaN (Not a number)
+
+// var result = 100 / 'javaScript'; // NaN (Not a number);
+
+// console.log(result)
+
+
+// var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"];
+
+// var result = cars.toString();
+
+// console.log(typeof result);
+// console.log(result);
+
+// var result = cars.join(' 그리고 ');
+
+// console.log(typeof result)
+// console.log(result)
+
+// cars.pop(); // 마지막 값을 제거한다
+// console.log(cars)
+
+// cars.push('아반떼')
+// console.log(cars)
+
+// cars.shift(); // 첫번째 값을 제거한다
+
+// console.log(cars)
+
+// delete cars[0];
+
+// console.log(cars)
+
+// var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"];
+
+// cars[3] = "코나"
+
+// console.log(cars)
+
+// var kia = ["카니발", "레이"]
+
+// var japan = ['렉서스', '혼다']
+
+// var sweden = ["볼보"]
+
+// // var result = cars.concat(kia)
+
+// // var result = kia.concat(cars) // array.concat(array) 두 배열을 합친다.
+
+// var result = cars.concat(kia, japan, sweden)
+
+// console.log(result)
+
+
+// var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"];
+
+// cars.splice(2, 0, "코나") // Array.splice(index, 제거할 값, 추가될 값)
+
+// console.log(cars)
+
+// cars.splice(2, 2, "코나"); // Array.splice(index, count, new value)
+
+// console.log(cars)
+
+
+// cars.splice(0, 1); // 제네시스 
+// cars.splice(1, 1) // 스타리아
+
+// console.log(cars)
+
+// var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"];
+
+// // var result = cars.slice(2); // Array.slice(index) => 아이오닉, 캐스퍼
+// // console.log(result)
+
+// // var result = cars.slice(1, 3); // index 1, 2
+
+// // console.log(result)
+
+// cars.sort();
+// console.log(cars)
+
+// var numbers = [20, 22, 3, 24]
+
+// // ascending 오름차순으로 정렬
+// numbers.sort(function(a, b) { return a - b });
+// console.log(numbers)
+
+// // descending 내림차순으로 정렬
+// numbers.sort(function (a, b) { return b - a })
+// console.log(numbers)
+
+
+// function myFunction(cb) {
+//     cb()
+// }
+
+// myFunction(function () {
+//     console.log('...')
+// })
+
+// function myFunction(cb) {
+//     cb('...')
+// }
+
+// myFunction(function (d) {
+//     console.log(d)
+// })
+
+// function myCallback() { // callback(콜백함수) - 다른 함수의 parameter(인자)가 되는 함수
+//     console.log(2)
+// }
+
+// function myFunction(cb) {
+//     console.log(1)
+//     cb()
+// }
+
+// // myFunctino(함수의 정의)
+// myFunction(myCallback()) // invok (호출)
+// myFunction(myCallback) // define (함수의 정의가 있어야 함)
+
+// function myFunction(cb) {
+//     console.log(1) // 1번
+//     cb() // 2번
+// }
+
+// myFunction(function () { // Anoymous (익명함수)
+//     console.log(2)
+// })
+
+
+// function myFunction(cb) {
+//     console.log(1) // 1번
+//     console.log(cb()) // 2번
+// }
+
+// myFunction(function () {
+//     return 2
+// })
+
+// function myFunction(cb) {
+//     console.log('hello')
+//     cb('world') // parameter 인자
+// }
+
+// myFunction(function (data) {
+//     console.log(data)
+// })
+
+// function myFunction(cb) {
+//     console.log('hello') // 1번
+//     console.log(cb('world')) // 2번
+// }
+
+// myFunction(function (data) {
+//     return data;
+// })
+
+
+// var numbers = [20, 22, 3, 24]
+
+// var result = 0;
+
+// numbers.forEach(myFunction) // forEach(callback)
+
+// console.log(result);
+
+// // Hoisting 함수의 정의가 자동으로 가장 위로 간다.
+// function myFunction(value, index, array) { // 4번(Array.length) 실행된다
+//     // console.log(value);
+//     // result += value;
+//     result = result + value;
+// }
+
+// var num = 0;
+
+// // for (i=0; i<5; i++) { // 4번 실행된다
+// //     num += i;
+// //     // num = num + i
+// // }
+
+// num = num + 0;
+// num = num + 1;
+// num = num + 2;
+// num = num + 3;
+// num = num + 4;
+
+// console.log(num)
+
+
+// var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"];
+
+// // 노동
+// // console.log(cars[0])
+// // console.log(cars[1])
+// // console.log(cars[2])
+// // console.log(cars[3])
+
+// for (i=0; i<cars.length; i++) {
+//     console.log(cars[i])
+// }
+
+// var numbers = [20, 22, 3, 24]
+
+// var result = numbers.map(myFunction)
+
+// console.log(result)
+
+// function myFunction(value, index, array) {
+//     return value * 2;
+// }
+
+// var numbers = [20, 22, 3, 24]
+
+// // var result = numbers.filter(myFunction)
+
+// // console.log(result)
+
+// // function myFunction(value, index, array) {
+// //     return value > 20
+// // }
+
+// var result = numbers.filter(function (value, index, array) {
+//     // return value > 20;
+//     // console.log('hello world');
+    
+//     console.log(value)
+//     console.log(index)
+//     console.log(array)
+
+//     // return array[index] > 20;
+// })
+
+// console.log(result)
+
+// var numbers = [20, 22, 3, 24]
+
+// var result = numbers.find(myFunction);
+
+// console.log(result)
+
+// // Hoisting 정의는 자동으로 위로 간다
+// function myFunction (value, index, array) {
+//     console.log('hello')
+//     return value > 21;
+// }
+
+
+var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"];
+
+// for (car of cars) { // [value] of [array]
+//     console.log(car)
+// }
+
+// for (i in cars) { // [index] in [array]
+//     console.log(cars[i])
+// }
+
+var result = "";
+
+for (car of cars) {
+    // result += car + ' ';
+    result = result + car + " ";
+}
+
+document.getElementById('root').innerHTML = result;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
