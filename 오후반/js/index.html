@@ -8,8 +8,283 @@
 </head>
 <body>
 
-    <div id="root"></div>
+    <!-- <form action="">
+        <h1>비밀번호 Toggle</h1>
+        <div class="form-group">
+            <label for="">비밀번호</label>
+            <input id="password-input" type="password" value="bunny123">
+        </div>
+        <div class="form-group">
+            <input type="checkbox" name="" id="" onclick="togglePassword()">
+            <label for="">비밀번호 보기</label>
+        </div>
+    </form>
+
+    <script>
+        
+        function togglePassword() {
+            var pwInput = document.getElementById('password-input');
+            console.log(pwInput)
+            
+            console.log(pwInput.getAttribute('type'))
+            console.log(pwInput.type)
+
+            if (pwInput.type === 'password') { // === value, type이 모두 일치
+                // pwInput.type = 'text'
+                pwInput.setAttribute('type', 'text')
+            } else {
+                // pwInput.type = 'password';
+                pwInput.setAttribute('type', 'password')
+            }
+        }
+
+    </script> -->
+
+
+    <!-- JavaScript selector(선택자) -->
+
+    <!-- <h1>현대자동차</h1>
+
+    <p>
+        광고 -->
+        <!-- Entity name: & + name -->
+        <!-- Entity number: &# + number -->
+        <!-- <span id="remove-ad" onclick="removeAd(this)">&times;</span>
+    </p>
+
+    <div class="wrap">
+        <ul id="list">
+            <li class="item">제네시스</li>
+            <li class="item">스타리아</li>
+            <li class="item">코나</li>
+        </ul>
+
+        <input type="text" id="new-item">
+        <button id="add-btn">add</button>
+    </div> -->
+
+    <!-- <script>
+        // var addBtn = document.getElementById('add-btn');
+
+        // // addEventListener(event, callback)
+        // addBtn.addEventListener('click', myFunction)
+
+        // function myFunction() {
+        //     // console.log('clicked')
+
+        //     var list = document.getElementById('list');
+        //     console.log(list);
+
+        //     var newItem = document.getElementById('new-item')
+        //     console.log(newItem.value)
+
+        //     var li = document.createElement('li');
+        //     // console.log(li)
+        //     li.innerHTML = newItem.value;
+        //     list.appendChild(li);
+        // }
+
+        // function removeAd(el) {
+        //     // console.log('clicked')
+        //     console.log(el)
+        //     console.log(el.parentElement)
+            
+        //     el.parentElement.style.display = 'none';
+        // }
+
+        // var newItem = document.getElementById('new-item');
+
+        // // event가 발생했을 때 callback 실행
+        // // window.addEventListener(event, callback);
+        // // event => 마우스 클릭, 창크기 조절, 키보드 입력,
+        // // 문서가 로드됨, 스크롤, .. 등 사용자의 모든 액션
+
+        // newItem.addEventListener('keyup', function(e) {
+        //     console.log(e)
+        // })
     
-    <script src="./script.js"></script>
+
+        // var car = { // key : value
+        //     name: '제네시스',
+        //     cost: 100,
+        //     sound: function () {
+        //         return 'aaaaa';
+        //     }
+        // }
+
+        // console.log(car)
+        // console.log(car.name) // property (속성)
+        // console.log(car.cost)
+        // console.log(car.sound()) // method (메서드)
+
+
+        // console.log(window)
+        // console.log(document) // document 선택
+        // console.log(document.body) // <body>
+        
+        // console.log(document.body.childNodes)
+        // console.log(document.body.children)
+
+        // console.log(document.getElementById('list'))
+        
+        // console.log(document.querySelector('h1'))
+        // console.log(document.querySelector('#list'))
+
+        // console.log(document.querySelector('.item'));
+        // console.log(document.querySelectorAll('.item'))
+        // console.log(document.querySelectorAll('.item').length)
+        
+        // console.log(document.querySelectorAll('.item')[2]);
+    </script> -->
+
+    <!-- <style>
+        .accordion {
+            width: 100%;
+            padding: 10px;
+            text-align: left;
+        }
+        .panel {
+            display: none;
+        }
+        .active, .accordion:hover {
+            background-color: #888;
+        }
+    </style>
+
+
+    <h1>Accordion 아코디언</h1>
+
+    <button class="accordion">제네시스</button>
+    <div class="panel">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse doloribus voluptates iste assumenda, mollitia quidem aspernatur in distinctio consequatur expedita, adipisci, molestias sunt consequuntur dicta corrupti eligendi incidunt at fugiat.</p>
+    </div>
+
+    <button class="accordion">스타리아</button>
+    <div class="panel">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse doloribus voluptates iste assumenda, mollitia quidem aspernatur in distinctio consequatur expedita, adipisci, molestias sunt consequuntur dicta corrupti eligendi incidunt at fugiat.</p>
+    </div>
+
+    <button class="accordion">캐스퍼</button>
+    <div class="panel">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse doloribus voluptates iste assumenda, mollitia quidem aspernatur in distinctio consequatur expedita, adipisci, molestias sunt consequuntur dicta corrupti eligendi incidunt at fugiat.</p>
+    </div>
+
+
+    <script>
+        var acc = document.querySelectorAll('.accordion');
+
+        console.log(acc)
+
+
+        // var cars = ['제네시스', '스타리아', '코나', '캐스퍼'];
+        // console.log(cars);
+        
+        // // console.log(cars[1]) // cars[index]
+
+        // for (i=0; i<cars.length; i++) { // for loop, 반복적으로 실행된다
+        //     console.log(cars[i])
+        // }
+
+
+
+        for (i=0; i<acc.length; i++) { // index => i
+            // console.log(acc[i])
+            acc[i].addEventListener('click', function(e) {
+                console.log(e)
+                console.log(e.target)
+
+                console.log(e.target.classList);
+                e.target.classList.toggle('active');
+
+                var panel = e.target.nextElementSibling;
+
+                console.log(panel)
+                console.log(panel.style.display)
+
+                if (panel.style.display === 'block') {
+                    panel.style.display = 'none';
+                } else {
+                    panel.style.display = 'block';
+                }
+            })
+        }
+    </script> -->
+
+    <style>
+        nav {
+            border: 1px dashed;
+            position: relative;
+        }
+        nav::after {
+            content: "";
+            display: block;
+            clear: left;
+        }
+        nav a {
+            border: 1px dashed;
+            float: left;
+            padding: 10px;
+            width: 100%;
+        }
+        /* Pseudo-class (가짜클래스) */
+        nav a:not(.active) {
+            display: none;
+        }
+        .mobile-btn {
+            position: absolute;
+            top: 0; right: 20px;
+            font-size: 30px;
+        }
+
+        @media (min-width: 501px) {
+            nav a {
+                /* 기본값 width, height: auto */
+                width: auto;
+                display: block!important;
+            }
+        }
+    </style>
+
+    <nav>
+        <span id="mobile-btn" class="mobile-btn">=</span>
+        <a href="" class="active">홈</a>
+        <a class="item" href="">소개</a>
+        <a class="item" href="">블로그</a>
+        <a class="item" href="">연락하기</a>
+    </nav>
+
+    <script>
+        
+        var mobileBtn = document.getElementById('mobile-btn');
+        var nav = document.querySelector('nav') // tag(name), class(.name), id(#name)
+
+        mobileBtn.addEventListener('click', function () {
+            // console.log(nav)
+            // console.log(nav.children)
+            // console.log(nav.childNodes)
+            
+            // NodeList(count) - 반복가능
+            // HTMLCollection(count) - 반복문을 사용할 수 없다.
+            var items = document.querySelectorAll('.item');
+
+            for (i=0; i<items.length; i++) { // i => index
+                console.log(items[i]);
+                items[i].classList.toggle('active')
+            }
+
+
+        })
+
+    </script>
+
+
+
+
+
+    
+
+
+
+    <script src="./script.js"></script> 
 </body>
 </html>

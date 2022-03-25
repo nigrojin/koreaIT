@@ -880,15 +880,27 @@ var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"];
 //     console.log(cars[i])
 // }
 
-var result = "";
+// var result = "";
 
-for (car of cars) {
-    // result += car + ' ';
-    result = result + car + " ";
-}
+// for (car of cars) {
+//     // result += car + ' ';
+//     result = result + car + " ";
+// }
 
-document.getElementById('root').innerHTML = result;
+// document.getElementById('root').innerHTML = result;
 
+// Anonymous (익명 함수)
+// window.addEventListener('resize', function() {
+//     // console.log('...')
+//     // console.log(document.body.clientWidth);
+//     // console.log(document.body.offsetWidth); 
+//     console.log(document.body.clientHeight);
+//     console.log(document.body.offsetHeight);
+// })
+
+window.addEventListener('scroll', function () {
+    console.log('...')
+})
 
 
 
