@@ -210,7 +210,7 @@
         }
     </script> -->
 
-    <style>
+    <!-- <style>
         nav {
             border: 1px dashed;
             position: relative;
@@ -275,16 +275,447 @@
 
         })
 
-    </script>
+    </script> -->
 
-
-
+    <!-- <style>
+        nav {
+            border: 1px dashed;
+            position: relative;
+        }
+        nav a {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            border: 1px dashed;
+        }
+        #menuBtn {
+            position: absolute;
+            top: 10px; left: 10px;
+        }
+        .item {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
 
 
     
+    <nav>
+        <span id="menuBtn">#</span>
+        <a class="header active" href="">홈</a>
+        <a class="item" href="">소개</a>
+        <a class="item" href="">블로그</a>
+        <a class="item" href="">연락하기</a>
+    </nav>
+
+    <script>
+        var menuBtn = document.getElementById('menuBtn');
+        // querySelectorAll(element): #id, .class, tag
+        var items = document.querySelectorAll('.item');
+
+        console.log(menuBtn)
+        console.log(items);
+
+        menuBtn.addEventListener('click', function () {
+            items.forEach(function (item) {
+                // item.style.display = 'block'
+                // toggle() 있으면 빼고 없으면 추가
+                item.classList.toggle('active');
+            })
+        })
+
+        // addEventListener(eventName, callback)
+        // addEventListener(이벤트 이름, 콜백 함수);
+
+        
+        // array.forEach(function (value, index, array) {})
+
+        // var cars = ["제네시스", "스타리아", "캐스퍼"];
+
+        // // for loop (for 문)
+        // cars.forEach(function (value, index, array) {
+        //     console.log('자동차: ' + value)
+        // })
+
+        // var fruits = ['apple', 'mango', 'kiwi'];
+
+        // fruits.forEach(function (fruit) { 
+        // //  required(필수): value, optional(옵션): index, array
+            
+        //     // 3번 실행
+        //     var newFruit = fruit.toUpperCase();
+        //     console.log(newFruit);
+        // });
+
+        // for (i=0; i<fruits.length; i++) { // index
+        //     var newFruit = fruits[i].toUpperCase();
+        //     console.log(newFruit);
+        // }
+
+        // for (fruit of fruits) { // [value] of [array]
+        //     var newFruit = fruit.toUpperCase();
+        //     console.log(newFruit);
+        // }
+    </script> -->
+
+    <!-- <style>
+        nav {
+            background-color: #ddd;
+            top: 0;
+            left: -280px;
+            /* viewport (디바이스 화면) 기준 */
+            position: fixed;
+            width: 280px;
+            height: 100%;
+            /* animation (애니메이션 효과) */
+            transition: 0.5s;
+        }
+        nav a {
+            display: block; 
+            padding: 10px;
+        }
+        #closeMenu {
+            position: absolute;
+            top: 0; 
+            right: 0;
+            font-size: 30px;
+            padding: 0 10px;
+        }
+        .layer {
+            position: fixed;
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: none;
+
+            /* 안에 자식 엘리먼트까지 투명해짐 */
+            /* background-color: #000;
+            opacity: 0.8; */
+        }
+    </style>
+
+    <div id="layer" class="layer"></div>
+
+    <nav>
+        <a href="">홈</a>
+        <a href="">소개</a>
+        <a href="">블로그</a>
+        <span id="closeMenu">&times;</span>
+    </nav>
+
+    <span id="openMenu">메뉴</span>
+    
+
+    <h1>블로그</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo necessitatibus eaque quos, eveniet modi aspernatur alias quisquam totam velit quis, cupiditate doloribus nesciunt ratione vel sed temporibus dolorum dolore facere.</p>
+
+    
+    <script>
+        var nav = document.querySelector('nav');
+        var openMenu = document.querySelector('#openMenu');
+        var closeMenu = document.querySelector('#closeMenu');
+        var layer = document.getElementById('layer');
+
+        console.log(nav);
+        console.log(openMenu);
+
+        openMenu.addEventListener('click', function () {
+            // 엘리먼트의 스타일에 접근
+            // element.style.styleName
+            toggleNav('0px', 'block')
+        })
+
+        closeMenu.addEventListener('click', function () {
+            toggleNav('-280px', 'none')
+        })
+
+        layer.addEventListener('click', function () {
+            toggleNav('-280px', 'none')
+        })
+
+        function toggleNav(left, display) {
+            nav.style.left = left;
+            layer.style.display = display;
+        }
+
+    </script> -->
+
+
+    <!-- <script src="./script.js"></script>  -->
+
+    <!-- <style>
+        .tab-content {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+
+
+    <div class="tab">
+        <button class="btn" data-car="g">제네시스</button>
+        <button class="btn" data-car="s">스타리아</button>
+        <button class="btn" data-car="c">캐스퍼</button>
+    </div>
+
+    <div id="g" class="tab-content active">
+        <h1>제네시스</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos libero cupiditate voluptate architecto tempore omnis fugiat, voluptates qui corporis, ea quis quasi a repudiandae expedita, pariatur cumque recusandae odit optio.</p>
+    </div>
+
+    <div id="s" class="tab-content">
+        <h1>스타리아</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos libero cupiditate voluptate architecto tempore omnis fugiat, voluptates qui corporis, ea quis quasi a repudiandae expedita, pariatur cumque recusandae odit optio.</p>
+    </div>
+
+    <div id="c" class="tab-content">
+        <h1>캐스퍼</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos libero cupiditate voluptate architecto tempore omnis fugiat, voluptates qui corporis, ea quis quasi a repudiandae expedita, pariatur cumque recusandae odit optio.</p>
+    </div>
+
+
+    <script>
+
+        // document.getElementById('c');
+        // document.querySelector('#c');
+
+        var btns = document.querySelectorAll('.btn');
+        var tabContents = document.querySelectorAll('.tab-content');
+
+        // console.log(btns);
+
+        btns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var cityId = btn.getAttribute('data-car');
+                console.log(cityId)
+
+                tabContents.forEach(function (tabContent) {
+                    // element.classList.toggle();
+                    // element.classList.add()
+                    // element.classList.remove()
+                    tabContent.classList.remove('active');
+                })
+
+                document.getElementById(cityId).classList.add('active');
+            })
+        })
+
+    </script> -->
+
+
+    <!-- <h1>현대자동차</h1>
+    <ul id="car-list">
+        <li class="car">제네시스</li>
+        <li class="car">스타리아</li>
+        <li class="car">캐스퍼</li>
+    </ul>
+
+
+    <script>
+
+    // HTMLCollection(3)
+    var car1 = document.getElementsByClassName('car');
+    // NodeList(3)
+    var car2 = document.querySelectorAll('.car');
+
+    // console.log(car1)
+    // console.log(car2)
+
+    // car1.forEach(function (car) { // error
+    //     console.log(car)
+    // })
+
+    // for (i=0; i<car1.length; i++) { // ok
+    //     console.log(car1[i])
+    // }
+
+    // car2.forEach(function (car) { // ok
+    //     console.log(car)
+    // })
+
+    // var carList = document.getElementById('car-list');
+
+    // console.log(carList);
+
+    
+    // console.log(carList.children) // for loop (for 반복문)
+    // console.log(carList.childNodes) 
+    </script> -->
+
+
+    <!-- <button class="btn">제네시스</button>
+    <button class="btn">스타리아</button>
+    <button class="btn">캐스퍼</button>
+
+    
+    <script>
+        var btns = document.querySelectorAll('.btn');
+
+        // btns[0].addEventListener('click', function () {
+        //     console.log(btns[0].textContent)
+        // })
+
+        // btns[1].addEventListener('click', function () {
+        //     console.log(btns[1].textContent)
+        // })
+
+        // btns[2].addEventListener('click', function () {
+        //     console.log(btns[2].textContent)
+        // })
+
+        btns.forEach(function (btn) { // Array의  length만큼 실행된다
+            btn.addEventListener('click', function (e) { 
+                // console.log(e)
+                // console.log(e.target)
+                
+                console.log(this.textContent) 
+                console.log(e.target.textContent)
+                console.log(btn.textContent)
+            })
+        })
+
+    </script> -->
+
+    <!-- <style>
+        p {
+            border: 1px dashed;
+            /* padding: 10px; */
+            height: 0;
+            /* box-sizing: border-box; */
+            overflow: hidden;
+        }
+    </style>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt assumenda aliquid est quod quam nobis totam eaque natus? Vel soluta quas aperiam natus praesentium? Doloribus autem officiis ex sunt ea.</p>
+
+
+    <script>
+        var p = document.querySelector('p');
+
+        // client - element의 크기(border, padding 제외)
+        console.log(p.clientWidth)
+        console.log(p.clientHeight)
+
+        console.log('...')
+
+        // offset - element의 크기(border, padding 포함)
+        console.log(p.offsetWidth)
+        console.log(p.offsetHeight)
+
+        console.log('...')
+
+        console.log(p.scrollWidth);
+        console.log(p.scrollHeight);
+
+    </script> -->
+
+    <!-- <style>
+        .accordion {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            transition: 0.5s;
+            text-align: left;
+            cursor: pointer;
+        }
+        .panel {
+            /* border: 1px dashed; */
+            height: 0;
+            overflow: hidden;
+        }
+        .active, .accordion:hover {
+            background-color: #ddd;
+        }
+    </style>
+
+    <button class="accordion">제네시스</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum facilis id adipisci laborum. Enim beatae nihil dignissimos repellat officia quibusdam totam iste quaerat tempora, facere cum. Inventore numquam voluptatem provident.</p>
+    </div>
+
+    <button class="accordion">스타리아</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum facilis id adipisci laborum. Enim beatae nihil dignissimos repellat officia quibusdam totam iste quaerat tempora, facere cum. Inventore numquam voluptatem provident.</p>
+    </div>
+
+    <button class="accordion">캐스퍼</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum facilis id adipisci laborum. Enim beatae nihil dignissimos repellat officia quibusdam totam iste quaerat tempora, facere cum. Inventore numquam voluptatem provident.</p>
+    </div>
+
+
+    <script>
+        
+        var acc = document.getElementsByClassName('accordion');
+
+        console.log(acc)
+
+        for (i=0; i<acc.length; i++) {
+            acc[i].addEventListener('click', function () {
+                console.log(this)
+
+                this.classList.toggle('active')
+
+                // DOM Tree에서 같은 level의 다음 element.
+                var panel = this.nextElementSibling;
+
+                console.log(panel.style.height)
+
+                if (panel.style.height === '') {
+                    panel.style.height = panel.scrollHeight + 'px';
+                } else {
+                    panel.style.height = '';
+                }
+                
+            })
+        }
+
+
+    </script> -->
+
+<style>
+    a {
+        text-decoration: none;
+    }
+    .side-nav {
+        border: 1px dashed;
+    }
+    .side-nav a {
+        position: fixed;
+        left: -80px;
+        /* border: 1px dashed; */
+        padding: 15px;
+        width: 100px;
+        transition: 0.5s;
+        color: #fff;
+        /* border-radius: 5px; */
+        /* 왼쪽 위부터 시계방향으로 */
+        border-radius: 0 5px 5px 0;
+    }
+    .side-nav a:hover {
+        left: 0;
+    }
+    .about { top: 20px; background-color: #04aa6d; }
+    .blog { top: 80px; background-color: #2196f3; }
+    .project { top: 140px; background-color: #f44336; }
+    .contact { top: 200px; background-color: #555; }
+</style>
+
+
+<div class="side-nav">
+    <a href="" class="about">소개</a>
+    <a href="" class="blog">블로그</a>
+    <a href="" class="project">프로젝트</a>
+    <a href="" class="contact">연락하기</a>
+</div>
 
 
 
-    <script src="./script.js"></script> 
 </body>
 </html>
