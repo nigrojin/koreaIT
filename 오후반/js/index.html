@@ -720,5 +720,482 @@
 <span>world</span>
 <span>world</span> -->
 
+
+<!-- <style>
+    .container {
+        border: 5px dashed;
+        position: relative;
+    }
+
+    .col:first-child {
+        border: 3px solid blue;
+        position: absolute;
+        width: 100px;
+        height: 100%;
+    }
+    .col:nth-child(2) {
+        border: 3px solid red;
+        margin-left: 100px;
+        padding: 10px;
+        min-height: 300px;
+    }
+    .btn {
+        width: 100%;
+        display: block;
+        padding: 10px;
+    }
+    .tab-content {
+        display: none;
+    }
+    .active {
+        display: block;
+    }
+</style>
+
+
+<div class="container">
+    <div class="col">
+        <button class="btn" onclick="toggleTab('g')">제네시스</button>
+        <button class="btn" onclick="toggleTab('s')">스타리아</button>
+        <button class="btn" onclick="toggleTab('c')">캐스퍼</button>
+    </div>
+    <div class="col">
+        <div id="g" class="tab-content">
+            <h3>제네시스</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum a esse dolorum pariatur soluta voluptate voluptates reiciendis non quam, fuga sed animi aliquid dicta minima numquam harum incidunt veritatis recusandae?</p>
+        </div>
+        <div id="s" class="tab-content">
+            <h3>스타리아</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam hic iusto, non nostrum enim tenetur fuga odit ad recusandae nulla, eligendi dolor, a quas temporibus facere exercitationem vitae perferendis incidunt.</p>
+        </div>
+        <div id="c" class="tab-content">
+            <h3>캐스퍼</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur a sint animi vero amet et officia facilis maxime saepe est aliquam alias placeat adipisci, provident neque deserunt. Corrupti, minima id.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    var tabContents = document.getElementsByClassName('tab-content');
+
+    console.log(tabContents);
+
+    function toggleTab(id) {
+        console.log(id)
+
+        // var cars = ["제네시스", "스타리아", "캐스퍼"];
+        // cars[0] 
+        // cars[1]
+        // cars[2]
+
+        // tab-contents 모두 안보이게 한다
+        for (i=0; i<tabContents.length; i++) { // i = index, 0부터 시작
+            tabContents[i].classList.remove('active');
+        }
+        // 클릭한 tab만 보이게 한다
+        document.getElementById(id).classList.add('active');
+    }
+
+    // 페이지가 load되었을 때 바로 실행;
+    toggleTab('g');
+</script> -->
+
+<!-- <style>
+    #img01 {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+    .layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        display: none;
+    }
+    .container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+    }
+    .container img {
+        width: 100%;
+    }
+    
+</style>
+
+
+<img id="img01" src="../../img/bunny.jpg" alt=""> -->
+
+<!-- 배경 -->
+<!-- <div id="layer" class="layer"></div> -->
+
+<!-- 디스플레이 이미지 -->
+<!-- <div id="container" class="container">
+    <img src="" alt="" id="modal-img">
+</div>
+
+<script>
+    var img01 = document.getElementById('img01');
+    var modalImg = document.getElementById('modal-img');
+    var container = document.getElementById('container');
+    var layer = document.getElementById('layer');
+
+    img01.addEventListener('click', function() {
+        // layer
+        layer.style.display = 'block';
+
+        // display image 
+        modalImg.src = img01.src;
+        container.style.display = 'block'
+    })
+
+</script> -->
+
+<!-- <style>
+    .thumbnail {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        opacity: 0.8;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+    .thumbnail:hover {
+        opacity: 1;
+    }
+    .layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        display: none;
+    }
+    .container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        display: none;
+    }
+    .container img {
+        width: 100%;
+    }
+    .close-btn {
+        position: absolute;
+        color: #fff;
+        top: -60px; right: 0;
+        font-size: 50px;
+    }
+</style>
+
+
+<img src="../../img/cloud.jpg" alt="" class="thumbnail">
+<img src="../../img/tree.jpg" alt="" class="thumbnail">
+<img src="../../img/fall.jpg" alt="" class="thumbnail"> -->
+
+
+<!-- background layer (배경 레이어) -->
+<!-- <div id="layer" class="layer"></div> -->
+
+<!-- display image (디스플레이 이미지) -->
+<!-- <div id="container" class="container">
+    <span class="close-btn">&times;</span>
+    <img id="modal-img" src="" alt="">
+</div>
+
+
+<script>
+    var thumbnails = document.querySelectorAll('.thumbnail');
+    var modalImg = document.getElementById('modal-img');
+    var container = document.getElementById('container');
+    var layer = document.getElementById('layer');
+    var closeBtn = document.querySelector('.close-btn');
+
+
+    thumbnails.forEach(function (thumbnail) {
+        console.log(thumbnail)
+
+        thumbnail.addEventListener('click', function () {
+            // 방법 1
+            // modalImg.src = thumbnail.src
+
+            // 방법 2
+            // getAttribute(attribute)
+            // modalImg.src = thumbnail.getAttribute('src');
+
+            // 방법 3
+            // setAttribute(attribute, element attribute) 
+            modalImg.setAttribute('src', thumbnail.getAttribute('src'))
+
+            console.log(modalImg.src)
+
+            layer.style.display = 'block';
+            container.style.display = 'block';
+        })
+    })
+    
+    layer.addEventListener('click', function () {
+        layer.style.display = 'none';
+        container.style.display = 'none';
+    })
+
+    closeBtn.addEventListener('click', function () {
+        layer.style.display = 'none';
+        container.style.display = 'none';
+    })
+</script> -->
+
+<!-- <style>
+    .thumbnail {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        opacity: .8;
+        transition: .5s;
+        cursor: pointer;
+    }
+    .thumbnail:hover {
+        opacity: 1;
+    }
+    .container img {
+        width: 400px;
+        height: 300px;
+        object-fit: cover;
+    }
+</style>
+
+<div class="container">
+    <img id="display-image" src="" alt="" id="display-image">
+</div>
+
+<div class="">
+    <img src="../../img/cloud.jpg" alt="" class="thumbnail">
+    <img src="../../img/tree.jpg" alt="" class="thumbnail">
+    <img src="../../img/fall.jpg" alt="" class="thumbnail">
+    <img src="../../img/flower.jpg" alt="" class="thumbnail">
+</div>
+
+<script>
+    var thumbnails = document.querySelectorAll('.thumbnail');
+    var displayImage = document.getElementById('display-image');
+
+    thumbnails.forEach(function (thumbnail) {
+        // addEventListener(eventName, callback)
+        // addEventListener(이벤트, 콜백함수)
+        // event를 콜백의 인자로 넘겨준다
+
+        // console.log(thumb);
+
+        thumbnail.addEventListener('click', function (ev) {
+            // console.log(ev)
+            // console.log(ev.target);
+
+            // displayImage.src = ev.target.src;
+            getImage(ev.target.src)
+        })
+    })
+
+    function getImage(src) {
+        displayImage.src = src;
+    }
+
+    // alert();
+
+    // 사용자의 모든 행동
+    // event - load, scroll, click, onkeyup, mouseover, drag/drop ...
+    // addEventListener('load', function (e) {
+    //     console.log(e)
+    //     alert()
+    // })
+    
+    // displayImage.src = thumbnails[0].src;
+    getImage(thumbnails[0].src)
+
+</script> -->
+
+<!-- <style>
+    img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+    }
+</style>
+
+
+<div class="container">
+    <img src="../../img/cloud.jpg" alt="">
+    <img src="../../img/fall.jpg" alt="">
+    <img src="../../img/tree.jpg" alt="">
+</div>
+
+<div class="nav">
+    <button id="prev" class="prev" onclick="showImage(-1)">prev</button>
+    <button id="next" class="next" onclick="showImage(1)">next</button>
+</div>
+
+<script>
+    var imgs = document.querySelectorAll('img');
+    var prev = document.getElementById('prev')
+    var next = document.getElementById('next');
+
+    console.log(imgs)
+
+    // 함수밖에서 정의해야함;
+    var index = 0;
+
+    function showImage(data) {
+        // index = index + data;
+        index += data;
+
+        imgs.forEach(function (img) {
+            img.style.display = 'none';
+        })
+        imgs[index].style.display = 'block';
+
+        console.log(index)
+
+        // 버튼을 보이도록 초기화한다
+        prev.style.display = 'inline-block';
+        next.style.display = 'inline-block';
+
+        // 조건이 맞으면 버튼을 숨긴다
+        if (index===0) {
+            prev.style.display = 'none';
+        }
+        if (index===imgs.length-1) {
+            next.style.display = 'none';
+        }
+    }
+
+    showImage(index);
+
+
+</script> -->
+
+<style>
+    .container {
+        /* border: 3px dashed; */
+        position: relative;
+    }
+    img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    .prev, .next {
+        position: absolute;
+        padding: 10px;
+        /* transform: translate(0, -50%); */
+        transform: translateY(-50%);
+        border: none;
+        background-color: rgba(0,0,0,0.5);
+        color: #fff;
+        cursor: pointer;
+    }
+    .prev {
+        top: 50%;
+        left: 0;
+    }
+    .next {
+        top: 50%;
+        right: 0;
+    }
+    .dots {
+        text-align: center;
+    }
+    .dot {
+        /* inline은 width와 height를 설정할 수 없다. */
+        /* inline은 위아래 padding과 margin을 설정할 수 없다 */
+        width: 10px;
+        height: 10px;
+        background-color: #ddd;
+        display: inline-block;
+        border-radius: 50%;
+    }
+    .active {
+        background-color: #888;
+    }
+</style>
+
+
+<div class="container">
+    <img src="../../img/cloud.jpg" alt="">
+    <img src="../../img/fall.jpg" alt="">
+    <img src="../../img/tree.jpg" alt="">
+
+    <div class="nav">
+        <button id="prev" class="prev" onclick="showImage(-1)">&#10094;</button>
+        <button id="next" class="next" onclick="showImage(1)">&#10095;</button>
+    </div>
+</div>
+
+<div class="dots">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+</div>
+
+
+
+<script>
+    var imgs = document.querySelectorAll('img');
+    var prev = document.getElementById('prev')
+    var next = document.getElementById('next');
+    var dots = document.querySelectorAll('.dot');
+
+    console.log(dots)
+
+    console.log(imgs)
+
+    // 함수밖에서 정의해야함;
+    var index = 0;
+
+    function showImage(data) {
+        // index = index + data;
+        index += data;
+
+        imgs.forEach(function (img) {
+            img.style.display = 'none';
+        })
+        imgs[index].style.display = 'block';
+
+        console.log(index)
+
+        // 버튼을 보이도록 초기화한다
+        prev.style.display = 'inline-block';
+        next.style.display = 'inline-block';
+
+        // 조건이 맞으면 버튼을 숨긴다
+        if (index===0) {
+            prev.style.display = 'none';
+        }
+        if (index===imgs.length-1) {
+            next.style.display = 'none';
+        }
+
+        // active 모두 제거
+        dots.forEach(function (dot) {
+            dot.classList.remove('active');
+        })
+
+        // index에 해당하는 dot만 active 추가
+        dots[index].classList.add('active');
+    }
+
+    showImage(index);
+
+
+</script>
+
+
+
 </body>
 </html>
