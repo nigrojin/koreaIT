@@ -2002,8 +2002,10 @@
 <h1><i class="fa-brands fa-apple"></i></h1>  -->
 
 <!-- <script src="https://kit.fontawesome.com/4fb6dd7406.js" crossorigin="anonymous"></script>
+-->
 
-<style>
+
+<!-- <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
     form {
@@ -2059,26 +2061,14 @@
     .fa-solid {
         color: #888;
     }
-
-</style>
-
-<div class="" style="margin-top: 200px;"></div>
-
-<h1>
-    <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
-</h1>
-<form action="">
-    <input type="text" placeholder="Google 검색 또는 URL 입력">
-    <span class="icon-left"><i class="fa-solid fa-magnifying-glass"></i></span>
-    <span class="icon-right"><i class="fa-solid fa-microphone"></i></span>
-</form> -->
-
-<!-- <style>
     .dropdown {
         /* border: 3px dashed; */
-        display: inline-block;
+        /* display: inline-block; */
+        float: right;
+        /* border: 3px dashed; */
+        position: relative;
     }
-    .container::after {
+    .container::after, .dropdown::after {
         content: "";
         display: block;
         clear: both;
@@ -2087,12 +2077,16 @@
         display: block;
     }
     .dropdown-content {
+        z-index: 1;
+        background-color: #fff;
         /* border: 1px solid red; */
         /* box-shadow: h / v / blur / spread / color / inset */
         /* box-shadow: 수평 / 수직 / 흐림 / 퍼짐 / 색상 / 안쪽 */
         box-shadow: 2px 2px 5px 4px #ddd, -2px -2px 5px 4px #ddd;
         border-radius: 15px;
         position: absolute;
+        top: 30px;
+        right: 0;
         width: 250px;
         height: 300px;
         overflow: auto;
@@ -2108,7 +2102,6 @@
         font-size: 30px;
     }
 </style> -->
-
 
 <!-- <div class="dropdown"> -->
     <!-- 메뉴버튼 -->
@@ -2174,11 +2167,208 @@
             </div>
         </div>
     </div>
-</div> -->
+</div> 
 
-<h1>google</h1>
-<h1>w3schools</h1>
-<h1>stackoverflow</h1>
+<div class="" style="padding-top: 200px;"></div>
+
+<h1>
+    <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+</h1>
+
+<form action="">
+    <input type="text" placeholder="Google 검색 또는 URL 입력">
+    <span class="icon-left"><i class="fa-solid fa-magnifying-glass"></i></span>
+    <span class="icon-right"><i class="fa-solid fa-microphone"></i></span>
+</form>  -->
+
+<!-- <style>
+    body {
+        border: 3px solid red;
+    }
+    nav {
+        /* 기본값 */
+        /* 컨텐츠를 감싼다 */
+        /* white-space: wrap; */
+        white-space: nowrap;
+        border: 1px dashed;
+        overflow: auto;
+        background-color: #333;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #fff;
+        border: 1px dashed;
+        padding: 10px;
+        /* a 태그의 기본값 */
+        display: inline;
+        display: inline-block;
+    }
+
+</style>
+
+
+<nav>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+    <a href="">MENU</a>
+</nav> -->
+
+<!-- <style>
+    .side-nav {
+        border: 1px dashed;
+    }
+
+    .side-nav a {
+        /* border: 1px dashed; */
+        position: fixed;
+        width: 100px;
+        left: -80px;
+        padding: 15px;
+        color: #fff;
+        text-decoration: none;
+        /* border-radius: 5px; */
+        /* 왼쪽 위부터 시계방향으로 */
+        border-radius: 0 5px 5px 0;
+        transition: 0.5s;
+    }
+
+    .side-nav a:hover {
+        left: 0;
+    }
+
+    .about { top: 20px; background-color: #04aa6d; }
+    .blog { top: 80px; background-color: #2196f3; }
+    .projects { top: 140px; background-color: #f44336; }
+    .contact { top: 200px; background-color: #555; }
+</style>
+
+
+<div class="side-nav">
+    <a href="" class="about">소개</a>
+    <a href="" class="blog">블로그</a>
+    <a href="" class="projects">프로젝트</a>
+    <a href="" class="contact">연락하기</a>
+</div>
+
+<div class="" style="margin-left: 50px;">
+    <h1>소개</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quod saepe voluptate deleniti a fugit quaerat qui cum consequatur ratione magnam tempore nemo exercitationem, laborum officiis? Quis explicabo architecto facere.</p>
+</div> -->
+<!-- <script src="https://kit.fontawesome.com/4fb6dd7406.js" crossorigin="anonymous"></script>
+<style>
+    table {
+        border: 1px solid #ddd;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th {
+        background-color: #333;
+        color: #fff;
+    }
+    th, td {
+        /* border: 1px dashed; */
+        padding: 16px;
+        text-align: center;
+    }
+    th:first-child, td:first-child {
+        text-align: left;
+    }
+
+    /* odd 홀수행, even 짝수행 */
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+    .fa-check { color: green }
+    .fa-xmark { color: red; }
+</style>
+
+
+<h1>현대자동차 <i class="fa-solid fa-car"></i> <i class="fa-solid fa-car-side"></i></h1>
+<table>
+    5행(table row) 3열(table head, table data)
+    <tr>
+        <th>이름</th>
+        <th>디자인</th>
+        <th>가격</th>
+    </tr>
+    <tr>
+        <td>제네시스</td>
+        <td><i class="fa-solid fa-check"></i></td>
+        <td><i class="fa-solid fa-xmark"></i></td>
+    </tr>
+    <tr>
+        <td>스타리아</td>
+        <td><i class="fa-solid fa-check"></i></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>아이오닉</td>
+        <td></td>
+        <td><i class="fa-solid fa-xmark"></i></td>
+    </tr>
+    <tr>
+        <td>캐스퍼</td>
+        <td><i class="fa-solid fa-check"></i></td>
+        <td><i class="fa-solid fa-xmark"></i></td>
+    </tr>
+</table> -->
+
+<style>
+    .loader {
+      /* border */
+      border: 10px dotted green;
+      /* border-top만 따로 줄 수 있음 */
+      border-top: 10px dotted red;
+
+      /* 둥글게 처리 */
+      border-radius: 50%;
+
+      /* 높이와 넓이 */
+      width: 100px;
+      height: 100px;
+
+      /* 줄여서 표현도 가능 */
+      /* animation: coffee 2s infinite; */
+    
+      /* 애니메이션 이름 */
+      animation-name: coffee;
+      /* 애니메이션 지속시간(1회) */
+      animation-duration: 3s;
+      /* 애니메이션 반복 횟수 */
+      animation-iteration-count: infinite;
+    }
+
+    
+    @keyframes coffee {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    </style>
+    </head>
+    <body>
+    
+    <h2>How To Create A Loader</h2>
+    
+    <div class="loader"></div>
+
+
+
+
+
+
 
 
 
