@@ -1080,7 +1080,7 @@
 
 </script> -->
 
-<style>
+<!-- <style>
     .container {
         /* border: 3px dashed; */
         position: relative;
@@ -1193,9 +1193,408 @@
     showImage(index);
 
 
+</script> -->
+
+<!-- <style>
+    .thumbnail {
+        float: left;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+    #thumbnails::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .container {
+        /* border: 3px dashed; */
+        width: 400px;
+        height: 300px;
+        position: relative;
+    }
+    .prev, .next {
+        position: absolute;
+        transform: translateY(-50%);
+        padding: 10px;
+        background-color: rgba(255,255,255,0.8);
+        border: none;
+    }
+    .prev {
+        top: 50%;
+        left: 0;
+        border-radius: 0 5px 5px 0;
+    }
+    .next {
+        top: 50%;
+        right: 0;
+        border-radius: 5px 0 0 5px;
+    }
+    .container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+
+
+<div class="container">
+    <img src="" alt="" id="display-image">
+    <div class="nav">
+        <button class="prev" onclick="navigateTo(-1)">&#10094;</button>
+        <button class="next" onclick="navigateTo(1)">&#10095;</button>
+    </div>
+</div>
+
+
+<div id="thumbnails" class="">
+    <img src="../../img/tree.jpg" alt="" class="thumbnail" onclick="jumpTo(0)">
+    <img src="../../img/cloud.jpg" alt="" class="thumbnail" onclick="jumpTo(1)">
+    <img src="../../img/fall.jpg" alt="" class="thumbnail" onclick="jumpTo(2)">
+    <img src="../../img/flower.jpg" alt="" class="thumbnail" onclick="jumpTo(3)">
+</div>
+
+<script>
+
+var displayImage = document.getElementById('display-image');
+var thumbnails = document.querySelectorAll('.thumbnail');
+var prevBtn = document.querySelector('.prev');
+var nextBtn = document.querySelector('.next');
+
+console.log(thumbnails)
+// 페이지 로드시에 index 값을 초기화한다
+var index = 0;
+// 이전, 다음 버튼을 클릭할 때 실행된다
+function navigateTo(data) {
+    // 메모리에 저장됨. 새로고침 하면 다시 초기화(var index = 0)
+    index += data;
+
+    console.log(index)
+
+    // 썸네일의 0번째 이미지의 source를 인자로 넘긴다.
+    getSrc(thumbnails[index].src)
+    hideButton()
+}
+// 클릭한 이미지를 바로 디스플레이한다
+function jumpTo(data) {
+    index = data;
+
+    console.log(index)
+    getSrc(thumbnails[index].src)
+    hideButton()
+}
+// 디스플레이 이미지의 src를 가져온다
+function getSrc(src) {
+  displayImage.src = src;  
+}
+// 다음 이미지가 없을 경우 버튼을 숨긴다
+function hideButton() {
+    prevBtn.style.display = 'block';
+    nextBtn.style.display = 'block';
+
+    if (index===0) {
+        prevBtn.style.display = 'none'
+    }
+    if (index===thumbnails.length-1) {
+        nextBtn.style.display = 'none';
+    }
+
+}
+// 페이지가 로드되고 바로 함수가 실행되도록 한다
+navigateTo(0)
+
+
+</script> -->
+
+<!-- <style>
+    .thumbnail {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        opacity: 0.8;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+    .thumbnail:hover {
+        opacity: 1
+    }
+    .layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        display: none;
+    }
+    .container {
+        /* border: 3px dashed #fff; */
+        position: fixed;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 350px;
+        height: 300px;
+        display: none;
+    }
+    .container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .prev, .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        border: none;
+        background-color: #fff;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+    }
+    .prev {
+        left: -50px;
+    }
+    .next {
+        right: -50px;
+    }
+</style>
+
+
+
+<div class="thumbnails">
+    <img src="../../img/tree.jpg" alt="" class="thumbnail" onclick="jumpTo(0)">
+    <img src="../../img/cloud.jpg" alt="" class="thumbnail" onclick="jumpTo(1)">
+    <img src="../../img/fall.jpg" alt="" class="thumbnail" onclick="jumpTo(2)">
+    <img src="../../img/flower.jpg" alt="" class="thumbnail" onclick="jumpTo(3)">
+</div>
+
+<div class="layer"></div>
+
+<div class="container">
+    <img src="" alt="" id="display-image">
+    <div class="nav">
+        <button class="prev" onclick="navigateTo(-1)">&#10094;</button>
+        <button class="next" onclick="navigateTo(1)">&#10095;</button>
+    </div>
+</div>
+
+<script>
+    var container = document.querySelector('.container');
+    var thumbnails = document.querySelectorAll('.thumbnail');
+    var displayImage = document.getElementById('display-image');
+    var layer = document.querySelector('.layer');
+    var prevBtn = document.querySelector('.prev');
+    var nextBtn = document.querySelector('.next');
+
+    console.log(thumbnails);
+
+    var index = 0;
+
+    function navigateTo(data) {
+        index += data;
+        console.log(index);
+
+        getSrc(thumbnails[index].src);
+        
+        // 버튼 toggle 함수실행
+        hideButton();
+    }
+
+    function jumpTo(data) {
+        index = data;
+
+        console.log(index)
+        
+        // 이미지의 src를 전달한다
+        getSrc(thumbnails[index].src)
+
+        // 컨테이너와 레이어를 보이게 한다
+        container.style.display = 'block';
+        layer.style.display = 'block';
+        
+        // 버튼 toggle 함수 실행
+        hideButton();
+    }
+
+    // 모달이미지의 주소를 설정한다
+    function getSrc(src) {
+        displayImage.setAttribute('src', src)
+    }
+
+    function hideButton() {
+        // 버튼을 보이도록 초기화
+        prevBtn.style.display = 'block';
+        nextBtn.style.display = 'block';
+
+        // 처음이미지에서 이전버튼을 숨긴다
+        if(index===0) { 
+            prevBtn.style.display = 'none'
+        }
+        // 마지막이미지에서 다음버튼을 숨긴다
+        if (index===thumbnails.length-1) {
+            nextBtn.style.display = 'none';
+        }
+    }
+
+    layer.addEventListener('click', function (e) {
+        layer.style.display = 'none';
+        container.style.display = 'none';
+    })
+</script> -->
+
+
+<!-- <style>
+    .container {
+        border: 3px dashed;
+        width: 300px;
+        height: 300px;
+        position: relative;
+    }
+    .container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        transition: 1s;
+    }
+</style>
+
+<div class="container">
+    <img src="../../img/tree.jpg" alt="">
+    <img src="../../img/cloud.jpg" alt="">
+    <img src="../../img/fall.jpg" alt="">
+</div>
+
+<div class="nav">
+    <button class="prev" onclick="navigateTo(-1)">prev</button>
+    <button class="next" onclick="navigateTo(1)">next</button>
+</div>
+
+
+<script>
+     var imgs = document.querySelectorAll('img');
+     var prevBtn = document.querySelector('.prev');
+     var nextBtn = document.querySelector('.next');
+
+     var index = 0;
+
+     function navigateTo(data) {
+         index += data;
+
+         console.log(index);
+
+         imgs.forEach(function (img) {
+             img.style.opacity = 0;
+         })
+
+         imgs[index].style.opacity = 1;
+
+         hideButton();
+     }
+
+     function hideButton() {
+         prevBtn.style.display = 'inline-block';
+         nextBtn.style.display = 'inline-block';
+
+         if (index===0) {
+             prevBtn.style.display = 'none'
+         }
+         if (index===imgs.length-1) {
+             nextBtn.style.display = 'none'
+         }
+     }
+
+     // 페이지가 load되고 함수 실행
+     navigateTo(0);
+</script> -->
+
+<style>
+    .container {
+        border: 3px dashed;
+        position: relative;
+    }
+    img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    .dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%)
+    }
+    .dot {
+        /* inline은 width와 height를 설정할 수 없다 */
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #ddd;
+        display: inline-block;
+    }
+    .active {
+        background-color: #888;
+    }
+</style>
+
+<div class="container">
+    <img src="../../img/cloud.jpg" alt="">
+    <img src="../../img/fall.jpg" alt="">
+    <img src="../../img/tree.jpg" alt="">
+    <div class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
+<script>
+
+var imgs = document.querySelectorAll('img');
+var dots = document.querySelectorAll('.dot');
+
+var index = -1;
+
+setInterval(navigateTo, 3000)
+
+navigateTo()
+
+function navigateTo() {
+    // index = index + 1;
+    // index += 1;
+    index++;
+
+    if (index === 3) {
+        index = 0;
+    }
+
+    console.log(index)
+
+    // 모든 이미지를 안보이게 한다
+    imgs.forEach(function (img) {
+        img.style.display = 'none'
+    })
+
+    // index에 해당하는 이미지만 보이게 한다
+    imgs[index].style.display = 'block';
+
+    // active를 모두 제거
+    dots.forEach(function (dot) {
+        dot.classList.remove('active');
+    });
+
+    // 해당 index만 active 추가
+    dots[index].classList.add('active');
+}
+
+
+
+ 
 </script>
-
-
 
 </body>
 </html>
+
+
