@@ -2326,7 +2326,7 @@
     </tr>
 </table> -->
 
-<style>
+<!-- <style>
     .loader {
       /* border */
       border: 10px dotted green;
@@ -2362,8 +2362,46 @@
     
     <h2>How To Create A Loader</h2>
     
-    <div class="loader"></div>
+    <div class="loader"></div> -->
 
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .container {
+            border: 1px dashed;
+            overflow: auto;
+        }
+        .col {
+            float: left;
+            border: 1px dashed;
+            width: 100%;
+        }
+
+        @media(min-width: 501px) {
+            .table-25 {
+                width: 25%;
+            }
+            .table-75 {
+                width: 75%;
+            }
+        }
+        @media(min-width: 701px) {
+            .pc-25 {
+                width: 25%;
+            }
+            .pc-50 {
+                width: 50%;
+            }
+        }
+    </style>
+
+    <div class="container">
+        <div class="col table-25 pc-25">navigation</div>
+        <div class="col table-75 pc-50">content</div>
+        <div class="col pc-25">aside</div>
+    </div>
 
 
 

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./layout.css">
+    <style>
+        .bg-black {
+           background-color: #000;
+           color: #fff; 
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: #000;
+        }
+        .bg-image {
+            /* 절대경로 */
+            /* C:\Users\Administrator\Documents\bunny\img\project1 */
+            /* C:/Users/Administrator/Documents/bunny/img/project1/coffeehouse.jpeg */
+            
+            /* 상대경로 */
+            background-image: url('../../../img/project1/coffeehouse.jpeg')
+        }
+        .bg-text {
+            font-size: 80px;
+            color: #fff;
+        }
+        .left-text {
+            left: 20px; 
+            bottom: 15px;
+        }
+        .right-text {
+            right: 20px; 
+            bottom: 15px;
+            color: #fff;
+        }
+        .padding-48 {
+            padding: 48px 0;
+        }
+        .bg-light-grey {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body style="min-height: 10000px;">
+
+    <nav class="float-container fixed-top padding-5">
+        <a class="left width-25 text-center padding-8 bg-black" href="">홈</a>
+        <a class="left width-25 text-center padding-8 bg-black" href="">소개</a>
+        <a class="left width-25 text-center padding-8 bg-black" href="">메뉴</a>
+        <a class="left width-25 text-center padding-8 bg-black" href="">위치</a>
+    </nav>
+
+    <div class="bg-image">
+        <h1 class="bg-text">the<br>Cafe</h1>
+        <span class="left-text bg-black absolute hide-mobile">영업시간 오전9시 - 오후6시</span>
+        <span class="right-text absolute">인천 부평구 코리아IT아카데미</span>
+    </div>
+
+    <h3 id="about" class="text-center padding-48">
+        <span class="bg-black">카페소개</span>
+    </h3>
+
+    <div class="about">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis autem eum ut sapiente iste officia incidunt corrupti. Neque dolorum, vel est suscipit facere totam cumque cupiditate nemo. Nobis, ratione unde.</p>
+        <br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis autem eum ut sapiente iste officia incidunt corrupti. Neque dolorum, vel est suscipit facere totam cumque cupiditate nemo. Nobis, ratione unde.</p>
+        <br>
+        <div class="bg-light-grey padding-8" style="border-left: 5px solid #888;">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque nam sequi temporibus provident vero iusto accusamus quam aliquid eius placeat amet soluta, nesciunt voluptate quis blanditiis modi ducimus facilis optio?</p>
+            <br>
+            <p>카페 사장</p>
+        </div>
+        <br>
+        <img src="../../../img/project1/coffeeshop.jpeg" alt="">
+        <br><br>
+        <p><b>영업시간</b> 오전 9시 - 오후6시</p>
+        <br>
+        <p><b>위치</b> 인천광역시 부평구 코리아IT아카데미</p>
+    </div>
+
+    
+</body>
+</html>
