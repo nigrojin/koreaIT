@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <style>
+        body {
+            border: 3px solid pink;
+        }
+        /* img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+        } */
+    
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+    
+    <img src="../../img/bunny.jpg" alt="">
+    
+    
+    <script>
+    
+        // 태그를 불러오는 경우
+        var img = document.querySelector('img');
+    
+        console.log(img)
+    
+        // clientWidth = border와 padding을 제외한 넓이
+        // offsetWidth = border와 padding을 포함한 넓이
+        console.log(img.offsetWidth);
+    
+        img.style.height = img.offsetWidth + 'px';
+    
+        window.addEventListener('resize', function () {
+            console.log(img.offsetWidth);
+    
+            img.style.height = img.offsetWidth + 'px';
+        })
+    
+    
+    </script>
+</body>
+</html>
