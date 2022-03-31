@@ -6,7 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./layout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&family=Poppins&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inconsolata', monospace;
+        }
         .bg-black {
            background-color: #000;
            color: #fff; 
@@ -44,13 +51,13 @@
         }
     </style>
 </head>
-<body style="min-height: 10000px;">
+<body>
 
-    <nav class="float-container fixed-top padding-5">
-        <a class="left width-25 text-center padding-8 bg-black" href="">홈</a>
-        <a class="left width-25 text-center padding-8 bg-black" href="">소개</a>
-        <a class="left width-25 text-center padding-8 bg-black" href="">메뉴</a>
-        <a class="left width-25 text-center padding-8 bg-black" href="">위치</a>
+    <nav class="float-container fixed-top padding-8 bg-black">
+        <a class="left width-25 text-center padding-8 bg-black" href="#">홈</a>
+        <a class="left width-25 text-center padding-8 bg-black" href="#about">소개</a>
+        <a class="left width-25 text-center padding-8 bg-black" href="#menu">메뉴</a>
+        <a class="left width-25 text-center padding-8 bg-black" href="#where">위치</a>
     </nav>
 
     <div class="bg-image">
@@ -63,7 +70,7 @@
         <span class="bg-black">카페소개</span>
     </h3>
 
-    <div class="about">
+    <div class="about" style="max-width: 700px; margin: auto; padding: 0 15px;">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis autem eum ut sapiente iste officia incidunt corrupti. Neque dolorum, vel est suscipit facere totam cumque cupiditate nemo. Nobis, ratione unde.</p>
         <br>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis autem eum ut sapiente iste officia incidunt corrupti. Neque dolorum, vel est suscipit facere totam cumque cupiditate nemo. Nobis, ratione unde.</p>
@@ -81,6 +88,67 @@
         <p><b>위치</b> 인천광역시 부평구 코리아IT아카데미</p>
     </div>
 
-    
+    <h3 id="menu" class="text-center padding-48">
+        <span class="bg-black">메뉴</span>
+    </h3>
+
+    <div class="menu" style="max-width: 700px; margin: auto; padding: 0 15px;">
+        <!-- 메뉴판 -->
+        <div class="box-shadow float-container padding-8">
+            <a href="" class="left width-50 text-center">Eat</a>
+            <a href="" class="left width-50 text-center">Drink</a>
+        </div>
+        <div class="box-shadow" style="padding: 48px 16px;">
+            <h3>Bread Basket</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <h3>Bread Basket</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <h3>Bread Basket</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <h3>Bread Basket</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <h3>Bread Basket</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+        </div>
+
+        <br>
+
+        <!-- 메뉴사진 -->
+        <img src="../../../img/project1/coffeehouse2.jpeg" alt="">
+    </div>
+
+    <h3 id="where" class="text-center padding-48">
+        <span class="bg-black">위치</span>
+    </h3>
+
+    <div class="where"  style="max-width: 700px; margin: auto; padding: 0 15px;">
+        <p>Lorem ipsum dolor sit amet consectetur</p>
+        <img src="../../../img/project1/map.jpeg" alt="">
+
+        <p><span class="bg-black">FYI!</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea voluptatum atque facere, commodi eligendi a ducimus. Voluptatem et, ipsum provident esse maiores aut exercitationem ullam amet possimus impedit, modi dicta?</p>
+
+        <p><b>Reserve</b> Lorem ipsum dolor sit amet consectetur</p>
+
+        <form action="">
+            <p><input type="text" class="width-100" placeholder="성함"></p>
+            <p><input type="text" class="width-100" placeholder="인원"></p>
+            <p><input type="date" class="width-100" placeholder=""></p>
+            <p><input type="text" class="width-100" placeholder="메시지"></p>
+            <p><button class="btn bg-black">메시지 보내기</button></p>
+        </form>
+    </div>
+
+    <br>
+
+    <footer class="bg-light-grey padding-48">
+        <p class="text-center">2022 카페</p>
+    </footer>
+
+
 </body>
 </html>

@@ -3,13 +3,32 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+h1,h2,h3,h4,h5 {
+    margin: 10px 0;
+}
+p {
+    margin: 10px 0;
+}
 a {
     text-decoration: none;
     color: #000;
 }
 img {
     width: 100%;
+}
+
+input[type=text], input[type=date] {
+    padding: 16px 8px;
+    border: 1px solid #ddd;
+}
+
+.btn {
+    border: none;
+    font-size: 16px;
+    background-color: #ddd;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
 }
 
 .border {
@@ -38,6 +57,12 @@ img {
 
 .width-25 {
     width: 25%;
+}
+.width-50 {
+    width: 50%;
+}
+.width-100 {
+    width: 100%;
 }
 .text-center {
     text-align: center;
@@ -74,6 +99,12 @@ img {
 
 .hide-mobile {
     display: none;
+}
+
+.box-shadow {
+  box-shadow: 
+  0 2px 5px 0 rgb(0 0 0 / 16%), 
+  0 2px 10px 0 rgb(0 0 0 / 12%)
 }
 
 @media (min-width: 501px) {
