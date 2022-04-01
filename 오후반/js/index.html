@@ -1905,7 +1905,7 @@ function navigateTo() {
     }
   </script> -->
 
-  <style>
+  <!-- <style>
     .loader {
       border: 16px solid #3498db;
       border-radius: 50%;
@@ -1933,9 +1933,346 @@ function navigateTo() {
         document.getElementById('loader').style.display = 'none';
         document.getElementById('message').innerHTML = '안녕하세요'
     }
+  </script> -->
 
+
+  <!-- <style>
+      #root {
+          border: 1px dashed;
+      }
+  </style>
+
+  <h1>JavaScript로 HTML에 element 추가하기</h1>
+
+  <div id="root"></div>
+
+  <script>
+      // document.createElement(element): 새로운 elememt를 만들어 낸다
+      var heading1 = document.createElement('h1');
+
+      // element.innerHTML: element안의 contents를 만든다
+      heading1.innerHTML = 'JavaScript..'
+
+      // element1.appendChild(element2): element2를 element1의 마지막에 추가한다
+      document.getElementById('root').appendChild(heading1)
+
+      var p = document.createElement('p');
+      p.innerHTML = 'Welcome to JavaScript';
+      document.getElementById('root').appendChild(p);
+  </script> -->
+
+  <!-- <div id="root"></div> -->
+
+  <!-- <h1>현대자동차</h1>
+  <ul>
+      <li>제네시스</li>
+      <li>스타리아</li>
+      <li>아이오닉</li>
+      <li>캐스퍼</li>
+  </ul> -->
+
+  <!-- <script>
+      var h1 = document.createElement('h1')
+      h1.innerHTML = '현대자동차'
+      document.getElementById('root').appendChild(h1);
+
+      var ul = document.createElement('ul');
+
+      var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"];
+
+      for (car of cars) {
+          var li = document.createElement('li');
+          li.innerHTML = car;
+          ul.appendChild(li)
+      }
+
+      document.getElementById('root').appendChild(ul);
+
+  </script> -->
+
+  <!-- <div id="root"></div>
+
+  <script>
+
+      var h1 = document.createElement('h1');
+      h1.innerHTML = '현대자동차vs기아자동차';
+      document.getElementById('root').appendChild(h1);
+
+      var cars = [
+          { name: '제네시스', brand: '현대' },
+          { name: '레이', brand: '기아' },
+          { name: '아이오닉', brand: '현대' },
+          { name: '카니발', brand: '기아' },
+      ]
+
+      var ul = document.createElement('ul');
+
+      cars.forEach(function (car) {
+          var li = document.createElement('li');
+          // Object의 property에 접근 (객체의 속성의 접근)
+          li.innerHTML = car.name + ', ' + car.brand
+          ul.appendChild(li)
+      })
+
+      document.getElementById('root').appendChild(ul);
+
+  </script> -->
+
+  <!-- <div id="root"></div>
+
+  <script>
+      var table = document.createElement('table');
+      var tr = document.createElement('tr');
+      
+      var ths = ['이름', '디자인', '가격'];
+
+      // tr에 th를 추가한다
+    for (value of ths) {
+        var th = document.createElement('th');
+        // console.log(th)
+        th.innerHTML = value;
+        tr.appendChild(th)
+    }
+
+    // root에 table을 추가한다
+    document.getElementById('root').appendChild(table)
     
-  </script>
+    // table에 tr를 추가한다
+    table.appendChild(tr);
+
+
+      var cars = [
+          { name: '제네시스', design: 100, cost: 100 },
+          { name: '스타리아', design: 90, cost: 90 },
+          { name: '아이오닉', design: 80, cost: 80 },
+          { name: '캐스퍼', design: 80, cost: 70 },
+      ]
+
+      cars.forEach(function (car) {
+          var tr = document.createElement('tr');
+
+            var td = document.createElement('td');
+            td.innerHTML = car.name
+            tr.appendChild(td)
+
+            var td = document.createElement('td');
+            td.innerHTML = car.design
+            tr.appendChild(td)
+
+            var td = document.createElement('td');
+            td.innerHTML = car.cost
+            tr.appendChild(td);
+            
+          table.appendChild(tr);
+      })
+  </script> -->
+
+
+  <!-- <h1>할일 목록</h1>
+
+  <div class="">
+      <input type="text"><button>추가하기</button>
+  </div>
+
+  <ul>
+      <li>Eat <span onclick="deleteItem(this)">&times;</span></li>
+      <li>Sleep <span onclick="deleteItem(this)">&times;</span></li>
+      <li>Repeat <span onclick="deleteItem(this)">&times;</span></li>
+  </ul>
+
+  <script>
+
+      var ul = document.querySelector('ul');
+      var input = document.querySelector('input');
+      var button = document.querySelector('button');
+
+    button.addEventListener('click', Todo);
+
+    function Todo() {
+        console.log(input.value)
+
+        var li = document.createElement('li');
+        li.innerHTML = `${input.value} <span onclick="deleteItem(this)">&times;</span>`;
+        ul.appendChild(li)
+
+        // 아이템 추가 후 input 초기화
+        input.value = '';
+    }
+
+    function deleteItem(data) {
+        data.parentElement.style.display = 'none';
+    }
+  </script> -->
+
+<!-- <h1 id="count"></h1>
+<button id="btn">add</button>
+
+<script>
+  var count = document.getElementById('count');
+  var btn = document.getElementById('btn');
+
+  var num = 0;
+
+  count.innerHTML = num;
+
+  btn.addEventListener('click', function () {
+      // num = num + 1
+      // num += 1
+      num++;
+
+      count.innerHTML = num;
+  })
+</script> -->
+
+
+<!-- <h1>LocalStorage</h1>
+HTML5전까지는 cookie가 유일한 저장소였다.
+cookie보다 더 안전하고 더 많은 데이터를 저장할 수 있다.
+
+cookie는 서버에 요청시에 항상 포함되지만
+LocalStorage는 선택할 수 있다.
+
+장바구니, 로그인(JWT)
+
+<h1>SessionStorage</h1>
+LocalStorage와 거의 비슷하지만
+탭을 끌 경우 삭제된다 -->
+
+
+<!-- <div id="root"></div>
+
+<button onclick="removeItem()">삭제</button>
+<button onclick="clearItem()">모두 삭제</button>
+
+<script>
+
+// localStorage.setItem(key, value): key=value를 저장한다
+// key값은 고유해야 한다
+localStorage.setItem('car1', '제네시스');
+localStorage.setItem('car2', '스타리아');
+
+document.getElementById('root').innerHTML = 
+// localStorage.getItem(key): key 값을 가져온다
+localStorage.getItem('car')
+
+function removeItem() {
+    // localStorage.removeItem(key): key값을 삭제한다
+    localStorage.removeItem('car')
+}
+function clearItem() {
+    localStorage.clear()
+}
+
+</script> -->
+
+
+<!-- <h1 id="count"></h1>
+<button id="btn">add</button> 
+
+<script>
+  var count = document.getElementById('count');
+  var btn = document.getElementById('btn');
+
+
+  // 페이지 load(refresh) 했을 때
+    console.log(localStorage.getItem('count'));
+
+    // 변수 선언하고
+    var num;
+
+    if (localStorage.getItem('count') === null) {
+        // 나중에 정의해도 된다
+        num = 0;
+    } else {
+        // 나중에 정의해도 된다
+        num = localStorage.getItem('count');
+    }
+
+    count.innerHTML = num;
+
+
+    // 버튼을 클릭했을 때
+  btn.addEventListener('click', function() {
+      num++;
+
+      localStorage.setItem('count', num);
+
+      count.innerHTML = num;
+  })
+
+</script> -->
+
+<!-- <h1 id="count"></h1>
+<button id="down">-</button> 
+<button id="up">+</button> 
+
+<script>
+  var count = document.getElementById('count');
+  var down = document.getElementById('down');
+  var up = document.getElementById('up');
+
+
+  // 페이지 load(refresh) 했을 때
+    console.log(localStorage.getItem('count'));
+
+    // 변수 선언하고
+    var num; 
+
+    if (localStorage.getItem('count') === null) {
+        // 나중에 정의해도 된다
+        num = 0;
+    } else {
+        // 나중에 정의해도 된다
+        num = localStorage.getItem('count');
+    }
+
+    count.innerHTML = num;
+
+    // down버튼을 클릭했을 때
+  down.addEventListener('click', function() {
+      num--;
+
+      localStorage.setItem('count', num);
+
+      count.innerHTML = num;
+  })
+
+    // up버튼을 클릭했을 때
+  up.addEventListener('click', function() {
+      num++;
+
+      localStorage.setItem('count', num);
+
+      count.innerHTML = num;
+  })
+</script> -->
+
+<h1>JSON</h1>
+<p>javaScript Object Notation</p>
+<p>데이터를 전송하고 저장하는데 쓰이는 포맷</p>
+
+<script>
+
+    var car = { name: '제네시스' };
+    // 쌍따옴표로 key와 value가 감싸져 있다
+    var json = '{"name": "제네시스"}';
+
+    console.log(typeof car)
+    console.log(car);
+
+    localStorage.setItem('car', car);
+
+    var txt = JSON.stringify(car);
+
+    console.log(typeof txt)
+    console.log(txt)
+
+    var obj = JSON.parse(txt);
+
+    console.log(typeof obj)
+    console.log(obj)
+
+</script>
 
 
 
