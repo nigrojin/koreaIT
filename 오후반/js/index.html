@@ -2247,11 +2247,11 @@ function clearItem() {
   })
 </script> -->
 
-<h1>JSON</h1>
+<!-- <h1>JSON</h1>
 <p>javaScript Object Notation</p>
-<p>데이터를 전송하고 저장하는데 쓰이는 포맷</p>
+<p>데이터를 전송하고 저장하는데 쓰이는 포맷</p> -->
 
-<script>
+<!-- <script>
 
     var car = { name: '제네시스' };
     // 쌍따옴표로 key와 value가 감싸져 있다
@@ -2272,7 +2272,242 @@ function clearItem() {
     console.log(typeof obj)
     console.log(obj)
 
-</script>
+</script> -->
+
+<!-- <script>
+    var car = { name: '제네시스' };
+
+    // 새로운 아이템을 추가한다
+    // localStorage.setItem(key, value);
+    // localStorage.setItem('car', car);
+
+    // JSON.stringify(object) // object를 json format으로 변환한다
+    var jsn = JSON.stringify(car);
+    console.log(jsn)
+    // '{"name":"제네시스"}'
+
+    localStorage.setItem('car', jsn)
+
+    // JSON.parse(string) // string(json)을 Object로 변환한다
+    var obj = JSON.parse(jsn)
+
+    console.log(obj.name)
+</script> -->
+
+
+<!-- <h1>2022년 최고의 자동차는?</h1>
+
+<button onclick="voting(1)">제네시스</button>
+<button onclick="voting(2)">스타리아</button>
+<button onclick="voting(3)">아이오닉</button>
+<button onclick="voting(4)">캐스퍼</button>
+
+<hr>
+
+<div id="result"></div>
+<button onclick="getResult()">결과보기</button>
+
+<script>
+
+    if(localStorage.getItem('vote') === null) {
+        var DATA = [
+            { id: 1, name: '제네시스', count: 0 },
+            { id: 2, name: '스타리아', count: 0 },
+            { id: 3, name: '아이오닉', count: 0 },
+            { id: 4, name: '캐스퍼', count: 0 },
+        ]
+        
+        localStorage.setItem('vote', JSON.stringify(DATA))
+    }
+
+    function voting(id) {
+        // console.log(id)
+
+        var arr = JSON.parse(localStorage.getItem('vote'));
+
+        arr.map(function (item) {
+            // console.log(item)
+
+            if (item.id === id) {
+                item.count++
+            }
+        })
+
+        // vote 를 덮어쓴다
+        localStorage.setItem('vote', JSON.stringify(arr));
+    }
+
+    function getResult() {
+        console.log(localStorage.getItem('vote'))
+        
+        // document.getElementById('result').innerHTML = localStorage.getItem('vote');
+
+
+        // // template literal 문자열 안에서 JavaScript 변수 사용이 가능하다
+        // var age = 20
+        // var something = `저는 ${age}살 입니다`
+        // var something = '저는 ' + age + '살 입니다'
+
+        var ul = document.createElement('ul');
+
+        JSON.parse(localStorage.getItem('vote')).map(function (item) {
+            var li = document.createElement('li');
+            li.innerHTML = `${item.name} ${item.count}표`;
+            ul.appendChild(li)
+        })
+
+        document.getElementById('result').replaceChildren(ul);
+    }
+</script> -->
+
+<!-- <script>
+var fruits = ['apple', 'banana', 'kiwi'];
+
+// // 조건에 맞는 새로운 array를 만든다
+// var bigFruits = fruits.map(function (fruit) {
+//     return fruit.toUpperCase();
+// })
+
+// console.log(bigFruits)
+
+// 빈 array를 만들고
+var bigFruits = [];
+
+// 빈 array에 아이템을 추가한다
+// fruits.forEach(function (fruit) {
+//     // array에 아이템 추가 (마지막)
+//     // Array.push()
+//     bigFruits.push(fruit.toUpperCase())
+// })
+
+// 빈 array에 아이템을 추가한다
+for (i=0; i<fruits.length; i++) { // i => index
+    bigFruits.push(fruits[i].toUpperCase())
+}
+
+console.log(bigFruits);
+
+</script> -->
+
+<!-- <ul>
+    <li class="item">item 1</li>
+    <li class="item">item 2</li>
+    <li class="item">item 3</li>
+</ul> -->
+
+<!-- <script>
+    var items = document.querySelectorAll('.item'); // NodeList(3)
+
+    console.log(items);
+
+    // Ok
+    // items.forEach(function (item) {
+    //     console.log(item)
+    // })
+
+    // Error
+    items.map(function (item) {
+        console.log(item)
+    })
+</script> -->
+
+
+<!-- <div id="root"></div>
+
+<script>
+    // textContent: text만 가능하다
+    // document.getElementById('root').textContent = 'hello world';
+
+    // innerHTML: text와 tag 모두 사용 가능
+    // document.getElementById('root').innerHTML = '<h1>hello world</h1>'
+
+    // var hello = 'hello world';
+    // document.getElementById('root').innerHTML = `<h1>${hello}</h1>`
+
+    // function hello() {
+    //     console.log('안녕하세요!')
+    //     return 'hello world';
+
+    //     console.log('안녕하세요') // 실행되지 않음
+    // }
+
+    // console.log(hello())
+
+</script> -->
+
+
+<!-- <h1>할일 목록</h1>
+<input type="text"><button onclick="addItem()">추가</button>
+<ul></ul>
+
+
+<script>
+    var input = document.querySelector('input');
+    var ul = document.querySelector('ul');
+
+    if (localStorage.getItem('todo') === null) {
+        // JSON.stringify([])
+        localStorage.setItem('todo', '[]')
+    } else {
+        // HTML에 localStorage 아이템을 추가한다.
+        JSON.parse(localStorage.getItem('todo')).map(function (item) {
+            var li = document.createElement('li');
+            li.setAttribute('id', item.id);
+            li.innerHTML = `${item.name} <span onclick="removeItem(${item.id})">&times;</span>`
+            ul.appendChild(li);
+        })
+    }
+
+    function addItem() {
+        console.log(input.value);
+
+        if (input.value === '') {
+            alert('내용을 입력하세요');
+            // 함수를 중지한다
+            return;
+        }
+
+        // id를 만든다(랜덤 숫자)
+        var id = Math.random();
+        console.log(id);
+
+        // localStorage를 업데이트한다
+        var arr = JSON.parse(localStorage.getItem('todo'));
+        arr.push({ id: id, name: input.value })
+        localStorage.setItem('todo', JSON.stringify(arr))
+
+        // HTML에 추가한다
+        var li = document.createElement('li');
+        li.setAttribute('id', id);
+        li.innerHTML = `${input.value} <span onclick="removeItem(${id})">&times;</span>`
+        ul.appendChild(li)
+
+        input.value = '';
+    }
+
+    function removeItem(id) {
+        console.log(id);
+
+        var arr = JSON.parse(localStorage.getItem('todo'));
+
+        // array.filter() 조건에 맞는 array를 반환한다
+        var result = arr.filter(function (item) {
+            if (item.id !== id) {
+                return item;
+            }
+        })
+
+        localStorage.setItem('todo', JSON.stringify(result));
+        
+        // 해당 id를 가진 li를 안보이게 한다
+        document.getElementById(id).style.display = 'none';
+
+        console.log(result)
+    }
+
+
+</script> -->
+
 
 
 

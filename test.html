@@ -9,7 +9,7 @@
 <body>
     
 
-    <style>
+    <!-- <style>
         body {
             border: 3px solid pink;
         }
@@ -48,6 +48,105 @@
         })
     
     
-    </script>
+    </script> -->
+
+<h1>할일 목록</h1>
+<input type="text"><button onclick="addItem()">추가</button>
+<ul></ul>
+
+<script>
+var input = document.querySelector('input');
+var ul = document.querySelector('ul');
+
+if (localStorage.getItem('todo') === null) {
+    localStorage.setItem('todo', JSON.stringify([]))
+} else {
+    JSON.parse(localStorage.getItem('todo')).map(item => {
+        var li = document.createElement('li')
+        li.setAttribute('id', item.id)
+        li.innerHTML = `${item.name} <span onclick="removeItem(${item.id})">&times;</span>`;
+        ul.appendChild(li);
+    })
+}
+
+function addItem() {
+    console.log(input.value)
+
+    if (input.value === '') {
+        alert('...');
+        return;
+    }
+   
+    var id = Math.random();
+
+    var li = document.createElement('li');
+    li.setAttribute('id', id)
+    li.innerHTML = `${input.value} <span onclick="removeItem(${id})">&times;</span>`;
+    ul.appendChild(li);
+
+    var arr = JSON.parse(localStorage.getItem('todo'));
+    arr.push({ id: id, name: input.value })
+    localStorage.setItem('todo', JSON.stringify(arr));
+
+    input.value = '';
+}
+
+function removeItem(id) {
+    console.log(id)
+    var arr = JSON.parse(localStorage.getItem('todo'));
+
+    var x = arr.filter(item => {
+        if (item.id !== id) {
+            return item
+        }
+    })
+
+    document.getElementById(id).style.display = 'none';
+
+    localStorage.setItem('todo', JSON.stringify(x));
+}
+
+</script>
+
+
+<!-- <h1>Todo</h1>
+<input type="text"><button>add</button>
+<ul></ul>
+
+<script>
+
+
+    var input = document.querySelector('input')
+    var button = document.querySelector('button');
+    var ul = document.querySelector('ul')
+
+    var DATA;
+
+    if (localStorage.getItem('todo') === null) {
+        DATA = []
+    } else {
+        DATA = JSON.parse(localStorage.getItem('todo'));
+    }
+
+    App(DATA)
+    
+    function App(data) {
+
+        data.map(item => {
+            var li = document.createElement('li');
+            li.innerHTML = item.name;
+            ul.appendChild(li)
+        })
+
+        button.addEventListener('click', () => {
+            var arr = JSON.parse(localStorage.getItem('todo'));
+            arr.push({
+                id: Math.random(), name: input.value
+            })
+
+            App(arr);
+        })
+    }
+</script> -->
 </body>
 </html>
