@@ -1,25 +1,28 @@
 * {
- padding: 0;
- margin: 0;
- box-sizing: border-box;   
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 a {
     text-decoration: none;
     color: #000;
 }
+
 p {
     margin: 10px 0;
 }
+
 img {
     width: 100%;
 }
+
 input[type=text],
 input[type=number],
 input[type=date] {
-   padding: 10px; 
-   border: 1px solid #ddd;
-   border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 button {
@@ -41,6 +44,7 @@ button {
 .left {
     float: left;
 }
+
 .right {
     float: right;
 }
@@ -48,9 +52,11 @@ button {
 .width-25 {
     width: 25%;
 }
+
 .width-50 {
     width: 50%;
 }
+
 .width-100 {
     width: 100%;
 }
@@ -81,9 +87,10 @@ button {
 
 .absolute {
     position: absolute;
-    top: 0; 
-    left:0;
+    top: 0;
+    left: 0;
 }
+
 .relative {
     position: relative;
 }
@@ -97,6 +104,7 @@ button {
     .hide-mobile {
         display: block;
     }
+
     .tablet-50 {
         width: 50%;
     }

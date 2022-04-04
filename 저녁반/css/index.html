@@ -2449,6 +2449,7 @@
     <div class="skills php">php</div>
 </div> -->
 
+
 <!-- <style>
     * {
         box-sizing: border-box;
@@ -2497,6 +2498,83 @@
     <a href=""><i class="fa fa-car"></i></a>
 </nav> -->
 
+<style>
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+        filter: grayscale(30%)
+    }
+    .container {
+        text-align: center;
+    }
+    .container::after {
+        content: "";
+        display: block;
+        clear: both;
+        border: 1px dashed;
+    }
+    .card {
+        display: inline-block;
+        margin: 10px 0;
+        width: 100%;
+        height: 200px;
+    }
+    .relative {
+        position: relative;
+    }
+    .absolute {
+        position: absolute;
+    }
+    .bg-text {
+        margin: 0;
+        font-size: 2em;
+        top: 0; left: 0;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%)
+    }
+    .icon {
+        bottom: 25px; left: 25px;
+    }
+
+    @media (min-width: 550px) {
+        .card {
+            margin: 0 10px;
+            width: 150px;
+            height: 250px;
+        }
+        .bg-text {
+            font-size: 1em;
+        }
+    }
+
+    @media (min-width: 851px) {
+        .bg-text {
+            font-size: 2em;
+        }
+        .card {
+            width: 250px;
+            height: 400px;
+        }
+    }
+
+</style>
+
+<div class="container">
+    <div class="card relative">
+        <img src="../../img/duck.jpeg" alt="">
+        <h2 class="bg-text absolute white">Duck Duck Go</h2>
+    </div>
+    <div class="card relative">
+        <img src="../../img/bird.jpeg" alt="">
+        <h2 class="bg-text absolute white">I believe I can fly</h2>
+    </div>
+    <div class="card relative">
+        <img src="../../img/bunny.jpg" alt="">
+        <h2 class="bg-text absolute white">Bunny bunny</h2>
+    </div>
+</div>
 
 
 
