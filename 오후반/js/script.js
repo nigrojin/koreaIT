@@ -870,7 +870,7 @@ JavaScript
 // }
 
 
-var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"];
+// var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"];
 
 // for (car of cars) { // [value] of [array]
 //     console.log(car)
@@ -898,9 +898,358 @@ var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"];
 //     console.log(document.body.offsetHeight);
 // })
 
-window.addEventListener('scroll', function () {
-    console.log('...')
-})
+// window.addEventListener('scroll', function () {
+//     console.log('...')
+// })
+
+// console.log('hello')
+
+
+// JavaScript variables (변수)
+// var
+// let - block scope (블록 범위)
+// const - block scopre (블록 범위), constant(상수), 가장 엄격
+
+
+// var fruit = 'apple'
+// console.log(fruit)
+
+// var fruit; // declare 선언하고
+// fruit = 'apple' // defined 나중에 정의가능
+
+// console.log(fruit)
+
+// var fruit = 'apple' // declare 
+// var fruit = 'banana' // declare 재선언이 가능하다
+
+// console.log(fruit)
+
+// var person; // declare 선언하고
+// var age = 20
+
+// if (age > 18) {
+//     person = 'adult' // 정의 가능
+// } else {
+//     person = 'kids' // 정의 가능
+// }
+
+// console.log(person)
+
+// let
+
+// let fruit = 'apple'
+
+// console.log(fruit)
+
+// let fruit; // declare 선언하고
+// fruit = 'apple' // define 정의 가능
+
+// console.log(fruit)
+
+// let fruit = 'apple' // declare
+// let fruit = 'mango' // declare 재선언 불가
+
+// console.log(fruit) // error
+
+// let person; // declare 선언하고
+// let age = 20;
+
+// if (age > 18) {
+//     person = 'adult' // define 정의 가능
+// } else {
+//     person = 'kids' // define 정의 가능
+// }
+
+// console.log(person)
+
+// let fruit = 'apple' // declare 선언하고
+// fruit = 'banana' // define 정의 가능
+// fruit = 'kiwi' // define 재정의 가능
+ 
+// console.log(fruit)
+
+// const (constant) 상수 
+
+// const fruit = 'apple'
+// console.log(fruit)
+
+// const fruit; // assignment(define) 할당을 해야함
+// fruit = 'apple'
+
+// console.log(fruit) // error
+
+// const fruit = 'apple' // declare
+// const fruit = 'banana' // declare
+
+// console.log(fruit); // error
+
+
+// 변수의 범위
+// Global Scope (전역 범위) - 함수의 밖에서 정의된 변수의 범위
+// Function (local) scope (함수 범위) - 함수 내에서 정의된 변수의 범위
+// Block scope (블록 범위) - 블록({}) 내에서 정의된 변수의 범위
+
+
+// var fruit = 'apple' // global scope (전역범위)
+// let fruit = 'apple' // global scope (전역범위)
+// const fruit = 'apple' // global scope (전역 범위)
+
+// f()
+
+// function f() {
+//     console.log(fruit)
+// }
+
+
+// f()
+
+// function f() {
+//     // var fruit = 'apple'; // function(local) scope 함수(지역)범위
+//     // let fruit = 'apple'; // function (local) scope 함수(지역)범위
+//     // const fruit = 'apple';
+// }
+
+// console.log(fruit)
+
+
+// var fruit; // ok
+// let fruit; // ok
+// const fruit; // error
+
+// f()
+
+// function f() {
+//     fruit = 'apple'
+// }
+
+// console.log(fruit)
+
+// let fruit = 'apple'
+
+// f()
+
+// function f() {
+//     let fruit = 'banana'
+//     console.log(fruit)
+// }
+
+// console.log(fruit);
+
+// let fruit = 'apple' // global scope(전역 범위)
+
+// f()
+
+// function f() {
+//     let fruit = 'banana' // ok
+
+//     console.log(fruit)
+// }
+
+
+// const fruit = 'apple'; // global scope (전역 범위)
+
+// f()
+// function f() {
+//     const fruit = 'banana'; // function scope (함수 범위)
+    
+//     console.log(fruit)
+// }
+
+// console.log(fruit)
+
+
+// Block scope(블록 범위)
+// let, const
+
+// { // block (if, for loop) 
+//     var fruit1 = 'apple'
+//     // let fruit2 = 'banana'
+//     const fruit3 = 'orange'
+// }
+
+// console.log(fruit1)
+// // console.log(fruit2)
+// console.log(fruit3)
+
+
+// let age = 20;
+
+// if (age > 18) { // block scopre (블록 범위)
+//     let person = 'adult'
+// } else {
+//     let person = 'kids';
+// }
+
+// console.log(person)
+
+
+// let age = 20;
+// // let person; // ok
+// const person; // error
+
+// if (age > 18) { // block scopre (블록 범위)
+//     person = 'adult'
+// } else {
+//     person = 'kids';
+// }
+
+// console.log(person)
+
+// for (i=0; i<5; i++) { // block scope
+//     // var result = i; // ok
+//     let result = i; // error (not defined)
+// }
+
+// console.log(result)
+
+// let result = 0;
+
+// for (i=0; i<5; i++) {
+//     result += i // ok
+// }
+
+// console.log(result);
+
+
+// function declaration 함수선언식 
+// function expression 함수표현식
+
+// f()
+
+// function f() { // 함수선언식, hoisting (정의가 위로 올라간다, 게양)
+//     console.log('hello')
+// }
+
+// f() error
+
+// var f = function () { // function expression (함수표현식), not hoisted 
+//     console.log('hello')
+// }
+
+// f() // ok
+
+// f() // error
+
+// var f = () => { // Arrow function, not hoisted 
+//     console.log('hello')
+// }
+
+// f() // ok
+
+// var car = {
+//     name: '제네시스',
+//     getName: function () {
+//         // this
+//         // console.log(this) // car (method를 소유한 object)
+//         return this.name;
+//     }
+// }
+
+// var car = {
+//         name: '제네시스',
+//         getName: () => {
+//             // this
+//             console.log(this) // window
+//             return this.name;
+//         }
+//     }
+
+// console.log(car.getName())
+
+
+// var f = () => {
+//     return 'hello'
+// }
+
+// var f = () => 'hello'
+
+
+// var f = d => 'hello ' + d // 인자가 하나일 때 () 생략 가능
+
+// console.log(f('부평'))
+
+
+// addEventListener('load', () => {
+//     console.log('hello')
+// })
+
+// const f = () => {
+//     alert()
+// }
+
+// f()
+
+// Prototype and Class
+// Inheritance (상속)
+
+// var car = {
+//     firstName: '아이오닉',
+//     lastName: '현대',
+//     fullName: function () { 
+//         // this => car
+//         return this.lastName + ' ' +  this.firstName
+//     }
+// }
+// console.log(car.fullName())
+
+// var fruit = 'apple'
+// console.log(fruit.toUpperCase())
+
+// console.log(fruit.__proto__)
+
+// var num = 0;
+
+// console.log(num.__proto__) // Number
+// console.log(num.__proto__.__proto__)
+
+// var arr = []
+
+// console.log(arr.__proto__) // Array
+// console.log(arr.__proto__.__proto__) // Object
+
+// var fruit = 'apple'
+// console.log(fruit.__proto__)
+// console.log(fruit.toUpperCase())
+
+
+// Object constructor (객체 생성자)
+// function Car(name, brand) {
+//     this.carname = name;
+//     this.brand = brand;
+// }
+
+// Car.prototype.origin = '한국'
+
+// var car = new Car('제네시스', '현대');
+
+// console.log(car)
+// console.log(car.origin)
+
+
+// Synthatical sugar (문법적인 조미료)
+// class Car {
+//     constructor(name, brand) {
+//         this.name = name;
+//         this.brand = brand;
+//     }
+// }
+
+// var car = new Car('제네시스', '현대')
+
+// console.log(car)
+
+var car = new String('제네시스'); // 쓸 이유가 없다
+
+// var car = '제네시스'
+
+console.log(car)
+
+
+
+
+
+
+
 
 
 
