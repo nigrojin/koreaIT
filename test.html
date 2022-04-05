@@ -50,7 +50,7 @@
     
     </script> -->
 
-<h1>할일 목록</h1>
+<!-- <h1>할일 목록</h1>
 <input type="text"><button onclick="addItem()">추가</button>
 <ul></ul>
 
@@ -106,7 +106,7 @@ function removeItem(id) {
     localStorage.setItem('todo', JSON.stringify(x));
 }
 
-</script>
+</script> -->
 
 
 <!-- <h1>Todo</h1>
@@ -148,5 +148,88 @@ function removeItem(id) {
         })
     }
 </script> -->
+
+<script>
+   
+//    var user = new String('bunny')
+//     console.log(user);
+
+//     console.log(String) // Object constructor
+//     console.log(user.__proto__)
+
+    // function User(username) {
+    //     this.username = username;
+    // }
+
+    // var user = new User('bunny')
+
+    // console.log(user)
+    // console.log(user.__proto__)
+    
+    // console.log(User.prototype)
+    // console.log(User)
+
+    // var user = 'bunny'
+    // console.log(user.__proto__)
+    // console.log(String.prototype)
+    // console.log(String.prototype.concat)
+
+    // console.log(String)
+    // console.log(String.prototype.constructor)
+
+    // console.log(String === String.prototype.constructor) // true
+    
+    // function User(username) {
+    //     this.username = username
+    // }
+
+    // f User(username) { this.username = username }
+    // console.log(User.prototype.constructor)
+    // console.log(User) // f User(username) { this.username = username }
+
+    // console.log(User === User.prototype.constructor) // true
+    // console.log(String) // f String() { [native code] } 
+
+    // console.log(User);
+    // console.log(User.prototype);
+
+
+    // var user = new User('bunny');
+    // console.log(user) // User {username: 'bunny'}
+    // console.log(user.__proto__) // {constructor: f}
+
+    // console.log(typeof User) // function
+    // console.log(User) // f User(username) { this.usrename = username }
+
+    // console.log(typeof User.prototype) // object
+    // console.log(User.prototype) // {constructor: f}
+
+    // console.log(Object)
+    // console.log(Object.prototype) // __proto__
+
+
+    function User(username) {
+        this.username = username;
+        this.hello = function() {
+            return 'Hello'
+        }
+    }
+
+    console.log(User)
+    console.log(User.prototype.constructor)
+   console.log(User.prototype) // {constructor: f}
+
+   // function expression
+   User.prototype.bye = function () { 
+        return 'Goodbye';
+   }
+
+   console.log(User.prototype) // {constructor: f, bye: f}
+
+//    console.log(new User('bunny').hello()) // ok
+//    console.log(new User('bunny').bye()) // ok
+
+</script>
+
 </body>
 </html>

@@ -1236,13 +1236,13 @@ JavaScript
 
 // var car = new Car('제네시스', '현대')
 
-// console.log(car)
+// console.log(car);
 
-var car = new String('제네시스'); // 쓸 이유가 없다
+// var car = new String('제네시스'); // 쓸 이유가 없다
 
 // var car = '제네시스'
 
-console.log(car)
+// console.log(car)
 
 
 
