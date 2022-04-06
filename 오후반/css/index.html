@@ -2273,9 +2273,9 @@ p {
     <button class="drop-btn">메뉴</button>
     <div class="dropdown-content">
         <div class="container">
-            <div class="col">
+            <div class="col"> -->
                 <!-- Entity number: &# + entity_number (아이콘, 기호 등 표시) -->
-                <h1>&#129409;</h1>
+                <!-- <h1>&#129409;</h1>
                 <p>Title</p>
             </div>
             <div class="col">
@@ -2288,9 +2288,9 @@ p {
             </div>
         </div>
         <div class="container">
-            <div class="col">
+            <div class="col"> -->
                 <!-- Entity number: &# + entity_number (아이콘, 기호 등 표시) -->
-                <h1>&#129409;</h1>
+                <!-- <h1>&#129409;</h1>
                 <p>Title</p>
             </div>
             <div class="col">
@@ -2303,9 +2303,9 @@ p {
             </div>
         </div>
         <div class="container">
-            <div class="col">
+            <div class="col"> -->
                 <!-- Entity number: &# + entity_number (아이콘, 기호 등 표시) -->
-                <h1>&#129409;</h1>
+                <!-- <h1>&#129409;</h1>
                 <p>Title</p>
             </div>
             <div class="col">
@@ -2318,9 +2318,9 @@ p {
             </div>
         </div>
         <div class="container">
-            <div class="col">
+            <div class="col"> -->
                 <!-- Entity number: &# + entity_number (아이콘, 기호 등 표시) -->
-                <h1>&#129409;</h1>
+                <!-- <h1>&#129409;</h1>
                 <p>Title</p>
             </div>
             <div class="col">
@@ -2334,3 +2334,173 @@ p {
         </div>
     </div>
 </div> -->
+
+
+<!-- <style>
+    html {
+        border: 1px solid pink;
+    }
+    body {
+        border: 1px dashed;
+        min-height:2000px;
+    }
+
+    .top-btn {
+        position: fixed;
+        padding: 10px;
+        background-color: #ddd;
+        bottom: 25px; right: 25px;
+        display: none;
+    }
+
+</style>
+
+<button id="top-btn" class="top-btn">TOP</button>
+
+<script>
+    var topBtn = document.getElementById('top-btn');
+    
+    console.log(document.body.scrollTop)
+
+    window.addEventListener('scroll', () => {
+        console.log(document.body.scrollTop)
+
+        if (document.body.scrollTop > 100) {
+            topBtn.style.display = 'block'
+        } else {
+            topBtn.style.display = 'none'
+        }
+    })
+</script> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4fb6dd7406.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .border {
+            border: 1px dashed;
+        }
+        .flex {
+            display: flex;
+        }
+        .logo {
+            min-width: 200px;
+        }
+        .width-100 {
+            width: 100%;
+        }
+        .more {
+            min-width: 200px;
+        }
+    </style>
+
+    <div class="flex border">
+        <h2 class="logo border">YouTube</h2>
+        <div class="width-100 border"></div>
+        <h2 class="more">MENU</h2>
+    </div>
+
+
+
+    <!-- <style>
+        * {
+            padding: 0; margin: 0;
+            box-sizing: border-box;
+        }
+        .flex {
+            display: flex;
+        }
+        .container {
+            /* border: 1px dashed; */
+            border-bottom: 1px solid #ddd;
+            flex-wrap: nowrap;
+            padding: 10px;
+        }
+        .logo { 
+            /* border: 1px solid;  */
+            min-width: 200px;
+            font-size: 24px;
+        }
+        .search { 
+            display: flex;
+            /* border: 1px solid red;  */
+            width: 100%; 
+        }
+        .search form {
+            width: 100%;
+        }
+        form {
+            position: relative;
+            margin-left: 40px;
+        }
+        form button {
+            top: 0px; right: 0px;
+            /* border: none; */
+            font-size: 24px;
+            width: 40px; height: 100%;
+        }
+        .absolute {
+            position: absolute;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+        }
+        .more { 
+            /* border: 1px solid;  */
+            min-width: 200px;  
+            justify-content: flex-end;
+        }
+        .padding-10 {
+            padding: 8px;
+        }
+        .fa-microphone {
+            font-size: 24px;
+            padding: 8px;
+        }
+        .fa-keyboard {
+            top: 10px; right: 50px;
+        }
+        .hide-mobile {
+            display: none;
+        }
+        @media (min-width: 551px) {
+            .hide-mobile {
+                display: block;
+            }
+        }
+    </style>
+    
+    <div class="container flex">
+        <div class="logo">&#9776; YouTube</div>
+        <div class="search flex">
+            <form action="" class="hide-mobile">
+                <input type="text" placeholder="검색">
+                <i class="fa-solid fa-keyboard absolute"></i>
+                <button class="absolute">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+            <div class=""><i class="fa-solid fa-microphone"></i></div>
+        </div>
+        <div class="more flex">
+            <div class="padding-10" style="margin: 0 5px;"><i class="fa-solid fa-list-ul"></i></div>
+            <div class="padding-10" style="margin: 0 5px;"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+            <button class="padding-10 flex" style="margin: 0 5px;"><i class="fa-solid fa-user"></i> 로그인</button>
+        </div>
+    </div>   -->
+</body>
+</html>
+
+
+
+
