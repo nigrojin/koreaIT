@@ -104,14 +104,14 @@ input[type=text], input[type=date] {
     position: absolute;
 }
 
-.hide-mobile {
-    display: none;
-}
-
 .box-shadow {
   box-shadow: 
   0 2px 5px 0 rgb(0 0 0 / 16%), 
   0 2px 10px 0 rgb(0 0 0 / 12%)
+}
+
+.hide-mobile {
+    display: none;
 }
 
 /* 태블릿 */

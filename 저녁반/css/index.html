@@ -2498,7 +2498,7 @@
     <a href=""><i class="fa fa-car"></i></a>
 </nav> -->
 
-<style>
+<!-- <style>
     img {
         width: 100%;
         height: 100%;
@@ -2575,32 +2575,171 @@
         <h2 class="bg-text absolute">Bunny bunny</h2>
     </div>
 </div>
+-->
 
 
-
-<style>
-
-p {
-    display: none;
-}
-
-div:hover p {
-    display: block;
-}
-
+<!-- <style>
+    .flex {
+        /* display: flex를 사용해서 */
+        display: flex;
+        border: 3px dashed;
+    }
+    .logo {
+        /* 넓이 100px 고정하고 */
+        min-width: 100px;
+        background: red;
+        color: #fff;
+    }
+    .menu {
+        /* 넓이 100px 고정하고 */
+        min-width: 100px;
+        background-color: #ddd;
+    }
+    .search {
+        /* 나머지 다 차지하도록 할 수 있다 */
+        width: 100%;
+        background-color: dodgerblue;
+    }
 
 </style>
 
-
-
-
-<div>
-    <p id="">hello</p>
+<div class="flex">
+    <div class="logo">YouTube</div>
+    <div class="search">Search</div>
+    <div class="menu">Menu</div>
 </div>
 
 
 
+<style>
+    .bg-img {
+        background-image: url('../../img/duck.jpeg');
+        width: 200px;
+        height: 200px;
+        background-position: center;
+        background-size: cover;
+    }
+    .image {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+    .container {
+        border: 3px dashed red;
+        width: 200px;
+        height: 200px;
+    }
+    .container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .bg-img, .container {
+        position: relative;
+    }
+    .bg-text {
+        font-weight: 700;
+        font-size: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%)
+    }
+</style>
+
+<h2>background-image 활용</h2>
+<div class="bg-img">
+    <div class="bg-text">DUCK</div>
+</div>
+
+<h2>img만 이용</h2>
+<img class="image" src="../../img/duck.jpeg" alt="">
+
+<h2>div안에 img</h2>
+<div class="container">
+    <img src="../../img/duck.jpeg" alt="">
+    <div class="bg-text">DUCK</div>
+</div>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    footer {
+        padding: 50px;
+        background-color: #000;
+        color: #fff;
+    }
+</style>
+
+<footer>
+    2022 현대자동차
+</footer> -->
 
 
+<!-- <style>
+    .container1 {
+        text-align: center;
+        background-color: #ddd;
+    }
+    .container2 {
+        background-color: #ddd;
+    }
+    .inline-block {
+        display: inline-block;
+        border: 1px dashed;
+    }
+    .block {
+        border: 1px dashed;
+        max-width: 200px;
+        margin: auto
+    }
+</style>
+<h1>div를 가운데 정렬하는 방법</h1>
 
+<div class="container1">
+    <div class="inline-block">Inline-block</div>
+</div>
+<br>
+<div class="container2">
+    <div class="block">Block</div>
+</div> -->
+
+
+<style>
+    .container {
+        /* inline-block 사이에 틈을 없에줌 */
+        font-size: 0;
+
+        width: 400px;
+        margin: auto;
+        border: 3px dashed red;
+    }
+    img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        display: inline-block;
+        /* border: 3px dashed; */
+    }
+
+    @media (min-width: 851px) {
+        .container {
+            width: 800px;
+        }
+        img {
+            width: 400px;
+            height: 400px;
+        }
+    }
+</style>
+
+<h1>비율이 다른 이미지를 같은 비율로 만들고 반응형으로 쓰는 방법</h1>
+
+<div class="container">
+    <img src="../../img/duck.jpeg" alt="">
+    <img src="../../img/cat.jpeg" alt="">
+</div>
 
