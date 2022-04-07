@@ -2492,19 +2492,250 @@ p {
 <div class="bg-img" style="background-image: url('../../img/duck.jpeg')">
 </div> -->
 
-<style>
 
-div {
-    background-color: #ddd;
-    display: inline-block;
-    /* display: inline; */
-    padding: 10px;
-}
+<!-- <style>
+    .flex {
+        /* display: flex를 사용해서 */
+        display: flex;
+        border: 3px dashed;
+    }
+    .logo {
+        /* 넓이 100px 고정하고 */
+        min-width: 100px;
+        background: red;
+        color: #fff;
+    }
+    .menu {
+        /* 넓이 100px 고정하고 */
+        min-width: 100px;
+        background-color: #ddd;
+    }
+    .search {
+        /* 나머지 다 차지하도록 할 수 있다 */
+        width: 100%;
+        background-color: dodgerblue;
+    }
+
+</style>
+
+<div class="flex">
+    <div class="logo">YouTube</div>
+    <div class="search">Search</div>
+    <div class="menu">Menu</div>
+</div> -->
+
+<!-- <style>
+    body {
+        min-height: 1000px;
+    }
+    nav {
+        background-color: #ddd;
+        position: fixed;
+        width: 280px;
+        height: 100%;
+    }
+    nav a {
+        display: block;
+    }
+    .main {
+        margin-left: 280px;
+        padding: 25px;
+    }
+
+    @media (max-width: 500px) {
+        nav {
+            width: 50px;
+        }
+        .main {
+            margin-left: 50px;
+        }
+    }
 </style>
 
 
-<div class="">
-    Lorem ipsum dolor sit amet,
+<nav>
+    <a href="">메뉴</a>
+    <a href="">메뉴</a>
+    <a href="">메뉴</a>
+</nav>
+
+<div class="main">
+    <h1>YouTube</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit optio nobis aspernatur cum! Expedita rerum accusamus, dolorem repudiandae cum asperiores sint ad ipsa modi provident explicabo maxime distinctio eum minus!</p>
+</div> -->
+
+<!-- <style>
+    .wrap {
+        border: 3px dashed;
+        /* width: 400px; */
+        /* height: 200px; */
+        overflow: hidden;
+    }
+    .container {
+        border: 1px solid red;
+        white-space: nowrap;
+        transition: .5s;
+        display: flex;
+    }
+    img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        display: inline-block;
+    }
+</style>
+
+
+<div class="wrap">
+    <div class="container">
+        <img src="../../img/bunny.jpg" alt="">
+        <img src="../../img/cat.jpeg" alt="">
+        <img src="../../img/duck.jpeg" alt="">
+        <img src="../../img/bird.jpeg" alt="">
+        <img src="../../img/tree.jpg" alt="">
+        <img src="../../img/fall.jpg" alt="">
+    </div>
 </div>
 
+<button onclick="navigateTo(-1)">PREV</button>
+<button onclick="navigateTo(1)">NEXT</button>
 
+<script>
+
+    var container = document.querySelector('.container')
+
+    var index = 0;
+
+    function navigateTo(data) {
+        index += data
+        console.log(index)
+        // container.style.transform = `translateX(-${index * 100}%)`
+        container.style.marginLeft = `-${index * 200}px`;
+    }
+</script> -->
+
+<style>
+    body {
+      min-height: 1000px;
+    }
+    header {
+      /* position: fixed; */
+      /* top: 0;
+      left: 0;
+      width: 100%; */
+      background-color: #ddd;
+      
+    }
+    nav {
+      border: 1px dashed;
+      height: 0;
+      transition: 0.5s;
+      overflow: hidden;
+    }
+    nav a {
+      display: block;
+    }
+    </style>
+    
+    <header>
+      <button>=</button> Apple
+    </header>
+    <!-- <p>hello</p> -->
+    <nav>
+      <a class="item" href="">1</a>
+      <a class="item"href="">2</a>
+      <a class="item"href="">3</a>
+      <a class="item" href="">4</a>
+    </nav>
+    
+    <script>
+      var btn = document.querySelector('button');
+      var nav = document.querySelector('nav');
+      
+      console.log(nav.scrollHeight)
+    
+      btn.addEventListener('click', () => {
+        nav.style.height = nav.scrollHeight + 'px'
+        console.log(nav.style.height)
+      })
+    </script>
+<!-- 
+    <style>
+        input[type=text] {
+            padding: 10px;
+        }
+
+        /* 덮어쓰기 안됨 */
+        input { 
+            padding: 25px;
+        }
+        /* 덮어쓰기 됨 */
+        input {
+            padding: 25px!important
+        }
+        /* 덮어쓰기 됨 */
+        input[type=text] {
+            padding: 25px
+        }
+    </style>
+
+    <input type="text"> -->
+
+    <!-- <style>
+        .container {
+          border: 3px dashed;
+          width: 200px;
+          white-space: nowrap;
+          overflow: hidden;
+          margin: auto;
+          font-size: 0;
+        }
+        .container::after {
+          content: "";
+          display: block;
+          clear: both;
+        }
+        img {
+          width: 200px;
+          height: 200px;
+          object-fit: cover;
+          transition: 0.5s;
+          display: inline-block
+        }
+        @media(min-width: 501px) {
+          .container {
+            width: 400px;
+          }
+        }
+        @media(min-width: 851px) {
+          .container {
+            width: 800px;
+          }
+        }
+      </style>
+      
+      <div class="container">
+        <img src="../../img/bunny.jpg" alt="">
+        <img src="../../img/cat.jpeg" alt="">
+        <img src="../../img/bird.jpeg" alt="">
+        <img src="../../img/duck.jpeg" alt="">
+        <img src="../../img/tree.jpg" alt="">
+        <img src="../../img/flower.jpg" alt="">
+        <img src="../../img/fall.jpg" alt="">
+      </div>
+      
+      <button onclick="navigateTo(-1)">PREV</button>
+      <button onclick="navigateTo(1)">NEXT</button>
+      
+      <script>
+        var imgs = document.querySelectorAll('img')
+        
+        var index = 0;
+      
+        function navigateTo(data) {
+          index += data
+          console.log(index)
+          imgs[0].style.marginLeft = `-${index * 200}px`
+        }
+      
+      </script> -->
