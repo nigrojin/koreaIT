@@ -1,4 +1,4 @@
-
+<script src="https://kit.fontawesome.com/4fb6dd7406.js" crossorigin="anonymous"></script>
 <!-- CSS selector 선택자 -->
 
 <!-- <style>
@@ -2614,7 +2614,7 @@ p {
     }
 </script> -->
 
-<style>
+<!-- <style>
     body {
       min-height: 1000px;
     }
@@ -2658,8 +2658,9 @@ p {
         nav.style.height = nav.scrollHeight + 'px'
         console.log(nav.style.height)
       })
-    </script>
-<!-- 
+    </script> -->
+
+    <!-- 
     <style>
         input[type=text] {
             padding: 10px;
@@ -2737,5 +2738,344 @@ p {
           console.log(index)
           imgs[0].style.marginLeft = `-${index * 200}px`
         }
-      
       </script> -->
+
+      <!-- <h2>inline-block 사이에 띄어쓰기 없에는 방법</h2>
+      
+        <style>
+          .container {
+              background-color: #ddd;
+              /* inline-block사이의 띄어쓰기 없에는 방법 */
+              font-size: 0;
+          }
+          .inline-block1 {
+              /* children은 font-size 재설정 필요 */
+              font-size: initial;
+              display: inline-block;
+              border: 1px dashed;
+              width: 200px; height: 200px
+          }
+      </style>
+
+
+      <div class="container">
+          <div class="inline-block1">inline-block</div>
+          <div class="inline-block1">inline-block</div>
+      </div>
+
+      <h2>div를 가운데 정렬하는 방법</h2>
+      <style>
+        .container1 {
+            text-align: center;
+            background-color: #ddd;
+        }
+        .container2 {
+            background-color: #ddd;
+        }
+        .inline-block2 {
+            display: inline-block;
+            border: 1px dashed;
+        }
+        .block {
+            border: 1px dashed;
+            max-width: 200px;
+            margin: auto
+        }
+    </style>
+
+    <div class="container1">
+        <div class="inline-block2">inline-block의 부모에 text-align: center</div>
+    </div>
+    <br>
+    <div class="container2">
+        <div class="block">block의 width를 설정하고 margin: auto</div>
+    </div>  -->
+
+    <!-- <style>
+        .container {
+            po
+        }
+    </style> -->
+
+    <!-- <style>
+        .container {
+            max-width: 800px;
+            margin: auto;
+            border: 3px dashed;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    
+        <div class="container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.676136248466!2d126.72175731498535!3d37.49196827981195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7d0c6d136969%3A0x65ce7af493ae07af!2z7L2U66as7JWESVTslYTsubTrjbDrr7gg7J247LKc7KeA7KCQ!5e0!3m2!1sko!2skr!4v1649396115523!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    
+    <script>
+        var container = document.querySelector('.container');
+        container.style.height = (container.offsetWidth * 9/16) + 'px';
+    
+        window.addEventListener('resize', () => {
+            container.style.height = (container.offsetWidth * 9/16) + 'px';
+        })
+    </script> -->
+
+    <!-- <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .row {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .container {
+            padding: 10px;
+            width: 100%;
+            float: left;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+        @media (min-width: 800px) {
+            .container {
+                width: 50%;
+            }
+        }
+    </style>
+    
+        <h1>YouTube</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt corporis sequi cum enim autem eum. Aut, quis cumque dolorum voluptatem aspernatur cum ad facere eius omnis illum earum reiciendis provident.</p>
+        <div class="row">
+            <div class="container">
+                <iframe width="676" height="380" src="https://www.youtube.com/embed/mhyBYrP_HLg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="container">
+                <iframe width="718" height="404" src="https://www.youtube.com/embed/HfTilOmpke8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    <script>
+        var containers = document.querySelectorAll('.container');
+
+        containers.forEach(container => {
+            container.style.height = (container.offsetWidth * 9/16) + 'px';
+        })
+    
+        window.addEventListener('resize', () => {
+            containers.forEach(container => {
+                container.style.height = (container.offsetWidth * 9/16) + 'px';
+            })
+        })
+    </script> -->
+
+    <!-- <style>
+        .layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: none;
+            z-index: 1;
+        }
+    </style>
+
+    <h1>현대자동차</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam voluptatum quae, voluptatem eaque illum consequatur harum commodi ex sequi fuga odio qui tempora voluptates, modi unde temporibus perferendis exercitationem eius!</p>
+
+    재사용이 가능해야 하기 때문에 따로 만든다 (레이어 안에 콘텐츠 X) 
+    <div id="layer" class="layer"></div>
+
+    <button id="btn">모달</button>
+
+    <script>
+        var btn = document.getElementById('btn');
+        var layer = document.getElementById('layer')
+
+        btn.addEventListener('click', () => {
+            layer.style.display = 'block'
+        })
+
+    </script>  -->
+
+    <!-- <style>
+        .container {
+            background-color: #ddd;
+            display: inline-block;
+            width: 75px;
+            height: 75px;
+            text-align: center;
+            border-radius: 50%;
+        }
+        .fa-brands {
+            margin-top: 10px;
+            font-size: 50px;
+        }
+        .fa-solid {
+            margin-top: 10px;
+            font-size: 50px;
+        }
+    </style>
+    
+    <div class="container">
+        <i class="fa-brands fa-apple"></i>
+    </div>
+
+    <div class="container">
+        <i class="fa-brands fa-apple-pay"></i>
+    </div>
+
+    <div class="container">
+        <i class="fa-solid fa-bag-shopping"></i>
+    </div> -->
+    
+    <!-- <style>
+        .container {
+            text-align: right;
+        }
+        .dropdown {
+            border: 3px dashed;
+            position: relative;
+            display: inline-block;
+        }
+        .drop-btn {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            position: absolute;
+            top: 50px; right: 0;
+            background-color: rgba(255,255,255,0.8);
+            border: 1px solid red;
+            width: 300px;
+            display: none;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+        }
+        .active {
+            display: block;
+        }
+
+    </style>
+
+    <h1>Click Dropdown</h1>
+
+    <div class="container">
+        <div class="dropdown">
+            <button class="drop-btn">더보기</button>
+            <div class="dropdown-content">
+                <a href="">메뉴</a>
+                <a href="">메뉴</a>
+                <a href="">메뉴</a>
+                <a href="">메뉴</a>
+            </div>
+        </div>
+    </div>
+
+
+    <h1>Title</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, unde beatae temporibus similique debitis officiis est perferendis, porro expedita optio cum esse, placeat vitae assumenda. Aliquam quam natus rem harum?</p>
+
+    <script>
+        var btn = document.querySelector('.drop-btn');
+        var dropContent = document.querySelector('.dropdown-content')
+
+        btn.addEventListener('click', () => {
+            dropContent.classList.toggle('active')
+        })
+    </script> -->
+
+
+    <!-- <style>
+        .bg-img {
+            background-image: url('../../img/duck.jpeg');
+            width: 200px;
+            height: 200px;
+            background-position: center;
+            background-size: cover;
+        }
+        .image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .container {
+            border: 3px dashed red;
+            width: 200px;
+            height: 200px;
+        }
+        .container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .bg-img, .container {
+            position: relative;
+        }
+        .bg-text {
+            font-weight: 700;
+            font-size: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)
+        }
+    </style>
+    <h1>이미지를 사용하는 3가지 방법</h1>
+    <h2>background-image 활용</h2>
+    <div class="bg-img">
+        <div class="bg-text">DUCK</div>
+    </div>
+    
+    <h2>img만 이용(안에 text 추가할 수 없음)</h2>
+    <img class="image" src="../../img/duck.jpeg" alt="">
+    
+    <h2>div안에 img</h2>
+    <div class="container">
+        <img src="../../img/duck.jpeg" alt="">
+        <div class="bg-text">DUCK</div>
+    </div> -->
+
+    <!-- <style>
+    .container {
+        /* inline-block 사이에 틈을 없에줌 */
+        font-size: 0;
+
+        width: 400px;
+        margin: auto;
+        border: 3px dashed red;
+    }
+    img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        display: inline-block;
+        /* border: 3px dashed; */
+    }
+
+    @media (min-width: 851px) {
+        .container {
+            width: 800px;
+        }
+        img {
+            width: 400px;
+            height: 400px;
+        }
+    }
+</style>
+
+<h1>비율이 다른 이미지를 같은 비율로 만들고 반응형으로 쓰는 방법</h1>
+
+<div class="container">
+    <img src="../../img/duck.jpeg" alt="">
+    <img src="../../img/cat.jpeg" alt="">
+</div> -->
