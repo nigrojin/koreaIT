@@ -2743,3 +2743,220 @@
     <img src="../../img/cat.jpeg" alt="">
 </div> -->
 
+<!-- 
+<style>
+    /* flex를 이용한 반응형 레이아웃 */
+    .flex {
+        /* flex-wrap: wrap */
+        flex-wrap: wrap;
+        background-color: #ddd;
+        /* 컨테이너에 display: flex; */
+        display: flex;
+    }
+    .item {
+        border: 1px dashed;
+        flex: 50%;
+        /* border와 padding을 안쪽으로 */
+        box-sizing: border-box;
+    }
+    /* 반응형 */
+    @media (max-width: 500px) {
+        .item {
+            flex: 100%;
+        }
+    }
+</style>
+
+<div class="flex">
+    <div class="item">1</div>
+    <div class="item">2</div>
+</div> -->
+
+<!-- <style>
+    .container {
+        background-color: #ddd;
+        text-align: center;
+    }
+    .inline-block {
+        font-size: 0;
+        display: inline-block;
+        background-color: red;
+    }
+    .item {
+        font-size: 50px;
+        width: 100px;
+        border: 1px dashed;
+        display: inline-block;
+    }
+    .block {
+        border: 1px dashed;
+        width: 200px;
+        margin: auto;
+    }
+</style>
+<h1>Text-align: center</h1>
+<div class="container">
+    <div class="inline-block">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+</div>
+
+<h1>Margin: auto</h1>
+<div class="block">Block</div> -->
+
+<!-- <style>
+    * {
+        box-sizing: border-box;
+    }
+    img {
+        width: 100%;
+    }
+    .block {
+        max-width: 800px;
+        margin: auto;
+        background-color: #ddd;
+        /* 컨테이너에 display: flex; */
+        display: flex;
+    }
+    .card {
+        float: left;
+        flex: 33.33333%;
+        border: 1px dashed;
+    }
+</style>
+
+
+<div class="container">
+    <div class="block">
+        <div class="card">
+            <img src="../../img/duck.jpeg" alt="">
+            <h3>DUCK</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste possimus enim dolores dolorem omnis illum, odio voluptatibus ducimus est explicabo earum aliquam non expedita perferendis sit voluptates. Ipsam, rerum excepturi!</p>
+        </div>
+        <div class="card">
+            <img src="../../img/cat.jpeg" alt="">
+            <h3>CAT</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste possimus enim dolores dolorem omnis illum, odio voluptatibus ducimus est explicabo earum aliquam non expedita perferendis sit voluptates. Ipsam, rerum excepturi!</p>
+        </div>
+        <div class="card">
+            <img src="../../img/bird.jpeg" alt="">
+            <h3>BIRD</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste possimus enim dolores dolorem omnis illum, odio voluptatibus ducimus est explicabo earum aliquam non expedita perferendis sit voluptates. Ipsam, rerum excepturi!</p>
+        </div>
+    </div>
+</div> -->
+
+<!-- <style>
+    input {
+        background-image: url('../../img/duck.jpeg');
+        background-size: 50px 50px;
+        background-repeat: no-repeat;
+        background-position: 10px 10px;
+        padding: 20px 20px 20px 70px;
+        color: red;
+        font-size: 30px;
+    }
+</style>
+
+<h1>Background image on INPUT</h1>
+<input type="text"> -->
+
+<!-- <style>
+    img {
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        margin: auto;
+    }
+    h1 {
+        text-align: center;
+    }
+    .container {
+        text-align: center;
+    }
+    .btn-group {
+        /* border: 3px solid red; */
+        display: inline-block;
+    }
+    button {
+        background-color: dodgerblue;
+        color: #fff;
+        padding: 10px 50px;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
+
+<img src="../../img/duck.jpeg" alt="">
+<h1>Duck Duck Go</h1>
+<div class="container">
+    <div class="btn-group">
+        <button>팔로우</button>
+        <button>메시지</button>
+    </div>
+</div> -->
+
+<!-- <style>
+    .flex {
+        display: flex;
+        border: 3px solid pink;
+    }
+    .item {
+        min-width: 50px;
+        background-color: aqua;
+        padding: 10px;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+    }
+</style>
+
+<div class="flex">
+    <div class="item">search</div>
+    <input type="text">
+</div> -->
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    .flex {
+        background-color: #ddd;
+        display: flex;
+        /* flex-wrap: wrap이 있어야 함(반응형) */
+        flex-wrap: wrap;
+    }
+    .col {
+        /* 기본값은 모바일에  */
+        flex: 100%;
+        border: 1px dashed;
+    }
+
+    @media (min-width: 501px) {
+        .tablet-25 {
+            flex: 25%;
+        }
+        .tablet-75 {
+            flex: 75%
+        }
+    }
+    @media (min-width: 701px) {
+        .pc-25 {
+            flex: 25%;
+        }
+        .pc-50 {
+            flex: 50%;
+        }
+    }
+</style>
+
+<div class="flex">
+    <div class="col tablet-25 pc-25">Navigation</div>
+    <div class="col tablet-75 pc-50">Main</div>
+    <div class="col pc-25">Aside</div>
+</div>

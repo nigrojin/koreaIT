@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            display: inline-block;
+            /* padding: 0 2px 2px 2px; */
+            margin: 2px;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hello World</h1>
+
+    <div id="root"></div>
+
+    <script>
+        myFunction();
+        function myFunction() {
+            const xhttp = new XMLHttpRequest();
+
+            xhttp.open('GET', 'https://dapi.kakao.com/v2/search/image?query=제네시스')
+            xhttp.setRequestHeader('Authorization', 'KakaoAK d5a49f32e43c184c2823a05cdaf8c841')
+            xhttp.send();
+
+            xhttp.addEventListener('load', e => {
+                // JSON(string, 문자)를 JavaScript 객체로 변환
+                var DATA = JSON.parse(e.target.responseText)
+                console.log(DATA);
+                var ul = document.createElement('ul')
+
+                DATA.documents.map(doc => {
+                    var li = document.createElement('li')
+                    li.innerHTML = `<a href="${doc.doc_url}" target="_blank"><img src="${doc.image_url}"></a>`
+                    ul.appendChild(li)
+                })
+
+                document.getElementById('root').appendChild(ul)
+            })
+        }
+
+    </script>
+    
+</body>
+</html>
