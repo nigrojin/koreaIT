@@ -5,9 +5,167 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/4fb6dd7406.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <script src="./script.js"></script>
+    <style>
+        .active {
+            color: pink;
+        }
+    </style>
+
+    <i class="fa-solid fa-thumbs-up active" onclick="myFunction(this)" style="font-size: 50px;"></i>
+
+    <script>
+        // console.log(document)
+        // console.log(document.body)
+
+        // children HTML element
+        // console.log(document.body.children)
+        // childNodes HTML element + text(줄바꿈), comment(주석)
+        // console.log(document.body.childNodes)
+
+        // console.log(document.getElementById('list'))
+        // console.log(document.getElementsByClassName('item'))
+
+        // console.log(document.querySelector('h1'))
+        // console.log(document.querySelector('#list'))
+
+        // console.log(document.querySelectorAll('.item'))
+        // console.log(document.querySelectorAll('li'))
+
+        // nextElementSibling DOM tree에서 같은 level에 있는 다음 element
+        // console.log(document.querySelector('h1').nextElementSibling);
+
+        // console.log(document.getElementById('list').children)
+        // console.log(document.getElementById('list').children[0])
+        // console.log(document.getElementById('list').children.length)
+        // console.log(document.getElementById('list').childNodes)
+        // console.log(document.getElementById('list').childNodes.length)
+
+        // // NodeList의 first
+        // console.log(document.getElementById('list').firstChild)
+        // console.log(document.getElementById('list').lastChild)
+        // // HTMLCollection의 first
+        // console.log(document.getElementById('list').firstElementChild)
+        // console.log(document.getElementById('list').lastElementChild)
+
+        // console.log(document.getElementsByClassName('item'))
+
+        // console.log(document.querySelector('.item'))
+
+        // console.log(document.getElementsByClassName('my-list'))
+        // console.log(document.getElementsByClassName('my-list')[0])
+        // console.log(document.querySelector('.my-list'))
+
+
+        // Attribute (속성 조작)
+
+        // style 속성 조작
+        // console.log(document.querySelector('h1').style)
+
+        // document.querySelector('h1').style.color = '#fff';
+        // document.querySelector('h1').style.backgroundColor = '#000';
+
+        // var ul = document.querySelector('ul')
+
+        // console.log(ul)
+
+        // console.log(ul.id)
+        // console.log(ul.className)
+
+        // // getAttribute(name) name 속성을 가져온다
+        // console.log(ul.getAttribute('id'))
+        // console.log(ul.getAttribute('class'))
+
+        // // setAttribute(name, value) name속성을 value값으로 만든다
+        // document.querySelector('h1').setAttribute('class', 'title');
+
+        // ul.children[0].classList.add('active')
+
+        // ul.children[0].classList.remove('active')
+
+        // ul.children[0].classList.toggle('active')
+
+        // # Print to HTML
+
+        // createElement(name) name의 element를 만든다
+        // var p = document.createElement('p');
+        // p.textContent = '2022 현대자동차'
+
+        // innerHTML: text와 html tag 모두 사용 가능하다
+        // p.innerHTML = '<small>2022 현대자동차</small>'
+        // appendChild(element) element를 가장 마지막에 추가한다
+        // document.body.appendChild(p)
+
+        // var h1 = document.createElement('h1');
+        // h1.textContent = '현대자동차'
+        // document.body.appendChild(h1)
+
+        // // var ul = document.createElement('ul')
+        // // ul.innerHTML = 
+        // // '<li>제네시스</li><li>스타리아</li><li>아이오닉</li><li>캐스퍼</li>'
+        // // document.body.appendChild(ul)
+
+        // var ul = document.createElement('ul');
+
+        // var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"]
+
+        // for (i=0; i<cars.length; i++) {
+        //     var li = document.createElement('li');
+        //     li.textContent = cars[i];
+        //     ul.appendChild(li);
+        // }
+
+        // document.body.appendChild(ul);
+
+        // # Event
+        // 사용자의 모든 행동
+        // addEventListener(event, callback)
+        // event 발생 시에 callback 실행
+
+        // window.addEventListener('load', function () {
+        //     alert('welcome')
+        // })
+
+        // addEventListener('resize', function() {
+        //     // console.log('resized...')
+
+        //     // console.log(window.innerWidth)
+        //     // console.log(window.innerHeight)
+
+        //     // console.log(window.outerWidth)
+        //     // console.log(window.outerHeight)
+
+        //     // console.log(window.screenTop)
+        // })
+
+        // var btn = document.querySelector('button');
+
+        // btn.addEventListener('click', function(e) {
+        //     // event
+        //     console.log(e)
+        //     // event target
+        //     console.log(e.target);
+        // })
+
+
+        function myFunction(el) {
+            // console.log(el.style.backgroundColor)
+
+            // if (el.style.color === '') {
+            //     el.style.color = 'pink'
+            // } else {
+            //     el.style.color = ''
+            // }
+
+            el.classList.toggle('active')
+        }
+
+    </script>
+
+
+    <!-- <script src="./script.js"></script> -->
 </body>
 </html>

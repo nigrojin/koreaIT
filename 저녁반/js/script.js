@@ -556,23 +556,35 @@ hello world
 
 
 // 판매중인 자동차의 Array를 만들어보세요
-var cars = [
-    { name: '제네시스', onSale: true },
-    { name: '스타리아', onSale: true },
-    { name: '아이오닉', onSale: true },
-    { name: '포니', onSale: false },
-    { name: '캐스퍼', onSale: true },
-];
+// var cars = [
+//     { name: '제네시스', onSale: true },
+//     { name: '스타리아', onSale: true },
+//     { name: '아이오닉', onSale: true },
+//     { name: '포니', onSale: false },
+//     { name: '캐스퍼', onSale: true },
+// ];
 
+// var result = cars.filter(function (value) {
+//     if (value.onSale === true) {
+//         return value;
+//     }
+// })
 
+// console.log(result)
 
-var result = cars.filter(function (value) {
-    if (value.onSale === true) {
-        return value;
-    }
-})
+// function myFunction(cb) {
+//     cb('hello')
+// }
 
-console.log(result)
+// function myCallback(data) {
+//     console.log(data)
+// }
+
+// myFunction(myCallback)
+
+// myFunction(function (data) {
+//     myCallback(data)
+// })
 
 
 
