@@ -9,15 +9,15 @@
 </head>
 <body>
 
-    <style>
+    <!-- <style>
         .active {
             color: pink;
         }
-    </style>
+    </style> -->
 
-    <i class="fa-solid fa-thumbs-up active" onclick="myFunction(this)" style="font-size: 50px;"></i>
+    <!-- <i class="fa-solid fa-thumbs-up active" onclick="myFunction(this)" style="font-size: 50px;"></i> -->
 
-    <script>
+    <!-- <script>
         // console.log(document)
         // console.log(document.body)
 
@@ -150,7 +150,6 @@
         //     console.log(e.target);
         // })
 
-
         function myFunction(el) {
             // console.log(el.style.backgroundColor)
 
@@ -162,10 +161,284 @@
 
             el.classList.toggle('active')
         }
-
-    </script>
-
+    </script> -->
 
     <!-- <script src="./script.js"></script> -->
+
+    <!-- <h1>Rendering in HTML</h1>
+
+    
+
+    <script>
+
+        // var cars = ["제네시스", "스타리아", "캐스퍼"]
+
+        // ul element를 만든다
+        // var ul = document.createElement('ul');
+        
+        // li를 만든 뒤 ul에 붙힌다
+        // for (i=0; i<cars.length; i++) {
+        //     var li = document.createElement('li');
+        //     li.innerHTML = cars[i];
+        //     ul.appendChild(li)
+        // }
+
+        // for (car of cars) { // for (value of array)
+        //     var li = document.createElement('li');
+        //     li.innerHTML = car; // cars[i]
+        //     ul.appendChild(li);
+        // }
+        
+        // cars.forEach(function (car) { // function (value, index, array)
+        //     var li = document.createElement('li');
+        //     li.innerHTML = car; // cars[i]
+        //     ul.appendChild(li);
+        // })
+        
+
+        // 완성된 ul을 body에 append(추가)
+        // document.body.appendChild(ul);
+
+
+        // Q. rendering in HTML
+        // > list 만들기
+        // > template literal을 사용
+        // var cars = [
+        //     { name: '제네시스', design: 10 , cost: 10 },
+        //     { name: '스타리아', design: 9 , cost: 9 },
+        //     { name: '아이오닉', design: 10 , cost: 9 },
+        //     { name: '캐스퍼', design: 8, cost: 8 },
+        // ]
+
+        // var ul = document.createElement('ul');
+
+        // for (car of cars) {
+        //     var li = document.createElement('li');
+        //     // template literal: ``, 변수는 ${}에 담아 출력
+        //     // 줄바꿈 가능
+        //     li.innerHTML = 
+        //     `
+        //     <b>이름:</b>${car.name}, 
+        //     <b>디자인:</b>${car.design}점, 
+        //     <b>가격:</b> $${car.cost}
+        //     `;
+
+            
+        //     ul.appendChild(li)
+        // }
+
+        // document.body.appendChild(ul);
+
+        
+        // Q. cars를 사용해서 table을 만들어보세요
+    </script> -->
+
+    <!-- <style>
+        table {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+        }
+        th, td {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        } 
+        th {
+            text-align: left;
+            background-color: #ddd;
+        }
+    </style>
+
+    <h1>현대자동차 비교표</h1>
+    <table>
+        <tr>
+            <th>이름</th>
+            <th>디자인</th>
+            <th>가격</th>
+        </tr>
+    </table>
+
+    <script>
+        // Q. table을 만들어보세요
+        
+        var cars = [
+            { name: '제네시스', design: 10 , cost: 10 },
+            { name: '스타리아', design: 9 , cost: 9 },
+            { name: '아이오닉', design: 10 , cost: 9 },
+            { name: '캐스퍼', design: 8, cost: 8 },
+        ]
+
+        // Selector
+        var table = document.querySelector('table');
+
+        for (car of cars) { // for (value of array)
+            var tr = document.createElement('tr');
+
+            tr.innerHTML = 
+            `
+            <td>${car.name}</td>
+            <td>${car.design}점</td>
+            <td>$${car.cost}</td>
+            `
+            
+            table.appendChild(tr)
+        }
+    </script> -->
+
+    <!-- <style>
+        .fa-star {
+            font-size: 20px;
+            cursor: pointer
+        }
+        .active {
+            color:gold;
+        }
+    </style>
+
+    <h1>리뷰를 남겨주세요</h1>
+
+    <i class="fa-solid fa-star" onclick="toggleStar(1)"></i>
+    <i class="fa-solid fa-star" onclick="toggleStar(2)"></i>
+    <i class="fa-solid fa-star" onclick="toggleStar(3)"></i>
+    <i class="fa-solid fa-star" onclick="toggleStar(4)"></i>
+    <i class="fa-solid fa-star" onclick="toggleStar(5)"></i>
+
+    <script>
+        // NodeList(5)
+        var stars = document.querySelectorAll('.fa-star');
+
+        console.log(stars);
+
+        function toggleStar(data) {
+
+            // 초기화 
+            // active를 모두 지운다
+            for (star of stars) {
+                star.classList.remove('active');
+            }
+            
+            // 그 다음 active 추가
+            for (i=0; i<data; i++) {
+                stars[i].classList.add('active');
+            }
+        }
+    </script> -->
+
+    <!-- <style>
+        #loader {
+            border: 16px solid #3498db;
+            border-radius: 50%;
+            border-top: 16px solid #fff;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+
+    <h1 id="message"></h1>
+    <div id="loader"></div>
+
+    <script>
+
+        // setTimeout(callback, seconds) seconds 후에 callback 실행
+        setTimeout(function () {
+            // console.log('hello')
+            document.querySelector('#message').innerHTML = 'Hello'
+            document.getElementById('loader').style.display = 'none';
+        }, 3000) // 1000 millisecond = 1 second
+    </script> -->
+
+    <!-- <style>
+        .acc-btn {
+            width: 100%;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+        }
+        .panel {
+            /* border: 1px dashed; */
+            display: none;
+        }
+    </style>
+
+    <button class="acc-btn">제네시스</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis reiciendis vitae labore nostrum vero velit iure similique, adipisci excepturi assumenda nesciunt deserunt corrupti! Ipsa, consequatur. Dignissimos itaque provident officia similique.</p>
+    </div>
+
+    <button class="acc-btn">스타리아</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis reiciendis vitae labore nostrum vero velit iure similique, adipisci excepturi assumenda nesciunt deserunt corrupti! Ipsa, consequatur. Dignissimos itaque provident officia similique.</p>
+    </div>
+
+    <button class="acc-btn">캐스퍼</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis reiciendis vitae labore nostrum vero velit iure similique, adipisci excepturi assumenda nesciunt deserunt corrupti! Ipsa, consequatur. Dignissimos itaque provident officia similique.</p>
+    </div>
+
+    <script>
+        // HTMLCollection(3)
+        var accBtns = document.getElementsByClassName('acc-btn')
+
+        console.log(accBtns);
+
+        for (accBtn of accBtns) {
+            // addEventListener(event, callback): event 발생 시에 callback 실행
+            accBtn.addEventListener('click', function (e) {
+                console.log(e.target)
+
+                // element.nextElementSibling: elemen의 DOM tree의 같은 level의
+                // 다음 element
+                var panel = e.target.nextElementSibling
+
+                // panel.style.display = 'block';
+
+                // CSS로부터 속성을 가져올 수 없다
+                console.log('display: ', panel.style.display)
+
+                if (panel.style.display === 'block') {
+                    panel.style.display = 'none'
+                } else { // ''(처음 load되었을 때) or none
+                    panel.style.display = 'block';
+                }
+
+                console.log('display: ', panel.style.display)
+            })
+        }
+    </script> -->
+
+    <style>
+        p {
+            border: 2px dashed;
+            height: 0;
+            /* overflow: hidden; */
+        }
+    </style>
+
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, eaque? Ducimus porro obcaecati aut vero iusto minus magni ut soluta alias blanditiis qui tenetur eligendi mollitia, ab, cumque ipsam eius!
+    </p>
+
+    <script>
+
+        var p = document.querySelector('p');
+
+        // CSS를 가져올 수 없다
+        console.log(p.style.height)
+        // padding을 포함
+        console.log(p.clientHeight)
+        // padding, border를 포함
+        console.log(p.offsetHeight)
+        // padding을 포함
+        console.log(p.scrollHeight)  
+        // scrollHeight + 'px' (string)
+    </script>
+
 </body>
 </html>
