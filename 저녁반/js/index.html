@@ -413,7 +413,7 @@
         }
     </script> -->
 
-    <style>
+    <!-- <style>
         p {
             border: 2px dashed;
             height: 0;
@@ -426,7 +426,6 @@
     </p>
 
     <script>
-
         var p = document.querySelector('p');
 
         // CSS를 가져올 수 없다
@@ -438,6 +437,233 @@
         // padding을 포함
         console.log(p.scrollHeight)  
         // scrollHeight + 'px' (string)
+    </script> -->
+
+    <!-- <style>
+    .acc-btn {
+        width: 100%;
+        padding: 10px;
+        text-align: left;
+        cursor: pointer;
+    }
+    .panel {
+        border: 1px solid red;
+        height: 0;
+        overflow: hidden;
+        transition: .5s;
+    }
+    </style>
+
+    <button class="acc-btn">제네시스</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis reiciendis vitae labore nostrum vero velit iure similique, adipisci excepturi assumenda nesciunt deserunt corrupti! Ipsa, consequatur. Dignissimos itaque provident officia similique.</p>
+    </div>
+
+    <button class="acc-btn">스타리아</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis reiciendis vitae labore nostrum vero velit iure similique, adipisci excepturi assumenda nesciunt deserunt corrupti! Ipsa, consequatur. Dignissimos itaque provident officia similique.</p>
+    </div>
+
+    <button class="acc-btn">캐스퍼</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis reiciendis vitae labore nostrum vero velit iure similique, adipisci excepturi assumenda nesciunt deserunt corrupti! Ipsa, consequatur. Dignissimos itaque provident officia similique.</p>
+    </div>
+
+    <script>
+
+        // NodeList
+        var accBtns = document.querySelectorAll('.acc-btn');
+
+        // Array
+        var cars = ["제네시스", "스타리아", "캐스퍼"]
+
+        cars.forEach(function (car) {
+            console.log(car)
+        })
+
+        // for (accBtn of accBtns) {
+        //     accBtn.addEventListener('click', function (e) {
+        //         console.log(e.target)
+
+        //         var panel = e.target.nextElementSibling
+
+        //         // CSS를 가져올 수 없음
+        //         console.log(panel.style.height);
+
+        //         if (panel.style.height === '') {
+        //             panel.style.height = panel.scrollHeight + 'px';
+        //         } else {
+        //             panel.style.height = '';
+        //         }
+        //     })
+        // }
+
+        accBtns.forEach(function (accBtn) { // forEach(function (value, index, array) {})
+            accBtn.addEventListener('click', function (e) {
+                console.log(e.target)
+
+                var panel = e.target.nextElementSibling
+
+                // CSS를 가져올 수 없음
+                console.log(panel.style.height);
+
+                if (panel.style.height === '') {
+                    panel.style.height = panel.scrollHeight + 'px';
+                } else {
+                    panel.style.height = '';
+                }
+            })
+        })
+
+        console.log(accBtns)
+    </script> -->
+
+
+    <!-- <div class="container">
+        <div class="btn-group">
+          <button class="btn" onclick="toggleTab('london')">London</button>
+          <button class="btn" onclick="toggleTab('seoul')">Seoul</button>
+          <button class="btn" onclick="toggleTab('tokyo')">Tokyo</button>
+        </div>
+
+        <div class="content">
+          <div id="london" class="tab-content">
+            <h3>London</h3>  
+            <p>London is...</p>
+          </div>
+          <div id="seoul" class="tab-content">
+            <h3>Seoul</h3>  
+            <p>Seoul is...</p>
+          </div>
+          <div id="tokyo" class="tab-content">
+            <h3>Tokyo</h3>  
+            <p>Tokyo is...</p>
+          </div>
+        </div>
+    </div>
+
+    <script>
+        // HTMLCollection(3)
+        var tabContents = document.getElementsByClassName('tab-content');
+
+        console.log(tabContents)
+
+        function toggleTab(city) {
+            console.log(city)
+
+            // 초기화. contents를 모두 안보이게 한다.
+            for (tabContent of tabContents) {
+                tabContent.style.display = 'none'
+            }
+
+            document.getElementById(city).style.display = 'block'
+        }
+
+        // 처음 load되었을 때 실행
+        toggleTab('london')
+    </script> -->
+
+    <!-- <h1>HTML data-name attribute</h1> -->
+
+    <!-- data-name 속성을 사용해서 원하는 데이터를 저장할 수 있다 -->
+    <!-- <h1 id="title" data-title="my-title">Title</h1>
+
+    <script>
+        var h1 = document.getElementById('title');
+        // getAttribute(attribute) 
+        console.log(h1.getAttribute('data-title'))
+    </script> -->
+
+    <!-- <style>
+        .tab-content {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+
+      <div class="container">
+        <div class="btn-group">
+          <button class="btn" data-city="london">London</button>
+          <button class="btn" data-city="seoul">Seoul</button>
+          <button class="btn" data-city="tokyo">Tokyo</button>
+        </div>
+
+        <div class="content">
+          <div id="london" class="tab-content active">
+            <h3>London</h3>  
+            <p>London is...</p>
+          </div>
+          <div id="seoul" class="tab-content">
+            <h3>Seoul</h3>  
+            <p>Seoul is...</p>
+          </div>
+          <div id="tokyo" class="tab-content">
+            <h3>Tokyo</h3>  
+            <p>Tokyo is...</p>
+          </div>
+        </div>
+    </div>
+
+    <script>
+        // NodeList(3)
+        var btns = document.querySelectorAll('.btn');
+        var tabContents = document.querySelectorAll('.tab-content');
+
+        // DOMTokenList(2)
+        console.log(tabContents[0].classList)
+
+        btns.forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                var id = e.target.getAttribute('data-city');
+
+                // active 모두 제거(초기화)
+                tabContents.forEach(function (tabContent) {
+                    tabContent.classList.remove('active')
+                })
+
+                // id값을 가진 element만 active 추가
+                document.getElementById(id).classList.add('active');
+            })
+        })
+        console.log(btns)
+    </script> -->
+
+    <style>
+        .dropdown {
+            border: 3px dashed;
+            display: inline-block;
+            position: relative;
+        }
+        .dropdown-content {
+            border: 1px solid red;
+            width: 200px;
+            position: absolute;
+            top: 35px;
+            display: none;
+        }
+        .dropdown-content a {
+            display: block;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+    <div class="dropdown">
+        <button class="drop-btn">메뉴</button>
+        <div class="dropdown-content">
+            <a href="">제네시스</a>
+            <a href="">스타리아</a>
+            <a href="">캐스퍼</a>
+        </div>
+    </div>
+    <script>
+        var dropBtn = document.querySelector('.drop-btn');
+        var dropdownContent = document.querySelector('.dropdown-content');
+        dropBtn.addEventListener('click', function () {
+            dropdownContent.classList.toggle('active');
+        })
     </script>
 
 </body>
