@@ -630,7 +630,7 @@
         console.log(btns)
     </script> -->
 
-    <style>
+    <!-- <style>
         .dropdown {
             border: 3px dashed;
             display: inline-block;
@@ -664,7 +664,312 @@
         dropBtn.addEventListener('click', function () {
             dropdownContent.classList.toggle('active');
         })
-    </script>
+    </script> -->
+
+
+    <!-- <style>
+    * {
+      padding: 0; 
+      margin: 0;
+      box-sizing: border-box;
+    }
+    header {
+      border: 3px dashed;
+    }
+    .header-inner {
+      background-color: #ddd;
+      padding: 5px;
+    }
+    nav {
+      border: 1px solid red;
+    }
+    nav {
+      display: none;
+    }
+    nav a {
+      display: block;
+      padding: 5px;
+      text-align: center;
+      border: 1px dashed;
+    }
+    .menu-btn {
+      padding: 0 10px;
+      cursor: pointer;
+    }
+    .active {
+      display: block;
+    }
+  </style>
+  
+  <header>
+    <div class="header-inner">
+      <h2><span class="menu-btn">#</span> Company</h2>
+    </div>
+    <nav>
+      <a href="">Home</a>
+      <a href="">About</a>
+      <a href="">Blog</a>
+    </nav>
+  </header>
+
+  <script>
+      var nav = document.querySelector('nav');
+      var menuBtn = document.querySelector('.menu-btn');
+
+      menuBtn.addEventListener('click', function () {
+          nav.classList.toggle('active');
+      })
+  </script> -->
+
+  <!-- <style>
+    * {
+      padding: 0; 
+      margin: 0;
+      box-sizing: border-box;
+    }
+    header {
+      border: 3px dashed;
+    }
+    .header-inner {
+      background-color: #ddd;
+      padding: 5px;
+    }
+    nav {
+      border: 1px solid red;
+      height: 0;
+      overflow: hidden;
+      transition: .5s;
+    }
+    nav a {
+      display: block;
+      padding: 5px;
+      text-align: center;
+      border: 1px dashed;
+    }
+    .menu-btn {
+      padding: 0 10px;
+      cursor: pointer;
+    }
+  </style>
+  
+  <header>
+    <div class="header-inner">
+      <h2><span class="menu-btn">#</span> Company</h2>
+    </div>
+    <nav>
+      <a href="">Home</a>
+      <a href="">About</a>
+      <a href="">Blog</a>
+    </nav>
+  </header>
+
+  <script>
+      var nav = document.querySelector('nav');
+      var menuBtn = document.querySelector('.menu-btn');
+
+      menuBtn.addEventListener('click', function () {
+          // CSS를 가져올 수 없음
+          console.log(nav.style.height)
+
+          if (nav.style.height === '') {
+              nav.style.height = nav.scrollHeight + 'px';
+          } else {
+              nav.style.height = '';
+          }
+      })
+  </script> -->
+
+  <!-- <style>
+    nav {
+      border: 1px dashed;
+      width: 280px;
+      height: 100%;
+      /* viewport(디바이스 크기) 기준 */
+      position: fixed;
+      top: 0;
+      /* nav의 넓이만큼 왼쪽으로 이동 */
+      left: -280px;
+      transition: 0.5s;
+      background-color: #ddd;
+    }
+    nav a {
+      display: block;
+    }
+    .layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: none;
+    }
+  </style>
+
+  <div id="layer" class="layer"></div>
+  
+  <nav>
+    <a href="">Home</a>
+    <a href="">About</a>
+    <a href="">Blog</a>
+    <span id="closeMenu">Close</span>
+  </nav>
+  <span id="openMenu">MENU</span>
+
+  <script>
+      var openMenu = document.getElementById('openMenu');
+      var closeMenu = document.getElementById('closeMenu');
+      var nav = document.querySelector('nav');
+      var layer = document.getElementById('layer');
+
+      // 메뉴 열기 버튼을 클릭했을 때
+      openMenu.addEventListener('click', function () {
+          nav.style.left = '0px';
+          layer.style.display = 'block'
+      })
+
+      // 메뉴 닫기 버튼을 클릭했을 때
+      closeMenu.addEventListener('click', function () {
+          nav.style.left = '-280px';
+          layer.style.display = 'none';
+      })
+
+      // layer를 클릭했을 때
+      layer.addEventListener('click', function () {
+          nav.style.left = '-280px';
+          layer.style.display = 'none';
+      })
+  </script> -->
+
+<!-- <style>
+    .title {
+        display: none;
+    }
+    /* 더 밑에 있는 CSS 속성의 영향을 받는다 */
+    .active {
+        display: block;
+    }
+</style>
+<h1 class="title active">현대자동차</h1> -->
+
+
+<!-- <style>
+    img {
+      width: 100%;
+    }
+    #img01 {
+      width: 200px;
+    }
+    .layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: none;
+    }
+    .container {
+        border: 3px solid red;
+      display: none;
+      position: fixed;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      /* auto: Set the stack order equal to its parents. default. */
+      /* number: Set the stack order of the element. Negative numbers are allowed */
+      z-index: auto;
+    }
+  </style> -->
+
+  <!-- 썸네일 이미지 -->
+  <!-- <img id="img01" src="../../../bunny/img/bunny.jpg" alt=""> -->
+
+  <!-- 레이어 -->
+  <!-- <div id="layer" class="layer"></div> -->
+
+  <!-- 모달 이미지 -->
+  <!-- <div id="container" class="container">
+    <img id="modal-img" src="../../../bunny/img/bunny.jpg" alt="">
+  </div>
+
+  <script>
+      document.getElementById('img01')
+      .addEventListener('click', function (e) {
+          document.getElementById('modal-img').src = e.target.src;
+          document.getElementById('container').style.display = 'block';
+          document.getElementById('layer').style.display = 'block';
+      })
+  </script> -->
+
+    <style>
+    img {
+      width: 100%;
+    }
+    .thumbnail {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+    .thumbnail:hover {
+      opacity: 1;
+    }
+    .layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: none;
+    }
+    .container {
+      border: 3px solid red;
+      display: none;
+      position: fixed;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+    }
+  </style>
+  <!-- 썸네일 -->
+  <img class="thumbnail" src="../../img/bunny.jpg" alt="">
+  <img class="thumbnail" src="../../img/cat.jpeg" alt="">
+  <img class="thumbnail" src="../../img/bird.jpeg" alt="">
+  
+  <!-- 레이어 -->
+  <div id="layer" class="layer"></div>
+
+  <!-- 모달 이미지 -->
+  <div id="container" class="container">
+    <img id="modal-img" src="" alt="">
+  </div>
+
+  <script>
+      // NodeList
+    var thumbnails = document.querySelectorAll('.thumbnail');
+    var modalImg = document.getElementById('modal-img');
+    var container = document.getElementById('container');
+    var layer = document.getElementById('layer');
+
+    thumbnails.forEach(function (thumbnail) {
+        thumbnail.addEventListener('click', function () {
+            modalImg.src = thumbnail.src;
+            container.style.display = 'block';
+            layer.style.display = 'block';
+        })
+    })
+
+    layer.addEventListener('click', function () {
+      layer.style.display = 'none';
+      container.style.display = 'none';
+    })
+
+  </script>
+
 
 </body>
 </html>
