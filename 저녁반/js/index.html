@@ -903,7 +903,8 @@
       })
   </script> -->
 
-    <style>
+
+    <!-- <style>
     img {
       width: 100%;
     }
@@ -934,17 +935,17 @@
       transform: translateX(-50%);
       width: 400px;
     }
-  </style>
-  <!-- 썸네일 -->
-  <img class="thumbnail" src="../../img/bunny.jpg" alt="">
+  </style> -->
+  <!-- 썸네일 --> 
+  <!-- <img class="thumbnail" src="../../img/bunny.jpg" alt="">
   <img class="thumbnail" src="../../img/cat.jpeg" alt="">
-  <img class="thumbnail" src="../../img/bird.jpeg" alt="">
+  <img class="thumbnail" src="../../img/bird.jpeg" alt=""> -->
   
   <!-- 레이어 -->
-  <div id="layer" class="layer"></div>
+  <!-- <div id="layer" class="layer"></div> -->
 
   <!-- 모달 이미지 -->
-  <div id="container" class="container">
+  <!-- <div id="container" class="container">
     <img id="modal-img" src="" alt="">
   </div>
 
@@ -967,7 +968,215 @@
       layer.style.display = 'none';
       container.style.display = 'none';
     })
+  </script> -->
 
+   <!-- <style>
+    .thumbnail {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      opacity: 0.8;
+      cursor: pointer;
+    }
+    .thumbnail:hover {
+      opacity: 1
+    }
+    .container img {
+      width: 400px;
+      height: 300px;
+      object-fit: cover;
+    }
+    .thumbnail-container {
+      font-size: 0;
+    }
+  </style>
+  
+  <div class="container">
+    <img id="display-image" src="" alt="">
+  </div>
+  <div class="thumbnail-container">
+    <img class="thumbnail" src="../../img/bunny.jpg" alt="">
+    <img class="thumbnail" src="../../img/cat.jpeg" alt="">
+    <img class="thumbnail" src="../../img/bird.jpeg" alt="">
+    <img class="thumbnail" src="../../img/duck.jpeg" alt="">
+  </div>
+
+  <script>
+    // NodeList
+    // Array와 비슷한 속성을 가지고 있다 (index, length 등)
+    var thumbnails = document.querySelectorAll('.thumbnail');
+    var displayImage = document.getElementById('display-image');
+
+    console.log(thumbnails)
+
+
+    // 썸네일을 클릭했을 때
+    thumbnails.forEach(function (thumbnail) {
+
+      thumbnail.addEventListener('click', function (e) {
+        console.log(e.target.src);
+
+        // getAttribute('src')
+        displayImage.src = e.target.src;
+      });
+
+    })
+
+    // 처음 페이지가 load되었을 때
+    displayImage.src = thumbnails[0].src 
+  </script> -->
+
+  <!-- <style>
+    img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+    }
+  </style>
+
+  <div class="container">
+    <img src="../../img/bunny.jpg" alt="">
+    <img src="../../img/cat.jpeg" alt="">
+    <img src="../../img/bird.jpeg" alt="">
+  </div>
+  <div class="nav">
+    <button id="prev" class="prev" onclick="navigateTo(-1)">prev</button>
+    <button id="next" class="next" onclick="navigateTo(1)">next</button>
+  </div>
+
+  <script>
+    var imgs = document.querySelectorAll('img');
+    var index = 0;
+
+    function navigateTo(data) {
+
+      // index = index + data;
+      index += data;
+      
+      // 첫번째 이미지에서 prev을 누를 경우
+      if (index === -1) {
+        // 마지막 이미지의 index
+        index = imgs.length-1
+      }
+
+      // 마지막 이미지에서 next를 누르는 경우
+      if (index === imgs.length) {
+        index = 0
+      }
+      
+      console.log(index);
+
+      // 모든 이미지를 안보이게 한다
+      imgs.forEach(function (img) {
+        img.style.display = 'none';
+      })
+      // index에 해당하는 이미지만 보이게 한다
+      imgs[index].style.display = 'block';
+    }
+
+    // 페이지가 처음 로드되었을 때
+    navigateTo(index);
+  </script> -->
+
+  <!-- <h1 id="clock"></h1>
+
+  <script>
+
+
+    // setInterval(callback, seconds) seconds마다 callback실행
+    setInterval(function () {
+      document.getElementById('clock').innerHTML = new Date();
+    }, 1000) // 1000 milliseconds = 1 seconds
+
+    // 페이지가 처음 load되었을 때
+    document.getElementById('clock').innerHTML = new Date();
+
+  </script> -->
+
+  <!-- <style>
+    img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+    }
+  </style>
+
+  <div class="container">
+    <img src="../../img/bunny.jpg" alt="">
+    <img src="../../img/cat.jpeg" alt="">
+    <img src="../../img/bird.jpeg" alt="">
+  </div>
+
+  <script>
+    var imgs = document.querySelectorAll('img');
+    var index = -1;
+
+    function navigateTo() {
+
+      index++; // index = index + 1
+
+      if (index === imgs.length) {
+        index = 0;
+      }
+
+      console.log(index)
+
+      // 모든 이미지를 안보이게 한다
+      imgs.forEach(function (img) {
+        img.style.display = 'none';
+      })
+      // index에 해당하는 이미지만 보이게 한다
+      imgs[index].style.display = 'block';
+    }
+
+    // 처음 페이지가 load되었을 때
+    navigateTo();
+
+    // 3초 뒤부터 시작(3초 간격으로 callback 실행)
+    setInterval(navigateTo, 3000);
+  </script> -->
+
+    <style>
+    .container {
+      border: 5px dashed;
+      width: 300px;
+      height: 300px;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 0;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: inline-block;
+      transition: 0.5s;
+    }
+  </style>
+  <div class="container">
+    <img src="../../img/bunny.jpg" alt="">
+    <img src="../../img/cat.jpeg" alt="">
+    <img src="../../img/bird.jpeg" alt="">
+  </div>
+  <div class="nav">
+    <button class="prev" onclick="navigateTo(-1)">prev</button>
+    <button class="next" onclick="navigateTo(1)">next</button>
+  </div>
+  <script>
+    var imgs = document.querySelectorAll('img');
+    var index = 0;
+
+    // imgs[0].style.marginLeft = '-50px';
+
+    function navigateTo(data) {
+      index -= data;
+
+      imgs[0].style.marginLeft = (index * 300) + 'px';
+
+      console.log(imgs[0].style.marginLeft);
+    }
+
+  
   </script>
 
 
