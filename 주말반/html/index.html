@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML test</title>
+</head>
+<body>
+
+    <!-- Semantic tag -->
+    <!-- tag의 이름이 목적이 된다 -->
+    <!-- <head></head>
+    <body></body>
+    <header></header>
+    <nav></nav>
+    <main></main>
+    <article></article>
+    <section></section>
+    <aside></aside> -->
+    <!-- 데이터, 표 -->
+    <!-- <table></table> -->
+    <!-- 양식 -->
+    <!-- <form action=""></form> -->
+    <!-- anchor 링크 -->
+    <!-- <a href=""></a> -->
+    <!-- 이미지 -->
+    <!-- src, alt: attribute(속성), element의 필요한 정보들을 가지고 있다 -->
+    <!-- src: source 이미지의 경로 -->
+    <!-- alt: alternative 이미지 설명 -->
+    <!-- 이렇게 사용할 수 없음 -->
+    <!-- <div class="img" src="" alt=""></div> -->
+    <!-- <img src="" alt=""> -->
+    <!-- Unordered list (리스트) -->
+    <!-- <ul></ul> -->
+    <!-- 웹 가장 하단의 정보 -->
+    <!-- <footer></footer> -->
+
+
+    <!-- Non-Semantic tag -->
+    <!-- 다양한 목적으로 사용될 수 있다 -->
+
+    <!-- divide -->
+    <!-- <div></div>
+    <div class="header"></div>
+    <div class="nav"></div>
+    <div class="footer"></div> -->
+    
+    <!-- paragraph (문장) -->
+    <!-- <p></p> -->
+    <!-- span -->
+    <!-- <span></span> -->
+
+
+    <!-- 콘텐츠의 머리 부분 -->
+    <header>
+        <!-- heading. 제목에 사용된다. h1-h5. 글자크기가 점점 작아진다. bald처리 -->
+        <h1>현대자동차 공식홈페이지</h1>
+    </header>
+
+    <nav>
+        <h2>메뉴</h2>
+        <a href="">모델소개</a>
+        <a href="">모델 비교표</a>
+        <a href="">오시는 길</a>
+        <a href="">연락하기</a>
+    </nav>
+
+    <!-- horizontal rule(border) (수평 줄) -->
+    <hr>
+
+    <!-- 메인 콘텐츠 -->
+    <main>
+        <iframe width="1263" height="480" src="https://www.youtube.com/embed/9Jec6h7ncKQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- 모델소개 -->
+        <section>
+            <h2>모델 소개</h2>
+            <!-- Unordered list  -->
+            <ul>
+                <!-- list item -->
+                <li>
+                    <h3>제네시스</h3>
+                    <!-- 상대경로: 현재 파일을 기준으로 -->
+                    <!-- 절대경로: root부터 (윈도우의 경우 C드라이브) -->
+                    <img src="../../img/duck.jpeg" alt="제네시스" width="200">
+                    <!-- b: bold -->
+                    <p>
+                        <b>Lorem</b> ipsum dolor sit amet consectetur adipisicing elit. 
+                        <!-- breaking rule: 줄바꿈 -->
+                        <br>
+                        Unde eligendi assumenda, consequatur, adipisci ut aperiam dolor 
+                        <br><br>
+                        beatae necessitatibus aliquam culpa pariatur natus, 
+                        <br>
+                        ab laudantium? Odit est mollitia doloremque voluptatem similique!
+                    </p>
+                </li>
+                <li>
+                    <h3>스타리아</h3>
+                    <img src="../../img/bunny.jpg" alt="스타리아" width="200">
+                    <p><span style="color: red">Lorem</span> ipsum dolor sit amet consectetur adipisicing elit. Unde eligendi assumenda, consequatur, adipisci ut aperiam dolor beatae necessitatibus aliquam culpa pariatur natus, ab laudantium? Odit est mollitia doloremque voluptatem similique!</p>
+                </li>
+                <li>
+                    <h3>캐스퍼</h3>
+                    <img src="../../img/bird.jpeg" alt="캐스퍼" width="200">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde eligendi assumenda, consequatur, adipisci ut aperiam dolor beatae necessitatibus aliquam culpa pariatur natus, ab laudantium? Odit est mollitia doloremque voluptatem similique!</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 모델비교표 -->
+        <section>
+            <h2>모델 비교표</h2>
+            <table border="1">
+                <!-- table row (행) -->
+                <tr>
+                    <!-- table head 제목 -->
+                    <th>이름</th>
+                    <th>컬러</th>
+                    <th>연비</th>
+                    <th>가격</th>
+                </tr>
+                <tr>
+                    <!-- table data -->
+                    <td>제네시스</td>
+                    <td>블랙, 화이트, 그레이</td>
+                    <td>15/l</td>
+                    <td>1000원</td>
+                </tr>
+                <tr>
+                    <td>스타리아</td>
+                    <td>블랙</td>
+                    <td>10/l</td>
+                    <td>800원</td>
+                </tr>
+                <tr>
+                    <td>캐스퍼</td>
+                    <td>카키, 화이트, 오렌지</td>
+                    <td>13/l</td>
+                    <td>600원</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 오시는 길 -->
+        <section>
+            <h2>오시는 길</h2>
+            <!-- iframe: HTML안에 다른 html을 추가할 때 사용한다 -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.6759558534022!2d126.7217519505037!3d37.49197253605427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7d0c6d136969%3A0x65ce7af493ae07af!2z7L2U66as7JWESVTslYTsubTrjbDrr7gg7J247LKc7KeA7KCQ!5e0!3m2!1sko!2skr!4v1650683248956!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+        <!-- 연락하기 -->
+        <section>
+            <h2>연락하기</h2>
+            <form action="">
+                <div class="form-group">
+                    <!-- input에 대한 설명 -->
+                    <label for="">성 함</label>
+                    <!-- input: 유저로부터 데이터를 받는다 -->
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label for="">연락처</label>
+                    <input type="text" placeholder="숫자만 입력하세요">
+                </div>
+                <div class="form-group">
+                    <!-- 많은 text 데이터를 받는다 -->
+                    <textarea name="" id="" cols="30" rows="10" placeholder="내용을 입력하세요"></textarea>
+                </div>
+                <div class="from-group">
+                    <input type="checkbox">
+                    <!-- 글자크기가 기본적인 글자보다 더 작다 -->
+                    <small><a href="">개인정보 처리방침</a>에 동의합니다</small>
+                </div>
+                <div class="form-group">
+                    <button>보내기</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <hr>
+
+    <footer>
+        <small>2022 현대자동차</small>
+    </footer>
+</body>
+</html>
