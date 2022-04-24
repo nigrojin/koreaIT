@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CSS flow</h1>
+    <hr>
+
+    <!-- <h1>CSS Selector (선택자)</h1> -->
+    <!-- <p>element, .clsss, #id, children, ...</p> -->
+
+
+    <!-- <style>
+        /* class  */
+        .container {
+            background-color: whitesmoke;
+        }
+        /* id */
+        #title {
+            font-weight: normal
+        }
+        /* element */
+        p {
+            font-style: italic
+        }
+        /* children */
+        p .bold {
+            font-weight: bold;
+        }
+        .border {
+            border: 3px solid black;
+        }
+        .bg-black {
+            background-color: #555;
+            color: white;
+        }
+    </style>
+
+    <div class="container">
+        <h2 id="title">현대자동차</h2>
+        <p>현대자동차 2022년 <span class="bold">신제품</span></p>
+        <ul class="border bg-black">
+            <li>제네시스</li>
+            <li>스타리아</li>
+            <li>캐스퍼</li>
+        </ul>
+    </div> -->
+
+    <!-- <h1>CSS Color</h1>
+    <p>Name, RGB, RGBA, HEX</p>
+
+    <style>
+        /* Name */
+        .red {
+            color: red;
+        }
+        /* rgb(red, green, blue) */
+        /* 0 - 225 */
+        .green {
+            color: rgb(60, 179, 113);
+        }
+        /* rgba(red, green, blue, opacity) */
+        /* opacity: 0(완전투명) - 1(완전불투명) */
+        .opacity {
+            color: rgba(60, 179, 113, 0.5)
+        }
+        /* Hexadecimal (16진수) */
+        /* 0-9, a-f */
+        /* rrggbb */
+        .blue {
+            /* color: #0000ff */
+            color: #00f;
+        }
+    </style>
+
+    <ul>
+        <li class="red">Red</li>
+        <li class="green">Green</li>
+        <li class="opacity">Green</li>
+        <li class="blue">Blue</li>
+    </ul> -->
+
+    <!-- <h1>Background</h1>
+    <p>background-color, background-image</p> -->
+
+
+    <!-- <style>
+        .bg-black {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+
+    <div class="bg-black">Dark Mode</div> -->
+
+    <!-- <style>
+        .bg-image {
+            border: 1px dashed;
+            width: 200px;
+            height: 200px;
+            /* 상대 경로 */
+            /* 현재 파일을 기준으로 */
+            background-image: url('../../img/duck.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+
+
+    <div class="bg-image"></div> -->
+
+
+    <!-- <h1>border padding margin</h1> -->
+
+    <!-- <style>
+        .btn {
+            /* element 내부의 공간 */
+            /* top left bottom right */
+            /* padding: 10px;  */
+            /* top bottom / left right */
+            /* padding: 10px 15px; */
+            /* top right bottom (right); */
+            /* padding: 10px 15px 10px; */
+
+            padding-top: 10px;
+            padding-right: 15px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+
+            /* 여백 */
+            margin: 5px;
+        }
+    </style>
+
+    <h1>저장하시겠습니까?</h1>
+    <div class="btn-group">
+        <button class="btn">저장</button>
+        <button class="btn">취소</button>
+    </div> -->
+
+
+    <!-- <h1>Display</h1> -->
+    <!-- <p>inline, block, inline-block</p> -->
+
+    <!-- <style>
+        hr {
+        margin: 0
+        }
+        p, span, button {
+        border: 1px dashed;
+        padding: 10px;
+        margin: 10px;
+        }
+        span {
+            /* display: inline-block; */
+        }
+    </style> -->
+
+    <!-- display: block parent element(DOM Tree상 바로 위의 element)의 넓이를 다 차지한다 -->
+    <!-- div, p, header, nav, section, form, footer, ... -->
+    <!-- <p>block</p>
+    <p>block</p>
+
+    <hr> -->
+    <!-- display: inline 필요한 만큼만 넓이를 차지한다 -->
+    <!-- 상하의 padding과 margin이 무시된다 -->
+    <!-- a, span, img, .. -->
+    <!-- <span>inline</span>
+    <span>inline</span>
+
+    <hr> -->
+
+    <!-- display: inline-block 필요한 만큼만 넓이를 차지한다 -->
+    <!-- button, input, .. -->
+    <!-- <button>inline-block</button>
+    <button>inline-block</button> -->
+
+    <!-- <h1>width, height, min-width, min-height, max-width, max-height</h1>
+
+    <style>
+    p {
+      border: 1px dashed;
+      /* 콘텐츠에 필요한 만큼의 넓이, 기본값 */
+      width: auto;
+      /* 콘텐츠에 필요한 만큼의 높이, 기본값 */
+      height: auto;
+    }
+    .fixed {
+        width: 200px;
+        height: 200px;
+    }
+    .max-width {
+        max-width: 600px;
+    }
+    .min-height {
+        min-height: 100px;
+    }
+    .width {
+        width: 600px;
+    }
+    .height {
+        height: 100px;
+    }
+  </style> -->
+
+  <!-- <p class="fixed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ipsa dignissimos, reprehenderit inventore odit ex, molestias dolorem, beatae quidem ipsum deleniti esse rem consequatur suscipit temporibus?</p>
+  <p class="max-width">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ipsa dignissimos, reprehenderit inventore odit ex, molestias dolorem, beatae quidem ipsum deleniti esse rem consequatur suscipit temporibus?</p>
+  <p class="min-height">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ipsa dignissimos, reprehenderit inventore odit ex, molestias dolorem, beatae quidem ipsum deleniti esse rem consequatur suscipit temporibus?
+  </p> -->
+  <!-- <p class="width">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non blanditiis, optio, vero voluptas consequatur corrupti, delectus veniam eos odio similique architecto magnam eaque fugit harum soluta? Officia dolorem aut similique!</p>
+  <p class="height">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Non blanditiis, optio, vero voluptas consequatur corrupti, delectus veniam eos odio similique architecto magnam eaque fugit harum soluta? Officia dolorem aut similique!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Non blanditiis, optio, vero voluptas consequatur corrupti, delectus veniam eos odio similique architecto magnam eaque fugit harum soluta? Officia dolorem aut similique!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Non blanditiis, optio, vero voluptas consequatur corrupti, delectus veniam eos odio similique architecto magnam eaque fugit harum soluta? Officia dolorem aut similique!
+    </p> -->
+
+<!-- <h1>overflow</h1>
+<p>콘텐츠가 element의 크기를 넘었을 때</p>
+<p>visible, auto, scroll, hidden</p> -->
+
+  <!-- <style>
+    p {
+      border: 1px dashed;
+      width: 200px;
+      height: 100px;
+      display: inline-block;
+      vertical-align: top;
+    }
+    .auto {
+        /* overflow되는 부분만 scroll bar 생성 */
+        overflow: auto;
+    }
+    .scroll {
+        /* x, y축 scroll bar 생성 */
+        overflow: scroll;
+    }
+    .hidden {
+        /* overflow부분을 숨긴다 */
+        overflow: hidden;
+    }
+    .visible {
+        /* overflow부분을 보이게 한다. 기본값 */
+        overflow: visible;
+    }
+  </style>
+
+<p class="auto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia reiciendis, illo esse dolorem nihil rem consequuntur asperiores inventore dolores. Eaque nam sunt quo, quas qui veniam doloremque quis delectus suscipit!</p>
+<p class="scroll">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia reiciendis, illo esse dolorem nihil rem consequuntur asperiores inventore dolores. Eaque nam sunt quo, quas qui veniam doloremque quis delectus suscipit!</p>
+<p class="hidden">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia reiciendis, illo esse dolorem nihil rem consequuntur asperiores inventore dolores. Eaque nam sunt quo, quas qui veniam doloremque quis delectus suscipit!</p>
+<p class="visible">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia reiciendis, illo esse dolorem nihil rem consequuntur asperiores inventore dolores. Eaque nam sunt quo, quas qui veniam doloremque quis delectus suscipit!</p> -->
+
+
+<!-- <h1>Position</h1> -->
+<!-- <p>element를 어떻게 위치시킬 것인가</p> -->
+<!-- <p>static relative absolute fixed</p> -->
+
+<!-- <style>
+  body {
+    border: 1px solid pink;
+    min-height: 1000px;
+  }
+  div {
+    border: 1px dashed;
+    width: 100px;
+    height: 100px;
+  }
+  .static {
+      /* 기본값. 자연스러운 흐름 */
+      position: static;
+      /* 적용되지 않음 */
+      /* left: 10px; */
+  }
+  .fixed {
+    /* viewport (디바이스의 화면)에 상대적이다 */
+      position: fixed;
+      top: 0; right: 0;
+  }
+  .relative {
+      /* 원래 자신의 위치를 기준으로  */
+      position: relative;
+      left: 10px;
+  }
+  .absolute {
+      /* relative parent에 대해 절대값을 갖는다 */
+      position: absolute;
+      background-color: red;
+      right: 10px;
+      bottom: 10px;
+  }
+</style>
+
+<div class="container">
+  <div class="static">static</div>
+  <div class="fixed">fixed</div>
+  <div class="relative">
+    <span class="absolute">absolute</span>
+  </div>
+</div> -->
+<!-- 
+<h1>Transform</h1>
+<p>element의 변형</p>
+<p>none translate scale rotate skew</p> -->
+
+<!-- <style>
+  div {
+    border: 1px dashed;
+    width: 100px;
+    height: 100px;
+    /* 기본값 */
+    transform: none;
+  }
+  .translate {
+      /* 원래 자신의 위치를 기준으로 움직인다 */
+      /* translate(top/bottom, left/right) */
+      transform: translate(25px, 50px);
+  }
+  .rotate {
+      /* rotate(degree) */
+      transform: rotate(20deg);
+  }
+  .scale {
+      /* scale(width, height) */
+      transform: scale(0.5, 0.5)
+  }
+  .skew {
+      /* skew 비스듬하게  */
+      transform: skew(10deg, 5deg)
+  }
+
+</style>
+
+<div class="translate"></div>
+<div class="rotate"></div>
+<div class="scale"></div>
+<div class="skew"></div> -->
+
+<!-- <h1>Display: flex</h1> -->
+<!-- <p>Response Web (반응형)</p> -->
+
+<!-- <style>
+    .flex {
+        display: flex;
+        background-color: #ddd;
+    }
+    .item {
+        /* 기본값 */
+        display: block;
+        border: 1px dashed;
+        flex: 33.33333%;
+    }
+</style>
+
+
+<div class="flex">
+    <div class="item">item</div>
+    <div class="item">item</div>
+    <div class="item">item</div>
+</div> -->
+
+<!-- <style>
+    .flex {
+        background-color: #ddd;
+        display: flex;
+    }
+    .min-width, .item {
+        border: 1px dashed;
+    }
+    .min-width {
+        min-width: 100px;
+    }
+    .item {
+        width: 100%;
+    }
+</style>
+
+
+<div class="flex">
+    <div class="min-width">min-width</div>
+    <div class="item">item</div>
+    <div class="min-width">min-width</div>
+</div> -->
+
+
+
+<!-- <h1>Media rule</h1> -->
+<!-- <p>Responsive Web</p> -->
+
+<!-- <style>
+    p {
+      border: 1px dashed;
+    }
+
+    @media (min-width: 600px) {
+        .min-width {
+            color: green;
+        }
+    }
+    @media (min-width: 800px) {
+        .min-width {
+            color: blue;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .max-width {
+            color: red
+        }
+    }
+    @media (max-width: 600px) {
+        .max-width {
+            color: pink
+        }
+    }
+</style>
+
+<p class="min-width">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid libero consequatur mollitia a sequi veritatis. Adipisci odit corporis minus. Sed dolores maxime inventore accusantium ea consectetur natus quidem provident corrupti.</p>
+<p class="max-width">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid libero consequatur mollitia a sequi veritatis. Adipisci odit corporis minus. Sed dolores maxime inventore accusantium ea consectetur natus quidem provident corrupti.</p> -->
+
+<style>
+    .btn {
+        padding: 14px 28px;
+        cursor: pointer;
+        color: #fff;
+        border: none;
+        /* 기본값 */
+        display: inline-block;
+    }
+    .success {
+        background-color: #2196f3;
+    }
+    .success:hover {
+        background-color: #0b7dda;
+    }
+    .warning {
+        background-color: #ff9800;
+    }
+    .warning:hover {
+        background-color: #e68a00;
+    }
+    .danger {
+        background-color: #f44336;
+    }
+    .danger:hover {
+        background-color: #da190b;
+    }
+</style>
+
+
+<button class="btn success">Success</button>
+<button class="btn warning">Warning</button>
+<button class="btn danger">Danger</button>
+
+
+</body>
+</html>
