@@ -1136,7 +1136,8 @@
     setInterval(navigateTo, 3000);
   </script> -->
 
-    <style>
+
+    <!-- <style>
     .container {
       border: 5px dashed;
       width: 300px;
@@ -1144,6 +1145,7 @@
       overflow: hidden;
       white-space: nowrap;
       font-size: 0;
+      position: relative;
     }
     img {
       width: 100%;
@@ -1152,31 +1154,283 @@
       display: inline-block;
       transition: 0.5s;
     }
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .prev {
+      left: 0
+    }
+    .next {
+      right: 0;
+    }
+    .indicator {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      /* border: 2px solid red; */
+    }
+    .indicator .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ddd;
+      margin: 0 2px;
+    }
   </style>
+
+
   <div class="container">
     <img src="../../img/bunny.jpg" alt="">
     <img src="../../img/cat.jpeg" alt="">
     <img src="../../img/bird.jpeg" alt="">
+
+    <div class="indicator">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <div class="nav">
+      <button class="prev" onclick="navigateTo(-1)">&#10094;</button>
+      <button class="next" onclick="navigateTo(1)">&#10095;</button>
+    </div>
   </div>
-  <div class="nav">
-    <button class="prev" onclick="navigateTo(-1)">prev</button>
-    <button class="next" onclick="navigateTo(1)">next</button>
-  </div>
+
+
   <script>
     var imgs = document.querySelectorAll('img');
+    var prev = document.querySelector('.prev');
+    var next = document.querySelector('.next');
+    var dots = document.querySelectorAll('.dot');
     var index = 0;
 
-    // imgs[0].style.marginLeft = '-50px';
+    // 처음 load되었을 때
+    navigateTo(index);
+
 
     function navigateTo(data) {
-      index -= data;
+      index += data;
 
-      imgs[0].style.marginLeft = (index * 300) + 'px';
+      console.log(index)
 
-      console.log(imgs[0].style.marginLeft);
+      // 초기화
+      prev.style.display = 'block'
+      next.style.display = 'block'
+
+      // 이전버튼 숨긴다
+      if (index === 0) {
+        prev.style.display = 'none';
+      }
+
+      // 다음버튼 숨긴다
+      if (index == imgs.length-1) {
+        next.style.display = 'none';
+      }
+
+      // 초기화
+      dots.forEach(function (dot) {
+        dot.style.backgroundColor = '#ddd';
+      })
+    
+      dots[index].style.backgroundColor = '#555';
+
+      imgs[0].style.marginLeft = `-${index * 300}px`;
+    }
+  </script> -->
+
+  <!-- <style>
+    * { box-sizing: border-box; }
+    .thumbnail {
+      float: left;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+    .thumbnail:hover {
+      opacity: 1
+    }
+    .container {
+      /* border: 3px dashed; */
+      width: 400px;
+      height: 300px;
+      position: relative;
+    }
+    .container img {
+      /* width: 400px; */
+      /* height: 300px; */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .prev {
+      left: 0;
+    }
+    .next {
+      right: 0;
+    }
+  </style>
+  
+  <div class="container">
+    <img id="display-image" src="" alt="">
+    <div class="nav">
+      <button class="prev" onclick="navigateTo(-1)">&#10094;</button>
+      <button class="next" onclick="navigateTo(1)">&#10095;</button>
+    </div>
+  </div>
+  <div id="thumbnails" class="">
+    <img class="thumbnail" src="../../img/bunny.jpg" onclick="jumpTo(0)" alt="">
+    <img class="thumbnail" src="../../img/cat.jpeg" onclick="jumpTo(1)" alt="">
+    <img class="thumbnail" src="../../img/bird.jpeg" onclick="jumpTo(2)" alt="">
+    <img class="thumbnail" src="../../img/duck.jpeg" onclick="jumpTo(3)" alt="">
+  </div>
+  <script>
+    var thumbnails = document.querySelectorAll('.thumbnail');
+    var displayImage = document.getElementById('display-image');
+    var prev = document.querySelector('.prev');
+    var next = document.querySelector('.next');
+
+    var index = 0;
+
+    function navigateTo(data) {
+      index += data;
+
+      if (index === -1) {
+        index = thumbnails.length-1
+      }
+
+      if (index===thumbnails.length) {
+        index = 0;
+      }
+      
+      console.log(index);
+
+      // 썸네일의 source를 displayImage에 대입한다
+      displayImage.src = thumbnails[index].src;
     }
 
+
+    function jumpTo(data) {
+      index = data;
+      console.log(index);
+
+      displayImage.src = thumbnails[index].src;
+    }
+
+    // 처음 load되었을 때 실행
+    navigateTo(index)
   
+  </script> -->
+
+   <style>
+    * { box-sizing: border-box; }
+    .thumbnail {
+      float: left;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+    .thumbnail:hover {
+      opacity: 1
+    }
+    .container {
+      /* border: 3px dashed; */
+      position: fixed;
+      top: 50px;
+      right: 50%;
+      transform: translateX(50%);
+      width: 400px;
+      height: 300px;
+      display: none;
+    }
+    .container img {
+      /* width: 400px; */
+      /* height: 300px; */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      display: none;
+    }
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .prev {
+      left: 0;
+    }
+    .next {
+      right: 0;
+    }
+  </style>
+  <div id="thumbnails" class="">
+    <img class="thumbnail" src="../../img/bunny.jpg" onclick="jumpTo(0)" alt="">
+    <img class="thumbnail" src="../../img/cat.jpeg" onclick="jumpTo(1)" alt="">
+    <img class="thumbnail" src="../../img/bird.jpeg" onclick="jumpTo(2)" alt="">
+    <img class="thumbnail" src="../../img/duck.jpeg" onclick="jumpTo(3)" alt="">
+  </div>
+  <div class="layer"></div>
+  <div class="container">
+    <img id="display-image" src="" alt="">
+    <div class="nav">
+      <button class="prev" onclick="navigateTo(-1)">&#10094;</button>
+      <button class="next" onclick="navigateTo(1)">&#10095;</button>
+    </div>
+  </div>
+  <script>
+    var container = document.querySelector('.container');
+    var thumbnails = document.querySelectorAll('.thumbnail');
+    var displayImage = document.getElementById('display-image');
+    var layer = document.querySelector('.layer');
+    var prev = document.querySelector('.prev');
+    var next = document.querySelector('.next');
+    
+    var index = 0;
+    function navigateTo(data) {
+      index += data;
+      console.log(index)
+      if (index === -1) {
+        index = thumbnails.length-1
+      }
+      if (index === thumbnails.length) {
+        index = 0;
+      }
+      getSrc(thumbnails[index].src);
+    }
+    function jumpTo(data) {
+      index = data;
+      console.log(index)
+      getSrc(thumbnails[index].src)
+      container.style.display = 'block';
+      layer.style.display = 'block';
+    }
+    function getSrc(src) {
+      displayImage.src = src
+    }
+    // Stop display
+    layer.addEventListener('click', stopDisplay);
+    function stopDisplay() {
+      container.style.display = 'none';
+      layer.style.display = 'none';
+    }
   </script>
 
 
