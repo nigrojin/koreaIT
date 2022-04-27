@@ -586,6 +586,164 @@ hello world
 //     myCallback(data)
 // })
 
+// JavaScript 2
+
+// # ES6 (2015년)
+// let, const (변수)
+// arrow function (화살표 함수)
+// 기타: destructing(구조화), spread operator, ternary(삼항 연산자)
+// Promise
+
+// # 데이터 저장 및 전송: cookie, localStorage, json
+// 로그인, 장바구니
+// 쿠키보다 저장 용량이 많다 (5MB)
+// 쿠키보다 안전하다
+
+
+// # JSON
+// JavaScript Object Notation
+// 데이터를 저장하거나 전송할 때 쓴다 
+// string(문자)
+
+// Object
+// var car = { name: '제네시스' }
+
+// JSON형식 : '{ "key": "value" }'
+// var car = '{ "name": "제네시스" }'
+
+// console.log(car.name)
+
+
+// var car = { name: '제네시스' }
+
+// // JSON.stringify(Object): Object를 JSON 포맷으로 만든다
+// var result = JSON.stringify(car)
+
+// console.log(typeof result)
+// console.log(result)
+
+// var car  = '{ "name": "제네시스" }'
+
+// // JSON.parse(string) string을 Object로 만든다
+// var result = JSON.parse(car)
+
+// console.log(typeof result)
+// console.log(result)
+
+
+// var car = { name: '제네시스' }
+
+// var txt = JSON.stringify(car)
+
+// localStorage.setItem('car', txt)
+
+// var obj = JSON.parse(localStorage.getItem('car'))
+
+// console.log(typeof obj)
+// console.log(obj)
+// console.log(obj.name)
+
+// var cars = [
+//     { name: '제네시스' },
+//     { name: '스타리아' },
+//     { name: '캐스퍼' },
+// ]
+
+// console.log(cars)
+
+// console.log(JSON.stringify(cars))
+
+
+// # JavaScript variable(변수): var / let / const
+
+// var
+// let - block scope (블록 범위)
+// const = block scope (블록 범위)
+
+// variable Scope (변수의 범위)
+// 1 Global scope (전역 범위): 블록과 함수 밖에서 변수의 범위
+// 2 Block scope (블록 범위): 블록안에서의 변수의 범위
+// 3 Function scope (함수 범위): 함수안에서의 변수의 범위
+
+
+// var car = '제네시스'
+// var car = '스타리아' // redeclare 재선언 가능
+
+// var car = '제네시스'
+// car = '스타리아' // redefine 재정의 가능
+
+// console.log(car)
+
+
+// var car; // declare 선언하고
+// car = '제네시스' // define 정의 가능
+
+// console.log(car)
+
+// var person;
+// var age = 20;
+
+// if (age > 18) {
+//     person = '성인'
+// } else {
+//     person = '청소년'
+// }
+
+// console.log(person)
+
+// var age = 20;
+
+// if (age > 18) {
+//     var person = '성인'
+// } else {
+//     var person = '청소년'
+// }
+
+// console.log(person)
+
+
+// let
+
+// let car = '제네시스'
+// let car = '스타리아' // redeclare 불가
+
+
+// let car = '제네시스'
+// car = '스타리아' // redefine 재정의 가능
+
+
+// let car; // declare 선언하고
+// car = '제네시스' // define 정의 가능
+
+// let age = 20
+// let person;
+
+// if (age > 18) {
+//     person = '성인'
+// } else {
+//     person = '청소년'
+// }
+
+// console.log(person)
+
+// 가장 엄격
+// const
+
+// const car = '제네시스'
+// const car = '스타리아' // redeclare 재선언 불가
+
+// const car = '제네시스'
+// car = '스타리아' // redefine 재정의 불가
+
+const car; // declare 선언하고
+car = '제네시스' // define 정의 불가
+
+console.log(car)
+
+
+
+
+
 
 
 
