@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4fb6dd7406.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
@@ -421,7 +422,7 @@
 <p class="min-width">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid libero consequatur mollitia a sequi veritatis. Adipisci odit corporis minus. Sed dolores maxime inventore accusantium ea consectetur natus quidem provident corrupti.</p>
 <p class="max-width">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid libero consequatur mollitia a sequi veritatis. Adipisci odit corporis minus. Sed dolores maxime inventore accusantium ea consectetur natus quidem provident corrupti.</p> -->
 
-<style>
+<!-- <style>
     .btn {
         padding: 14px 28px;
         cursor: pointer;
@@ -453,7 +454,344 @@
 
 <button class="btn success">Success</button>
 <button class="btn warning">Warning</button>
-<button class="btn danger">Danger</button>
+<button class="btn danger">Danger</button> -->
+
+
+<!-- <style>
+    form {
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+    /* .class */
+    .form-group {
+        /* border: 1px dashed; */
+        /* margin-collapse 위아래 겹치는 부분은 상쇄된다 */
+        margin: 10px 0;
+    }
+    label {
+        font-weight: bold;
+    }
+    /* element */
+    input[type=text], input[type=password] {
+        /* top/bottom left/right */
+        padding: 12px 20px;
+        /* parent element의 넓이 100% 차지 */
+        width: 100%;
+        /* padding을 정한 width 안쪽으로  */
+        box-sizing: border-box;
+    }
+    button {
+        padding: 14px 20px;
+        width: 100%;
+        /* button은 border-box가 기본값 */
+        box-sizing: border-box;
+        /* HEX color  */
+        /* #rrggbb */
+        background-color: #04aa6d;
+        color: #fff;
+        cursor: pointer;
+        border: none;
+    }
+</style>
+
+
+<form action="">
+    <h1>로그인</h1>
+    <div class="form-group">
+        <label for="">아이디</label>
+        <input type="text">
+    </div>
+    <div class="form-group">
+        <label for="">비밀번호</label>
+        <input type="password">
+    </div>
+    <div class="form-group">
+        <button type="submit">로그인</button>
+        <input type="checkbox" name="" id="">
+        <label for="">비밀번호 기억하기</label>
+    </div>
+    <div class="form-group">
+        <a href="">비밀번호를 잊으셨나요?</a>
+    </div>
+</form> -->
+
+<!-- <style>
+    /* Universal selector 전체선택자 */
+    * {
+        /* box-sizing: content-box; */
+        /* 기본값처럼 사용된다 */
+        box-sizing: border-box;
+    }
+    form {
+        border: 1px solid #ddd;
+        padding: 15px;
+    }
+    .form-group {
+        /* border: 1px dashed; */
+        margin: 10px 0;
+    }
+    input {
+        border: none;
+        padding: 15px;
+        background-color: #ddd;
+        width: 100%;
+    }
+    .btn {
+        padding: 15px;
+        width: 100%;
+        cursor: pointer;
+        border: none;
+    }
+    .btn-danger {
+        background-color: #f44336;
+        color: #fff;
+    }
+    .btn-success {
+        background-color: #04aa6d;
+        color: #fff;
+    }
+</style>
+
+<form action="">
+    <h1>회원가입</h1>
+    <p>아래의 내용을 작성해주세요</p>
+    <div class="form-group">
+        <label for="">이메일</label>
+        <input type="text">
+    </div>
+    <div class="form-group">
+        <label for="">비밀번호</label>
+        <input type="password">
+    </div>
+    <div class="form-group">
+        <label for="">비밀번호확인</label>
+        <input type="password">
+    </div>
+    <div class="form-group">
+        <small>* 회원가입을 하는 경우 <a href="">개인정보처리방침</a> 에 동의하는 것으로 간주합니다.</small>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-danger">취소</button>
+        <button class="btn btn-success">저장</button>
+    </div>
+</form> -->
+
+<!-- <style>
+    * {
+        box-sizing: border-box;
+    }
+    form {
+        border: 1px solid #ddd;
+        padding: 15px;
+    }
+    .form-group {
+        /* border: 1px dashed; */
+        margin: 10px 0;
+    }
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        /* 모서리를 둥글게 처리 */
+        border-radius: 5px;
+    }
+    input[type=text]:focus, textarea:focus {
+        /* border 밖 */
+        outline: 4px solid dodgerblue;
+        /* background-color: red; */
+    }
+    button {
+        padding: 10px;
+        background-color: #04aa6d;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+
+
+<form action="">
+    <h1>연락하기</h1>
+    <div class="form-group">
+        <label for="">이름</label>
+        <input type="text" name="username">
+    </div>
+    <div class="form-group">
+        <label for="">연락처</label>
+        <input type="text" name="phone">
+    </div>
+    <div class="form-group">
+        <label for="">지역</label>
+        <select name="city" id="">
+            <option value="seoul">서울</option>
+            <option value="incheon">인천</option>
+            <option value="gyeonggi">경기</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="">메시지</label>
+        <textarea name="message" id="" cols="30" rows="10"></textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit">보내기</button>
+    </div>
+</form> -->
+
+<!-- <style>
+    body {
+        /* border: 1px solid red; */
+    }
+    table {
+        border: 1px solid #ddd;
+        width: 100%;
+        /* table의 기본 border를 제거 */
+        border-collapse: collapse;
+    }
+    th, td {
+        text-align: left;
+        padding: 16px;
+    }
+    /* :Pseudo class (가짜 클래스) */
+    /* 기본 클래스에 효과를 줄 때 사용한다 */
+    /* even 짝수 odd 홀수 */
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+</style>
+
+<h1>자동차 비교표</h1>
+
+<table>
+    <tr>
+        <th>브랜드</th>
+        <th>모델</th>
+        <th>가격</th>
+    </tr>
+    <tr>
+        <td>현대</td>
+        <td>제네시스</td>
+        <td>1000원</td>
+    </tr>
+    <tr>
+        <td>현대</td>
+        <td>스타리아</td>
+        <td>800원</td>
+    </tr>
+    <tr>
+        <td>기아</td>
+        <td>카니발</td>
+        <td>700원</td>
+    </tr>
+</table> -->
+
+<!-- <style>
+    table {
+        /* border: 1px solid #ddd; */
+        width: 100%;
+        /* border-collapse: collpase; */
+    }
+    tr {
+        border-bottom: 1px solid red;
+    }
+    th, td {
+        text-align: center;
+        padding: 16px;
+    }
+    /* 첫번째 열 */
+    th:first-child, td:first-child {
+        text-align: left;
+    }
+    .fa-check {
+        color: dodgerblue;
+    }
+    .fa-xmark {
+        color: #888;
+    }
+</style>
+
+
+<h1>현대자동차 비교표</h1>
+
+<table>
+    <tr>
+        <th>모델</th>
+        <th>Basic</th>
+        <th>Pro</th>
+    </tr>
+    <tr>
+        <td>제네시스</td>
+        <td><i class="fa-solid fa-check"></i></td>
+        <td><i class="fa-solid fa-xmark"></i></td>
+    </tr>
+    <tr>
+        <td>스타리아</td>
+        <td><i class="fa-solid fa-check"></i></td>
+        <td><i class="fa-solid fa-xmark"></i></td>
+    </tr>
+    <tr>
+        <td>아이오닉</td>
+        <td><i class="fa-solid fa-xmark"></i></td>
+        <td><i class="fa-solid fa-check"></i></td>
+    </tr>
+    <tr>
+        <td>캐스퍼</td>
+        <td><i class="fa-solid fa-check"></i></td>
+        <td><i class="fa-solid fa-xmark"></i></td>
+    </tr>
+</table> -->
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+    .container {
+        border: 1px dashed;
+        /* width: 600px; */
+        display: block;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .logo h1 {
+        font-size: 75px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        text-align: center;
+    }
+    form {
+        border: 1px dashed;
+    }
+    span:first-child {
+        font-size: 100px;
+        color: dodgerblue;
+    }
+    span:nth-child(2) {
+        color: red;
+    }
+    span:nth-child(3) {
+        color: gold;
+    }
+    span:nth-child(4) {
+        color: dodgerblue;
+    }
+    span:nth-child(5) {
+        color: green;
+    }
+    span:last-child {
+        color: red;
+        transform: rotate(-25deg);
+        display: inline-block;
+    }
+</style>
+
+<div class="container">
+    <div class="logo">
+        <h1>
+            <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+        </h1>
+    </div>
+    <form action="">
+        <input type="text">
+    </form>
+</div>
 
 
 </body>
