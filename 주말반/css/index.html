@@ -8,9 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>CSS flow</h1>
-    <hr>
-
     <!-- <h1>CSS Selector (선택자)</h1> -->
     <!-- <p>element, .clsss, #id, children, ...</p> -->
 
@@ -740,15 +737,16 @@
     </tr>
 </table> -->
 
-<style>
+<!-- <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
     .container {
-        border: 1px dashed;
+        /* border: 1px dashed; */
         /* width: 600px; */
         display: block;
         max-width: 600px;
         margin: 0 auto;
+        padding: 0 15px;
     }
     .logo h1 {
         font-size: 75px;
@@ -757,7 +755,31 @@
         text-align: center;
     }
     form {
-        border: 1px dashed;
+        /* border: 3px dashed red; */
+        position: relative;
+    }
+    input {
+        width: 100%;
+        /* padding이 width 안쪽으로 들어가게 한다 */
+        box-sizing: border-box;
+        padding: 10px 45px;
+        border-radius: 25px;
+        border: 1px solid #ddd;
+        /* border밖의 선 */
+        outline: none;
+    }
+    .fa-solid {
+        /* relative parent의 대해 absolute 값을 갖는다 */
+        position: absolute;
+        color: #888;
+    }
+    .fa-magnifying-glass {
+        top: 10px;
+        left: 25px;
+    }
+    .fa-microphone {
+        top: 10px;
+        right: 25px;
     }
     span:first-child {
         font-size: 100px;
@@ -780,18 +802,346 @@
         transform: rotate(-25deg);
         display: inline-block;
     }
-</style>
+</style> -->
 
-<div class="container">
+<!-- <div class="container">
     <div class="logo">
         <h1>
             <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
         </h1>
-    </div>
-    <form action="">
-        <input type="text">
+    </div> -->
+    <!-- ㄹ나ㅣ아러ㅣ -->
+    <!-- <form action="">
+        <input type="text" placeholder="Google검색 또는 URL 입력">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-microphone"></i>
     </form>
+</div> -->
+
+
+<!-- <style>
+    body {
+        min-height: 1000px;
+    }
+    .fixed-top {
+        /* view port (디바이스의 화면)을 기준으로 위치한다 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        /* border: 2px solid red; */
+    }
+    .nav-bar {
+        /* border: 1px dashed; */
+        display: flex;
+        flex-direction: column;
+        background-color: #222;
+    }
+    .nav-bar a {
+        /* parent 가 display: flex가 되면 child는 flex-item이 된다 */
+        /* border: 1px dashed; */
+        padding: 10px;
+        color: #fff;
+        /* underline 제거 */
+        text-decoration: none;
+        text-align: center;
+    }
+    /* :Pseudo class 효과를 줄 때 사용한다 */
+    .nav-bar a:hover {
+        background-color: #333;
+    }
+
+    @media (min-width: 501px) {
+        .nav-bar {
+            flex-direction: row;
+        }
+    }
+</style>
+
+
+<div class="fixed-top">
+    <div class="nav-bar">
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Blog</a>
+        <a href="">Contact</a>
+    </div>
+</div> -->
+
+<!-- <style>
+    body {
+        min-height: 1000px;
+    }
+    /* display: flex */
+    .nav-bar {
+        display: flex;
+        border: 1px dashed;
+        background-color: #222;
+    }
+    /* Flex item */
+    .nav-bar a {
+        padding: 10px;
+        /* border: 1px dashed; */
+        color: #fff;
+    }
+    .sticky {
+        /* position: static + position: fixed */
+        position: sticky;
+        top: 0;
+        left: 0;
+    }
+</style>
+
+
+<div class="header">
+    <h1>Header</h1>
 </div>
+<div class="sticky">
+    <div class="nav-bar">
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Blog</a>
+        <a href="">Contact</a>
+    </div>
+</div> -->
+
+
+<!-- <style>
+    body {
+        min-height: 1000px;
+        /* margin: 0; */
+    }
+    .side-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        border: 1px dashed;
+        width: 280px;
+        height: 100%;
+        background-color: #222
+    }
+    a {
+        color: #fff;
+    }
+    .main {
+        margin-left: 280px;
+        padding: 0 15px;
+    }
+</style>
+
+
+<div class="side-bar">
+    <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Blog</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+</div>
+
+<div class="main">
+    <h1>Heading</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo maxime minus distinctio quos, omnis veritatis quisquam obcaecati accusantium quia eligendi natus mollitia, incidunt at laboriosam dignissimos? Itaque, suscipit veniam. Consectetur?</p>
+</div> -->
+
+
+<!-- <style>
+    body {
+        min-height: 1000px;
+    }
+    .fixed-top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        /* position: relative, fixed, absolute에서 겹칠 때 더 위로 위치시킨다 */
+        /* 기본값 z-index: 0 */
+        z-index: 1;
+    }
+    .header {
+        border: 1px dashed;
+        background-color: #fff;
+    }
+    .side-bar {
+        z-index: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100%;
+        border: 1px dashed;
+        background-color: #fff;
+    }
+    ul {
+        margin-top: 100px;
+    }
+    .main {
+        margin-top: 100px;
+        margin-left: 280px;
+        padding: 0 15px;
+    }
+</style>
+
+
+<div class="fixed-top">
+    <div class="header">
+        <h1>Heading</h1>
+    </div>
+</div>
+
+<div class="side-bar">
+    <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Blog</li>
+        <li>Contact</li>
+    </ul>
+</div>
+
+<div class="main">
+    <h1>Content</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit quasi quibusdam ratione ducimus deserunt repellat laboriosam! Dolore natus illo deserunt laudantium, quo modi impedit molestias autem harum. Sed, quidem vel.</p>
+</div> -->
+
+
+<!-- <style>
+    .dropdown {
+        display: inline-block;
+        /* border: 3px dashed; */
+        position: relative;
+    }
+    .dropdown-content {
+        position: absolute;
+        /* top: 0; right: 0; */
+        border: 1px solid #ddd;
+        /* 안보이게 만든다 */
+        display: none;
+        width: 150px;
+    }
+    .dropdown-content a {
+        display: block;
+        padding: 10px;
+    }
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropbtn {
+        padding:16px;
+        border: none;
+        background-color: dodgerblue;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+
+
+<div class="dropdown">
+    <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
+        <a href="">Menu 1</a>
+        <a href="">Menu 2</a>
+        <a href="">Menu 3</a>
+    </div>
+</div> -->
+
+<!-- <style>
+    /* display: flex */
+    .nav-bar {
+        border: 1px dashed;
+        display: flex;
+        background-color: #222;
+    }
+    /* flex item */
+    .nav-item {
+        /* border: 1px dashed; */
+        padding: 10px;
+        color: #fff;
+        background-color: #222;
+    }
+    .dropdown {
+        border: 1px dashed;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropbtn {
+        border: none;
+        cursor: pointer;
+    }
+    .dropdown-content {
+        border: 1px solid #ddd;
+        background-color: #fff;
+        position: absolute;
+        display: none;
+        width: 150px;
+    }
+    .dropdown-content a {
+        display: block;
+        padding: 10px;
+    }
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+</style>
+
+
+<div class="nav-bar">
+    <a class="nav-item" href="">Home</a>
+    <a class="nav-item" href="">About</a>
+    <a class="nav-item" href="">Blog</a>
+    <div class="dropdown">
+        <button class="dropbtn nav-item">Dropdown</button>
+        <div class="dropdown-content">
+            <a href="">Menu 1</a>
+            <a href="">Menu 2</a>
+            <a href="">Menu 3</a>
+        </div>
+    </div>
+</div>
+
+<div class="main">
+    <h1>Content</h1>
+</div>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea ipsa aperiam nisi beatae possimus architecto similique, quos ipsam saepe labore natus perspiciatis! Obcaecati sint accusamus itaque at alias nisi exercitationem.</p> -->
+
+
+<style>
+    body {
+        font-family:Arial, Helvetica, sans-serif;
+    }
+    .btn {
+        border: none;
+        font-size: 16px;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: inline-block;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        box-sizing: border-box;
+        
+        /* width: 100%; */
+        /* 줄 간격 */
+        /* line-height: 1.5; */
+        /* vertical-align: middle; */
+        /* 글자 간격 */
+        /* letter-spacing: 1.5px ; */
+    }
+    .btn-primary {
+        background-color: #0d63fd;
+        color: #fff;
+    }
+</style>
+
+<h1>button</h1>
+
+
+<a class="btn btn-primary" href="">Button</a>
+
+<button class="btn btn-primary">Button</button>
 
 
 </body>
