@@ -1357,8 +1357,277 @@ hello world
 
 // var car = '제네시스'
 
-var car = new String('제네시스');
-console.log(car.__proto__);
+// var car = new String('제네시스');
+// console.log(car.__proto__);
+
+
+// // instance of String
+// var apple = new String('apple') // var apple = 'bunny'
+// // instance of String
+// var banana = new String('banana')
+// // instance of String
+// var orange = new String('orange')
+
+// console.log(apple)
+// console.log(banana)
+// console.log(orange)
+
+
+// Callback and Promise
+
+// Asynchornous and Synchronous (비동기와 동기)
+
+// Sync: 순서대로 실행된다
+
+// Async: 빠른 것부터 실행된다
+
+
+// Sync
+// console.log(1)
+// console.log(2)
+
+
+// setTimeout 대표적인 비동기 함수
+// setTimeout(callback, seconds): seconds뒤에 callback 실행
+// setTimeout(() => {
+//     console.log(1)
+// }, 1000)
+
+// console.log(2)
+
+
+// 제일 뒤로가서 실행된다
+// setTimeout(() => {
+//     console.log(1)
+// }, 0)
+    
+// console.log(2)
+
+// setTimeout의 callback 안에서는 동기적으로 작동한다
+// setTimeout(() => {
+//     console.log(1)
+//     console.log(2)
+// }, 0)
+
+// function fetchData() {
+//     setTimeout(() => {
+//         const user = { username: 'bunny' };
+//         return user;
+//     })
+//     // const user = { username: 'bunny' };
+//     // return user;
+// }
+
+// const data = fetchData()
+
+// console.log(data)
+
+// // fetchData() 제일 마지막에 실행된다
+
+
+// function fetchData() {
+//     setTimeout(() => {
+//         const user = { username: 'bunny' };
+//         console.log(user)
+//     })
+// }
+
+// fetchData()
+
+
+// function fetchData(cb) {
+//     setTimeout(() => {
+//         const user = { username: 'bunny' };
+//         cb(user)
+//     })
+// }
+
+// // fetchData(익명 함수)
+// fetchData(data => console.log(data))
+
+// fetchData(function (data) {
+//     console.log(data)
+// })
+
+
+// function first() {
+//   setTimeout(() => {
+//     console.log(1)
+//   }, 400)
+// }
+// function second() {
+//   setTimeout(() => {
+//     console.log(2)
+//   }, 200)
+// }
+// function third() {
+//   setTimeout(() => {
+//     console.log(3)
+//   }, 100)
+// }
+// function fourth() {
+//   setTimeout(() => {
+//     console.log(4)
+//   }, 300)
+// }
+
+// first()
+// second()
+// third()
+// fourth()
+
+// function first(cb) {
+//     setTimeout(() => {
+//       console.log(1)
+//       cb()
+//     }, 400)
+//   }
+//   function second(cb) {
+//     setTimeout(() => {
+//       console.log(2)
+//       cb()
+//     }, 200)
+//   }
+//   function third(cb) {
+//     setTimeout(() => {
+//       console.log(3)
+//       cb()
+//     }, 100)
+//   }
+//   function fourth() {
+//     setTimeout(() => {
+//       console.log(4)
+//     }, 300)
+//   }
+  
+// // first(() => second(() => third(fourth)))
+
+// first(function () {
+//     second(function () {
+//         third(fourth)
+//     })
+// })
+
+// Callback Error handling
+
+// function fetchData(cb) {
+//     setTimeout(() => {
+//         const user = { username: 'bunny' }
+//         const error = { message: 'user not found' }
+//         // error를 넘김
+//         // cb(error, null)
+
+//         // value를 넘김
+//         cb(null, user)
+//     })
+// }
+
+// fetchData((err, data) => {
+//     if (err) {
+//         return console.error(err)
+//     }
+//     console.log(data)
+// })
+
+
+// Promise
+// const fetchData = new Promise(res => {
+//     setTimeout(() => {
+//         const user = { username: 'bunny' }
+//         // resolve 성공
+//         res(user)
+//     })
+// })
+
+// fetchData.then(data => console.log(data))
+
+
+// const fetchData = new Promise((res, rej) => {
+//     setTimeout(() => {
+//         const user = { username: 'bunny' }
+//         const error = { message: 'user not found' }
+//         // reject (실패)
+//         rej(error)
+//     })
+// })
+
+// // fetchData.then(success, fail)
+// // fetchData.then(
+// //     val => console.log(val),
+// //     err => console.error(err)
+// // )
+
+// fetchData
+// .then(val => console.log(val))
+// .catch(err => console.error(err))
+
+
+// async / await
+// 비동기함수를 동기적으로 실행한다
+
+// const fetchData = new Promise(res => {
+//     setTimeout(() => {
+//         const user = { username: 'bunny' }
+//         res(user)
+//     })
+// })
+
+// f()
+// async function f() {
+//     // await은 async안에서만 작동한다
+//     const data = await fetchData // pending
+
+//     console.log(data)
+// }
+
+
+// function first() {
+//   return new Promise(res => {
+//     setTimeout(() => {
+//       console.log(1)
+//       res()
+//     }, 400)
+//   })
+// }
+// function second() {
+//   return new Promise(res => {
+//     setTimeout(() => {
+//       console.log(2)
+//       res()
+//     }, 200)
+//   })
+// }
+// function third() {
+//   return new Promise(res => {
+//     setTimeout(() => {
+//       console.log(3)
+//       res()
+//     }, 100)
+//   })
+// }
+// function fourth() {
+//   setTimeout(() => {
+//     console.log(4)
+//   }, 300)
+// }
+
+// // first()
+// // .then(second)
+// // .then(third)
+// // .then(fourth)
+
+// f()
+// async function f() {
+//     await first() // 끝날 때 까지 기다린다
+//     await second()
+//     await third()
+//     fourth()
+// }
+
+
+
+    
+
 
 
 
