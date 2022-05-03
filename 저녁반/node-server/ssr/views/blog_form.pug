@@ -1,0 +1,25 @@
+extends layout
+
+block content 
+    h1= title
+
+    if !post
+        form(action="/create" method="POST") 
+            div.form-group
+                input(type="text" name="title" placeholder="제목" required)
+            div.form-group
+                textarea(name="content", cols="30", rows="10" placeholder="내용을 입력하세요")
+            div.form-group
+                button Submit
+    else
+        form(action=`/p/${post.title}/update` method="POST") 
+            .form-group
+                input(type="text" name="ex_title" value=post.title hidden)
+            .form-group
+                input(type="text" name="title" placeholder="title" value=post.title.split('.')[0] required)
+            .form-group 
+                textarea(name="content")=post.content
+            .form-group 
+                button Submit
+
+

@@ -1,0 +1,27 @@
+extends layout 
+
+block content 
+    h1= title
+
+    h3= post.title.split('.')[0]
+    p= post.content
+
+    a(href=`/p/${post.title}/update`) update 
+    a(href=`/p/${post.title}/delete` onclick="deletePost(event)") delete 
+
+    script.
+        function deletePost(e) {
+            //- 기본값을 실행하지 않음
+            e.preventDefault();
+            
+            // 데이터를 요청한다
+            // fetch(url, options)
+            fetch(e.target.href, {
+                method: 'POST'
+            })
+            .then(res => res.json())
+            //- location.href = 새로운 경로: 새로운 경로로 이동한다.
+            //- location.replace(새로운 경로): 현재경로를 새로운 경로로 대체한다
+            .then(result => location.replace('/'))
+            .catch(err => console.error(err));
+        }
