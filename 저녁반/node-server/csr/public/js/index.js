@@ -22,7 +22,7 @@ document.body.addEventListener('click', e => {
   }
 })
 
-function router() {
+async function router() {
   // 라우터 주소를 준비해놓는다
   const routes = [
       { path: '/', view: () => Home({ username: 'bunny' }) }, // React: props
@@ -36,7 +36,7 @@ function router() {
   const route = routes.filter(route => location.pathname === route.path);
 
   // 일치하는 route의 view 함수 실행
-  const element = route[0].view();
+  const element = await route[0].view();
 
   const layout = {
     type: 'div',
@@ -88,20 +88,27 @@ function Home(props) {
   }
 }
 
-function Posts() {
+async function Posts() {
+  const result = await fetch('https://dapi.kakao.com/v2/search/image?query=제네시스', {
+    method: 'GET',
+    headers: { 'Authorization': 'KakaoAK d5a49f32e43c184c2823a05cdaf8c841' }
+  })
+  .then(res => res.json())
 
-  // fetch('http://localhost:3000/posts', {
-  //   method: 'POST'
-  // })
-  // .then(res => res.json())
-  // .then(result => console.log(result))
+  const articleList = result.documents.map(article => {
+    return { type: 'img', props: { 
+      'src': article.image_url, 'style': 'width:100px; height: 100px; object-fit: cover' 
+    }, children: [] }
+  })
+
+  console.log(articleList);
 
   return {
     type: 'div',
     props: {},
     children: [
       { type: 'h1', props: {}, children: ['Posts'] },
-      { type: 'p', props: {}, children: ['Some posts'] },
+      { type: 'div', props: {}, children: articleList },
     ]
   }
 }
