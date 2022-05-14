@@ -298,11 +298,10 @@ function App() {
 
   console.log(inputElement);
 
-
   useEffect(() => {
     console.log(inputElement);
     inputElement.current.focus();
-    inputElement.current.style.outline = '5px solid red'
+    inputElement.current.style.outline = '5px solid red';
   })
 
   return (
@@ -312,7 +311,6 @@ function App() {
     </>
   )
 }
-
 
 // Render
 const root = ReactDOM.createRoot(document.getElementById('root'));

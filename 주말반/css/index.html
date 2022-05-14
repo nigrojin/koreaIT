@@ -1108,7 +1108,7 @@
 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea ipsa aperiam nisi beatae possimus architecto similique, quos ipsam saepe labore natus perspiciatis! Obcaecati sint accusamus itaque at alias nisi exercitationem.</p> -->
 
 
-<style>
+<!-- <style>
     body {
         font-family:Arial, Helvetica, sans-serif;
     }
@@ -1140,7 +1140,554 @@
 
 <a class="btn btn-primary" href="">Button</a>
 
-<button class="btn btn-primary">Button</button>
+<button class="btn btn-primary">Button</button> -->
+
+
+
+<style>
+    /* # flex-container 속성 */
+    /* 1 flex-direction: flex item의 정렬 방향 */
+    /* 기본값: row / row, row-reverse, column, column-reverse */
+
+    /* 2 flex-wrap: flex item을 감쌀 것인지 그렇지 않은지  */
+    /* 기본값: nowrap / nowrap, wrap, wrap-reverse */
+
+    /* 3 flex-flow: flex-direction / flex-wrap */
+
+    /* 4 justify-content: flex item의 좌우 정렬 */
+    /* 기본값: flex-start / flex-start, flex-end, center,space-between, space-around, space-evenly */
+
+    /* 5 align-items: flex item의 상하 정렬 */
+    /* 기본값: stretch / stretch, center, flex-start, flex-end, baseline */
+
+    /* 6 align-content: flex line의 정렬 */
+    /* 기본값: stretch / stretch, center, flex-start, flex-end, space-between, space-around */
+
+    /* # flex item 속성 */
+    /* 1 order: flex item의 순서 */
+    /* 기본값: 0 */
+
+    /* 2 flex-grow: 특정 item이 다른 item들 보다 상대적으로 얼마나 더 커질지 */
+    /* 기본값: 0 */
+
+    /* 3 flex-shrink: 특정 item이 다른 item들 보다 상대적으로 얼마나 더 줄어들지 */
+    /* 기본값: 1 */
+
+    /* 4 flex-basis: flex item의 넓이 */
+    /* 기본값: auto; */
+    /* 5 flex: flex-grow / flex-shrink / flex-basis */
+    /* 6 align-self: 특정 item의 상하 정렬 */
+    /* 기본값: auto / auto, stretch, center, flex-start, flex-end, base, baseline */
+</style>
+
+
+<!-- <style>
+    .flex {
+        display: flex;
+        background-color: #ddd;
+    }
+    /* 기본값 */
+    .flex-row { flex-direction: row; }
+    .flex-col { flex-direction: column; }
+    .item {
+        border: 1px dashed;
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<h1>flex-direction</h1>
+
+
+<div class="flex flex-row">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+</div>
+
+<hr>
+
+<div class="flex flex-col">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+</div> -->
+
+<!-- <style>
+.flex {
+    display: flex;
+    background-color: #ddd;
+}
+/* 기본값 */
+.flex-nowrap { flex-wrap: nowrap }
+.flex-wrap { flex-wrap: wrap }
+.item {
+    border: 1px dashed;
+    width: 200px;
+    height: 200px;
+}
+</style>
+
+<h1>flex-wrap</h1>
+
+<div class="flex flex-nowrap">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+</div>
+
+<hr>
+
+<div class="flex flex-wrap">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+</div> -->
+
+<!-- <style>
+    .flex {
+        display: flex;
+        background-color: #ddd;
+        width: 300px;
+        height: 300px;
+        /* 기본값 */
+        /* justify-content: flex-start; */
+        /* align-items: stretch; */
+        /* 좌우정렬 */
+        justify-content: center;
+        /* 상하정렬 */
+        align-items: center;
+    }
+    .item {
+        width: 100px;
+        height: 100px;
+        border: 1px dashed;
+    }
+</style>
+
+<h1>Justify-content, align-items</h1>
+
+<div class="flex">
+    <div class="item">1</div>
+</div> -->
+
+<!-- <style>
+    .flex {
+       display: flex;
+       background-color: #ddd; 
+       width: 300px;
+       height: 300px;
+       justify-content: space-between;
+       align-items: flex-end;
+    }
+    .item {
+        border: 1px dashed;
+        width: 50px;
+        height: 50px;
+    }
+</style>
+
+<div class="flex">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+</div> -->
+
+
+<!-- <h1>flex-basis, flex-grow</h1>
+
+  <style>
+    .flex {
+      display: flex; 
+      background-color: #ddd;
+    }
+    .item {
+      border: 1px dashed;
+      flex-basis: 200px;
+      /* 기본값 flex-grow: 0 */
+      flex-grow: 1;
+    }
+    .flex-grow {
+        background-color: orange;
+        flex-grow: 2;
+    }
+
+  </style>
+
+  <div class="flex">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+  <hr>
+
+  <div class="flex">
+    <div class="item">1</div>
+    <div class="item flex-grow">2</div>
+    <div class="item">3</div>
+  </div> -->
+
+  <!-- <h1>flex-basis, flex-shrink</h1>
+
+  <style>
+    .flex {
+      display: flex; 
+      background-color: #ddd;
+    }
+    .item {
+      border: 1px dashed;
+      flex-basis: 200px;
+      /* 기본값 */
+      /* flex-shrink: 1; */
+      flex-shrink: 1;
+    }
+    .flex-shrink {
+        background-color: orange;
+        flex-shrink: 2;
+    }
+
+  </style>
+
+  <div class="flex">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+  <hr>
+
+  <div class="flex">
+    <div class="item">1</div>
+    <div class="item flex-shrink">2</div>
+    <div class="item">3</div>
+  </div> -->
+
+  <!-- <style>
+    .flex {
+      display: flex;
+      background-color: #ddd;
+    }
+  
+    .item {
+      border: 1px dashed;
+      width: 100px;
+      height: 100px;
+
+      /* flex: flex-grow / flex-shrink / flex-basis */
+      /* flex: 0 1 auto; */
+
+      /* flex: number / flex-grow */
+      /* flex: 1; */
+      /* flex: percentage / flex-basis; */
+      flex: 33.33333%;
+    }
+  </style>
+
+  <h1>flex</h1>
+
+  <div class="flex">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+  </div> -->
+
+
+  <!-- <style>
+      .header {
+          background-color: #ddd;
+      }
+      .row {
+          display: flex;
+          /* 넓이값이 적용될 수 있게 한다 */
+          flex-wrap: wrap;
+          max-width: 800px;
+          margin: auto;
+      }
+      .nav, .main, .aside {
+          width: 100%;
+      }
+      .footer {
+          background-color: #333;
+          color: #fff;
+      }
+
+      @media (min-width: 501px) {
+          .nav {
+              width: 25%;
+          }
+          .main {
+              width: 75%;
+          }
+      }
+
+      @media (min-width: 701px) {
+          .nav {
+              width: 25%;
+          }
+          .main {
+              width: 50%
+          }
+          .aside {
+              width: 25%;
+          }
+      }
+  </style> -->
+
+
+  <!-- <div class="header">
+    <h1>header</h1>
+  </div>
+
+  <div class="row">
+    <div class="nav">
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Blog</a></li>
+        <li><a href="">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main">
+      <h3>Main</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis voluptatum nihil ea fugiat! 
+        Quia facere ipsa qui praesentium asperiores fugiat, quo ex corrupti distinctio ducimus provident pariatur eos laboriosam sed?
+      </p>
+    </div>
+    <div class="aside">
+      <div class="">
+        <b>aside</b>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+      </div>
+      <div class="">
+        <b>aside</b>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+      </div>
+      <div class="">
+        <b>aside</b>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <small>footer</small>
+  </div>  -->
+
+  <!-- <style>
+      .nav {
+          background-color: #333;
+          display: flex;
+          flex-direction: row;
+      }
+      .nav a {
+          color: #fff;
+          padding: 10px;
+      }
+      .fake-img {
+          width: auto;
+          height: 100px;
+          background-color: #333;
+      }
+      .row {
+          display: flex;
+          flex-direction: row;
+      }
+      .aside {
+        margin: 0 10px;
+        /* flex-direction 속성인 경우 flex-basis를 사용한다 */
+        flex-basis: 25%;
+      }
+      .main {
+        margin: 0 10px;
+        /* flex-direction 속성인 경우 flex-basis를 사용한다 */
+        flex-basis: 75%;
+      }
+      .footer {
+          background-color: #888;
+          text-align: center;
+      }
+      /* 모바일 모드에서는 */
+      @media (max-width: 500px) {
+          .row, .nav {
+              flex-direction: column;
+          }
+      }
+
+  </style>
+
+  <div class="header">
+      <h1>Header</h1>
+  </div>
+
+  <div class="nav">
+      <a href="#">MENU</a>
+      <a href="#">MENU</a>
+      <a href="#">MENU</a>
+      <a href="#">MENU</a>
+  </div>
+
+  <div class="row">
+      <div class="aside">
+            <h3>About Me</h3>
+            <div class="fake-img"></div>
+            <p>hello world</p>
+      </div>
+      <div class="main">
+          <div class="article">
+              <h3>TITLE</h3>
+              <small>14/05/2022</small>
+              <div class="fake-img"></div>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque suscipit amet nam iste reprehenderit, ipsum quae odio nesciunt at officiis ut alias adipisci doloribus magni voluptatibus voluptates ab cupiditate repudiandae.</p>
+          </div>
+          <div class="article">
+              <h3>TITLE</h3>
+              <small>14/05/2022</small>
+              <div class="fake-img"></div>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque suscipit amet nam iste reprehenderit, ipsum quae odio nesciunt at officiis ut alias adipisci doloribus magni voluptatibus voluptates ab cupiditate repudiandae.</p>
+          </div>
+      </div>
+  </div>
+
+  <div class="footer">
+      <small>Footer</small>
+  </div> -->
+
+  <!-- <style>
+      /* 초기화  */
+      img {
+          width: 100%;
+      }
+
+      .container {
+          display: flex;
+          flex-wrap: wrap;
+          background-color: #ddd;
+      }
+      .item {
+          /* border: 3px dashed; */
+          /* flex-basis: 100%; */
+          box-sizing: border-box;
+      }
+      @media (min-width: 501px) {
+          .item {
+              flex-basis: 50%;
+          }
+      }
+      @media (min-width: 701px) {
+          .item {
+              flex-basis: 25%;
+          }
+      }
+  </style>
+
+  <div class="container">
+    <div class="item">
+      <img src="../../img/bunny.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="../../img/cat.jpeg" alt="">
+    </div>
+    <div class="item">
+      <img src="../../img/duck.jpeg" alt="">
+    </div>
+    <div class="item">
+      <img src="../../img/bunny.jpg" alt="">
+    </div>
+  </div>  -->
+
+  <!-- <style>
+    /* 초기화  */
+    img {
+        width: 100%;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #ddd;
+    }
+    .item {
+        border: 3px solid blue;
+        /* flex-basis: 100%; */
+        box-sizing: border-box;
+    }
+    @media (min-width: 501px) {
+        .item {
+            flex-basis: 50%;
+        }
+    }
+    @media (min-width: 701px) {
+        .item {
+            flex-basis: 25%;
+        }
+    }
+</style>
+
+<div class="container">
+  <div class="item">
+    <img src="../../img/bunny.jpg" alt="">
+    <img src="../../img/duck.jpeg" alt="">
+    <img src="../../img/cat.jpeg" alt="">
+  </div>
+  <div class="item">
+    <img src="../../img/cat.jpeg" alt="">
+    <img src="../../img/bunny.jpg" alt="">
+    <img src="../../img/duck.jpeg" alt="">
+  </div>
+  <div class="item">
+      <img src="../../img/duck.jpeg" alt="">
+      <img src="../../img/cat.jpeg" alt="">
+      <img src="../../img/bunny.jpg" alt="">
+  </div>
+  <div class="item">
+      <img src="../../img/bunny.jpg" alt="">
+      <img src="../../img/duck.jpeg" alt="">
+    <img src="../../img/cat.jpeg" alt="">
+  </div>
+</div>  -->
+
+<style>
+    img {
+        width: 100%;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        background-color: #ddd;
+    }
+    .card {
+        border: 1px dashed;
+        /* flex: number (flex-grow) */
+        /* flex: 1; */
+        flex: 1;
+    }
+
+    @media (min-width: 501px) {
+        .container {
+            flex-direction: row;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+        <img src="../../img/bird.jpeg" alt="">
+        <h3>name</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+    <div class="card">
+        <img src="../../img/cat.jpeg" alt="">
+        <h3>name</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+    <div class="card">
+        <img src="../../img/duck.jpeg" alt="">
+        <h3>name</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+</div> 
 
 
 </body>
