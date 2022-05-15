@@ -1648,7 +1648,8 @@
   </div>
 </div>  -->
 
-<style>
+
+<!-- <style>
     img {
         width: 100%;
     }
@@ -1687,8 +1688,317 @@
         <h3>name</h3>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
     </div>
-</div> 
+</div>  -->
 
+<!-- <style>
+    .container {
+      background-color: #ddd;
+      height: 200px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: stretch;
+    }
+    .item {
+      border: 1px dashed;
+      width: 100px;
+      height: 100px;
+      display: flex;
+    }
+    .item:nth-child(2) {
+        justify-content: center;
+        align-items: center;
+        align-self: flex-end;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background-color: red;
+    }
+  </style>
+
+  <div class="container">
+    <div class="item"></div>
+    <div class="item">
+      <div class="dot"></div>
+    </div>
+  </div> -->
+
+
+  <!-- <style>
+      .container {
+          background-color: #ddd;
+          height: 100px;
+          display: flex;
+          /* item사이에 같은 공간의 크기가 생긴다 */
+          justify-content: space-evenly;
+          /* item을 기준으로 양쪽에 같은 공간의 크기가 생긴다 */
+          /* justify-content: space-around; */
+          /* item사이에만 같은 공간이 생긴다 */
+          /* justify-content: space-between; */
+            align-items: flex-start;
+      }
+      .item {
+          border: 1px dashed;
+          width: 50px;
+          height: 50px;
+          display: flex;
+      }
+      .item:first-child {
+          align-items: center;
+          justify-content: flex-end;
+      }
+      .item:nth-child(even) {
+          align-self: center;
+          align-items: center;
+      }
+      .item:last-child {
+          align-items: flex-end;
+          justify-content: flex-end;
+      }
+      .dot {
+          width: 10px;
+          height: 10px;
+          background-color: red;
+      }
+  </style>
+
+  <div class="container">
+    <div class="item">
+      <div class="dot"></div>
+    </div>
+    <div class="item">
+      <div class="dot"></div>
+    </div>
+    <div class="item">
+      <div class="dot"></div>
+    </div>
+    <div class="item">
+      <div class="dot"></div>
+    </div>
+  </div> -->
+
+
+  <!-- <style>
+      body {
+          min-height: 1000px;
+      }
+      .sidebar {
+          background-color: #333;
+          color: #fff;
+          /* viewport 기준으로 위치한다 */
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 72px;
+          height: 100%;
+      }
+      .menu-item {
+          /* border: 1px dashed; */
+          padding: 15px 0;
+          display: flex;
+          flex-direction: column;
+      }
+      .icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 30px;
+          color: #fff;
+      }
+      .description {
+          display: flex;
+          justify-content: center;
+      }
+  </style>
+
+
+  <div class="sidebar">
+    <div class="menu-item">
+        <a href="" class="icon">
+            <i class="fa-solid fa-house"></i>
+        </a>
+        <small class="description">홈</small>
+    </div>
+
+    <div class="menu-item">
+      <div class="icon">
+        <i class="fa-solid fa-compass"></i>
+      </div>
+      <div class="description">
+        <small>탐색</small>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="icon">
+        <i class="fa-solid fa-clapperboard"></i>
+      </div>
+      <div class="description">
+        <small>구독</small>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="icon">
+        <i class="fa-solid fa-clock"></i>
+      </div>
+      <div class="description">
+        <small>시청기록</small>
+      </div>
+    </div>
+  </div>  -->
+
+  <!-- <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        min-height: 1000px;
+    }
+    .fixed-top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    .container {
+        background-color: #222;
+        color: #fff;
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #start, #center, #end {
+        /* border: 1px dashed; */
+        display: flex;
+    }
+    #start {
+        min-width: 150px;
+        align-items: center;
+    }
+    .bars {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        /* border: 1px dashed; */
+    }
+    .logo {
+        display: flex;
+        height: 30px;
+        align-items: center;
+    }
+    .country-code {
+        font-size: 10px;
+        align-self: flex-start;
+    }
+
+    #center {
+        width: 600px;
+        height: 35px;
+        justify-content: flex-end;
+    }
+    .search-form {
+        display: none;
+        width: 100%;
+    }
+    .search-form input {
+        width: 100%;
+        padding: 10px;
+        outline: none;
+    }
+    .search-form button {
+        min-width: 50px;
+    }
+    .mobile-search {
+        display: flex;
+        min-width: 50px;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px dashed; */
+    }
+    .microphone {
+        display: flex;
+        min-width: 50px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #end {
+        min-width: 200px;
+    }
+    .button {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px dashed; */
+    }
+    .fa-solid, .fa-brands {
+        font-size: 20px;
+    }
+    .fa-brands {
+        color: red;
+    }
+    @media (min-width:650px) {
+        .search-form {
+            display: flex;
+        }
+        .mobile-search {
+            display: none;
+        }
+    }
+  </style>
+
+  <div class="wrap fixed-top">
+      <div class="container">
+          <div id="start">
+            <div class="bars">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="logo">
+                <i class="fa-brands fa-youtube"></i>
+                <span>YouTube</span>
+                <small class="country-code">KR</small>
+            </div>
+          </div>
+
+          <div id="center">
+            <form action="" class="search-form">
+                <input type="text" placeholder="검색">
+                <button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+            <div class="mobile-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="microphone">
+                <i class="fa-solid fa-microphone"></i>
+            </div>
+          </div>
+
+          <div id="end">
+            <div class="button">
+                <i class="fa-solid fa-video"></i>
+              </div>
+            <div class="button">
+                <i class="fa-solid fa-list-ul"></i>
+            </div>
+            <div class="button">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <div class="button">
+                <i class="fa-solid fa-circle"></i>
+            </div>
+          </div>
+      </div>
+  </div> -->
 
 </body>
 </html>
