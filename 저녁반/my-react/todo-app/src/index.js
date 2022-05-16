@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 
 
 // Form 
@@ -13,6 +14,10 @@ function Form(props) {
   function handleSubmit(e) {
     e.preventDefault();
 
+    if (!name.trim()) {
+      return;
+    }
+
     props.addTask(name)
 
     setName("");
@@ -24,17 +29,30 @@ function Form(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={name} onChange={handleChange} />
-      <button>Add</button>
-    </form>
+    <div className="">
+      <h2 className="text-center">What needs to be done?</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          className="w-100"
+          type="text" 
+          value={name} 
+          onChange={handleChange} 
+        />
+        <button className="btn btn-secondary w-100 mt-15">Add</button>
+      </form>
+    </div>
   )
 }
 
 // FilterButton
 function FilterButton(props) {
   return (
-    <button>{props.name}</button>
+    <button 
+      className="btn" 
+      onClick={() => props.setFilter(props.name)}
+    >
+    {props.name}
+    </button>
   )
 }
 
@@ -42,7 +60,49 @@ function FilterButton(props) {
 function Todo(props) {
   console.log('Todo Loaded!');
 
-  return (
+  const [isEditing, setEditing] = useState(false);
+  const [newName, setNewName] = useState("");
+
+  const editFieldRef = useRef(null);
+  const editButtonRef = useRef(null);
+
+  const wasEditing = useRef(null);
+
+  console.log('editFieldRef', editFieldRef);
+  console.log('wasEditing', wasEditing);
+
+  // return되고 나서 실행된다.
+  useEffect(() => {
+    if (isEditing) {
+      editFieldRef.current.focus();
+    }
+    // wasEditing: 이전의 렌더링에서 넘어온 값을 사용해야 한다.
+    if (!isEditing && wasEditing.current) {
+      // editButtonRef.current.style.backgroundColor = 'red';
+      editButtonRef.current.focus();
+    }
+
+    wasEditing.current = isEditing;
+  })
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!newName) {
+      return;
+    }
+
+    props.editTask(props.id, newName.trim());
+    setNewName("");
+    // 다시 viewTemplate으로 가도록 한다
+    setEditing(false);
+  }
+
+  function handleChange(e) {
+    setNewName(e.target.value);
+  }
+
+  const viewTemplate = (
     <>
       <div>
         <input 
@@ -54,11 +114,41 @@ function Todo(props) {
         />
         {props.name}
       </div>
-      <button>Edit</button>
+      <button 
+        onClick={() => setEditing(true)}
+        ref={editButtonRef}
+      >Edit</button>
       {/* task를 삭제한다 */}
       <button onClick={() => props.deleteTask(props.id)}>Delete</button>
     </>
-  )
+  );
+
+  const editingTemplate = (
+    <>
+      <form onSubmit={handleSubmit}>
+        <input 
+          type="text" 
+          value={newName || props.name} 
+          onChange={handleChange} 
+          ref={editFieldRef}
+        />
+        <div className="btn-group">
+          <button 
+            type="button" 
+            onClick={() => {
+              setEditing(false);
+              setNewName("");
+            }}
+          >
+            Cancel
+          </button>
+          <button>Save</button>
+        </div>
+      </form>
+    </>
+  );
+
+  return <li>{ isEditing ? editingTemplate : viewTemplate }</li>
 }
 
 const FILTER_MAP = {
@@ -79,14 +169,19 @@ function App(props) {
 
   // useState(initialValue, state를 업데이트시키는 함수)
   const [tasks, setTasks] = useState(props.tasks);
+  const [filter, setFilter] = useState("All");
 
   console.log(tasks)
 
   // 필터 버튼
-  const filterList = FILTER_NAMES.map(name => <FilterButton key={name} name={name} />)
+  const filterList = 
+  FILTER_NAMES
+  .map(name => <FilterButton key={name} name={name} setFilter={setFilter} />)
   
   // task 리스트
-  const taskList = tasks
+  const taskList = 
+  tasks
+  .filter(FILTER_MAP[filter]) // FILTER_MAP['All']
   .map(task => (
     <Todo 
       id={task.id} 
@@ -95,6 +190,7 @@ function App(props) {
       key={task.id} 
       name={task.name} 
       toggleTaskCompleted={toggleTaskCompleted}
+      editTask={editTask}
     />
   ))
 
@@ -122,11 +218,40 @@ function App(props) {
     setTasks(updatedTasks);
   }
 
+  function editTask(id, newName) {
+    const editedTaskList = tasks.map(task => {
+      if (task.id === id) {
+        return {...task, name: newName}
+      }
+      return task;
+    })
+    setTasks(editedTaskList);
+  }
+
+  const headingText = `${taskList.length} task(s) remaining`
+  const listHeadingRef = useRef(null);
+  const prevTaskLength = useRef(null);
+
+  console.log('listHeadingRef', listHeadingRef);
+  console.log('prevTaskLength', prevTaskLength);
+
+  useEffect(() => {
+    console.log('listHeadingRef', listHeadingRef)
+
+    if (tasks.length - prevTaskLength.current === -1) {
+      listHeadingRef.current.focus();
+    }
+
+    prevTaskLength.current = tasks.length;
+  })
+
   return (
     <>
-      <h1>What needs to be done?</h1>
       <Form addTask={addTask} />
       {filterList}
+      <h2 tabIndex="-1" ref={listHeadingRef}>
+        {headingText}
+      </h2>
       <ul>
         {taskList}
       </ul>

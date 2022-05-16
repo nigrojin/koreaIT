@@ -1,13 +1,98 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*:focus {
+  outline: 3px dashed #228bec;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Initialization 초기화 */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 50px;
+}
+
+h1,h2,h3,p {
+  margin: 10px 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* text align */
+.text-center {
+  text-align: center;
+}
+
+/* width and height */
+.w-100 {
+  width: 100%;
+}
+
+/* flex */
+.flex {
+  display: flex;
+}
+.align-center {
+  align-items: center;
+}
+
+/* input and button */
+input[type="text"] {
+  padding: 10px;
+}
+
+.btn {
+  padding: 13px 16px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #888;
+}
+.btn-secondary {
+  border: none;
+  background-color: #555;
+  color: #fff;
+}
+.btn-danger {
+  border: none;
+  background-color: #ca3c3c;
+  color: #fff
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-group .btn {
+  flex-basis: 100%;
+}
+.btn-group .btn:not(:first-child) {
+  margin-left: 10px;
+}
+
+.p-side-15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.p-tb-15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.p-5 {
+  padding: 5px;
+}
+.mt-15 {
+  margin-top: 15px;
+}
+.m-left-5 {
+  margin-left: 5px;
+}
+.cb-large {
+  width: 24px;
+  height: 24px;
 }
