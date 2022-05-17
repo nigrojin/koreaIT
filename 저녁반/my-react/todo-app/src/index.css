@@ -36,6 +36,7 @@ ul {
   display: flex;
 }
 .align-center {
+  /* align-items: flex item의 수직정렬 */
   align-items: center;
 }
 
@@ -66,9 +67,12 @@ input[type="text"] {
 
 .btn-group {
   display: flex;
+  /* justify-content: flex item의 수평정렬 */
+  /* space-between: item들 사이에 같은 크기의 공간이 생긴다 */
   justify-content: space-between;
 }
 .btn-group .btn {
+  /* flex item의 넓이 */
   flex-basis: 100%;
 }
 .btn-group .btn:not(:first-child) {
