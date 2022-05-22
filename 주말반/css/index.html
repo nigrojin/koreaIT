@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/4fb6dd7406.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
-<body>
+<body style="padding: 50px;">
     <!-- <h1>CSS Selector (선택자)</h1> -->
     <!-- <p>element, .clsss, #id, children, ...</p> -->
 
@@ -2465,7 +2465,7 @@
     <img src="../../img/duck.jpeg" alt="">
 </div> -->
 
-<style>
+<!-- <style>
     img {
         width: 200px;
         height: 200px;
@@ -2474,7 +2474,538 @@
 </style>
 
 <h1>End</h1>
-    <img src="../../img/duck.jpeg" alt="">
+
+<img src="../../img/duck.jpeg" alt=""> -->
+
+<!-- <style>
+    .container {
+        width: 200px;
+        height: 200px;
+        background-color: #ddd;
+    }
+    .item {
+        border: 1px dashed;
+        /* width: 100%; */
+        padding-top: 100%;
+    }
+</style>
+
+<h1>Padding-top percentage</h1>
+
+<div class="container">
+    <div class="item">
+    </div>
+</div> -->
+
+<!-- <style>
+    .container {
+      /* relative to width of body */
+      width: 100%;
+      background-color: #ddd;
+    }
+    .item {
+      border: 5px dashed;
+      /* height: 100px; */
+      /* relative to its parent width */
+      padding-top: 100%;
+    }
+    .item {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .item img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+
+
+<div class="container">
+    <div class="item">
+        <img src="../../img/duck.jpeg" alt="">
+    </div>
+</div> -->
+
+  <!-- <style>
+      .row {
+          display: flex;
+          flex-wrap: wrap;
+      }
+      .container {
+        box-sizing: border-box;
+        border: 1px dashed;
+        width: 50%;
+        /* height: 50px; */
+      }
+      .item {
+          background-color: #888;
+          padding-top: 100%;
+      }
+
+    </style>
+
+<div class="row">
+    <div class="container">
+        <div class="item"></div>
+    </div>
+    <div class="container">
+        <div class="item"></div>
+    </div>
+    <div class="container">
+        <div class="item"></div>
+    </div>
+    <div class="container">
+        <div class="item"></div>
+    </div>
+</div> -->
+
+  <!-- <h2>Responsive images with equal width and height</h2> -->
+
+  <!-- <style>
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .container {
+      box-sizing: border-box;
+      /* border: 1px dashed; */
+      width: 33.33333%;
+      padding: 2px;
+    }
+    .item {
+      /* relative to container width */
+      padding-top: 100%;
+      background-color: #ddd;
+      position: relative;
+    }
+    .item img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    </style>
+
+  <div class="row">
+    <div class="container">
+      <div class="item">
+        <img src="../../img/bird.jpeg" alt="">
+      </div>
+    </div>
+    <div class="container">
+      <div class="item">
+        <img src="../../img/duck.jpeg" alt="">
+      </div>
+    </div>
+    <div class="container">
+      <div class="item">
+        <img src="../../img/cat.jpeg" alt="">
+      </div>
+    </div>
+    <div class="container">
+      <div class="item">
+        <img src="../../img/duck.jpeg" alt="">
+      </div>
+    </div>
+    <div class="container">
+      <div class="item">
+        <img src="../../img/cat.jpeg" alt="">
+      </div>
+    </div>
+    <div class="container">
+      <div class="item">
+        <img src="../../img/bunny.jpg" alt="">
+      </div>
+    </div>
+    <div class="container">
+      <div class="item">
+        <img src="../../img/bird.jpeg" alt="">
+      </div>
+    </div>
+    <div class="container">
+      <div class="item">
+        <img src="../../img/duck.jpeg" alt="">
+      </div>
+    </div>
+    <div class="container">
+      <div class="item">
+        <img src="../../img/cat.jpeg" alt="">
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <h1>CSS Animation</h1> -->
+
+  <!-- <h2>Loading spinner</h2>
+
+  <style>
+      .spinner {
+          width: 50px;
+          height: 50px;
+          border: 5px solid;
+          /* border-top 덮어쓰기 */
+          border-top: 5px solid #fff;
+          /* width와 height가 같은 길이에서 border-radius를 50% 이상으로 하면 완전한 구가 된다 */
+          border-radius: 50%;
+          /* 애니메이션 이름 */
+          /* animation-name: duck; */
+          /* 애니메이션이 1번 작동하는데 걸리는 시간  */
+          /* animation-duration: 2s; */
+          /* 애니메이션 반복 횟수 */
+          /* animation-iteration-count: infinite; */
+          /* linear: 처음부터 끝까지 일정한 속도 */
+          /* animation-timing-function: linear; */
+
+          /* shorthand 줄여서 쓰는 방법 */
+          /* animation: name / duration / timing-function / delay / iteration-count / */
+          /* direction / fill-mode / play-state */
+
+          animation: duck 2s linear infinite;
+      }
+
+      @keyframes duck {
+          from {
+              transform: rotate(0deg)
+          } to {
+              transform: rotate(360deg)
+          }
+      }
+  </style>
+
+
+  <div class="spinner"></div> -->
+
+
+<!-- <h2>Loading Bar</h2>
+
+<style>
+    .container {
+        width: 200px;
+        height: 8px;
+        background-color: #ddd;
+    }
+    .item {
+        width: 40px;
+        height: 100%;
+        background-color: #1290ff;
+        /* 원래 자신의 위치를 기준으로 상대적이다 */
+        position: relative;
+
+        animation-name: duck;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        /* 애니메이션 방향이 앞, 뒤로 작동 */
+        animation-direction: alternate;
+    }
+
+    @keyframes duck {
+        from {
+            left: 0;
+        } to {
+            left: 100%;
+            /* percentage: element 자신의 크기에 상대적이다 */
+            /* translate(percentage) */
+
+            /* translate(x, y) */
+            /* translateX(x) */
+            /* translateY(y) */
+
+            /* translate(left(-)/right, top(-)/bottom) */
+            /* translateX(left(-)/right) */
+            /* translateY(top(-)/bottom) */
+
+            transform: translateX(-100%);
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="item"></div>
+</div> -->
+
+
+<!-- <style>
+    .bars {
+        width: 50px;
+        height: 50px;
+        /* border: 1px dashed; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .bars .bar {
+        width: 50px;
+        height: 4px;
+        background-color: #000;
+        transition: .5s;
+    }
+    .bars:hover .bar:first-child {
+        transform: translateY(23px) rotate(45deg)
+    }
+    .bars:hover .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .bars:hover .bar:nth-child(3) {
+        transform: translateY(-23px) rotate(-45deg) 
+    }
+</style>
+
+<h2>Animated hamburger button</h2>
+
+<div class="bars">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>  -->
+
+
+<!-- <style>
+    /* css 에서 변수를 설정한다 */
+    :root {
+        --sun: #ff7f50;
+        --mercury: #ffd700;
+        --earth: #87cef1;
+        --mars: #ffa07a;
+        --jupiter: #d2b48c;
+        --neptune: #4682b4;
+    }
+
+    body {
+        background-color: #000;
+    }
+
+    .solar-system {
+        width: 400px;
+        height: 400px;
+        /* border: 1px solid #fff; */
+        position: relative;
+    }
+
+    .sun {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 25px;
+        height: 25px;
+        background-color: var(--sun);
+        border-radius: 50%;
+    }
+
+    .orbit {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* border: 1px solid #fff; */
+    }
+    .planet {
+        border-radius: 50%;
+    }
+    .mercury {
+        width: 100px;
+        height: 100px;
+        animation: orbiting 0.5s infinite linear;
+    }
+    .mercury .planet {
+        width: 10px;
+        height: 10px;
+        background-color: #ffd700;
+    }
+    .earth {
+        width: 150px;
+        height: 150px;
+        animation: orbiting 1s infinite linear;
+    }
+    .earth .planet {
+        width: 20px;
+        height: 20px;
+        background-color: var(--earth);
+    }
+    .mars {
+        width: 200px;
+        height: 200px;
+        animation: orbiting 2s infinite linear;
+    }
+    .mars .planet {
+        width: 15px;
+        height: 15px;
+        background-color: var(--mars);
+    }
+    .jupiter {
+        width: 250px;
+        height: 250px;
+        animation: orbiting 12s infinite linear;
+
+    }
+    .jupiter .planet {
+        width: 50px;
+        height: 50px;
+        background-color: var(--jupiter);
+        /* background-image: linear-gradient(beige, var(--jupiter)); */
+        /* background-image: repeating-linear-gradient(beige, var(--jupiter) 20%); */
+    }
+    .neptune {
+        width: 350px;
+        height: 350px;
+        animation: orbiting 165s infinite linear;
+    }
+    .neptune .planet {
+        width: 10px;
+        height: 10px;
+        background-color: var(--neptune);
+    }
+
+    @keyframes orbiting {
+        from {
+            transform: translate(-50%, -50%) rotate(0);
+        } to {
+            transform: translate(-50%, -50%) rotate(360deg);
+        }
+    }
+</style>
+
+
+  <div class="solar-system">
+    <div class="sun"></div>
+    <div class="orbit mercury">
+      <div class="planet"></div>
+    </div>
+    <div class="orbit earth">
+      <div class="planet"></div>
+    </div>
+    <div class="orbit mars">
+      <div class="planet"></div>
+    </div>
+    <div class="orbit jupiter">
+      <div class="planet"></div>
+    </div>
+    <div class="orbit neptune">
+      <div class="planet"></div>
+    </div>
+  </div> -->
+
+  <!-- <style>
+      .container {
+          width: 400px;
+          height: 400px;
+          background-color: #ddd;
+      }
+
+      .item {
+          width: 100px;
+          height: 100px;
+          border: 1px dashed;
+          position: relative;
+          animation: duck 4s infinite linear;
+      }
+
+      @keyframes duck {
+          0% {
+              top: 0; left: 0
+          }
+          25% {
+              top: 0; left: 100%;
+              transform: translateX(-100%);
+          }
+          50% {
+              top: 100%; left: 100%;
+              transform: translate(-100%, -100%);
+          }
+          75% {
+              top: 100%; left: 0;
+              transform: translateY(-100%);
+          }
+          100% {
+              top: 0; left: 0;
+          }
+      }
+
+  </style>
+
+  <div class="container">
+    <div class="item"></div>
+  </div> -->
+
+
+  <style>
+body {
+    background-color: #000;
+}
+.loader,
+.loader:before,
+.loader:after {
+  background: #ffffff;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+.loader {
+  color: #ffffff;
+  text-indent: -9999em;
+  margin: 88px auto;
+  position: relative;
+  font-size: 11px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.loader:before {
+  left: -1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 1.5em;
+}
+
+@-webkit-keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+@keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+</style>
+
+
+<div class="load-container load1">
+    <div class="loader"></div>
+</div>
 
 
 </body>
