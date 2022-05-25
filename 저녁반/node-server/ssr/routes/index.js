@@ -15,7 +15,7 @@ router.get('/p/:postId', (req, res, next) => {
   // fs.readFile(읽을 파일명, callback)
   fs.readFile(`data/${req.params.postId}`, (err, content) => {
     if (err) {
-      return console.error(err)
+      return console.error(err);
     }
     const post = { title: req.params.postId, content }
     res.render('blog_detail', { title: 'Blog', post })

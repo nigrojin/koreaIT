@@ -14,7 +14,7 @@ document.body.addEventListener('click', e => {
     e.preventDefault();
     
   // a태그의 href속성 값을 가져온다
-    const url = e.target.getAttribute('href')
+    const url = e.target.getAttribute('href');
 
     // 주소창에 href값을 집어넣는다
     history.pushState(null, null, url);
@@ -71,8 +71,6 @@ async function router() {
     createElement(layout)
   )
 }
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 
