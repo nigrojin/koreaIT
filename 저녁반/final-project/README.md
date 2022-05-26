@@ -26,3 +26,7 @@
 
 ## DELETE (Delete)
 /profiles/:username/follow - 팔로우 취소
+
+
+## 설치할 패키지
+npm i mongoose
