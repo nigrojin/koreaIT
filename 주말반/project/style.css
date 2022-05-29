@@ -1,0 +1,162 @@
+
+/* Initialize */
+* {
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+
+input[type=text], input[type=date] {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+img {
+    width: 100%;
+}
+
+/* button */
+.btn {
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #ebebeb;
+    text-align: center;
+}
+.btn:hover {
+    background-color: #ddd;
+}
+.btn-dark {
+    background-color: #333;
+    color: #fff;
+}
+.btn-dark:hover {
+    background-color: #222;
+}
+
+/* width and height */
+.w-100 {
+    width: 100%;
+}
+
+/* position */
+.relative {
+    position: relative;
+}
+.fixed-top {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+.left-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.right-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+/* flex */
+.flex {
+    display: flex;
+}
+.flex-grow-1 {
+    flex-grow: 1
+}
+.flex-equal > * {
+    flex-grow: 1
+}
+
+/* border */
+.border {
+    border: 1px dashed;
+}
+.border-children > * {
+    border:1px dashed;
+}
+/* box-shadow */
+.box-shadow {
+    /* box-shadow: h / v / blur / spread / color */
+    /* box-shadow: 수평(필수)/수직(필수)/흐림/퍼짐/색상 */
+    box-shadow: 1px 3px 3px #888,
+    -1px -3px 3px #888;
+}
+
+/* background color */
+.bg-black {
+    background-color: #000;
+}
+.bg-dark-grey {
+    background-color: #555;
+}
+
+/* background image */
+.bg-image {
+    background-size: cover;
+    background-position: center;
+    background-color: #ddd;
+}
+.fake-img {
+    /* parent element의 width 기준 */
+    padding-top: 75%;
+    background-color: #ddd;
+}
+
+/* text */
+.text-white {
+    color: #fff;
+}
+.text-center {
+    text-align: center;
+}
+
+/* padding  */
+.pd-5 {
+    padding: 5px;
+}
+.pd-10 {
+    padding: 10px;
+}
+.pd-tb-48 {
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+
+/* margin */
+.mx-auto {
+    margin: auto;
+}
+.mg-10 {
+    margin: 10px;
+}
+.mt-24 {
+    margin-top: 24px;
+}
+
+.blockquote {
+    background-color: #f1f1f1;
+    border-left: 5px solid #ddd;
+    padding: 24px;
+}
+
+.hide-small {
+    display: none;
+}
+
+@media (min-width: 501px) {
+    .hide-small {
+        display: block;
+    }
+}
