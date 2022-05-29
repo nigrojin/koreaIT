@@ -1,10 +1,21 @@
 
 /* Initialize */
+/* 전체선택자 */
+/* 모든 엘리먼트에 적용된다 */
+
+/* style sheet안에서 외부파일을 가져온다 */
 * {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,p {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 a {
     text-decoration: none;
+    color: #000;
 }
 
 input[type=text], input[type=date] {
@@ -12,6 +23,8 @@ input[type=text], input[type=date] {
     border: 1px solid #ddd;
 }
 img {
+    /* img태그는 원래의 width, height값이 있기 때문에 overflow된다 */
+    /* 부모태그의 넓이를 다 차지하도록 만든다 */
     width: 100%;
 }
 
@@ -57,6 +70,11 @@ img {
     left: 50%;
     transform: translate(-50%, -50%)
 }
+.top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 .left-bottom {
     position: absolute;
     left: 0;
@@ -72,21 +90,39 @@ img {
 .flex {
     display: flex;
 }
+.justify-content-between {
+    justify-content: space-between
+}
 .flex-grow-1 {
     flex-grow: 1
 }
+/* > 바로 밑에 element */
+/* flex item을 선택한다 */
 .flex-equal > * {
     flex-grow: 1
 }
 
+/* grid */
+.grid-container {
+    display: grid;
+    /* 컬럼(열)의 갯수  */
+}
+.grid-gap-10 {
+    gap: 10px;
+}
+.grid-sm-100 {
+    grid-template-columns: auto;
+}
+
 /* border */
 .border {
-    border: 1px dashed;
+    border: 1px solid #f1f1f1;
 }
 .border-children > * {
     border:1px dashed;
 }
 /* box-shadow */
+/* 그림자 효과 */
 .box-shadow {
     /* box-shadow: h / v / blur / spread / color */
     /* box-shadow: 수평(필수)/수직(필수)/흐림/퍼짐/색상 */
@@ -95,6 +131,9 @@ img {
 }
 
 /* background color */
+.bg-white {
+    background-color: #fff;
+}
 .bg-black {
     background-color: #000;
 }
@@ -123,13 +162,17 @@ img {
 }
 
 /* padding  */
-.pd-5 {
+.p-5 {
     padding: 5px;
 }
-.pd-10 {
+.p-10 {
     padding: 10px;
 }
-.pd-tb-48 {
+.px-15 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.py-48 {
     padding-top: 48px;
     padding-bottom: 48px;
 }
@@ -138,7 +181,7 @@ img {
 .mx-auto {
     margin: auto;
 }
-.mg-10 {
+.m-10 {
     margin: 10px;
 }
 .mt-24 {
@@ -158,5 +201,18 @@ img {
 @media (min-width: 501px) {
     .hide-small {
         display: block;
+    }
+    /* 두 클래스 이름을 모두 가지고 있는 엘리먼트를 선택 */
+    .flex.hide-small {
+        display: flex;
+    }
+    .grid-md-50 {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (min-width: 701px) {
+    .grid-lg-25 {
+        grid-template-columns: auto auto auto auto;
     }
 }

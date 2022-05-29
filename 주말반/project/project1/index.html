@@ -6,8 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- style sheet의 불러오는 순서도 중요하다 -->
+    <!-- 더 밑에 있는 style이 더 우선된다 -->
     <link rel="stylesheet" href="../style.css">
+    <!-- 인라인 style태그는 head 부분에서 작성한다 -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inconsolata', monospace;
+        }
         .bg-image {
             height: 600px;
             background-image: url('../../../img/project1/coffeehouse.jpeg');
@@ -16,14 +26,16 @@
 </head>
 
 <body style="min-height: 2000px">
-
     <!-- Navigation -->
     <div class="fixed-top">
-        <div class="navbar flex flex-equal pd-5 bg-black">
-            <a class="pd-10 text-white text-center" href="">HOME</a>
-            <a class="pd-10 text-white text-center" href="">ABOUT</a>
-            <a class="pd-10 text-white text-center" href="">MENU</a>
-            <a class="pd-10 text-white text-center" href="">WHERE</a>
+        <div class="navbar flex flex-equal p-5 bg-black">
+            <a class="p-10 text-white text-center" href="#">HOME</a>
+            <a class="p-10 text-white text-center" href="#about">ABOUT
+            </a>
+            <a class="p-10 text-white text-center" href="#menu">MENU
+            </a>
+            <a class="p-10 text-white text-center" href="#contact">CONTACT
+            </a>
         </div>
     </div>
 
@@ -32,20 +44,22 @@
         <div class="center">
             <h1 class="text-white">The Cafe</h1>
         </div>
-        <div class="left-bottom hide-small mg-10">
+        <div class="left-bottom hide-small m-10 bg-black text-white">
             Open from 6am to 5pm
         </div>
-        <div class="right-bottom mg-10">
+        <div class="right-bottom m-10 bg-black text-white">
             15 Adr street, 5015
         </div>
     </div>
 
     <!-- Main Contents -->
-    <div class="mx-auto" style="max-width: 700px">
+    <!-- html tag안에 style속성을 이용할 수도 있다 -->
+    <!-- 가장 우선시된다 -->
+    <div class="mx-auto px-15" style="max-width: 700px">
         <!-- About -->
         <div id="about">
             <!-- Title -->
-            <div class="pd-tb-48">
+            <div class="py-48">
                 <h3 class="text-center">
                     <span class="bg-black text-white">ABOUT THE CAFE</span>
                 </h3>
@@ -82,7 +96,7 @@
         <!-- Menu -->
         <div id="menu">
             <!-- Title -->
-            <div class="pd-tb-48">
+            <div class="py-48">
                 <h3 class="text-center">
                     <span class="bg-black text-white">MENU</span>
                 </h3>
@@ -91,29 +105,29 @@
             <!-- 메뉴판 -->
             <div class="box-shadow">
                 <!-- 메뉴 버튼 -->
-                <div class="flex flex-equal pd-5 box-shadow">
-                    <a class="pd-5 text-center bg-dark-grey text-white" href="">Eat</a>
-                    <a class="pd-5 text-center" href="">Drink</a>
+                <div class="flex flex-equal p-5 box-shadow">
+                    <a class="p-5 text-center bg-dark-grey text-white" href="">Eat</a>
+                    <a class="p-5 text-center" href="">Drink</a>
                 </div>
                 <!-- 메뉴 내용 -->
                 <div class="">
-                    <div class="">
+                    <div class="p-10">
                         <h3>MENU NAME</h3>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     </div>
-                    <div class="">
+                    <div class="p-10">
                         <h3>MENU NAME</h3>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     </div>
-                    <div class="">
+                    <div class="p-10">
                         <h3>MENU NAME</h3>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     </div>
-                    <div class="">
+                    <div class="p-10">
                         <h3>MENU NAME</h3>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     </div>
-                    <div class="">
+                    <div class="p-10">
                         <h3>MENU NAME</h3>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     </div>
@@ -130,7 +144,7 @@
         <!-- Contact -->
         <div id="contact">
             <!-- Title -->
-            <div class="pd-tb-48">
+            <div class="py-48">
                 <h3 class="text-center">
                     <span class="bg-black text-white">WHERE TO FIND US</span>
                 </h3>
@@ -157,7 +171,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer bg-black pd-tb-48">
+    <div class="footer bg-black py-48">
         <p class="text-center text-white">Footer</p>
     </div>
 
