@@ -9,7 +9,7 @@ const userSchema = new Schema({
     password: { type: String },
     salt: { type: String },
     oauth: { type: Boolean, default: false },
-    active: { type: Boolean, default: false }
+    active: { type: Boolean, default: true }
 })
 
 const followSchema = new Schema({
