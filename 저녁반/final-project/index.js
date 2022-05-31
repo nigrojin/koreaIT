@@ -1,12 +1,23 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+// cross origin 요청 허가
 const cors = require('cors');
+// ODM 패키지
 const mongoose = require('mongoose');
+// req.body를 받는다.
 const cookieParser = require('cookie-parser');
+// 암호화, 로그인 토큰 발급 등
 const crypto = require('crypto');
-const saltRounds = 10;
 const jwt = require('jsonwebtoken');
+// 유저 인증을 하는 패키지
+const passport = require('passport');
+const passportJwt = require('./auth/passportJwt');
+const auth = passport.authenticate('jwt', { session: false });
+// form 데이터를 파싱한다(특히 파일에 특화되어 있다)
+const formidable = require('formidable');
+// NodeJS에서 파일 핸들링
+const fs = require('fs');
 
 // # app.use() 미들웨어
 // 유틸리티 기능들
@@ -14,16 +25,24 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(cors())
+// express에서 정적파일 제공
+app.use(express.static('public'))
+app.use(express.static('data'))
 
 // # 데이터베이스 연결
 mongoose.connect('mongodb://127.0.0.1:27017/final', // url
     { useNewUrlParser: true, useUnifiedTopology: true  } // options
 )
-const { User, Follow, Articles, Favorite, Comment, Token } = require('./models/model');
+const { User, Follow, Article, Favorite, Comment, Token } = require('./models/model');
 
 // # 라우팅
 app.get('/', (req, res) => {
     res.json('hello world');
+})
+
+app.get('/user', auth, async (req, res, next) => {
+    // req.user: 로그인한 유저가 담긴다.
+    res.json(req.user);
 })
 
 app.post('/user/login', async (req, res, next) => {
@@ -114,6 +133,43 @@ app.post('/users', async (req, res, next) => {
     await user.save()
 
     res.json({ message: user })
+})
+
+// auth에서 권한을 검사한다
+app.post('/articles', auth, async (req, res, next) => {
+
+    const form = formidable();
+
+    form.parse(req, async (err, fields, files) => {
+        // photo 파일
+        const photo = files.photo;
+        // req.user값으로 DB에서 user를 찾는다
+        // SQL(Structured Query Language, 데이터베이스의 언어)
+        // SQL을 이용하는 경우: SELECT * FROM User where id= ? (MySQL)
+        // ODM (Object Document Model): JavaScript의 언어로 Query를 요청할 수 있다
+        const user = await User.findById(req.user._id);
+
+        // 파일을 핸들링하는 하는 부분
+        const oldpath = photo.filepath;
+        // 이미지의 확장자(extenstion)
+        // bunny.jpg => jpg ['bunny', 'jpg']
+        const ext = photo.originalFilename.split('.')[1];
+        const newName = photo.newFilename + '.' + ext;
+        const newpath = __dirname + '/data/posts' + newName;
+
+        
+
+        // 새로운 게시글을 만든 뒤 저장한다
+        const article = new Article({
+            description: fields.description,
+            photos: newName,
+            author: user._id
+        })
+
+        await article.save();
+
+        res.json(article);
+    })
 })
 
 
