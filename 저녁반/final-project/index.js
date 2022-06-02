@@ -206,8 +206,17 @@ app.post('/articles', auth, async (req, res, next) => { // auth에서 권한을 
 
 app.get('/articles', async (req, res, next) => {
     try {
-        const articles = await Article.find();
-        res.json(articles)
+        // 특정한 유저의 게시물을 가져온다
+        if (req.query.username) { // GET 요청에서만 사용할 수 있다
+            const user = await User.findOne({ username: req.query.username })
+            const articles = await Article.find({ author: user._id })
+
+            res.json(articles)
+        // 전체 게시물을 가져온다
+        } else {
+            const articles = await Article.find();
+            res.json(articles)
+        }
     } catch (error) {
         next(error)
     }
@@ -225,6 +234,23 @@ app.get('/articles/:postId', async (req, res, next) => {
     }
 })
 
+// # 피드
+app.get('/feed', auth, async (req, res, next) => {
+    try {
+        // 로그인한 유저가 followerId인 데이터
+        const followingList = await Follow.find({ followerId: req.user._id });
+        // 로그인한 유저가 팔로우하는 계정의 id만 추출
+        const followingIds = followingList.map(following => following.followingId.toString())
+        // 로그인한 유저가 팔로우하는 유저의 게시물
+        const articles = await Article.find({ author: followingIds }).populate('author');
+
+        console.log(followingIds)
+        res.json(articles)
+    } catch (error) {
+        next(error)
+    }
+})
+
 // # 팔로우
 app.post('/profiles/:username/follow', auth, async (req, res, next) => {
     try {
@@ -236,6 +262,10 @@ app.post('/profiles/:username/follow', auth, async (req, res, next) => {
             // 커스텀 에러
             throw new Error('이미 팔로우합니다');
         }
+        if (req.user._id.toString() === user._id.toString()) {
+            // 커스텀 에러
+            throw new Error('자신을 팔로우할 수 없습니다')
+        }
 
         const following = new Follow({
             followerId: req.user._id,
@@ -245,6 +275,57 @@ app.post('/profiles/:username/follow', auth, async (req, res, next) => {
         await following.save();
 
         res.json(following);
+
+    } catch (error) {
+        next(error)
+    }
+})
+
+app.get('/profiles/:username/isFollowing', auth, async (req, res, next) => {
+    try {
+        const user = await User.findOne({ username: req.params.username });
+        const following = await Follow.findOne({ followerId: req.user._id, followingId: user._id })
+        // 팔로잉을 하는지
+        const isFollowing = following ? true : false;
+
+        res.json(isFollowing);
+    } catch (error) {
+        next (error)
+    }
+})
+
+app.get('/profiles/:username/followerList', auth, async (req, res, next) => {
+    try {
+        const user = await User.findOne({ username: req.params.username });
+        // find(): Array을 리턴한다
+        // populate() ref(User)에 작성한 컬렉션을 참고하여 id값이 일치하는 데이터를 가져온다
+        const followerList = await Follow.find({ followingId: user._id }).populate('followerId');
+    
+        res.json(followerList)
+    } catch (error) {
+        next(error)
+    }
+})
+
+app.get('/profiles/:username/followingList', auth, async (req, res, next) => {
+    try {
+        const user = await User.findOne({ username: req.params.username })
+        const followingList = await Follow.find({ followerId: user._id }).populate('followingId')
+    
+        res.json(followingList)
+    } catch (error) {
+        next(error)
+    }
+})
+
+app.delete('/profiles/:username/follow', auth, async (req, res, next) => {
+    try {
+        const user = await User.findOne({ username: req.params.username });
+        const following = await Follow.findOne({ followerId: req.user._id, followingId: user._id });
+
+        await following.delete();
+
+        res.json(user)
 
     } catch (error) {
         next(error)
