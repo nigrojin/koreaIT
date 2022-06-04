@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/4fb6dd7406.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
-<body style="padding: 50px;">
+<body>
     <!-- <h1>CSS Selector (선택자)</h1> -->
     <!-- <p>element, .clsss, #id, children, ...</p> -->
 
@@ -2935,77 +2935,239 @@
     <div class="item"></div>
   </div> -->
 
+  <!-- <style>
+      .youtube.container {
+          position: relative;
+          padding-top: 75%;
+          width: 100%;
+          height: auto;
+      }
+      .youtube iframe {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0; left: 0;
+      }
+  </style>
 
-  <style>
-body {
-    background-color: #000;
-}
-.loader,
-.loader:before,
-.loader:after {
-  background: #ffffff;
-  -webkit-animation: load1 1s infinite ease-in-out;
-  animation: load1 1s infinite ease-in-out;
-  width: 1em;
-  height: 4em;
-}
-.loader {
-  color: #ffffff;
-  text-indent: -9999em;
-  margin: 88px auto;
-  position: relative;
-  font-size: 11px;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
-}
-.loader:before,
-.loader:after {
-  position: absolute;
-  top: 0;
-  content: '';
-}
-.loader:before {
-  left: -1.5em;
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
-}
-.loader:after {
-  left: 1.5em;
-}
+  <h1># 유튜브 반응형으로 만들기</h1>
 
-@-webkit-keyframes load1 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 0;
-    height: 4em;
-  }
-  40% {
-    box-shadow: 0 -2em;
-    height: 5em;
-  }
-}
-@keyframes load1 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 0;
-    height: 4em;
-  }
-  40% {
-    box-shadow: 0 -2em;
-    height: 5em;
-  }
-}
+  <div class="container youtube">
+      <iframe width="640" height="360" src="https://www.youtube.com/embed/xKNzDwGCtpY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div> -->
+
+
+  <!-- <style>
+      body {
+          min-height: 1000px;
+      }
+      .navbar {
+          /* 기본값 */
+          position: static;
+          width: 100%;
+      }
+      .nav {
+          background-color: #000;
+      }
+      .nav a {
+          color: #fff;
+          display: inline-block;
+          padding: 10px;
+      }
+  </style>
+
+  <div class="navbar">
+    <div class="header">
+        <h1>LOGO</h1>
+    </div>
+    <div class="nav">
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Posts</a>
+        <a href="">Contact</a>
+    </div>
+  </div> -->
+
+  
+  <!-- <style>
+    body {
+        min-height: 1000px;
+    }
+    .nav {
+        position: sticky;
+        top: 0;
+        background-color: #000;
+    }
+    .nav a {
+        color: #fff;
+        display: inline-block;
+        padding: 10px;
+    }
+
 </style>
 
+  <div class="header">
+      <h1>LOGO</h1>
+  </div>
+  <div class="nav">
+      <a href="">Home</a>
+      <a href="">About</a>
+      <a href="">Posts</a>
+      <a href="">Contact</a>
+  </div> -->
 
-<div class="load-container load1">
-    <div class="loader"></div>
-</div>
+  <!-- <style>
+      h1 {
+          font-size: 2em;
+          /* font-size: 80px; */
+          /* font-weight: normal; */
+          /* margin-top: 1em; */
+          /* margin-bottom: 1em; */
+      }
+  </style>
+
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+  <h3>Heading 3</h3>
+  <h4>Heading 4</h4>
+  <h5>Heading 5</h5>
+
+  <p>lorem ipsum</p> -->
+
+  <!-- <style>
+      .bg-image {
+          background-image: url('../../img/duck.jpeg');
+          /* 이미지가 엘리먼트의 가운데로 오게한다 */
+          background-position: center;
+          /* 이미지가 엘리먼트를 꽉 채운다 */
+          background-size: cover;
+          height: 300px;
+      }
+  </style>
+
+  <div class="bg-image"></div> -->
+
+  <!-- <style>
+      body {
+          min-height: 2000px;
+      }
+      .header {
+          position: fixed;
+          width: 100%;
+          height: 200px;
+          border-bottom: 1px solid #ddd;
+          background-color: #fff;
+      }
+      .main {
+          padding-top: 200px;
+      }
+  </style>
+
+
+  <div class="header"></div>
+
+  <div class="main">
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, sequi, quidem aut necessitatibus odio quibusdam ipsum iure molestias unde id perferendis dignissimos dolores saepe alias labore? Laborum facilis itaque asperiores.</p>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, sequi, quidem aut necessitatibus odio quibusdam ipsum iure molestias unde id perferendis dignissimos dolores saepe alias labore? Laborum facilis itaque asperiores.</p>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, sequi, quidem aut necessitatibus odio quibusdam ipsum iure molestias unde id perferendis dignissimos dolores saepe alias labore? Laborum facilis itaque asperiores.</p>
+  </div> -->
+
+  
+  <!-- <style>
+    .a {
+        /* 순서가 더 앞에 있어도 !important가 더 우선된다 */
+        background-color: green!important;
+    }
+    .b {
+        background-color: blue;
+    }
+  </style>
+
+  <p class="a b">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p> -->
+
+  <!-- <style>
+      p {
+          /* 글자의 수평 간격 */
+          /* letter-spacing: normal; */
+          /* 줄 간격 */
+          /* line-height: normal; */
+          line-height: 2;
+      }
+  </style>
+
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+      Neque ad beatae cum ipsum doloremque officia aperiam, 
+      soluta repellendus molestias vero sint illo nobis fugit necessitatibus aut illum maiores earum at?
+    </p> -->
+
+    <!-- <style>
+        body {
+            min-height: 5000px;
+        }
+        .bg-image {
+            background-image:  url('../../img/duck.jpeg');
+            background-size: cover;
+            background-position:center;
+            /* 배경이미지가 고정된다 */
+            background-attachment: fixed;
+            height: 400px;
+        }
+    </style>
+
+    <h1>Company</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, quia! Nesciunt quo magnam numquam maiores quisquam. Voluptates tenetur praesentium est odit sit placeat nemo molestiae magni obcaecati, maxime mollitia tempore.</p>
+    <div class="" style="height: 500px;"></div>    
+
+    <div class="bg-image"></div> -->
+    
+    <!-- <style>
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        iframe {
+            width: 100%;
+        }
+    </style>
+
+    <h1>구글지도 반응형</h1>
+    
+    <div class="container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.6761353928223!2d126.72394600000001!3d37.491968299999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7d0c6d136969%3A0x65ce7af493ae07af!2z7L2U66as7JWESVTslYTsubTrjbDrr7gg7J247LKc7KeA7KCQ!5e0!3m2!1sko!2skr!4v1654309876061!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div> -->
+
+    <!-- <style>
+        video {
+            width: 100%;
+        }
+    </style>
+
+    <h1>video 태그</h1>
+    <ul>
+        <li>autoplay: 브라우저 로드시 자동 재생</li>
+        <li>muted: 소리 끔</li>
+        <li>loop: 반복 재생</li>
+    </ul>
+
+    <video autoplay muted loop>
+        <source src="../skyscrapers.mp4" type="video/mp4">
+    </video> -->
+
+    <style>
+        .row {
+            height: 400px;
+        }
+        .bg-dark-grey {
+            background-color: #333;
+        }
+    </style>
+    <h1>background-color로 row가 구분되는 레이아웃</h1>
+
+    <div class="row"></div>
+    <div class="row bg-dark-grey"></div>
+    <div class="row"></div>
+    <div class="row bg-dark-grey"></div>
+    <div class="row"></div>
 
 
 </body>
