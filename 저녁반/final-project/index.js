@@ -209,12 +209,12 @@ app.get('/articles', async (req, res, next) => {
         // 특정한 유저의 게시물을 가져온다
         if (req.query.username) { // GET 요청에서만 사용할 수 있다
             const user = await User.findOne({ username: req.query.username })
-            const articles = await Article.find({ author: user._id })
+            const articles = await Article.find({ author: user._id }).populate('author')
 
             res.json(articles)
         // 전체 게시물을 가져온다
         } else {
-            const articles = await Article.find();
+            const articles = await Article.find().populate('author');
             res.json(articles)
         }
     } catch (error) {
@@ -227,9 +227,129 @@ app.get('/articles/:postId', async (req, res, next) => {
         // Error Object
         // { name, message }
         // name: EvalError, RangeError, ReferenceError, SyntaxError, TypeError, URIError
-        const article = await Article.findById('sdf'); // CastError (Custom error)
+        const article = await Article.findById(req.params.postId); // CastError (Custom error)
         res.json(article)
     } catch (error) { // await Promise에서 발생한 에러를 잡는다
+        next(error)
+    }
+})
+
+app.put('/articles/:id', auth, async (req, res, next) => {
+    try {
+        // id에 일치하는 게시물을 가져온다(수정할 게시물)
+        const article = await Article.findById(req.params.id);
+
+        if (article.author.toString() !== req.user._id.toString()) {
+            // error.name, error.message
+            // error.name: Error, error.message: '게시물을 ...')
+            throw new Error('게시물을 작성한 본인만 수정할 수 없습니다.')
+        }
+
+        const form = formidable();
+
+        form.parse(req, async (err, fields, files) => {
+            try {
+                // 사진에 대한 설명을 업데이트한다
+                article.description = fields.description
+                article.tagList = fields.tagList;
+    
+                // 수정한 게시물을 저장한다
+                await article.save();
+    
+                res.json(article);
+            } catch (error) {
+                next(error)
+            }
+        })
+
+    } catch (error) {
+        next(error)
+    }
+})
+
+app.delete('/articles/:postId', auth, async (req, res, next) => {
+    try {
+        const article = await Article.findById(req.params.postId);
+
+        if (article.author.toString() !== req.user._id.toString()) {
+            throw new Error('게시물을 작성한 사람만 삭제할 수 있습니다')
+        }
+
+        await article.delete();
+
+        res.json(req.params.postId);
+
+    } catch (error) {
+        next(error)
+    }
+})
+
+// # 좋아요
+app.post('/articles/:postId/favorite', auth, async (req, res, next) => {
+    try {
+        const article = await Article.findById(req.params.postId);
+        // 커스텀 에러, 이미 로그인한 유저가 좋아요를 누른 게시물인지 확인한다
+        const favorite = await Favorite.findOne({ user:req.user._id, article: article._id })
+
+        if (favorite) {
+            throw new Error('이미 좋아요를 누른 게시물입니다')
+        }
+
+        const newFavorite = new Favorite({
+            user: req.user._id,
+            article: article._id
+        })
+
+        // 새로운 좋아요 데이터 저장
+        await newFavorite.save();
+
+        // 좋아요를 누른 게시물의 좋아요 수 1 증가
+        article.favoriteCount++;
+        // 업데이트된 게시물 저장
+        await article.save();
+
+        res.json(article)
+
+    } catch (error) {
+        next(error)
+    }
+})
+
+app.get('/articles/:postId/favorite', auth, async (req, res, next) => {
+    try {
+        const favorite = await Favorite.findOne({ article: req.params.postId, user: req.user._id })
+        const isFavorite = favorite ? true : false;
+
+        res.json(isFavorite);
+    } catch (error) {
+        next(error)
+    }
+})
+
+app.delete('/articles/:postId/favorite', auth, async (req, res, next) => {
+    try {
+        const article = await Article.findById(req.params.postId);
+        // 로그인한 유저가 좋아요를 누른 데이터를 찾는다
+        const favorite = await Favorite.findOne({ user: req.user._id, article: article._id });
+
+        // 커스텀 에러
+        if (!article) {
+            throw new Error('존재하지 않는 게시물입니다')
+        }
+        if (!favorite) {
+            throw new Error('이미 삭제된 데이터입니다')
+        }
+
+        await favorite.delete();
+
+        // 게시물의 좋아요를 1 감소
+        article.favoriteCount--;
+        // 게시물 업데이트
+        await article.save();
+
+        res.json(article)
+
+    } catch (error) {
         next(error)
     }
 })
@@ -327,6 +447,23 @@ app.delete('/profiles/:username/follow', auth, async (req, res, next) => {
 
         res.json(user)
 
+    } catch (error) {
+        next(error)
+    }
+})
+
+// # Profile
+app.post('/profiles/edit', auth, async (req, res, next) => {
+    try {
+        const form = formidable();
+
+        form.parse(req, async (err, fields, files) => {
+            try {
+                
+            } catch (error) {
+                next(error)
+            }
+        })
     } catch (error) {
         next(error)
     }
