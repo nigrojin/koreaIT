@@ -35,6 +35,16 @@ mongoose.connect('mongodb://127.0.0.1:27017/final', // url
 )
 const { User, Follow, Article, Favorite, Comment, Token } = require('./models/model');
 
+// # UserException 클래스
+function UserException(message) {
+    this.name = 'UserException';
+    this.message = message;
+
+    this.toString = () => {
+        return this.name + ': ' + this.message;
+    }
+}
+
 // # 라우팅
 app.get('/', (req, res, next) => {
     try { // 여기서는 코드를 마음껏 작성한다
@@ -64,19 +74,95 @@ app.post('/user/login', async (req, res, next) => {
         const user = await User.findOne({ email: req.body.email, active: true });
         // 가입된 사용자인지 확인한다
         if (!user) {
-            return res.json({ message: '사용자를 찾을 수 없습니다' })
+            // return res.json({ message: '사용자를 찾을 수 없습니다' })
+            throw new UserException('사용자를 찾을 수 없습니다')
         }
         // 로그인 시에 받은 비밀번호와 user의 비밀번호를 비교한다
         const hashedPassword = crypto.pbkdf2Sync(req.body.password, user.salt, 310000, 32, 'sha256')
         .toString('hex')
 
         if (user.password !== hashedPassword) {
-            return res.json({ message: '비밀번호가 일치하지 않습니다' })
+            // return res.json({ message: '비밀번호가 일치하지 않습니다' })
+            throw new UserException('비밀번호가 일치하지 않습니다')
         }
 
         const token = jwt.sign({ username: user.username }, 'shhhhh');
         
         res.json({ token: token })
+    } catch (error) {
+        // UserException은 다른 방식으로 처리 (200)
+        if (error instanceof UserException) {
+            return res.json(error)
+        }
+        next(error)
+    }
+})
+
+app.post('/validate', async (req, res, next) => {
+    try {
+        const newUser = req.body;
+        console.log(newUser);
+
+        const username = await User.findOne({ username: newUser.username, active: true })
+        const email = await User.findOne({ email: newUser.email, active: true })
+
+        const validation = {
+            username: { pass: false, message: null },
+            email: { pass: false, message: null },
+            password: { pass: false, message: null },
+            passwordConfirm: { pass: false, message: null }
+        }
+
+        if (newUser.username !== undefined) {
+            if (newUser.username === '') {
+                validation.username.message = '사용자 이름을 입력하세요'
+            } else if (username) {
+                validation.username.message = '이미 가입된 사용자 이름입니다'
+            } else if (newUser.username.match(/[a-z]{6,}/) === null) {
+                validation.username.message = '소문자 알파벳으로 6글자이상 입력하세요'
+            } else {
+                validation.username.pass = true
+                validation.username.message = '가입할 수 있는 사용자 이름입니다'
+            }
+        }
+
+        if (newUser.email !== undefined) {
+            if (newUser.email === '') {
+                validation.email.message = '이메일을 입력하세요'
+            } else if (email) {
+                validation.email.message = '이미 사용중인 이메일입니다'
+            } else if (newUser.email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/) === null) {
+                validation.email.message = '유효하지 않은 이메일입니다'
+            } else {
+                validation.email.pass = true
+                validation.email.message = '사용 가능한 이메일입니다'
+            }
+        }
+
+        if (newUser.password !== undefined) {
+            if (newUser.password === '') {
+                validation.password.message = '비밀번호를 입력하세요'
+            } else if (newUser.password.match(/.{8,}/) === null) {
+                validation.password.message = '8글자 이상 입력하세요'
+            } else {
+                validation.password.pass = true
+                validation.password.message = '안전한 비밀번호입니다'
+            }
+        }
+
+        if (newUser.password_confirm !== undefined) {
+            if (newUser.password_confirm === '') {
+                validation.passwordConfirm.message = '비밀번호를 다시한번 입력하세요'
+            } else if (newUser.password !== newUser.password_confirm) {
+                validation.passwordConfirm.message = '비밀번호가 일치하지 않습니다'
+            } else {
+                validation.passwordConfirm.pass = true;
+                validation.passwordConfirm.message = '비밀번호가 일치합니다'
+            }
+        }
+
+        res.json(validation);
+
     } catch (error) {
         next(error)
     }
@@ -84,65 +170,15 @@ app.post('/user/login', async (req, res, next) => {
 
 app.post('/users', async (req, res, next) => {
     try {
-        // 입력받은 아이디로 회원을 찾는다
-        const username = await User.findOne({ username: req.body.username, active: true });
-        const email = await User.findOne({ email: req.body.username, active: true })
-    
-        console.log(username)
-        
-        // 이미 가입된 아이디 인 경우
-        if (username) {
-            return res.json({ message: '이미 가입된 아이디입니다' })
-        }
-        // username이 없으면
-        if (!req.body.username) { // username === undefined or username === ''
-            return res.json({ message: '아이디는 필수입니다' })
-        }
-        // 아이디 검증
-        if (req.body.username.match(/[a-z]{5,}/) === null) {
-            return res.json({ message: '아이디는 영어 소문자, 5글자 이상으로 입력해야 합니다' })
-        }
-        
-        // 이메일 확인
-        if (email) { // {}, [], { email: 'bunny@example.com' } => true
-            return res.json({ message: '이미 가입된 이메일입니다' })
-        }
-        if (!req.body.email) {
-            return res.json({ message: '이메일은 필수입니다' })
-        }
-        if (req.body.email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/) === null) {
-            return res.json({ message: '올바른 형식의 이메일이 아닙니다' })
-        }
-    
-        // 비밀번호 확인
-        if (!req.body.password) {
-            return res.json({ message: '비밀번호를 필수입니다' })
-        }
-        if (req.body.password.match(/.{8,}/) === null) {
-            return res.json({ message: '비밀번호가 안전하지 않습니다' })
-        }
-    
-        // 비밀번호 재입력 확인
-        if (!req.body.password_confirm) {
-            return res.json({ message: '비밀번호를 다시한번 입력하세요' })
-        }
-        
-        if (req.body.password !== req.body.password_confirm) {
-            return res.json({ message: '비밀번호가 일치하지 않습니다' })
-        }
-    
         // 검증이 끝나고 비밀번호를 암호화 한다
         const salt = crypto.randomBytes(16).toString('hex');
         // 암호화된 비밀번호
         const hashedPassword = crypto.pbkdf2Sync(req.body.password, salt, 310000, 32, 'sha256')
         .toString('hex')
     
-    
         const user = new User({
             username: req.body.username,
             email: req.body.email,
-            bio: req.body.bio,
-            image: req.body.image,
             password: hashedPassword,
             salt: salt
         })
@@ -150,7 +186,7 @@ app.post('/users', async (req, res, next) => {
         // 새로운 유저를 데이터베이스에 저장한다
         await user.save()
     
-        res.json({ message: user })
+        res.json(user)
 
     } catch (error) {
         next(error)
@@ -459,11 +495,119 @@ app.post('/profiles/edit', auth, async (req, res, next) => {
 
         form.parse(req, async (err, fields, files) => {
             try {
+                const image = files.image;
+                const user = await User.findById(req.user._id);
+
+                // 사용자가 이미지를 업로드하는 경우
+                if (image && image.originalFilename) {
+                    const oldpath = image.filepath;
+                    const ext = image.originalFilename.split('.')[1]
+                    const newName = image.newFilename + '.' + ext;
+                    const newpath = __dirname + '/data/user' + newName;
+
+                    fs.renameSync(oldpath, newpath);
+                    // 유저 이미지 업데이트
+                    user.image = newName;
+                }
+
+                // 유저 bio 업데이트
+                user.bio = fields.bio;
+
+                // 업데이트된 user를 저장
+                await user.save();
                 
+                res.json({ user, fields, files });
+
             } catch (error) {
                 next(error)
             }
         })
+    } catch (error) {
+        next(error)
+    }
+})
+
+app.get('/profiles/:username', async (req, res, next) => {
+    try {
+        const user = await User.findOne({ username: req.params.username });
+        
+        if (!user) {
+            throw new Error('존재하지 않는 사용자입니다')
+        }
+
+        // user에서 username, bio, image로 profile 객체를 만든다.
+        const profile = {
+            username: user.username,
+            bio: user.bio,
+            image: user.image
+        }
+
+        res.json(profile)
+
+    } catch (error) {
+        next(error)
+    }
+})
+
+// # 사용자 검색
+app.get('/users', auth, async (req, res, next) => {
+    try {
+        // 새로운 정규식 패턴을 만든다
+        const patt = new RegExp('^' + req.query.username);
+        // $regex: mongoose에서 정규식을 사용하는 방식
+        const users = await User.find({ username: { $regex: patt } });
+
+        res.json(users)
+    } catch (error) {
+        next(error)
+    }
+})
+
+// # 댓글
+app.post('/articles/:postId/comments', auth, async (req, res, next) => {
+    try {
+        const article = await Article.findById(req.params.postId);
+
+        const comment = new Comment({
+            content: req.body.content,
+            article: req.params.postId,
+            user: req.user._id
+        })
+
+        if (!article) {
+            throw new Error('존재하지 않는 게시물입니다')
+        }
+
+        await comment.save();
+
+        res.json(comment)
+    } catch (error) {
+        next(error)
+    }
+})
+
+app.get('/articles/:postId/comments', auth, async (req, res, next) => {
+    try {
+        const comments = await Comment.find({ article: req.params.postId }).populate('user');
+
+        res.json(comments)
+    } catch (error) {
+        next(error)
+    }
+})
+
+app.delete('/articles/:postId/comments/:commentId', auth, async (req, res, next) => {
+    try {
+        const comment = await Comment.findById(req.params.commentId);
+
+        if (req.user._id.toString() !== comment.user.toString()) {
+            throw new Error('댓글 작성자만 삭제할 수 있습니다')
+        }
+
+        await comment.delete();
+
+        res.json(req.params.commentId)
+
     } catch (error) {
         next(error)
     }
