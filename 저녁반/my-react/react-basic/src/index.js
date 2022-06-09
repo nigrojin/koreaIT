@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { useState, useEffect, useRef, createContext, useContext } from 'react';
 import ReactDOM from 'react-dom/client';
 
 // Component
@@ -291,26 +291,353 @@ import ReactDOM from 'react-dom/client';
 // 직접적으로 DOM element에 접근가능하다
 // 렌더링 사이에 값을 전달한다.
 
+// function App() {
+
+//   const inputElement = useRef();
+//   // current Object를 리턴한다.
+
+//   console.log(inputElement);
+
+//   useEffect(() => {
+//     console.log(inputElement);
+//     inputElement.current.focus();
+//     inputElement.current.style.outline = '5px solid red';
+//   })
+
+//   return (
+//     <>
+//       <h1>useRef</h1>
+//       <input type="text" ref={inputElement} />
+//     </>
+//   )
+// }
+
+
+// # useState()를 활용해서 시계를 만들어 보세요
+// function App() {
+//   console.log('App Loaded');
+
+//   // useState(initialValue)
+//   const [data, setData] = useState(new Date().toLocaleTimeString());
+
+//   // setTimeout은 App이 렌더링 될때 마다 호출
+//   setTimeout(() => {
+//     // setData가 App 컴포넌트를 re-rendering
+//     // state update
+//     setData(new Date().toLocaleTimeString());
+//   }, 1000)
+
+//   return (
+//     <>
+//       <h1>{data}</h1>
+//     </>
+//   )
+// }
+
+// # useState를 활용해서 랜덤숫자를 추가하세요
+// function App() {
+//   console.log('App Loaded!');
+
+//   const [data, setData] = useState([]);
+
+//   console.log(data)
+
+//   function handleClick() {
+//     // console.log(Math.random())
+
+//     // Array.push()와 같다
+//     setData([...data, Math.random()]);
+//   }
+
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <button onClick={handleClick}>Add</button>
+//       <ul>
+//         {data.map((value, index) => <li key={index}>{value}</li>)}
+//       </ul>
+//     </>
+//   )
+// }
+
+
+// function App() {
+//   console.log('App Loaded!');
+
+//   const [data, setData] = useState([]);
+
+//   console.log(data)
+
+//   setTimeout(() => {
+//     setData([...data, Math.random()]);
+//   }, 1000)
+
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <ul>
+//         {data.map((value, index) => <li key={index}>{value}</li>)}
+//       </ul>
+//     </>
+//   )
+// }
+
+// # Q3. useRef, useState, useEffect를 사용해서 구현해보세요
+
+// function App() {
+//   console.log('App Loaded!');
+
+//   // useRef() DOM element를 비동기적으로 반환한다.
+//   const inputEl = useRef(null);
+//   const [value, setValue] = useState("")
+
+//   useEffect(() => {
+//     inputEl.current.focus()
+//   })
+
+//   function handleChange(e) {
+//     setValue(e.currentTarget.value);
+//   }
+
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <input type="text" ref={inputEl} onChange={handleChange} />
+//       <p>{value}</p>
+//     </>
+//   )
+// }
+
+// # Composition(합성)과 useContext Hook
+
+// function Form() {
+//   return (
+//     <>
+//       <form>
+//         <h1>Todo List</h1>
+//         <input type="text" />
+//       </form>
+//     </>
+//   )
+// }
+
+// function App() {
+//   // App컴포넌트에서 Form컴포넌트를 담는다
+//   // 컴포넌트를 재사용할 수 있다
+//   return (
+//     <>
+//       <Form />
+//     </>
+//   )
+// }
+
+// function App() {
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <hr />
+//       <Component1 />
+//     </>
+//   )
+// }
+
+// function Component1() {
+//   return (
+//     <>
+//       <h1>Component1</h1>
+//       <Component2 />
+//     </>
+//   )
+// }
+
+// function Component2() {
+//   return (
+//     <>
+//       <h2>Component2</h2>
+//       <Component3 />
+//     </>
+//   )
+// }
+
+// function Component3() {
+//   return (
+//     <>
+//       <h3>Component3</h3>
+//       <p>...</p>
+//     </>
+//   )
+// }
+
+// # Composition (합성) 에서 props 전달하기
+
+// function App() {
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <hr />
+//       <Component1 username="bunny" />
+//     </>
+//   )
+// }
+
+// function Component1(props) {
+//   return (
+//     <>
+//       <h1>Component1</h1>
+//       <Component2 username={props.username} />
+//     </>
+//   )
+// }
+
+// function Component2(props) {
+//   return (
+//     <>
+//       <h2>Component2</h2>
+//       <Component3 username={props.username} />
+//     </>
+//   )
+// }
+
+// function Component3(props) {
+//   return (
+//     <>
+//       <h3>Component3</h3>
+//       <p>{props.username}</p>
+//     </>
+//   )
+// }
+
+// const UserContext = createContext();
+
+// function App() {
+
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <hr />
+//       <UserContext.Provider value="bunny">
+//         <Component1 />
+//       </UserContext.Provider>
+//     </>
+//   )
+// }
+
+// function Component1() {
+//   return (
+//     <>
+//       <h1>Component1</h1>
+//       <Component2 />
+//     </>
+//   )
+// }
+
+// function Component2() {
+//   return (
+//     <>
+//       <h2>Component2</h2>
+//       <Component3 />
+//     </>
+//   )
+// }
+
+// function Component3() {
+//   const username = useContext(UserContext);
+
+//   return (
+//     <>
+//       <h3>Component3</h3>
+//       <p>{username}</p>
+//     </>
+//   )
+// }
+
+// function App() {
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <hr />
+//       <Component1>
+//         <Component2>
+//           <Component3 />
+//         </Component2>
+//       </Component1>
+//     </>
+//   )
+// }
+
+// function Component1(props) {
+//   return (
+//     <>
+//       <h1>Component1</h1>
+//       {props.children}
+//     </>
+//   )
+// }
+
+// function Component2(props) {
+//   return (
+//     <>
+//       <h2>Component2</h2>
+//       {props.children}
+//     </>
+//   )
+// }
+
+// function Component3() {
+//   return (
+//     <>
+//       <h3>Component3</h3>
+//     </>
+//   )
+// }
+
+const UserContext = createContext();
+
 function App() {
-
-  const inputElement = useRef();
-  // current Object를 리턴한다.
-
-  console.log(inputElement);
-
-  useEffect(() => {
-    console.log(inputElement);
-    inputElement.current.focus();
-    inputElement.current.style.outline = '5px solid red';
-  })
-
   return (
     <>
-      <h1>useRef</h1>
-      <input type="text" ref={inputElement} />
+      <h1>App</h1>
+      <hr />
+      <UserContext.Provider value="bunny">
+        <Component1>
+          <Component2>
+            <Component3 />
+          </Component2>
+        </Component1>
+      </UserContext.Provider>
     </>
   )
 }
+
+function Component1(props) {
+  return (
+    <>
+      <h1>Component1</h1>
+      {props.children}
+    </>
+  )
+}
+
+function Component2(props) {
+  return (
+    <>
+      <h2>Component2</h2>
+      {props.children}
+    </>
+  )
+}
+
+function Component3() {
+  const username = useContext(UserContext);
+  
+  return (
+    <>
+      <h3>Component3</h3>
+      <p>{username}</p>
+    </>
+  )
+}
+
 
 // Render
 const root = ReactDOM.createRoot(document.getElementById('root'));

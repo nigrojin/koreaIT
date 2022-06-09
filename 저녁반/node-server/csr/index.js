@@ -14,3 +14,27 @@ app.get('/*', (req, res) => {
 app.listen(port, () => {
   console.log('Example app listening on port ' + port)
 })
+
+
+function App() {
+  console.log('App Loaded!');
+
+  const inputEl = useRef(null);
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    inputEl.current.focus()
+  }, [])
+
+  function handleChange(e) {
+    setValue(e.currentTarget.value);
+  }
+
+  return (
+    <>
+      <h1>App</h1>
+      <input type="text" ref={inputEl} onChange={handleChange} />
+      <p>{value}</p>
+    </>
+  )
+}
