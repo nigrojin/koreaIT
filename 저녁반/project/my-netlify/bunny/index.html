@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
     <h1>Hello Bunny</h1>
-    
+
+
+    <form name="contact" method="POST" data-netlify="true">
+        <label>Your Name: <input type="text" name="name" /></label>
+        <label>Your Email: <input type="email" name="email" /></label>
+        <label>Message: <textarea name="message"></textarea></label>
+        <button type="submit">Send</button>
+    </form>
+
+    <!-- body의 가장 아래쪽에 작성한다 -->
+    <script>
+        document.querySelector("form").addEventListener("submit", handleSubmit);
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
+            let myForm = document.getElementById("pizzaOrder");
+            let formData = new FormData(myForm);
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString(),
+            })
+                .then(() => console.log("Form successfully submitted"))
+                .catch((error) => alert(error));
+        };
+    </script>
 </body>
+
 </html>
