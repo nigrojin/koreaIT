@@ -48,7 +48,11 @@ function UserException(message) {
 // # 라우팅
 app.get('/', (req, res, next) => {
     try { // 여기서는 코드를 마음껏 작성한다
-        res.json('hello world');
+
+        setTimeout(() => {
+            res.json('hello world');
+        }, 3000)
+        
     } catch (error) { // 여기서 에러를 처리한다
         next(error)
     }
