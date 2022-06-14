@@ -122,8 +122,8 @@ app.post('/validate', async (req, res, next) => {
                 validation.username.message = '사용자 이름을 입력하세요'
             } else if (username) {
                 validation.username.message = '이미 가입된 사용자 이름입니다'
-            } else if (newUser.username.match(/[a-z]{6,}/) === null) {
-                validation.username.message = '소문자 알파벳으로 6글자이상 입력하세요'
+            } else if (newUser.username.match(/[a-z]{5,}/) === null) {
+                validation.username.message = '소문자 알파벳으로 5글자이상 입력하세요'
             } else {
                 validation.username.pass = true
                 validation.username.message = '가입할 수 있는 사용자 이름입니다'
@@ -178,7 +178,7 @@ app.post('/users', async (req, res, next) => {
         const salt = crypto.randomBytes(16).toString('hex');
         // 암호화된 비밀번호
         const hashedPassword = crypto.pbkdf2Sync(req.body.password, salt, 310000, 32, 'sha256')
-        .toString('hex')
+        .toString('hex');
     
         const user = new User({
             username: req.body.username,

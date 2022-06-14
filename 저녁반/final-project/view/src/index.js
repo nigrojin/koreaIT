@@ -66,9 +66,10 @@ function SignUp() {
   const [validation, setValidation] = useState(null);
 
   useEffect(() => {
-    console.log('new User..', newUser)
+    console.log('new User..', newUser);
     fetch('http://localhost:3000/validate', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newUser) // JSON.stringify(object) object를 json 포맷으로 변환
     })
     .then(res => {
@@ -90,6 +91,34 @@ function SignUp() {
     setNewUser({ ...newUser, [name]: value })
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    for (let key of Object.keys(validation)) {
+      // 4 항목중에 하나라도 pass: false면 form이 제출되지 않도록 한다.
+      if (validation[key].pass === false) {
+        return alert("가입 정보가 올바르지 않습니다.")
+      }
+    }
+
+    // 유효성 검사 통과 후 가입 절차를 진행한다.
+    fetch('http://localhost:3000/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newUser)
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      console.log('가입 성공!')
+    })
+    .catch(error => {
+      console.error(error);
+      alert('에러가 발생했습니다. 잠시 후 다시 시도해주세요')
+    });
+  }
+
   console.log(newUser)
   console.log(validation)
 
@@ -102,22 +131,22 @@ function SignUp() {
   return (
     <>
       <h1>Sign Up</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input type="text" name="username" autoComplete="off" onChange={handleChange} />
-          <div></div>
+          <div>{validation.username.message}</div>
         </div>
         <div className="form-group">
           <input type="text" name="email" autoComplete="off" onChange={handleChange} />
-          <div></div>
+          <div>{validation.email.message}</div>
         </div>
         <div className="form-group">
           <input type="text" name="password" autoComplete="off" onChange={handleChange} />
-          <div></div>
+          <div>{validation.password.message}</div>
         </div>
         <div className="form-group">
           <input type="text" name="password_confirm" autoComplete="off" onChange={handleChange} />
-          <div></div>
+          <div>{validation.passwordConfirm.message}</div>
         </div>
         <div className="form-group">
           <button type="submit" className="btn">Submit</button>
@@ -127,9 +156,56 @@ function SignUp() {
   )
 }
 function Login() {
+  console.log('Login Loaded!');
+
+  const [message, setMessage] = useState(null);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    fetch('http://localhost:3000/user/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: formData.get('email'),
+        password: formData.get('password')
+      })
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json()
+    })
+    .then(data => {
+      console.log(data)
+      // 로그인에 실패한 경우 (token이 없을 경우)
+      if (!data.token) {
+        return setMessage(data.message)
+      }
+      // 로그인에 성공한 경우, 브라우저에 jwt을 저장한다
+      localStorage.setItem('jwt', data.token);
+    })
+    .catch(error => alert('Error!'))
+  }
+
   return (
     <>
-      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <h1>Login</h1>
+        <div className="form-group">
+          <input type="text" className="" name="email" autoComplete="off" />
+        </div>
+        <div className="form-group">
+          <input type="text" className="" name="password" autoComplete="off" />
+        </div>
+        <div className="form-group">
+          <button className="">Login</button>
+        </div>
+      </form>
+      <p>{message}</p>
     </>
   )
 }
