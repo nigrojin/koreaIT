@@ -66,17 +66,18 @@ function SignUp() {
   const [validation, setValidation] = useState(null);
 
   useEffect(() => {
+    console.log('new User..', newUser)
     fetch('http://localhost:3000/validate', {
       method: 'POST',
-      body: JSON.stringify(newUser)
+      body: JSON.stringify(newUser) // JSON.stringify(object) object를 json 포맷으로 변환
     })
     .then(res => {
       if (!res.ok) {
-        throw res;
+        throw res; // 커스텀 에러. status가 200이 아닐 경우
       }
-      return res.json();
+      return res.json(); // res객체의 body를 parsing한다. 
     })
-    .then(data => console.log(data))
+    .then(data => setValidation(data))
     .catch(error => setError(error))
     .finally(() => setIsLoaded(true))
   }, [newUser]) // [dependency]: 처음에 실행된다. dependency가 변할 때마다 실행된다
@@ -90,7 +91,14 @@ function SignUp() {
   }
 
   console.log(newUser)
- 
+  console.log(validation)
+
+  if (error) {
+    return <h1>Error!</h1>
+  } 
+  if (!isLoaded) {
+    return <h1>Loading...</h1>
+  }
   return (
     <>
       <h1>Sign Up</h1>
