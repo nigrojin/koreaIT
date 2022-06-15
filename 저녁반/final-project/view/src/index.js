@@ -1,31 +1,118 @@
 import React, { useState, useEffect, useRef, useContext, createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Outlet, Link, 
-  useParams, Navigate, useNaviagate, useLocation } from "react-router-dom";
+  useParams, Navigate, useNavigate, useLocation } from "react-router-dom";
 import './index.css';
 
 function App() {
   console.log('App Loaded!');
 
   return (
-    <Router>
-      <Routes>
-        {/* 로그인 필요 */}
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="explore" element={<Explore />} />
-        </Route>
-        {/* 로그인 필요하지 않음 */}
-        <Route path="account/signup" element={<SignUp />} />
-        <Route path="login" element={<Login />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* 로그인 필요 */}
+          <Route path="/" element={<AuthRequired><Layout /></AuthRequired>}>
+            <Route index element={<Home />} />
+            <Route path="create" element={<CreateArticle />} />
+            <Route path="explore" element={<Explore />} />
+          </Route>
+          {/* 로그인 필요하지 않음 */}
+          <Route path="account/signup" element={<SignUp />} />
+          <Route path="login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   )
+}
+
+const AuthContext = createContext();
+
+function AuthProvider(props) {
+  console.log('AuthProvider Loaded!');
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // 서버에 토큰을 보내서 유저 정보를 요청한다.
+    fetch('http://localhost:3000/user', {
+      headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt'), }
+    })
+    .then(res => {
+      if (res.status === 401) {
+        return null;
+      }
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json();
+    })
+    .then(data => setUser(data))
+    .catch(error => setError(error))
+    .finally(() => setIsLoaded(true))
+  }, [])
+
+  function signIn(callback) {
+    fetch('http://localhost:3000/user', {
+      headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json()
+    })
+    .then(data => {
+      setUser(data);
+      // navigate Hook은 Router의 children에서만 사용할 수 있다.
+      callback(); // navigate('/')
+    })
+    .catch(error => setError(error))
+  }
+
+  function logOut() {
+    localStorage.removeItem('jwt');
+    setUser(null);
+  }
+
+  console.log(user);
+
+  const value = { user, signIn, logOut } // { user: user, signIn: signIn, logOut: logOut }
+
+  if (error) {
+    return <h1>Error!</h1>
+  }
+  if (!isLoaded) {
+    return <h1>Loading...</h1>
+  }
+  return (
+    <AuthContext.Provider value={value}>
+      {props.children}
+    </AuthContext.Provider>
+  )
+}
+
+function AuthRequired(props) {
+  console.log('AuthRequired Loaded!');
+
+  const auth = useContext(AuthContext);
+
+  if (!auth.user) {
+    return <Navigate to="/login" replace />
+  }
+
+  console.log(auth);
+
+  return props.children;
 }
 
 function Layout() {
   console.log('Layout Loaded!');
+
+  const auth = useContext(AuthContext);
 
   return (
     <>
@@ -33,7 +120,9 @@ function Layout() {
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/explore">Explore</Link></li>
+          <li><Link to="/create">Create</Link></li>
         </ul>
+        <button onClick={auth.logOut}>Log out</button>
       </nav>
 
       {/* 바뀌는 부분 */}
@@ -56,6 +145,52 @@ function Explore() {
     </>
   )
 }
+
+function CreateArticle() {
+  console.log('CreateArticle Loaded!');
+
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    fetch('http://localhost:3000/articles', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') },
+      body: new FormData(e.target)
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json();
+    })
+    .then(() => {
+      navigate('/')
+    })
+    .catch(error => alert('Error!'));
+  }
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <h3>Description</h3>
+          <input type="text" className="" name="description" />
+        </div>
+        <div className="form-group">
+          <h3>Photos</h3>
+          <input type="file" name="photos" multiple={true} />
+        </div>
+        <div className="form-group">
+          <h3>Submit</h3>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </>
+  )
+}
+
 function SignUp() {
   console.log('SignUp Loaded!');
 
@@ -158,6 +293,8 @@ function SignUp() {
 function Login() {
   console.log('Login Loaded!');
 
+  const navigate = useNavigate();
+  const auth = useContext(AuthContext);
   const [message, setMessage] = useState(null);
 
   function handleSubmit(e) {
@@ -183,12 +320,14 @@ function Login() {
       console.log(data)
       // 로그인에 실패한 경우 (token이 없을 경우)
       if (!data.token) {
-        return setMessage(data.message)
+        return setMessage(data.message);
       }
       // 로그인에 성공한 경우, 브라우저에 jwt을 저장한다
       localStorage.setItem('jwt', data.token);
+      // 로그인에 성공한 경우 Home으로 이동한다
+      auth.signIn(() => navigate('/'), { replace: true }) // auth.signIn(callback)
     })
-    .catch(error => alert('Error!'))
+    .catch(error => alert('Error!'));
   }
 
   return (
@@ -196,16 +335,17 @@ function Login() {
       <form onSubmit={handleSubmit}>
         <h1>Login</h1>
         <div className="form-group">
-          <input type="text" className="" name="email" autoComplete="off" />
+          <input type="text" className="" name="email" defaultValue="bunny@example.com" autoComplete="off" />
         </div>
         <div className="form-group">
-          <input type="text" className="" name="password" autoComplete="off" />
+          <input type="text" className="" name="password" defaultValue="12345678" autoComplete="off" />
         </div>
         <div className="form-group">
           <button className="">Login</button>
         </div>
       </form>
       <p>{message}</p>
+      <p><Link to="/account/signup">Create account</Link></p>
     </>
   )
 }

@@ -205,30 +205,29 @@ app.post('/articles', auth, async (req, res, next) => { // auth에서 권한을 
         form.parse(req, async (err, fields, files) => {
             try {
                 // photo 파일
-                const photo = files.photo;
-                // req.user값으로 DB에서 user를 찾는다
-                // SQL(Structured Query Language, 데이터베이스의 언어)
-                // SQL을 이용하는 경우: SELECT * FROM User where id= ? (MySQL)
-                // ODM (Object Document Model): JavaScript의 언어로 Query를 요청할 수 있다
+                // 사진이 1개 일때도 Array 타입으로 만든다.
+                const photos = files.photos instanceof Array ? files.photos : new Array(files.photos);
                 const user = await User.findById(req.user._id);
-        
-                // 파일을 핸들링하는 하는 부분
-                // 파일이 임시 저장되는 폴더
-                const oldpath = photo.filepath;
-                // 이미지의 확장자(extenstion)
-                // bunny.jpg => jpg ['bunny', 'jpg']
-                const ext = photo.originalFilename.split('.')[1];
-                const newName = photo.newFilename + '.' + ext;
-                // __dirname: 서버의 루트 폴더 (final-project/)
-                const newpath = __dirname + '/data/posts/' + newName;
-        
-                // 파일을 서버에 저장한다
-                fs.renameSync(oldpath, newpath)
-        
-                // 새로운 게시글을 만든 뒤 저장한다
+
+                if (!photos[0].originalFilename) {
+                    throw new Error('이미지를 한장 이상 업로드하세요');
+                }
+
+                const photoArray = photos.map(photo => {
+                    // 이미지의 개수만큼 /data/posts/ 에 이미지를 업로드한다.
+                    const oldpath = photo.filepath;
+                    const ext = photo.originalFilename.split('.')[1];
+                    const newName = photo.newFilename + '.' + ext;
+                    const newpath = __dirname + '/data/posts/' + newName;
+            
+                    fs.renameSync(oldpath, newpath);
+                    // 새로운 파일이름을 return한다
+                    return newName;
+                })
+
                 const article = new Article({
                     description: fields.description,
-                    photos: newName,
+                    photos: photoArray,
                     author: user._id
                 })
         
