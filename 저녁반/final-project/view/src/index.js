@@ -16,6 +16,9 @@ function App() {
             <Route index element={<Home />} />
             <Route path="create" element={<CreateArticle />} />
             <Route path="explore" element={<Explore />} />
+            <Route path="/p/:postId">
+              <Route index element={<PostView />} />
+            </Route>
           </Route>
           {/* 로그인 필요하지 않음 */}
           <Route path="account/signup" element={<SignUp />} />
@@ -36,6 +39,7 @@ function AuthProvider(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [user, setUser] = useState(null);
 
+  // 처음 접속했을때 = 새로고침
   useEffect(() => {
     // 서버에 토큰을 보내서 유저 정보를 요청한다.
     fetch('http://localhost:3000/user', {
@@ -55,22 +59,10 @@ function AuthProvider(props) {
     .finally(() => setIsLoaded(true))
   }, [])
 
-  function signIn(callback) {
-    fetch('http://localhost:3000/user', {
-      headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
-    })
-    .then(res => {
-      if (!res.ok) {
-        throw res;
-      }
-      return res.json()
-    })
-    .then(data => {
-      setUser(data);
-      // navigate Hook은 Router의 children에서만 사용할 수 있다.
-      callback(); // navigate('/')
-    })
-    .catch(error => setError(error))
+  // 로그인
+  function signIn(newUser, callback) {
+    setUser(newUser);
+    callback();
   }
 
   function logOut() {
@@ -138,10 +130,169 @@ function Home() {
     </>
   )
 }
+
+function PostView() {
+  console.log('PostView Loaded!');
+
+  const params = useParams();
+  const postId = params.postId;
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  // 게시물을 담을 변수
+  const [article, setArticle] = useState(null);
+  // 해당 게시물을 사용자가 좋아하는 게시물인지 여부
+  const [isFavorite, setIsFavorite] = useState(null);
+
+  // 순회 가능한 객체(Array)에 주어진 모든 프로미스가 이행된 후,
+  // 주어진 프로미스중 하나라도 거부되는 경우 error 발생
+  useEffect(() => {
+    Promise.all([
+      fetch(`http://localhost:3000/articles/${postId}`),
+      fetch(`http://localhost:3000/articles/${postId}/favorite`, {
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+      })
+    ])
+    .then(responses => 
+      Promise.all(responses.map(response => response.json()))
+    )
+    .then(data => {
+      setArticle(data[0])
+      setIsFavorite(data[1])
+    })
+    .catch(error => setError(error))
+    .finally(() => setIsLoaded(true))
+  }, [])
+
+  console.log(article)
+  console.log(isFavorite)
+
+  if (error) {
+    return <h1>Error!</h1>
+  } 
+  if (!isLoaded) {
+    return <h1>Loading...</h1>
+  }
+  return (
+    <PostItem article={article} isFavorite={isFavorite} />
+  )
+}
+
+function PostItem({ article, isFavorite: isFavoriteInitial }) {
+  console.log('PostItem Loaded!');
+
+  console.log(article)
+  console.log(isFavoriteInitial)
+
+  const auth = useContext(AuthContext);
+  // 게시물 작성자와 로그인 유저가 일치하면 Master
+  const isMaster = article.author._id === auth.user._id ? true : false;
+
+  const postId = article._id;
+
+  // db에서 가져온 처음 상태
+  const [isFavorite, setIsFavorite] = useState(isFavoriteInitial);
+  const [favoriteCount, setFavoriteCount] = useState(article.favoriteCount);
+
+  function handleChange() {
+
+    if (!isFavorite) { // 좋아요를 누른다
+      fetch(`http://localhost:3000/articles/${postId}/favorite`, {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw res;
+        }
+        setIsFavorite(true);
+        setFavoriteCount(favoriteCount + 1)
+      })
+      .catch(error => alert("Error!"))
+    } else { // 좋아요를 취소한다
+      fetch(`http://localhost:3000/articles/${postId}/favorite`, {
+        method: 'DELETE',
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw res;
+        }
+        setIsFavorite(false);
+        setFavoriteCount(favoriteCount - 1)
+      })
+      .catch(error => alert("Error!"))
+    }
+  }
+
+  return (
+    <>
+      <h3>
+        <Link to="">{article.author.username}</Link>
+      </h3>
+      <div>
+        {article.photos.map((photo, index) => (
+          <div key={index}>
+            <img src={`http://localhost:3000/posts/${photo}`} />
+          </div>
+        ))}
+      </div>
+      {isMaster &&
+        <div>
+          <Link to={`/p/${postId}/update`}>수정</Link> {" "} 
+          <Link to={`/p/${postId}/`}>삭제</Link>
+        </div>
+      }
+      <button onClick={handleChange}>
+        {!isFavorite ? "좋아요" : "좋아요 취소"}
+      </button>
+      <p>좋아요: {favoriteCount}</p>
+      <p>{article.description}</p>
+      <p><Link to="">댓글달기</Link></p>
+    </>
+  )
+}
+
 function Explore() {
+  console.log('Explore Loaded!');
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/articles')
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json()
+    })
+    .then(data => setArticles(data))
+    .catch(error => setError(error))
+    .finally(() => setIsLoaded(true))
+  }, [])
+
+  console.log(articles)
+
+  if (error) {
+    return <h1>Error!</h1>
+  }
+  if (!isLoaded) {
+    return <h1>Loading...</h1>
+  }
   return (
     <>
       <h1>Explore</h1>
+      <div>
+        {articles.map((article, index) => 
+          <div key={index} style={{ display: 'inline-block' }}>
+            <Link to={`/p/${article._id}`}>
+              <img src={`http://localhost:3000/posts/${article.photos[0]}`} />
+            </Link>
+          </div>
+        )}
+      </div>
     </>
   )
 }
@@ -325,7 +476,7 @@ function Login() {
       // 로그인에 성공한 경우, 브라우저에 jwt을 저장한다
       localStorage.setItem('jwt', data.token);
       // 로그인에 성공한 경우 Home으로 이동한다
-      auth.signIn(() => navigate('/'), { replace: true }) // auth.signIn(callback)
+      auth.signIn(data.user, () => navigate('/'), { replace: true }) // auth.signIn(callback)
     })
     .catch(error => alert('Error!'));
   }

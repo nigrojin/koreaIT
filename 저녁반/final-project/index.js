@@ -26,8 +26,8 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(cors())
 // express에서 정적파일 제공
-app.use(express.static('public'))
-app.use(express.static('data'))
+app.use(express.static('public'));
+app.use(express.static('data'));
 
 // # 데이터베이스 연결
 mongoose.connect('mongodb://127.0.0.1:27017/final', // url
@@ -92,7 +92,7 @@ app.post('/user/login', async (req, res, next) => {
 
         const token = jwt.sign({ username: user.username }, 'shhhhh');
         
-        res.json({ token: token })
+        res.json({ user, token }); // ({ user: user, token: token })
     } catch (error) {
         // UserException은 다른 방식으로 처리 (200)
         if (error instanceof UserException) {
@@ -200,7 +200,7 @@ app.post('/users', async (req, res, next) => {
 // # 게시물 (article)
 app.post('/articles', auth, async (req, res, next) => { // auth에서 권한을 검사한다
     try { // try...catch 는 동기적으로 작동한다
-        const form = formidable();
+        const form = formidable({ multiples: true }); 
     
         form.parse(req, async (err, fields, files) => {
             try {
@@ -266,7 +266,8 @@ app.get('/articles/:postId', async (req, res, next) => {
         // Error Object
         // { name, message }
         // name: EvalError, RangeError, ReferenceError, SyntaxError, TypeError, URIError
-        const article = await Article.findById(req.params.postId); // CastError (Custom error)
+        // CastError (Custom error)
+        const article = await Article.findById(req.params.postId).populate('author'); 
         res.json(article)
     } catch (error) { // await Promise에서 발생한 에러를 잡는다
         next(error)
