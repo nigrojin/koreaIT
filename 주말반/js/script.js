@@ -679,14 +679,561 @@ JavaScript
 // }
 // console.log(txt)
 
-var cat = { name: 'Kitty', age: 1, color: 'Brown' }
+// var cat = { name: 'Kitty', age: 1, color: 'Brown' }
 
-var txt = '';
+// var txt = '';
 
-for (var key in cat) {
-    console.log(key);
+// for (var key in cat) {
+//     console.log(key);
     
-    txt += cat[key] + ' ';
+//     txt += cat[key] + ' ';
+// }
+
+// console.log(txt)
+
+
+// # Function (함수)
+
+// 함수선언
+
+// 함수표현식 (function expression)
+// 함수선언식 (function declaration)
+
+// 함수선언식
+// function f() { // function <함수이름> ()
+//     console.log('hello')
+// }
+
+// // 함수표현식
+// // 함수를 변수에 담는다
+// var f = function() { // 익명함수: function ()
+//     console.log('hello')
+// }
+
+// 함수 정의 (함수선언식, declaration)
+// function f() {
+//     console.log('hello')
+// }
+
+// f() // invoke (함수호출)
+
+
+// f();
+
+// function f() { // Hoisting (정의가 호출시점보다 올라간다)
+//     console.log('hello')
+// }
+
+
+// (함수 선언식)()
+// self-invoking (자기호출) 함수
+
+// (function () {
+//     console.log('hello')
+// })();
+
+// 함수 인자 (parameter)
+
+// function add(a, b) { // function <함수이름>(params1, params2, ...)
+//     // 반환
+//     return a + b;
+// }
+
+// var r = add(3,4);
+
+// console.log(r); // 출력
+
+
+// function add() {
+//     // 변수 정의
+//     // 함수범위에 있는 변수
+//     // local variable (지역변수)
+//     var a = 3;
+//     var b = 4;
+
+//     return a + b
+// }
+
+// var r = add()
+
+// console.log(r)
+
+// // 함수 밖에서 함수의 변수에 접근
+// console.log(a)
+// console.log(b)
+
+
+// var a = 3;
+// var b = 4;
+
+// function add(x, y) {
+//     return x + y
+// }
+
+// var r = add(a, b)
+// console.log(r)
+
+// console.log(add(a, b))
+
+// 4칙 연산 함수 만들어보기
+// add, subtraction, division, multiplication
+
+// function add(a, b) {
+//     return a + b
+// }
+
+// function subtraction(a, b) {
+//     return a - b
+// }
+
+// function division(a, b) {
+//     return a / b
+// }
+
+// function multiplication(a, b) {
+//     return a * b;
+// }
+
+
+// 전역변수 (Global variable)
+// 어디에서든지 접근 가능
+// var greeting = 'Good morning'
+
+// function f() {
+//     return greeting; // 전역변수에 접근 ok
+// }
+
+// var r = f()
+// console.log(r)
+
+// var greeting = 'Good morning'
+
+// function f() {
+//     var greeting = '좋은 아침'
+
+//     return greeting; // 전역변수와 지역변수가 같은 경우 지역변수가 우선된다
+// }
+
+// var r = f()
+// console.log(r)
+
+// var greeting = 'Good morning' // 변수 선언, 변수 정의
+
+// function f() {
+
+//     greeting = '좋은 아침' // 변수 정의
+
+//     return greeting; // 전역변수와 지역변수가 같은 경우 지역변수가 우선된다
+// }
+
+// var r = f()
+// console.log(r)
+
+
+// # Method (메서드)
+// method는 Object에 소속되어있다
+// sound는 cat의 method이다
+// var cat = {
+//     name: 'Kitty', // name: property(속성) 'Kitty': value(값)
+//     age: 1, // age: property (속성) 1: value(값)
+//     sound: function() { // sound: method(메서드) - value가 함수일 때 
+//         return 'meow'
+//     }
+// }
+
+// var r = cat.sound()
+// console.log(r)
+// console.log(cat.sound())
+
+// var cat = {
+//     name: 'Kitty',
+//     age: 1,
+//     greeting: function() {
+//         return 'Hi, I am ' + this.name; // this: 메서드의 소유 객체 (cat)
+//     }
+// }
+
+// var r = cat.greeting()
+// console.log(r)
+
+// var cat = {
+//     name: 'Kitty',
+//     age: 1,
+//     sound: function() {
+//         return 'meow'
+//     },
+//     greeting: function(date) {
+//         return 'Good morning at ' + date;
+//     }
+// }
+
+// var r = cat.greeting(new Date().toLocaleTimeString())
+// console.log(r)
+
+// # Callback
+// 다른 함수의 인자가 되는 함수
+
+
+// function first(callback) {
+//     console.log('First')
+//     callback() // callback()
+// }
+
+// function second() {
+//     console.log('Second')
+// }
+
+// first(second) // first(second()) error
+
+// function first(callback) {
+//     console.log(1)
+//     callback()
+// }
+
+// function second(callback) {
+//     console.log(2)
+//     callback()
+// }
+
+// function third() {
+//     console.log(3)
+// }
+
+// // first(second) // first(second()) error
+// first(function() { // first(second(third)), error
+//     second(third)
+// })
+
+// function first(callback) {
+//     console.log(1)
+//     callback()
+// }
+
+// function second(callback) {
+//     console.log(2)
+//     callback()
+// }
+
+// function third(callback) {
+//     console.log(3)
+//     callback()
+// }
+
+// function fourth(callback) {
+//     console.log(4)
+//     callback()
+// }
+
+// function fifth() {
+//     console.log(5)
+// }
+
+// first(function () {
+//     second(function () {
+//         third(function () {
+//             fourth(fifth) // fourth(fifth)
+//         })
+//     })
+// })
+
+// # Asynchronous (비동기 함수) <=> Synchronous (동기 함수)
+// 비동기: 빠른 것부터 처리한다
+// 동기: 순서대로 실행한다
+
+
+// Sync 동기적
+// 일반적인 함수, 자바스크립트의 동작 방식
+// console.log(1)
+// console.log(2)
+// console.log(3)
+// console.log(4)
+// console.log(5)
+
+// function first() {
+//     console.log(1)
+// }
+
+// function second() {
+//     console.log(2)
+// }
+
+// function third() {
+//     console.log(3)
+// }
+
+// // 호출한 순서대로 실행된다
+// first()
+// second()
+// third()
+
+
+// 대표적인 비동기 함수
+// setTimeout(callback, milliseconds)
+// milliseconds 후에 callback 실행
+// setTimeout(function () {
+//     console.log('Good morning')
+// }, 1000) // 1s = 1000ms
+
+// function myFunction(callback, data) {
+//     console.log(data)
+//     callback()
+// }
+
+// myFunction(function() { // callback함수로 익명함수가 사용되었다
+//     console.log('Good morning')
+// }, 1000)
+
+// function first(callback) {
+//     console.log(1)
+//     callback()
+// }
+
+// function second() {
+//     console.log(2)
+// }
+
+// console.log(second) // 함수 정의가 출력된다
+
+// first(second) // second: callback함수
+
+
+// function first(callback) {
+//     console.log(1)
+//     callback()
+// }
+
+// first(function() { // callback함수로 익명함수 사용
+//     console.log(2) // 함수 또는 메서드 실행
+// })
+
+
+// console.log(1)
+
+// setTimeout(() => { // 비동기 함수 (가장 마지막에 실행된다)
+//     console.log(2)
+// }, 0)
+
+// console.log(3)
+
+
+// function f(callback, ms) {
+//     callback()
+// }
+
+// console.log(1)
+
+// f(function () { // f: 동기 함수
+//     console.log(2)
+// }, 1000)
+
+// console.log(3)
+
+
+// function f() { // setTimeout 함수를 활용해서 f를 비동기 함수로 만든다.
+//     setTimeout(function () {
+//         console.log(2)
+//     }, 0)
+// }
+
+// console.log(1)
+// f() // 비동기 함수
+// console.log(3)
+
+
+// setTimeout(function () {
+//     console.log(1)
+// }, 1000)
+
+// setTimeout(function () {
+//     console.log(2)
+// }, 500)
+
+// setTimeout(function () {
+//     console.log(3)
+// }, 0)
+
+// setTimeout(function () {
+//     console.log(1)
+
+//     setTimeout(function () {
+//         console.log(2)
+
+//         setTimeout(function () {
+//             console.log(3)
+//         }, 0)
+
+//     }, 500)
+
+// }, 1000)
+
+
+// console.log(1)
+
+// // 메인 이미지
+// // 용량이 커서 가져오는데 오래 걸린다
+// setTimeout(function () {
+//     console.log('이미지를 가져오기 완료')
+//     console.log('이미지를 화면에 나타내는 중')
+// }, 1000)
+
+// console.log(3)
+// console.log(4)
+// console.log(5)
+
+
+// console.log(1)
+
+// // 이미지를 가져오는 함수
+// setTimeout(function () {
+//     console.log('이미지를 가져오기 완료')
+//     // 이미지를 나타내는 함수
+//     console.log('이미지를 화면에 나타내는 중')
+// }, 1000)
+
+// console.log(3)
+// console.log(4)
+// console.log(5)
+
+// function fetchUser() {
+//     setTimeout(function () {
+//         return { username: 'bunny' }
+//     }, 1000)
+//     // return { username: 'bunny' }
+// }
+
+// var user = fetchUser()
+
+// console.log(user)
+
+
+// function fetchUser() {
+//     setTimeout(function () {
+//         var user = { username: 'bunny' }
+//         console.log(user)
+//     }, 0)
+// }
+
+// console.log(1)
+// fetchUser()
+// console.log(3)
+
+// function first(callback) {
+//     callback()
+// }
+
+// function second() {
+//     console.log(2)
+// }
+
+// first(second) // second: callback함수 (다른 함수의 인자가 되는 함수)
+
+// function first(callback) {
+//     callback()
+// }
+
+// first(function () { // callback함수로 익명함수를 사용한다
+//     console.log(2)
+// })
+
+// function first(callback) {
+//     var num = 1;
+//     callback(num) // callback으로 인자를 넘겨준다
+// }
+
+// function second(data) {
+//     console.log(data)
+// }
+
+// first(function (d) { // first(second(d)) error
+//     second(d)
+// })
+
+// first(second)
+
+
+// function first(callback) {
+//     var num = 1;
+//     callback(num)
+// }
+
+// function second(data, callback) {
+//     callback(data)
+// }
+
+// function third(data) {
+//     console.log(data)
+// }
+
+// // first(function(n) {
+// //     second(n, third)
+// // })
+
+// first(function(n) {
+//     second(n, function(n) {
+//         third(n)
+//     })
+// })
+
+// function first(callback) {
+//     setTimeout(function() {
+//         console.log(1)
+//         callback()
+//     }, 500)
+// }
+
+// function second(callback) {
+//     setTimeout(function() {
+//         console.log(2)
+//         callback()
+//     }, 0)
+// }
+
+// function third() {
+//     setTimeout(function() {
+//         console.log(3)
+//     }, 1000)
+// }
+
+// first(function () { // first(second(third))
+//     second(third)
+// })
+
+
+// 자료를 가져오는 함수
+// function fetchData() { // 비동기함수
+//     setTimeout(function () {
+//         return { username: 'bunny' }
+//     }, 0)
+// }
+
+// // 자료를 보여주는 함수
+// function displayData(data) {
+//     console.log(data)
+// }
+
+
+// var user = fetchData();
+// displayData(user)
+
+
+function fetchData(callback) { // 비동기함수
+    setTimeout(function () {
+        var user = { username: 'bunny' }
+        callback(user)
+    }, 0)
 }
 
-console.log(txt)
+function displayData(data) {
+    console.log(data)
+}
+
+console.log(1)
+// 이미지를 가져와서 보여주는 작업은 동기적으로 작동해야 한다
+fetchData(displayData)
+console.log(3)
+console.log(4)
+
+
+
+
+
