@@ -1216,22 +1216,414 @@ JavaScript
 // displayData(user)
 
 
-function fetchData(callback) { // 비동기함수
-    setTimeout(function () {
-        var user = { username: 'bunny' }
-        callback(user)
-    }, 0)
+// function fetchData(callback) { // 비동기함수
+//     setTimeout(function () {
+//         var user = { username: 'bunny' }
+//         callback(user)
+//     }, 0)
+// }
+
+// function displayData(data) {
+//     console.log(data)
+// }
+
+// console.log(1)
+// // 이미지를 가져와서 보여주는 작업은 동기적으로 작동해야 한다
+// fetchData(displayData)
+// console.log(3)
+// console.log(4)
+
+
+// # Class, Object constructor
+// 객체를 생성하기 위한 템플릿
+// JavaScript - Object constructor기반 언어
+// 기타 언어 - Class기반 언어
+
+// ES2015에 class 문법 추가
+
+// 클래스 언어
+// class className { // 클래스이름
+//     // 생성자
+//     constructor() { ... }
+// }
+
+// class Car {
+//     constructor(name, year) {
+//         this.name = name;
+//         this.year = year;
+//     }
+// }
+
+// var myCar = new Car("제네시스", 2014);
+
+// console.log(myCar)
+
+// console.log(myCar.name)
+// console.log(myCar.year)
+
+
+// // Car 클래스 선언
+// class Car {
+//     // 생성자 (메서드)
+//     constructor(name, year) {
+//         this.name = name; // this: Class의 인스턴스
+//         this.year = year;
+//     }
+//     // 메서드
+//     age() {
+//         let date = new Date();
+//         return date.getFullYear() - this.year;
+//     }
+// }
+
+// // Car 클래스의 instance
+// var staria = new Car("스타리아", 2020);
+// // Car 클래스의 instance
+// var avante = new Car("아반떼", 2009);
+// // Car 클래스의 instance
+// var casper = new Car("캐스퍼", 2021);
+
+// console.log(staria.age())
+// console.log(avante.age())
+// console.log(casper.age())
+
+
+// class Car {
+//     constructor(name, year) {
+//         this.name = name;
+//         this.year = year;
+//     }
+//     age(x) {
+//         return x - this.year;
+//     }
+// }
+
+// var date = new Date();
+// var year = date.getFullYear(); // 2022 (Number)
+
+// // Car클래스의 인스턴스 생성
+// var staria = new Car("스타리아", 2020)
+
+// var r = staria.age(year)
+// console.log(r)
+
+// # Class inheritance (상속)
+
+// class Brand {
+//     constructor(data1) {
+//         this.brand = data1;
+//     }
+//     // Car클래스의 메서드
+//     showBrand() {
+//         return "내 자동차는 브랜드는 " + this.brand + '입니다.';
+//     }
+// }
+
+// // class Model은 Car클래스를 상속했다
+// class Model extends Brand { // extends 상속받은 클래스 이름
+//     constructor(data1, data2) {
+//         // super(): 상속받은 클래스는 super() constructor를 호출해야 한다.
+//         super(data1); // 부모 클래스의 생성자로 인자를 넘긴다.
+//         this.model = data2; // Model클래스의 인스턴스
+//     }
+//     // Model 클래스의 method
+//     showModel() {
+//         return '내 자동차 모델명은 ' + this.model + '입니다.';
+//     }
+//     // Model 클래스의 method
+//     showBrandModel() {
+//         return this.showBrand() + ' ' + this.showModel()
+//     }
+// }
+
+// var staria = new Model("현대", "스타리아");
+// console.log(staria)
+
+// console.log(staria.showBrand())
+// console.log(staria.showModel())
+// console.log(staria.showBrandModel())
+
+// Static method
+
+// class Car {
+//     constructor(name) {
+//         this.name = name;
+//     }
+//     // static method
+//     static sound() {
+//         return '부릉'
+//     }
+// }
+
+// var staria = new Car("스타리아");
+
+// static method는 인스턴스에서 호출할 수 없다
+// console.log(staria.sound()) // error
+// 클래스에서 호출할 수 있다
+// console.log(Car.sound());
+
+// class Car {
+//     constructor(name) {
+//         this.name = name;
+//     }
+//     static sound(data) {
+//         return data;
+//     }
+// }
+
+// var casper = new Car("캐스퍼");
+
+// casper.sound('부릉')
+// Car.sound('부릉')
+
+// console.log(Car.sound('부릉'))
+
+
+// Rectangle클래스를 호출하고 있다
+// var p = new Rectangle();
+
+// // Hoisting이 적용되지 않는다
+// // Hoisting: 초기화화기 전에 호출할 수 없다.
+// class Rectangle {
+//     constructor(height, width) {
+//         this.height = height;
+//         this.width = width;
+//     }
+// }
+
+
+// // Getter
+// class Rectangle {
+//     constructor (height, width) {
+//         this.height = height;
+//         this.width = width;
+//     }
+//     // getter
+//     get area() {
+//         return this.calcArea();
+//     }
+//     calcArea() {
+//         return this.height * this.width;
+//     }
+// }
+
+// // 문법적으로 더 간편하다
+// // calcArea()를 비공개로 할 수 있다
+// console.log(square.area) // getter 호출
+
+// console.log(square.calcArea())
+
+// class Rectangle {
+//     #height; // private 필드(속성) 선언
+//     #width;
+//     constructor(height, width) {
+//         this.#height = height;
+//         this.#width = width;
+//     }
+//     getArea() {
+//         return this.#width * this.#height;
+//     }
+// }
+
+// var square = new Rectangle(10, 10);
+
+// console.log(square)
+// // console.log(square.#width) // private필드는 클래스 안에서만 접근할 수 있다
+
+// console.log(square.getArea())
+
+// # Object constructor
+// 자바스크립트에서의 클래스
+
+// Object constructor는 앞글자가 대문자여야 한다.
+// JavaScript에서는 class: Syntax sugar 문법적인 조미료
+// function Person(first, last, age, eye) {
+//     this.firstName = first;
+//     this.lastName = last;
+//     this.age = age;
+//     this.eyeColor = eye;
+
+//     this.greeting = function () {
+//         return "hello I'm " + this.firstName;
+//     }
+// }
+
+// // Person.prototype.greeting = function () {
+// //     return "hello I'm " + this.firstName;
+// // }
+
+// // Person의 인스턴스 생성
+// var person = new Person("Doe", "John", 42, "blue");
+
+// console.log(person);
+// console.log(person.greeting());
+
+// // String 
+// console.log(String)
+
+// // String클래스의 인스턴스 생성
+// // var user = new String("bunny");
+// var user = 'bunny' // literal 방식
+
+// console.log(user)
+// console.log(user.toUpperCase()) // toUppserCase() // 일반 메소드
+
+// console.log(String.prototype);
+
+// var cat = {
+//     name: 'Kitty',
+//     age: 1,
+//     color: 'Brown'
+// }
+
+// Object의 static method 'keys'
+// var r = Object.keys(cat);
+
+// console.log(Object.prototype);
+
+// console.log(r)
+
+// Object
+// Strign
+
+// 내장 클래스(Object constructor, 객체 생성자)
+// console.log(Object)
+
+// // Object클래스를 상속받은 클래스
+// console.log(String)
+// console.log(Number)
+// console.log(Boolean)
+// console.log(Date)
+// console.log(Array)
+
+// // Date클래스의 instance 생성
+// console.log(new Date())
+// console.log(new Date().getFullYear())
+
+
+// var cat = 'Kitty'
+// var cat = new String("Kitty")
+// console.log(cat instanceof String)
+
+// var cat = 'Kitty'
+// // cat의 프로토타입 객체
+// // 프로토타입객체로부터 상속받는다
+// console.log(cat.__proto__)
+
+
+// # Error handling, try/catch
+
+// 자바스크립트의 에러 종류 (Object)
+// EvalError
+// RangeError
+// ReferenceError
+// SyntaxError
+// TypeError
+// URIError
+
+// Error object properties (속성)
+// 1 name
+// 2 message
+// 3 stack(optional)
+
+
+// console.log(cat)
+// Uncaught ReferenceError: cat is not defined at ...
+// Uncaught: 잡히지 않는 에러
+// ReferenceError: error의 name
+// cat is not defined: error의 message
+
+// var error = new Error("에러 발생!")
+// console.log(error)
+
+// var error = new SyntaxError("문법 오류!")
+// console.log(error)
+
+// throw error; // 에러를 발생시킨다
+
+// try / catch
+
+
+// try { // 코드를 작성한다
+//     console.log(x)
+
+
+//     // catch block에서 에러를 처리한다.
+// } catch (error) { // Uncaught 
+//     console.error(error);
+// }
+
+
+// Custom Error와 try/catch
+
+// function fetchUser() {
+//     return null;
+// }
+
+// class UserException extends Error {
+//     constructor(message) {
+//         super(message) // super(): 상속받은 클래스는 super()를 호출해야 한다.
+//         this.name = 'UserException';
+//     }
+// }
+
+// try {
+
+//     var user = fetchUser();
+
+//     if (!user) {
+//         throw new UserException("일치하는 회원이 존재하지 않습니다")
+//     }
+
+//     // throw 밑에 코드는 실행되지 않는다;
+//     console.log(user);
+
+// } catch (error) { // error: new UserException("...")
+//     console.error(error)
+// }
+
+
+// try {
+
+
+//     var age = 15;
+
+//     if (age >= 18) {
+//         console.log('이 콘텐츠를 이용할 수 있습니다')
+//     } else {
+//         throw "청소년 및 어린이는 이용할 수 없습니다";
+//     }
+
+// } catch (error) {  // error: "청소년.." (string)
+//     // console.log(error)
+//     console.error(error)
+// }
+
+try {
+
+    // console.log(x)
+    
+    // parse-time error
+    // 자바스크립트 엔진이 코드를 읽다가 발생한 에러.
+    // try/catch에서 처리되지 않는다.
+    // console.log(x)
+
+    // 런타임 에러 (실행가능한 코드에서 발생한 에러)
+    // try/catch 에서 처리 가능
+    // console.log(x)
+    console.log(x.method1());
+
+} catch (error) {
+    console.error(error)
 }
 
-function displayData(data) {
-    console.log(data)
-}
+// try/catch async function error handling.
 
-console.log(1)
-// 이미지를 가져와서 보여주는 작업은 동기적으로 작동해야 한다
-fetchData(displayData)
-console.log(3)
-console.log(4)
+
+
+
+
+
 
 
 
