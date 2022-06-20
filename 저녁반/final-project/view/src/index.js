@@ -18,6 +18,11 @@ function App() {
             <Route path="explore" element={<Explore />} />
             <Route path="/p/:postId">
               <Route index element={<PostView />} />
+              <Route path="update" element={<UpdateArticle />} />
+              <Route path="comments" element={<Comments />} />
+            </Route>
+            <Route path="/profiles/:username">
+              <Route index element={<Profile />} />
             </Route>
           </Route>
           {/* 로그인 필요하지 않음 */}
@@ -105,17 +110,19 @@ function Layout() {
   console.log('Layout Loaded!');
 
   const auth = useContext(AuthContext);
+  const location = useLocation();
 
   return (
     <>
       <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/explore">Explore</Link></li>
-          <li><Link to="/create">Create</Link></li>
-        </ul>
+        <Link to="/">Home</Link> {" "}
+        <Link to="/explore">Explore</Link> {" "}
+        <Link to="/create">Create</Link> {" "}
+        <Link to={`/profiles/${auth.user.username}`}>Profile</Link> {" "}
         <button onClick={auth.logOut}>Log out</button>
       </nav>
+
+      <small>{location.pathname}</small>
 
       {/* 바뀌는 부분 */}
       <Outlet />
@@ -181,18 +188,33 @@ function PostView() {
 function PostItem({ article, isFavorite: isFavoriteInitial }) {
   console.log('PostItem Loaded!');
 
-  console.log(article)
-  console.log(isFavoriteInitial)
-
   const auth = useContext(AuthContext);
   // 게시물 작성자와 로그인 유저가 일치하면 Master
   const isMaster = article.author._id === auth.user._id ? true : false;
 
   const postId = article._id;
+  
+  const navigate = useNavigate();
 
   // db에서 가져온 처음 상태
   const [isFavorite, setIsFavorite] = useState(isFavoriteInitial);
   const [favoriteCount, setFavoriteCount] = useState(article.favoriteCount);
+
+  function deleteArticle() {
+    fetch(`http://localhost:3000/articles/${postId}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json();
+    })
+    // replace: true 현재 페이지를 대체한다
+    .then(() => navigate('/', { replace: true }))
+    .catch(error => alert(error))
+  }
 
   function handleChange() {
 
@@ -208,7 +230,7 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
         setIsFavorite(true);
         setFavoriteCount(favoriteCount + 1)
       })
-      .catch(error => alert("Error!"))
+      .catch(error => alert("Error!"));
     } else { // 좋아요를 취소한다
       fetch(`http://localhost:3000/articles/${postId}/favorite`, {
         method: 'DELETE',
@@ -240,7 +262,7 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
       {isMaster &&
         <div>
           <Link to={`/p/${postId}/update`}>수정</Link> {" "} 
-          <Link to={`/p/${postId}/`}>삭제</Link>
+          <button onClick={deleteArticle}>삭제</button>
         </div>
       }
       <button onClick={handleChange}>
@@ -248,7 +270,153 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
       </button>
       <p>좋아요: {favoriteCount}</p>
       <p>{article.description}</p>
-      <p><Link to="">댓글달기</Link></p>
+      <p><Link to={`/p/${postId}/comments`}>댓글달기</Link></p>
+    </>
+  )
+}
+
+function Comments() {
+  console.log('Comments Loaded!');
+
+  const params = useParams();
+  const postId = params.postId;
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [comments, setComments] = useState([]);
+
+  const inputEl = useRef(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/articles/${postId}/comments`, {
+      headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json()
+    })
+    .then(data => setComments(data))
+    .catch(error => setError(error))
+    .finally(() => setIsLoaded(true))
+  }, [])
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    fetch(`http://localhost:3000/articles/${postId}/comments`, {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') },
+      body: new URLSearchParams(formData)
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json();
+    })
+    .then(newComment => {
+      // comments.push(newComment)
+      inputEl.current.value = "";
+      setComments([...comments, newComment]);
+    })
+    .catch(error => alert(error))
+  }
+
+  function deleteComment(commentId) {
+    fetch(`http://localhost:3000/articles/${postId}/comments/${commentId}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json()
+    })
+    .then(() => {
+      const updatedComments = comments.filter(comment => comment._id !== commentId)
+      setComments(updatedComments)
+    })
+    .catch(error => alert(error))
+  }
+
+  if (error) {
+    return <h1>Error!</h1>
+  }
+  if (!isLoaded) {
+    return <h1>Loading...</h1>
+  }
+  return (
+    <>
+      <h3>댓글</h3>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <input type="text" name="content" autoComplete="off" ref={inputEl} />
+        </div>
+        <div className="form-group">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+      <ul>
+        {comments.map((comment, index) => (
+          <li key={index}>
+              {comment.content} {" "}
+              <span onClick={() => deleteComment(comment._id)}>&times;</span>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
+function Profile() {
+  console.log('Profile Loaded!');
+
+  const auth = useContext(AuthContext);
+  const params = useParams();
+  const username = params.username;
+  const isMaster = auth.user.username === username ? true : false;
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const [profile, setProfile] = useState(null);
+  const [isFollowing, setIsFollowing] = useState(null);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    Promise.all([
+      fetch(`http://localhost:3000/profiles/${username}`),
+      fetch(`http://localhost:3000/profiles/${username}/isFollowing`, {
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+      }),
+      fetch(`http://localhost:3000/articles?username=${username}`)
+    ])
+    .then(responses => {
+      return Promise.all(responses.map(response => response.json()))
+    })
+    .then(data => {
+      setProfile(data[0]);
+      setIsFollowing(data[1]);
+      setArticles(data[2]);
+    })
+    .catch(error => setError(error))
+    .finally(() => setIsLoaded(true))
+  }, [username])
+
+  if (error) {
+    return <h1>Error!</h1>
+  }
+  if (!isLoaded) {
+    return <h1>Loading...</h1>
+  }
+  return (
+    <>
+      <h1>Profile</h1>
     </>
   )
 }
@@ -293,6 +461,75 @@ function Explore() {
           </div>
         )}
       </div>
+    </>
+  )
+}
+
+function UpdateArticle() {
+  console.log('UpdateArticle Loaded!');
+
+  const navigate = useNavigate();
+  const params = useParams();
+  const postId = params.postId;
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [article, setArticle] = useState(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/articles/${postId}`)
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json()
+    })
+    .then(data => setArticle(data))
+    .catch(error => setError(error))
+    .finally(() => setIsLoaded(true))
+  }, [])
+
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    fetch(`http://localhost:3000/articles/${postId}`, {
+      method: 'PUT',
+      headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') },
+      body: new FormData(e.target)
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json()
+    })
+    .then(() => navigate(`/p/${postId}`))
+    .catch(error => alert(error))
+  }
+
+  if (error) {
+    return <h1>Error!</h1>
+  }
+  if (!isLoaded) {
+    return <h1>Loading...</h1>
+  }
+  return (
+    <>
+      <h1>Update Article</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <h3>Description</h3>
+          <input type="text" name="description" defaultValue={article.description} />
+        </div>
+        <div className="form-group">
+          <h3>Photos</h3>
+          <p>{article.photos.length} photos</p>
+        </div>
+        <div className="form-group">
+          <h3>Submit</h3>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
     </>
   )
 }
@@ -419,22 +656,27 @@ function SignUp() {
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
+          <h3>username</h3>
           <input type="text" name="username" autoComplete="off" onChange={handleChange} />
           <div>{validation.username.message}</div>
         </div>
         <div className="form-group">
+          <h3>email</h3>
           <input type="text" name="email" autoComplete="off" onChange={handleChange} />
           <div>{validation.email.message}</div>
         </div>
         <div className="form-group">
+          <h3>password</h3>
           <input type="text" name="password" autoComplete="off" onChange={handleChange} />
           <div>{validation.password.message}</div>
         </div>
         <div className="form-group">
+          <h3>password confirm</h3>
           <input type="text" name="password_confirm" autoComplete="off" onChange={handleChange} />
           <div>{validation.passwordConfirm.message}</div>
         </div>
         <div className="form-group">
+          <h3>Submit</h3>
           <button type="submit" className="btn">Submit</button>
         </div>
       </form>
