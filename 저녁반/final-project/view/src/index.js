@@ -23,6 +23,7 @@ function App() {
             </Route>
             <Route path="/profiles/:username">
               <Route index element={<Profile />} />
+              <Route path="edit" element={<ProfileEdit />} />
             </Route>
           </Route>
           {/* 로그인 필요하지 않음 */}
@@ -131,6 +132,31 @@ function Layout() {
 }
 
 function Home() {
+  console.log('Home Loaded!');
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [articles, setArticles] = useState([])
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/articles/feed`, {
+      headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}` }
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json()
+    })
+    .then(data => {
+      setArticles(data)
+    })
+    .catch(error => {
+      setError(error)
+    })
+    .finally(() => setIsLoaded(true))
+  })
+
   return (
     <>
       <h1>Home</h1>
@@ -150,6 +176,8 @@ function PostView() {
   const [article, setArticle] = useState(null);
   // 해당 게시물을 사용자가 좋아하는 게시물인지 여부
   const [isFavorite, setIsFavorite] = useState(null);
+  const [articles, setArticles] = useState([]);
+
 
   // 순회 가능한 객체(Array)에 주어진 모든 프로미스가 이행된 후,
   // 주어진 프로미스중 하나라도 거부되는 경우 error 발생
@@ -158,7 +186,8 @@ function PostView() {
       fetch(`http://localhost:3000/articles/${postId}`),
       fetch(`http://localhost:3000/articles/${postId}/favorite`, {
         headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
-      })
+      }),
+      fetch(`http://localhost:3000/articles/${postId}/more`)
     ])
     .then(responses => 
       Promise.all(responses.map(response => response.json()))
@@ -166,13 +195,16 @@ function PostView() {
     .then(data => {
       setArticle(data[0])
       setIsFavorite(data[1])
+      setArticles(data[2])
     })
     .catch(error => setError(error))
     .finally(() => setIsLoaded(true))
-  }, [])
+  }, [postId])
+  // postId가 바뀔 때 useEffect가 effect(callback)을 다시 호출한다
 
   console.log(article)
   console.log(isFavorite)
+  console.log(articles)
 
   if (error) {
     return <h1>Error!</h1>
@@ -181,7 +213,18 @@ function PostView() {
     return <h1>Loading...</h1>
   }
   return (
-    <PostItem article={article} isFavorite={isFavorite} />
+    <>
+      <PostItem article={article} isFavorite={isFavorite} />
+      {/* 이전글, 다음글 버튼은 PostView에서만 보인다 */}
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        {articles.prevArticle &&
+          <Link to={`/p/${articles.prevArticle._id}`}>&larr; Prev</Link>
+        }
+        {articles.nextArticle &&
+          <Link to={`/p/${articles.nextArticle._id}`}>Next &rarr;</Link>
+        }
+      </div>
+    </>
   )
 }
 
@@ -302,6 +345,8 @@ function Comments() {
     .finally(() => setIsLoaded(true))
   }, [])
 
+  console.log(comments)
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -408,6 +453,10 @@ function Profile() {
     .finally(() => setIsLoaded(true))
   }, [username])
 
+  console.log(profile)
+  console.log(isFollowing)
+  console.log(articles)
+
   if (error) {
     return <h1>Error!</h1>
   }
@@ -417,6 +466,124 @@ function Profile() {
   return (
     <>
       <h1>Profile</h1>
+
+      <div>
+        <img src={`http://localhost:3000/user/${profile.image || 'avatar.jpeg'}`} />
+      </div>
+
+      <div>
+        <ul>
+          <li><b>Follower</b> 0</li>
+          <li><b>Following</b> 0</li>
+          <li><b>Posts</b> {articles.length}</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>{profile.username}</h3>
+        <p>{profile.bio}</p>
+        {isMaster && 
+          <p><Link to={`/profiles/${username}/edit`}>Edit Profile</Link></p>
+        }
+      </div>
+
+      <div>
+        {!isMaster &&
+          <form>
+            <button>
+              {isFollowing ? 'Unfollow' : 'Follow'}
+            </button>
+          </form>
+        }
+      </div>
+
+      <div>
+        {articles.map((article, index) => (
+          <div key={index}>
+            <Link to={`/p/${article._id}`}>
+              <img src={`http://localhost:3000/posts/${article.photos[0]}`} />
+            </Link>
+          </div>
+        ))}
+      </div>
+    </>
+  )
+}
+
+function ProfileEdit() {
+  console.log('ProfileEdit Loaded!');
+
+  const auth = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [profile, setProfile] = useState({});
+  
+  useEffect(() => {
+    fetch(`http://localhost:3000/profiles/${auth.user.username}`)
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json();
+    })
+    .then(data => setProfile(data))
+    .catch(error => setError(error))
+    .finally(() => setIsLoaded(true))
+  }, [])
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    fetch(`http://localhost:3000/profiles/edit`, {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') },
+      body: new FormData(e.target)
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      return res.json()
+    })
+    .then(data => {
+      navigate(`/profiles/${auth.user.username}`)
+    })
+    .catch(error => {
+      alert(error)
+    })
+  }
+
+  if (error) {
+    return <h1>Error!</h1>
+  }
+  if (!isLoaded) {
+    return <h1>Loading...</h1>
+  }
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <h3>Username</h3>
+          <p>{profile.username}</p>
+        </div>
+        <div className="form-group">
+          <h3>Image</h3>
+          <input type="file" name="image" />
+          {profile.image && 
+            <p>1 Image uploaded</p>
+          }
+        </div>
+        <div className="form-group">
+          <h3>Bio</h3>
+          <input type="text" name="bio" className="form-group" defaultValue={profile.bio} />
+        </div>
+        <div className="form-group">
+          <h3>Submit</h3>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
     </>
   )
 }

@@ -274,6 +274,21 @@ app.get('/articles/:postId', async (req, res, next) => {
     }
 })
 
+app.get('/articles/:postId/more', async (req, res, next) => {
+    try {
+        const article = await Article.findById(req.params.postId).populate('author');
+    
+        const prevArticle = await Article.findOne({ author: article.author, created: { $lt: article.created } })
+        .sort({ created: -1 })
+    
+        const nextArticle = await Article.findOne({ author: article.author, created: { $gt: article.created } })
+    
+        res.json({ prevArticle, nextArticle });
+    } catch (error) {
+        next(error)
+    }
+})
+
 app.put('/articles/:id', auth, async (req, res, next) => {
     try {
         // id에 일치하는 게시물을 가져온다(수정할 게시물)
@@ -507,7 +522,7 @@ app.post('/profiles/edit', auth, async (req, res, next) => {
                     const oldpath = image.filepath;
                     const ext = image.originalFilename.split('.')[1]
                     const newName = image.newFilename + '.' + ext;
-                    const newpath = __dirname + '/data/user' + newName;
+                    const newpath = __dirname + '/data/user/' + newName;
 
                     fs.renameSync(oldpath, newpath);
                     // 유저 이미지 업데이트
