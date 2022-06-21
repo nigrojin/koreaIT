@@ -297,7 +297,7 @@ app.put('/articles/:id', auth, async (req, res, next) => {
         if (article.author.toString() !== req.user._id.toString()) {
             // error.name, error.message
             // error.name: Error, error.message: '게시물을 ...')
-            throw new Error('게시물을 작성한 본인만 수정할 수 없습니다.')
+            throw new Error('게시물을 작성한 본인만 수정할 수 있습니다.')
         }
 
         const form = formidable();
@@ -548,6 +548,8 @@ app.post('/profiles/edit', auth, async (req, res, next) => {
 
 app.get('/profiles/:username', async (req, res, next) => {
     try {
+        console.log(req.params.username);
+
         const user = await User.findOne({ username: req.params.username });
         
         if (!user) {

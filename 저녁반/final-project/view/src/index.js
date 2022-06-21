@@ -139,7 +139,7 @@ function Home() {
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:3000/articles/feed`, {
+    fetch(`http://localhost:3000/feed`, {
       headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}` }
     })
     .then(res => {
@@ -154,8 +154,10 @@ function Home() {
     .catch(error => {
       setError(error)
     })
-    .finally(() => setIsLoaded(true))
-  })
+    .finally(() => setIsLoaded(true));
+  }, [])
+
+  console.log(articles)
 
   return (
     <>
@@ -441,10 +443,14 @@ function Profile() {
       }),
       fetch(`http://localhost:3000/articles?username=${username}`)
     ])
-    .then(responses => {
+    .then(responses => { 
+      console.log(responses)
+
       return Promise.all(responses.map(response => response.json()))
     })
     .then(data => {
+      console.log(data)
+
       setProfile(data[0]);
       setIsFollowing(data[1]);
       setArticles(data[2]);
@@ -452,6 +458,10 @@ function Profile() {
     .catch(error => setError(error))
     .finally(() => setIsLoaded(true))
   }, [username])
+
+  function handleFollow() {
+
+  }
 
   console.log(profile)
   console.log(isFollowing)
@@ -489,7 +499,7 @@ function Profile() {
 
       <div>
         {!isMaster &&
-          <form>
+          <form onSubmit={handleFollow}>
             <button>
               {isFollowing ? 'Unfollow' : 'Follow'}
             </button>
