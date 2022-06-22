@@ -191,9 +191,14 @@ function PostView() {
       }),
       fetch(`http://localhost:3000/articles/${postId}/more`)
     ])
-    .then(responses => 
-      Promise.all(responses.map(response => response.json()))
-    )
+    .then(responses => {
+      responses.map(response => {
+        if (!response.ok) {
+          throw response;
+        }
+      })
+      return Promise.all(responses.map(response => response.json()))
+    })
     .then(data => {
       setArticle(data[0])
       setIsFavorite(data[1])
@@ -236,14 +241,20 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
   const auth = useContext(AuthContext);
   // 게시물 작성자와 로그인 유저가 일치하면 Master
   const isMaster = article.author._id === auth.user._id ? true : false;
-
   const postId = article._id;
-  
   const navigate = useNavigate();
 
   // db에서 가져온 처음 상태
   const [isFavorite, setIsFavorite] = useState(isFavoriteInitial);
   const [favoriteCount, setFavoriteCount] = useState(article.favoriteCount);
+
+  // Carousel
+  // document.querySelectorAll('.item');
+  const carouselItems = [];
+  const carouselIndicators = [];
+  const prevBtn = useRef(null);
+  const nextBtn = useRef(null);
+  const [left, setLeft] = useState(0);
 
   function deleteArticle() {
     fetch(`http://localhost:3000/articles/${postId}`, {
@@ -292,29 +303,102 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
     }
   }
 
+  function setItemRef(ref) {
+    // 여러개로 출력되는 carousel item을 carouselItems array에 추가한다
+    carouselItems.push(ref);
+  }
+  function setIndicatorRef(ref) {
+    // 여러개로 출력되는 carousel dot을 carouselIndicators array에 추가한다
+    carouselIndicators.push(ref)
+  }
+
+  useEffect(() => {
+    // navigateTo함수가 비동기로 작동해야 하는 이유는
+    // useRef가 컴포넌트가 return할 때 element를 current에 담기 때문이다
+    // { current: null }
+
+    console.log(carouselItems)
+    console.log(carouselIndicators)
+
+    navigateTo(left)
+  })
+  
+  // carousel을 작동하게 하는 함수
+  function navigateTo(data) {
+    console.log(data)
+    console.log(prevBtn)
+    console.log(nextBtn)
+
+    carouselItems[0].style.marginLeft = `-${100 * data}px`;
+
+    // active는 display: block으로 만든다.
+    prevBtn.current.classList.add('active');
+    nextBtn.current.classList.add('active');
+
+    // 마지막 이미지일 때, 다음 버튼을 안보이게 한다
+    if (data === carouselItems.length - 1) {
+      nextBtn.current.classList.remove('active');
+    }
+
+    // 첫번째 이미지일 때, 이전 버튼을 안보이게 한다.
+    if (data === 0) {
+      prevBtn.current.classList.remove('active');
+    }
+
+    // Indicator
+    // dot에 .active를 모두 제거한다 (초기화)
+    carouselIndicators.map(indicator => {
+      indicator.classList.remove('active');
+    })
+    // index(data)에 해당하는 dot에 .active class를 추가한다
+    carouselIndicators[data].classList.add('active');
+  }
+
   return (
     <>
       <h3>
         <Link to="">{article.author.username}</Link>
       </h3>
-      <div>
+
+      {/* Carousel Start */}
+      <div className="relative">   
+        {/* carosel 이미지 부분 */}
+        <div className="carousel">
+          {article.photos.map((photo, index) => (
+            // 반복적으로 출력되는 DOM을 선택할 때 ref를 함수로 작성한다
+            <div key={index} ref={itemRef => setItemRef(itemRef)}>
+              <img src={`http://localhost:3000/posts/${photo}`} />
+            </div>
+          ))}
+        </div>
+        {/* 이전, 다음 버튼 */}
+        <div className="carousel-btn-group">
+          <button className="prev" onClick={() => setLeft(left - 1)} ref={prevBtn}>&#10094;</button>
+          <button className="next" onClick={() => setLeft(left + 1)} ref={nextBtn}>&#10095;</button>
+        </div>
+      </div>
+
+      <div className="carousel-indicator">
+        {/* dot은 사진의 갯수만큼 출력된다 */}
         {article.photos.map((photo, index) => (
-          <div key={index}>
-            <img src={`http://localhost:3000/posts/${photo}`} />
-          </div>
+          <span className="dot" key={index} ref={setIndicatorRef}>@</span>
         ))}
       </div>
+      {/* Carousel End */}
+
       {isMaster &&
         <div>
           <Link to={`/p/${postId}/update`}>수정</Link> {" "} 
           <button onClick={deleteArticle}>삭제</button>
         </div>
       }
+
       <button onClick={handleChange}>
         {!isFavorite ? "좋아요" : "좋아요 취소"}
       </button>
       <p>좋아요: {favoriteCount}</p>
       <p>{article.description}</p>
+
       <p><Link to={`/p/${postId}/comments`}>댓글달기</Link></p>
     </>
   )
@@ -433,6 +517,8 @@ function Profile() {
 
   const [profile, setProfile] = useState(null);
   const [isFollowing, setIsFollowing] = useState(null);
+  const [followerList, setFollowerList] = useState(null);
+  const [followingList, setFollowingList] = useState(null);
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -441,10 +527,21 @@ function Profile() {
       fetch(`http://localhost:3000/profiles/${username}/isFollowing`, {
         headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
       }),
+      fetch(`http://localhost:3000/profiles/${username}/followerList`, {
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+      }),
+      fetch(`http://localhost:3000/profiles/${username}/followingList`, {
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+      }),
       fetch(`http://localhost:3000/articles?username=${username}`)
     ])
     .then(responses => { 
-      console.log(responses)
+      // status 200만 받는다 (ok: true)
+      responses.map(response => {
+        if (!response.ok) { 
+          throw response;
+        }
+      })
 
       return Promise.all(responses.map(response => response.json()))
     })
@@ -453,14 +550,43 @@ function Profile() {
 
       setProfile(data[0]);
       setIsFollowing(data[1]);
-      setArticles(data[2]);
+      setFollowerList(data[2])
+      setFollowingList(data[3])
+      setArticles(data[4]);
     })
     .catch(error => setError(error))
     .finally(() => setIsLoaded(true))
   }, [username])
 
-  function handleFollow() {
+  function handleFollow(e) {
+    e.preventDefault();
 
+    if (!isFollowing) { // 새롭게 팔로우를 시작함
+      fetch(`http://localhost:3000/profiles/${username}/follow`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}` }
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw res;
+        }
+        // return res.json() 가 생략됬다 
+        setIsFollowing(true);
+      })
+      .catch(error => setError(error))
+    } else { // 팔로우를 취소함
+      fetch(`http://localhost:3000/profiles/${username}/follow`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}` }
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw res;
+        }
+        setIsFollowing(false);
+      })
+      .catch(error => setError(error))
+    }
   }
 
   console.log(profile)
@@ -483,8 +609,8 @@ function Profile() {
 
       <div>
         <ul>
-          <li><b>Follower</b> 0</li>
-          <li><b>Following</b> 0</li>
+          <li><b>Follower</b> {followerList.length}</li>
+          <li><b>Following</b> {followingList.length}</li>
           <li><b>Posts</b> {articles.length}</li>
         </ul>
       </div>

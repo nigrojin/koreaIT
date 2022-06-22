@@ -7,3 +7,29 @@ img {
   height: 100px;
   object-fit: cover;
 }
+
+.carousel {
+  white-space: nowrap;
+}
+
+.carousel div {
+  display: inline-block;
+  transition: .5s;
+}
+
+.carousel-btn-group button {
+  visibility: hidden;
+}
+
+.carousel-btn-group button.active {
+  visibility: visible;
+}
+
+.carousel-indicator {
+  display: flex;
+  justify-content: center;
+}
+
+.dot.active {
+  color: red;
+}
