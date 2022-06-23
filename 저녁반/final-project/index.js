@@ -553,7 +553,7 @@ app.get('/profiles/:username', async (req, res, next) => {
         const user = await User.findOne({ username: req.params.username });
         
         if (!user) {
-            throw new Error('존재하지 않는 사용자입니다')
+            throw new Error('존재하지 않는 사용자입니다');
         }
 
         // user에서 username, bio, image로 profile 객체를 만든다.
