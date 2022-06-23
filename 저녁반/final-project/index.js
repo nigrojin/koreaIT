@@ -35,6 +35,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/final', // url
 )
 const { User, Follow, Article, Favorite, Comment, Token } = require('./models/model');
 
+// seed (데이터베이스 초기 데이터 저장)
+const seed = require('./seed.js');
+
 // # UserException 클래스
 function UserException(message) {
     this.name = 'UserException';
