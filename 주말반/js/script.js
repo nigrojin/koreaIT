@@ -1599,25 +1599,538 @@ JavaScript
 //     console.error(error)
 // }
 
-try {
+// try {
 
-    // console.log(x)
+//     // console.log(x)
     
-    // parse-time error
-    // 자바스크립트 엔진이 코드를 읽다가 발생한 에러.
-    // try/catch에서 처리되지 않는다.
-    // console.log(x)
+//     // parse-time error
+//     // 자바스크립트 엔진이 코드를 읽다가 발생한 에러.
+//     // try/catch에서 처리되지 않는다.
+//     // console.log(x)
 
-    // 런타임 에러 (실행가능한 코드에서 발생한 에러)
-    // try/catch 에서 처리 가능
-    // console.log(x)
-    console.log(x.method1());
+//     // 런타임 에러 (실행가능한 코드에서 발생한 에러)
+//     // try/catch 에서 처리 가능
+//     // console.log(x)
+//     console.log(x.method1());
 
-} catch (error) {
-    console.error(error)
-}
+// } catch (error) {
+//     console.error(error)
+// }
 
 // try/catch async function error handling.
+
+// ES6 
+// 2015년에 추가된 문법
+// 변수: let, const
+// 함수: Arrow function 
+// For/of
+// Class (자바스크립트는 prototype기반 언어이다)
+// Promise (비동기 작업)
+// Destructing/spread operator (Object, Array의 표시하는 방법)
+// Ternary (삼항연산자)
+// Array.from(), Array.keys(), Array.find(),
+// Object.entries()
+// ...
+
+// # 변수: var, let, const
+// 1. 기본적인 차이점
+// 2. 변수의 범위에서의 차이점
+
+
+// var cat; // declare (선언)
+// console.log(cat) // undefined
+
+// var cat = "Kitty"; // declare, assignment(할당) = define
+// =: 할당연산자
+// cat = "Kitty": literal 방식 (value만 할당)
+
+// var cat = new String("Kitty") // String 클래스의 instance 생성
+
+// // instance의 커스텀 method
+// // instance를 만들고 method를 추가할 수 있다
+// cat.sound = function() {
+//     return '야옹'
+// }
+// // instance를 만들고 property를 추가할 수 있다
+// cat.home = null;
+
+// console.log(cat)
+
+// console.log(typeof cat) // object
+// console.log(cat instanceof String) // true
+
+// console.log(cat.toUpperCase()) // String클래스의 toUpperCase() 메소드를 [ 상속 ] 한다
+
+
+// var cat = "Kitty"; // declare, define
+// console.log(cat)
+
+
+// var cat = "Kitty"
+// var cat = "Alfredo" // redeclare, define
+
+// console.log(cat)
+
+
+// var cat = "Kitty" // declare
+// cat = "Afredo"; // define
+
+// console.log(cat)
+
+
+// let cat; // declare
+// console.log(cat) // undefined
+
+
+// let cat; // declare
+
+// cat = "Kitty" // define
+
+// console.log(cat);
+
+
+// let cat = "Kitty"; // declare
+// let cat = "Alfredo"; // redeclare (재선언 안됨)
+
+// console.log(cat);
+
+
+// const cat; // declare, define (intializer: 초기화를 반드시 해야함)
+// 초기화: 선언과 값을 할당하는 것
+
+// console.log(cat);
+
+
+// const cat = "Kitty" // const 초기화
+// cat = "Alfredo" // const에는 할당 불가
+
+// console.log(cat)
+
+
+// const cat = "Kitty" // declare
+// const cat = "Alfredo" // 재선언 불가
+
+
+// Q. Uncaught SyntaxError가 발생한 이유와 에러를 catch하는 방법을 코딩해보세요.
+// const cat;
+
+// console.log(cat);
+
+
+// try {
+//     // parse-time 에러
+//     // javascript 엔진이 코드를 읽다가 발생한 에러
+//     const cat;
+//     console.log(cat);
+
+// } catch (error) {
+//     // catch block에서 error를 처리한다
+//     console.error(error)
+// }
+
+// 변수의 범위 (scope)
+// var, let, const
+// global scope (전역 범위)
+// local scope (지역 범위)
+// block scope (블록 범위)
+
+
+// let cat = "Kitty" // Global (전역범위)
+// // 어디에서도 접근할 수 있다
+// // 함수 내부, block 등
+
+// function f() {
+//     console.log(cat)
+// }
+
+// f()
+
+
+// function f() {
+//     // 함수의 내부는 local scope(지역 범위)
+//     let cat = "Kitty" // Local Variable (지역 변수)
+
+//     console.log(cat)
+// }
+
+// console.log(cat) // error (not defined, 정의되지 않음)
+// 함수의 외부에서 cat(지역변수)에 접근할 수 없음
+
+// f()
+
+
+// let cat = "Kitty" // 전역변수
+
+// function f() {
+//     cat = "Alfredo" // 지역변수
+
+//     console.log(cat)
+// }
+
+// f()
+
+
+// let cat = "Kitty"
+
+// function f() {
+//     let cat = "Alfredo";
+//     // 변수의 비교는 지역범위 안에서만 한다
+//     // let cat = "Garfield"; // 재선언 불가
+//     console.log(cat)
+// }
+
+// f()
+
+// let cat = "Kitty"
+// let cat = "Alfredo" // 재선언 불가
+
+
+// const cat = "Kitty" // Global (전역 범위)
+
+// function f() {
+//     console.log(cat)
+// }
+
+// f()
+
+// const cat = "Kitty"
+
+// function f() {
+//     const cat = "Alfredo";
+
+//     console.log(cat)
+// }
+
+// f()
+
+// Block (블록 범위)
+// { } (brace, 중괄호)
+
+// function f() {
+//     // 지역변수
+//     // 지역변수는 지역범위(함수 범위)를 갖는다
+//     const cat = "Kitty"
+// }
+
+// console.log(cat) // 함수 외부에서 지역변수에 접근 불가
+
+
+// { // block 지정
+//     var cat = "Kitty"; // var은 블록 외부에서 접근 가능
+// }
+
+// {
+//     let cat = "Kitty"; // let은 블록 내부에서만 사용 가능
+// }
+
+// {
+//     const cat = "Kitty" // const는 블록 내부에서만 접근 가능
+// }
+
+// console.log(cat)
+
+// {
+//     // 블록 안에서만 변수를 비교한다
+//     const cat = "Kitty"
+//     console.log(cat)
+// }
+
+// const cat = "Alfredo"
+// console.log(cat)
+
+
+// function f() {
+//     // local 범위(함수 범위)
+// }
+
+// if (true) {
+//     // block 범위
+//     let greeting = "hello";
+// }
+
+// console.log(greeting)
+
+// for (i=0; i<10; i++) {
+//     // block (블록범위)
+//     let total = 55; 
+// }
+
+// console.log(total)
+
+// "use strict"; // 엄격 모드
+
+// cat = "Kitty"
+// console.log(cat)
+
+
+
+// let total = 0 // total: 전역변수
+
+// for (let i=0; i<10; i++) {
+//     total += i // 값 증가 (할당)
+//     // total = total + i
+// }
+
+// console.log(total);
+
+// let person; // global 전역 변수
+
+// if (true) {
+//     person = '성인' // 값을 할당
+// }
+
+// console.log(person)
+
+// 함수를 정의하는 방법
+
+// // 함수선언식
+// function f() {
+//     return "."
+// }
+
+// // 함수표현식 
+// // 변수에 익명 함수를 할당한다
+// const f = function() {
+//     return "."
+// }
+
+// f();
+// // declaration은 hoisting(게양)가능
+// // 함수의 호출시점보다 함수의 정의가 더 위로 올라간다
+// function f() {
+//     console.log('.')
+// }
+
+// expression은 hoisting이 되지 않는다
+// var f = function () {
+//     console.log('아침엔 맥모닝')
+// }
+
+// f();
+
+// f();
+
+
+// var f = () => { // () => {}
+//     console.log('아침 꼭 드세요')
+// }
+
+// f();
+
+// var f = () => {
+//     return "좋은 아침"
+// }
+
+// console.log(f())
+
+
+// var f = () => "좋은 아침";
+// // {} (중괄호)를 생략하면 화살표 뒤의 값이 return 된다
+
+// console.log(f());
+
+// var f = () => "좋은 아침"
+
+// Arrow func에 인자가 있을 때
+// var f = (data) => "아침엔 " + data;
+
+// let r = f("맥모닝");
+
+// console.log(r)
+
+
+// var f = (a, b) => `아침엔 ${a}, ${b}`;
+
+// // console.log(f) // 함수의 정의
+
+// let r = f("맥모닝", "우유");
+
+// console.log(r);
+
+// var f = data => `아침엔 ${data}` // 인자가 하나일 때 () 생략 가능
+
+// let r = f("딸기 주스")
+
+// console.log(r)
+
+
+// # Destructing, Spread operator
+// Destructing: 구조분해할당
+// Spread operator: ...
+
+// const animals = [
+//     "고양이", "토끼", "오리"
+// ]
+
+// console.log(animals)
+
+// let cat = animals[0]; // array[index]
+// let bunny = animals[1];
+// let duck = animals[2];
+
+// console.log(cat)
+// console.log(bunny)
+// console.log(duck)
+
+// const animals = [
+//     "고양이", "토끼", "오리"
+// ]
+
+// const [cat, bunny, duck] = animals
+
+// console.log(cat)
+// console.log(bunny)
+// console.log(duck)
+
+
+// const animals = ["고양이", "토끼", "오리"]
+
+// const [cat, ,duck] = animals
+
+// console.log(cat)
+// console.log(duck)
+
+// const [ ,bunny, ] = animals
+
+// console.log(bunny)
+
+/// ... : Spread operator
+// const [cat, ...friends] = animals
+
+// console.log(cat)
+// console.log(friends)
+
+// const [cat, ...rest] = animals
+
+// console.log(rest)
+
+// const animals = ["고양이", "토끼", "오리"]
+
+// const moreAnimals = ["새", "불독", "쿼카"]
+
+// // .concat()
+// const r = [...animals, ...moreAnimals]
+
+// console.log(r)
+
+// const animals = ["고양이", "토끼", "오리"]
+// // const newAnimal = "쿼카" // newAnimal
+// const newAnimal = ["쿼카"] // ...newAnimal
+
+// const r = [...animals, ...newAnimal] 
+
+// console.log(r)
+
+// function add(a, b) {
+//     return a + b
+// }
+
+// function subtract(a, b) {
+//     return a - b;
+// }
+
+// function multiply(a, b) {
+//     return a * b
+// }
+
+// function divide(a, b) {
+//     return a / b
+// }
+
+// console.log(add(4, 7))
+
+// Q. caculate 함수를 이용해서 add, subtract, multiply, divide변수(결과 값)를 선언하고
+// 값을 대입해서 출력해보세요
+// destructing을 사용 (Spread Operator는 없음)
+
+// function calculate(a, b) {
+//     const cal1 = a + b;
+//     const cal2 = a - b;
+//     const cal3 = a * b;
+//     const cal4 = a / b;
+
+//     return [cal1, cal2, cal3, cal4];
+// }
+
+// console.log(calculate(4, 7))
+
+// const [add, subtract, multiply, divide] = calculate(4, 7);
+
+// console.log(add)
+// console.log(multiply)
+
+// Object
+// Destructing, Spread Operator
+
+// var cat = {
+//     name: "Kitty",
+//     age: 1,
+//     home: null,
+//     sound: function () {
+//         return "meow";
+//     }
+// }
+
+// function f(data) {
+//     // data 부분이 반복된다
+//     let r = `고양이의 이름은 ${data.name}이고 나이는 ${data.age}살 입니다.`
+//     console.log(r)
+// }
+
+// function f({ name, age }) {
+//     // Object destructing
+//     let r = `고양이의 이름은 ${name}이고 나이는 ${age}살 입니다.`;
+//     console.log(r)
+// }
+
+// f(cat)
+
+// var cat = {
+//     name: "Kitty",
+//     age: 1,
+//     sound: function () {
+//         return "meow";
+//     }
+// }
+
+// // var r = { ...cat, color: "Brown" } // 새로운 key: value 쌍이 추가 된다
+
+// // var r = { ...cat, color: "Brown", home: null }
+// var r = { ...cat, ...{ color: "Brown", home: null } } // Spread operator
+
+// console.log(r)
+
+
+// Q. 세개의 array를 spread operator를 사용해서 합쳐보세요
+let num1 = [1,2,3]
+let num2 = [4,5,6]
+let num3 = [7,8,9]
+
+// Array: ...Array
+console.log([...num1, ...num2, ...num3])
+
+// Object: ...Object
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
