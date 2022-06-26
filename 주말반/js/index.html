@@ -100,9 +100,6 @@
 
     // document.getElementById("root").appendChild(list)
 
-    // # EventListener
-    // eventListener(callback, event): event가 발생시에 callback실행
-
     </script> -->
     
     <!-- <button onclick="f()">Click Me</button> -->
@@ -117,7 +114,9 @@
     <button id="btn">Click me</button>
 
     <script>
-
+        // # EventListener
+        // eventListener(event, callback): event가 발생시에 callback실행
+        
         var btn = document.getElementById('btn');
 
         btn.addEventListener("click", f);
@@ -125,7 +124,6 @@
         function f() {
             alert("오늘도 수고하셨습니다");
         }
-
    </script>
     
 </body>
