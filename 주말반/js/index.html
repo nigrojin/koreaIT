@@ -7,7 +7,126 @@
     <title>Document</title>
 </head>
 <body>
+
+    <!-- <div id="root"></div> -->
     
-    <script src="./script.js"></script>
+    <!-- <script>
+    // # HTML DOM
+    // DOM: Document Object Model
+    // DOM tree
+    // JavaScript에서 DOM 조작하기
+
+    // console.log(window) // window Object
+    // // window.alert()
+
+    // console.log(window.document) // HTML document
+
+    // console.log(window.document.head)
+    // console.log(window.document.body)
+
+    // console.log(window.document.getElementById("root")) // id가 root인 HTML element
+
+    // document.getElementById("root").innerHTML = "Hello HTML DOM"
+
+
+    // console.log(window.document.getElementById("root").innerHTML) // ""
+
+    // window.document.getElementById("root").innerHTML = "Hello HTML DOM";
+    
+    // document.getElementById("root").textContent = "Hello HTML DOM";
+
+    // document.getElementById("root").innerHTML = "<h1>Hello HTML DOM</h1>"
+
+
+    // document.getElementById("root").innerHTML = `
+    //     <h1>Hello HTML DOM</h1>
+    //     <p>JavaScript로 HTML Object 조작하기</p>
+    // `
+
+    // var h1 = document.createElement('h1');
+    // h1.textContent = 'Hello HTML DOM';
+
+    // // element.appendChild(newElement): element의 가장 뒤에 newElement를 추가한다
+    // // document.body.appendChild(h1);
+    // document.getElementById("root").appendChild(h1);
+
+    // // Q "JavaScript로 HTML Object 조작하기"를 root안에 h1태그 다음에 출력해보세요
+    // // <p> tag를 이용해보세요
+
+    // var p = document.createElement('p')
+    // p.textContent = "JavaScript로 HTML Object 조작하기";
+
+    // document.getElementById("root").appendChild(p);
+
+    // var list = document.createElement('ul');
+
+    // // Arrary
+    // var cars = ["제네시스", "스타리아", "아이오닉", "캐스퍼"];
+
+    // // For loop (for 반복문)
+    // for (let i=0; i<cars.length; i++) {
+    //     var item = document.createElement('li');
+    //     item.textContent = cars[i];
+    //     list.appendChild(item)
+    // }
+
+    // document.getElementById("root").appendChild(list)
+
+
+    // Q. List를 HTML에 출력해보세요
+    // 예) 토끼는 나이는 1살이고 컬러는 Snow White입니다.
+
+    // var animals = [
+    //     { name: '토끼', age: 1, color: "Snow White" },
+    //     { name: "고양이", age: 2, color: "Mixed" },
+    //     { name: "오리", age: 1, color: "White" },
+    //     { name: "쿼카", age: 3, color: "Brown" }
+    // ]
+
+    // var list = document.createElement('ul');
+
+    // // animals.forEach(animal => {
+    // //     var item = document.createElement('li')
+    // //     item.textContent = `${animal.name}은/는 나이는 ${animal.age}살 이고 컬러는 ${animal.color}입니다.`
+    // //     list.appendChild(item)
+    // // })
+
+    // // Destructing
+    // animals.forEach(({ name, age, color }) => {
+    //     var item = document.createElement('li')
+    //     item.textContent = `${name}은/는 나이는 ${age}살 이고 컬러는 ${color}입니다.`
+    //     list.appendChild(item)
+    // })
+
+    // document.getElementById("root").appendChild(list)
+
+    // # EventListener
+    // eventListener(callback, event): event가 발생시에 callback실행
+
+    </script> -->
+    
+    <!-- <button onclick="f()">Click Me</button> -->
+
+    <!-- <script>
+        // button element의 onclick 속성으로 f 함수 실행
+        function f() {
+            console.log('..')
+        }
+    </script> -->
+
+    <button id="btn">Click me</button>
+
+    <script>
+
+        var btn = document.getElementById('btn');
+
+        btn.addEventListener("click", f);
+
+        function f() {
+            alert("오늘도 수고하셨습니다");
+        }
+
+   </script>
+    
 </body>
 </html>

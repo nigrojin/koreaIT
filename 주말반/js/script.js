@@ -2102,14 +2102,312 @@ JavaScript
 
 
 // Q. 세개의 array를 spread operator를 사용해서 합쳐보세요
-let num1 = [1,2,3]
-let num2 = [4,5,6]
-let num3 = [7,8,9]
+// let num1 = [1,2,3]
+// let num2 = [4,5,6]
+// let num3 = [7,8,9]
 
-// Array: ...Array
-console.log([...num1, ...num2, ...num3])
+// // Array: ...Array
+// console.log([...num1, ...num2, ...num3])
 
-// Object: ...Object
+// // Object: ...Object
+
+// # ES6 Promise
+// 정의: Promise객체는 비동기 작업이 맞이할 미래의 완료 또는 실패와
+// 그 결과 값을 나타냅니다
+// Promise - 비동기 작업의 가독성을 향상시키기 위해 나온 문법
+// Async/Await Promise - Promise의 문법을 더 쉽게 표현할 수 있다
+
+// Promise 객체는 두개의 property: state / result
+// promise가 pending일때, result: undefined
+// promise가 fullfilled일때, result: value
+// promise가 rejected일때, result: error object
+
+// Promise클래스의 인스턴스 생성
+// let promise = new Promise(function (resolve, reject) {
+
+//     // 대기중일 때
+//     // pending
+//     // 성공했을 때
+//     // resolve() - fullfilled
+//     // 실패했을 때
+//     // reject() - rejected
+// })
+
+// promise.then(
+//     // 성공했을 때
+//     function (value) {/* 성공했을 때 코드 */},
+//     // 실패했을 때
+//     function (error) {/* 실패했을 때 코드 */}
+// )
+
+
+// 데이터를 가져오는 함수
+// 비동기 함수
+// function fetchData(callback) {
+//     setTimeout(() => {
+//         // setTimeout의 콜백은 동기적으로 작동한다
+//         callback({ message: '데이터 가져오기 성공' })
+//     }, 0)
+// }
+
+// // 데이터를 출력하는 함수
+// function displayData(data) {
+//     console.log(data)
+// }
+
+// fetchData(displayData)
+// console.log(2)
+// console.log(3)
+
+
+// setTimeout(callback, ms): ms후에 callback실행
+// 대표적인 비동기 함수
+
+// setTimeout(() => {
+//     console.log(1)
+// }, 0)
+// console.log(2)
+// console.log(3)
+
+
+// function displayData(data) {
+//     console.log(data)
+// }
+
+// let promise = new Promise(function (res, rej) {
+//     let x = 1;
+
+//     if (x === 0) {
+//         // resolve
+//         // fullfilled
+//         res({ message: 'ok' })
+//     } else {
+//         // reject
+//         // rejected
+//         rej({ message: 'error' })
+//     }
+// })
+
+// // promise.then(성공했을 때 실행되는 콜백, 실패했을 때 실행되는 콜백)
+// promise.then(function (value) {
+//     displayData(value)
+// }, function (error) {
+//     displayData(error)
+// })
+
+
+// function displayData(data) {
+//     console.log(data)
+// }
+
+// // 거부되었을 때 생략가능
+// let promise = new Promise(res => {
+//     // 성공했을 때
+//     res({ message: 'ok' })
+// })
+
+// console.log(promise);
+// state: fullfilled
+// result: object
+
+// 콜백을 사용한 비동기 데이터 처리
+// promise(displayData)
+// promise를 사용한 비동기 데이터 처리
+// promise.then(displayData)
+
+
+// function displayData(data) {
+//     console.log(data)
+// }
+
+// function fetchData() {
+//     return new Promise((res, rej) => {
+//         res({ message: 'ok' })
+//     })
+// }
+
+// fetchData().then(displayData)
+
+
+// Promise Chain
+// function first() {
+//     return new Promise(res => {
+//         console.log(1)
+//         res()
+//     })
+// }
+// function second() {
+//     return new Promise(res => {
+//         console.log(2)
+//         res()
+//     })
+// }
+// function third() {
+//     console.log(3)
+// }
+
+// // Callback Chain
+// first(() => second(third))
+// // Promise chain
+// first().then(second).then(third);
+
+
+// Async function
+
+// async function fetchData() {
+
+//     // Promise를 return한다
+//     return { message: 'ok' }
+// }
+
+// fetchData().then(value => console.log(value))
+
+// async function f() {}
+
+// state: fullfilled
+// result: undefined
+// console.log(f())
+
+// function fetchData() {
+//     return new Promise(res => {
+//         res({ message: 'ok' })
+//     })
+// }
+
+// async function f() {
+
+//     // fetchData().then(value => console.log(value));
+
+//     // await
+//     // async 함수 안에서만 사용할 수 있다
+//     // Promise가 결과값을 return할 때까지 async함수를 중지한다
+//     // 가독성이 향상된다
+
+//     let r = await fetchData();
+
+//     console.log(r)
+
+//     console.log('데이터 가져오기 및 출력 완료')
+// }
+
+// f()
+
+
+// function first() {
+//     return new Promise(res => {
+//         res(1)
+//     })
+// }
+
+// function second() {
+//     return new Promise(res => {
+//         res(2)
+//     })
+// }
+
+// function third() {
+//     return new Promise(res => {
+//         res(3)
+//     })
+// }
+
+// f();
+
+// async function f() {
+
+//     // Q. async/await문법을 사용해서 first, second, third함수를 차례로 실행시켜보세요.
+
+//     let data1 = await first()
+//     let data2 = await second()
+//     let data3 = await third()
+
+//     console.log(data1)
+//     console.log(data2)
+//     console.log(data3)
+
+//     console.log('숫자 출력 완료')
+// }
+
+
+// Promise Chain의 Error handling
+// function first() {
+//     return new Promise(res => {
+//         console.log(1)
+//         res(1)
+//     })
+// }
+
+// function second() {
+//     return new Promise((res, rej) => {
+//         console.log(2)
+//         rej(2)
+//     })
+// }
+
+// function third() {
+//     console.log(3)
+// }
+
+// first()
+// .then(second)
+// .then(third)
+// .catch(error => console.error(error))
+
+// function fetchData() {
+//     return new Promise((res, rej) => {
+//         rej({ message: 'error' })
+//     })
+// }
+
+// fetchData()
+// .then(value => console.log(value))
+// .catch(error => console.error(error))
+
+
+function first() {
+    return new Promise(res => {
+        res(1)
+    })
+}
+
+function second() {
+    return new Promise((res, rej) => {
+        rej(2)
+    })
+}
+
+function third() {
+    return new Promise(res => {
+        res(3)
+    })
+}
+
+f();
+async function f() {
+
+    try {
+        console.log(await first())
+        console.log(await second())
+        console.log(await third())
+
+    } catch (error) {
+        // await Promise에서 발생한 에러를 처리한다
+        console.error(error)
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
