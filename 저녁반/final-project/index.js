@@ -420,10 +420,22 @@ app.get('/feed', auth, async (req, res, next) => {
         // 로그인한 유저가 팔로우하는 계정의 id만 추출
         const followingIds = followingList.map(following => following.followingId.toString())
         // 로그인한 유저가 팔로우하는 유저의 게시물
-        const articles = await Article.find({ author: followingIds }).populate('author');
+        const articles = 
+        await Article
+        .find({ author: followingIds })
+        .sort([["created", "descending"]])
+        .populate('author').lean();
+        // lean()
+        // Mongoose document class의 instance를 POJOs(plain old JavaScript object, 일반 자바스크립트 객체)로 만든다
 
-        console.log(followingIds)
+        for (let article of articles) {
+            // 로그인한 유저가 게시물의 isFavorite 여부까지 함께 전송한다
+            const favorite = await Favorite.findOne({ user: req.user._id, article: article._id });
+            article.isFavorite = favorite ? true : false;
+        }
+
         res.json(articles)
+
     } catch (error) {
         next(error)
     }
