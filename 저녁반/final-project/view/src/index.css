@@ -1,35 +1,133 @@
-body {
-  padding: 50px;
+/* Intialize */
+:root {
+  /* CSS에서 변수를 사용한다 */
+  /* 변수명: 변수 값 */
+  --primary: #0d6efd;
+  --danger: #dc3545;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 기본값 */
+  /* font-size: normal; */
+  /* font-size: 16px; */
 
+  /* 전체적으로 font-size가 줄어든다 */
+  font-size: smaller;
+  /* font-size: 13.3333px */
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
 img {
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
 }
-
-.carousel {
-  white-space: nowrap;
+.btn-link {
+  cursor: pointer;
+  border: none;
+  /* background color의 기본값: transparent */
+  background-color: transparent;
 }
 
-.carousel div {
-  display: inline-block;
-  transition: .5s;
+/* position */
+.fixed-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
 }
 
-.carousel-btn-group button {
-  visibility: hidden;
+/* font */
+.fs-3 {
+  font-size: 1.17em!important;
 }
 
-.carousel-btn-group button.active {
-  visibility: visible;
+/* text */
+.text-center {
+  text-align: center;
+}
+.text-small {
+  font-size: smaller;
+}
+.text-secondary {
+  color: #888;
+}
+.text-danger {
+  color: var(--danger);
+}
+/* border */
+.border-top {
+  border-top: 1px solid #ddd;
+}
+.border-bottom {
+  border-bottom: 1px solid #ddd;
 }
 
-.carousel-indicator {
+/* padding */
+.py-3 {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.pb-5 {
+  /* em: element의 font-size에 상대적으로 값을 정한다 */
+  padding-bottom: 3em;
+}
+
+/* margin */
+.mx-auto {
+  margin: auto;
+}
+.mt-3 {
+  margin-top: 1em;
+}
+
+/* background */
+.bg-white {
+  background-color: #fff;
+}
+
+/* flex */
+.flex {
   display: flex;
+}
+.flex-equal > * {
+/* flex item을 선택한다 */
+/* flex-grow: flex item들이 같은 넓이를 갖게 된다 */
+/* flex-container를 꽉 채운다 */
+  flex-grow: 1;
+}
+.justify-content-center {
+  /* flex item의 가운데 정렬 */
   justify-content: center;
 }
+.justify-content-between {
+  /* flex item들 사이에 여백 */
+  justify-content: space-between;
+}
 
-.dot.active {
-  color: red;
+/* grid */
+.grid {
+  display: grid;
+  /* grid-template-columns에서 auto는 열의 갯수  */
+  grid-template-columns: auto auto auto;
+  /* 3열의 grid. grid item의 넓이는 100px; */
+  /* grid-template-columns: 100px 100px 100px; */
+}
+.grid .item {
+  height: 150px;
+}
+
+/* others */
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
 }

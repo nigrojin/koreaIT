@@ -3,39 +3,45 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Outlet, Link, 
   useParams, Navigate, useNavigate, useLocation } from "react-router-dom";
 import './index.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, faPen, faMagnifyingGlass, faDog, faCompass, faHouse, faEllipsisVertical, faArrowRightFromBracket }
+from "@fortawesome/free-solid-svg-icons";
+import { faHeart as farHeart, faComment as farComment } from "@fortawesome/free-regular-svg-icons";
 
 function App() {
   console.log('App Loaded!');
 
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          {/* 로그인 필요 */}
-          <Route path="/" element={<AuthRequired><Layout /></AuthRequired>}>
-            <Route index element={<Home />} />
-            <Route path="create" element={<CreateArticle />} />
-            <Route path="explore" element={<Explore />} />
-            <Route path="search" element={<Search />} />
-            <Route path="/p/:postId">
-              <Route index element={<PostView />} />
-              <Route path="update" element={<UpdateArticle />} />
-              <Route path="comments" element={<Comments />} />
+    <div className="mx-auto pb-5" style={{ maxWidth: "350px" }} >
+      <AuthProvider>
+        <Router>
+          <Routes>
+            {/* 로그인 필요 */}
+            <Route path="/" element={<AuthRequired><Layout /></AuthRequired>}>
+              <Route index element={<Home />} />
+              <Route path="create" element={<CreateArticle />} />
+              <Route path="explore" element={<Explore />} />
+              <Route path="search" element={<Search />} />
+              <Route path="/p/:postId">
+                <Route index element={<PostView />} />
+                <Route path="update" element={<UpdateArticle />} />
+                <Route path="comments" element={<Comments />} />
+              </Route>
+              <Route path="/profiles/:username">
+                <Route index element={<Profile />} />
+                <Route path="edit" element={<ProfileEdit />} />
+                <Route path="follower" element={<FollowerList />} />
+                <Route path="following" element={<FollowingList />} />
+              </Route>
             </Route>
-            <Route path="/profiles/:username">
-              <Route index element={<Profile />} />
-              <Route path="edit" element={<ProfileEdit />} />
-              <Route path="follower" element={<FollowerList />} />
-              <Route path="following" element={<FollowingList />} />
-            </Route>
-          </Route>
-          {/* 로그인 필요하지 않음 */}
-          <Route path="account/signup" element={<SignUp />} />
-          <Route path="login" element={<Login />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+            {/* 로그인 필요하지 않음 */}
+            <Route path="account/signup" element={<SignUp />} />
+            <Route path="login" element={<Login />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </div>
   )
 }
 
@@ -115,20 +121,37 @@ function Layout() {
 
   const auth = useContext(AuthContext);
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <>
-      <nav>
-        <Link to="/">Home</Link> {" "}
-        <Link to="/explore">Explore</Link> {" "}
-        <Link to="/create">Create</Link> {" "}
-        <Link to={`/profiles/${auth.user.username}`}>Profile</Link> {" "}
-        <button onClick={auth.logOut}>Log out</button>
-      </nav>
+      {/* Header */}
+      <div className="py-3 border-bottom">
+        <div className="flex justify-content-between">
+          <button className="btn-link" onClick={() => navigate(-1)}>&larr; Back</button>
+          <div className="fs-3">AnimalFriends</div>
+        </div>
+      </div>
 
-      <small>{location.pathname}</small>
+      {/* Navigation */}
+      <div className="fixed-bottom border-top bg-white">
+        <div className="flex flex-equal py-3">
+          <Link to="/" className="text-center">
+            <FontAwesomeIcon icon={faHouse} />
+          </Link> 
+          <Link to="/explore" className="text-center">
+            <FontAwesomeIcon icon={faCompass} />
+          </Link> 
+          <Link to="/create" className="text-center">
+            <FontAwesomeIcon icon={faPen} />  
+          </Link> 
+          <Link to={`/profiles/${auth.user.username}`} className="text-center">
+            <FontAwesomeIcon icon={faDog} />  
+          </Link> 
+        </div>
+      </div>
 
-      {/* 바뀌는 부분 */}
+      {/* Contents */}
       <Outlet />
     </>
   )
@@ -608,9 +631,15 @@ function Profile() {
     }
   }
 
-  console.log(profile)
-  console.log(isFollowing)
-  console.log(articles)
+  function logOut() {
+    let res = window.confirm("로그아웃 하시겠습니까?");
+    
+    if (!res) {
+      return;
+    }
+
+    auth.logOut();
+  }
 
   if (error) {
     return <h1>Error!</h1>
@@ -620,12 +649,30 @@ function Profile() {
   }
   return (
     <>
-      <h1>Profile</h1>
-
-      <div>
-        <img src={`http://localhost:3000/user/${profile.image || 'avatar.jpeg'}`} />
+      {/* 프로필 사진 */}
+      <div className="flex mt-3 justify-content-center">
+        <div className="profile-image rounded-circle">
+          <img src={`http://localhost:3000/user/${profile.image || 'avatar.jpeg'}`} />
+        </div>
       </div>
 
+      {/* bio */}
+      <div>
+        <h3>{profile.username}</h3>
+        <p>{profile.bio}</p>
+        {isMaster && 
+          <>
+            <p>
+              <Link to={`/profiles/${username}/edit`} className="text-small text-secondary">프로필 수정</Link>
+            </p>
+            <button className="btn-link text-small text-danger" onClick={logOut}>
+              <FontAwesomeIcon icon={faArrowRightFromBracket} />
+            </button>
+          </>
+        }
+      </div>
+
+      {/* 팔로워 및 팔로잉, 게시물 갯수 */}
       <div>
         <ul>
           <li>
@@ -643,24 +690,7 @@ function Profile() {
         </ul>
       </div>
 
-      <div>
-        <h3>{profile.username}</h3>
-        <p>{profile.bio}</p>
-        {isMaster && 
-          <p><Link to={`/profiles/${username}/edit`}>Edit Profile</Link></p>
-        }
-      </div>
-
-      <div>
-        {!isMaster &&
-          <form onSubmit={handleFollow}>
-            <button>
-              {isFollowing ? 'Unfollow' : 'Follow'}
-            </button>
-          </form>
-        }
-      </div>
-
+      {/* 게시물 */}
       <div>
         {articles.map((article, index) => (
           <div key={index}>
@@ -876,9 +906,9 @@ function Explore() {
     <>
       <h1>Explore</h1>
       <p><Link to="/search">Search</Link></p>
-      <div>
+      <div className="grid">
         {articles.map((article, index) => 
-          <div key={index} style={{ display: 'inline-block' }}>
+          <div key={index} className="item">
             <Link to={`/p/${article._id}`}>
               <img src={`http://localhost:3000/posts/${article.photos[0]}`} />
             </Link>
