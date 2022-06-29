@@ -3,6 +3,7 @@
   /* CSS에서 변수를 사용한다 */
   /* 변수명: 변수 값 */
   --primary: #0d6efd;
+  --success: #28a745;
   --danger: #dc3545;
 }
 * {
@@ -19,6 +20,9 @@ body {
   font-size: smaller;
   /* font-size: 13.3333px */
 }
+h1,h2,h3,h4,h5,p {
+  margin: 0.5em 0;
+}
 a {
   color: #000;
   text-decoration: none;
@@ -28,6 +32,23 @@ img {
   height: 100%;
   object-fit: cover;
 }
+input[type=text] {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+}
+.btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #000;
+  text-align: center;
+  border-radius: 4px;
+  padding: 0.5em;
+}
+.btn-primary {
+  border: 1px solid var(--primary);
+  color: var(--primary)
+}
+
 .btn-link {
   cursor: pointer;
   border: none;
@@ -35,7 +56,18 @@ img {
   background-color: transparent;
 }
 
+/* width and height */
+.w-100 {
+  width: 100%;
+}
+
 /* position */
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
 .fixed-bottom {
   position: fixed;
   left: 0;
@@ -56,11 +88,20 @@ img {
 .text-small {
   font-size: smaller;
 }
+.text-primary {
+  color: var(--primary)
+}
 .text-secondary {
   color: #888;
 }
+.text-success {
+  color: var(--success);
+}
 .text-danger {
   color: var(--danger);
+}
+.text-red {
+  color: red;
 }
 /* border */
 .border-top {
@@ -71,22 +112,80 @@ img {
 }
 
 /* padding */
+.p-1 {
+  padding: 0.25em;
+}
+.p-2 {
+  padding: 0.5em;
+}
+.p-3 {
+  padding: 1em;
+}
+.pb-1 {
+  padding-bottom: 0.25em;
+}
+.pb-5 {
+  padding-bottom: 3em;
+}
+.px-3 {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.py-1 {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+.py-2 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
 .py-3 {
   padding-top: 1em;
   padding-bottom: 1em;
-}
-.pb-5 {
-  /* em: element의 font-size에 상대적으로 값을 정한다 */
-  padding-bottom: 3em;
 }
 
 /* margin */
 .mx-auto {
   margin: auto;
 }
+.mt-1 {
+  margin-top: 0.25em;
+}
+.mt-2 {
+  margin-top: 0.5em;
+}
 .mt-3 {
   margin-top: 1em;
 }
+.ms-1 {
+  margin-left: 0.25em;
+}
+.ms-2 {
+  margin-left: 0.5em;
+}
+.ms-3 {
+  margin-left: 1em;
+}
+.ms-4 {
+  margin-left: 1.5em;
+}
+.ms-5 {
+  margin-left: 3em;
+}
+.my-1 {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+.my-2 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.my-3 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+
 
 /* background */
 .bg-white {
@@ -111,6 +210,10 @@ img {
   /* flex item들 사이에 여백 */
   justify-content: space-between;
 }
+.align-center {
+  /* align-items: flex item의 수직정렬 */
+  align-items: center;
+}
 
 /* grid */
 .grid {
@@ -119,15 +222,74 @@ img {
   grid-template-columns: auto auto auto;
   /* 3열의 grid. grid item의 넓이는 100px; */
   /* grid-template-columns: 100px 100px 100px; */
+  grid-gap: 2px;
 }
 .grid .item {
   height: 150px;
 }
 
+/* Carousel */
+.carousel {
+  white-space: nowrap;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+}
+.carousel .item {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+.carousel-btn-group {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.prev, .next {
+  display: flex;
+  visibility: hidden;
+  cursor: pointer;
+  padding: 0.5em;
+  border: none;
+  background-color: #fff;
+}
+.prev.active, .next.active {
+  visibility: visible;
+}
+.carousel-indicator {
+  display: flex;
+  justify-content: center;
+}
+.carousel-indicator .dot {
+  width: 7px;
+  height: 7px;
+  background-color: #ddd;
+  margin: 0 2px;
+  border-radius: 50%;
+}
+.carousel-indicator .dot.active {
+  background-color: #888;
+}
+
 /* others */
+.form-group {
+  margin: 0.5em 0;
+}
 .profile-image {
   width: 150px;
   height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.avatar {
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   overflow: hidden;
 }

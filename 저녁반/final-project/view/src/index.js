@@ -193,9 +193,8 @@ function Home() {
   }
   return (
     <>
-      <h1>Home</h1>
       {articles.map((article, index) => (
-        <div key={index}>
+        <div key={index} className="my-3">
           {/* PostItem 컴포넌트를 반복적으로 return한다 */}
           <PostItem article={article} isFavorite={article.isFavorite} />
         </div>
@@ -265,7 +264,7 @@ function PostView() {
     <>
       <PostItem article={article} isFavorite={isFavorite} />
       {/* 이전글, 다음글 버튼은 PostView에서만 보인다 */}
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div className="flex justify-content-between mt-3">
         {articles.prevArticle &&
           <Link to={`/p/${articles.prevArticle._id}`}>&larr; Prev</Link>
         }
@@ -371,7 +370,7 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
     console.log(prevBtn)
     console.log(nextBtn)
 
-    carouselItems[0].style.marginLeft = `-${100 * data}px`;
+    carouselItems[0].style.marginLeft = `-${100 * data}%`;
 
     // active는 display: block으로 만든다.
     prevBtn.current.classList.add('active');
@@ -398,50 +397,77 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
 
   return (
     <>
-      <h3>
-        <Link to="">{article.author.username}</Link>
-      </h3>
+      {/* User avatar & 더보기 버튼 */}
+      <div className="flex justify-content-between my-2">
+        {/* User avatar */}
+        <div className="flex">
+          <div className="avatar">
+            <img src={`http://localhost:3000/user/${article.author.image}`} />
+          </div>
+          <div className="flex align-center ms-1">
+            <Link to={`/profiles/${article.author.username}`}>{article.author.username}</Link>
+          </div>
+        </div>
+        {/* 더보기 버튼 */}
+        {isMaster && 
+          <button className="btn-link">
+            <FontAwesomeIcon icon={faEllipsisVertical} />
+          </button>
+        }
+      </div>
 
-      {/* Carousel Start */}
+       {/* Carousel Image & button */}
       <div className="relative">   
-        {/* carosel 이미지 부분 */}
         <div className="carousel">
           {article.photos.map((photo, index) => (
-            // 반복적으로 출력되는 DOM을 선택할 때 ref를 함수로 작성한다
-            <div key={index} ref={itemRef => setItemRef(itemRef)}>
+            <div key={index} className="item" ref={itemRef => setItemRef(itemRef)}>
               <img src={`http://localhost:3000/posts/${photo}`} />
             </div>
           ))}
         </div>
-        {/* 이전, 다음 버튼 */}
         <div className="carousel-btn-group">
           <button className="prev" onClick={() => setLeft(left - 1)} ref={prevBtn}>&#10094;</button>
           <button className="next" onClick={() => setLeft(left + 1)} ref={nextBtn}>&#10095;</button>
         </div>
       </div>
 
-      <div className="carousel-indicator">
-        {/* dot은 사진의 갯수만큼 출력된다 */}
+      {/* Carousel Indicator */}
+      <div className="carousel-indicator my-2">
         {article.photos.map((photo, index) => (
-          <span className="dot" key={index} ref={setIndicatorRef}>@</span>
+          <span className="dot" key={index} ref={setIndicatorRef}></span>
         ))}
       </div>
-      {/* Carousel End */}
 
-      {isMaster &&
+      {/* {isMaster &&
         <div>
           <Link to={`/p/${postId}/update`}>수정</Link> {" "} 
           <button onClick={deleteArticle}>삭제</button>
         </div>
-      }
+      } */}
 
-      <button onClick={handleChange}>
-        {!isFavorite ? "좋아요" : "좋아요 취소"}
-      </button>
-      <p>좋아요: {favoriteCount}</p>
-      <p>{article.description}</p>
+      {/* 좋아요 & 댓글달기 아이콘 */}
+      <div className="flex">
+        <button className="btn-link fs-3 flex align-center" onClick={handleChange}>
+          {isFavorite ? 
+            <FontAwesomeIcon icon={faHeart} className="text-red" />
+            :
+            <FontAwesomeIcon icon={farHeart} />
+          }
+        </button>
+        <Link to={`/p/${postId}/comments`} className="ms-1 fs-3 flex align-center">
+          <FontAwesomeIcon icon={farComment} />
+        </Link>
+      </div>
 
-      <p><Link to={`/p/${postId}/comments`}>댓글달기</Link></p>
+      {/* Description */}
+      <div>
+        <p>좋아요 {favoriteCount}개</p>
+        <p>{article.description}</p>
+        <small className="text-secondary">
+          {article.created}
+        </small>
+      </div>
+
     </>
   )
 }
@@ -525,15 +551,15 @@ function Comments() {
   }
   return (
     <>
-      <h3>댓글</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <input type="text" name="content" autoComplete="off" ref={inputEl} />
+          <input type="text" name="content" className="w-100" autoComplete="off" ref={inputEl} />
         </div>
         <div className="form-group">
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn">댓글작성</button>
         </div>
       </form>
+      
       <ul>
         {comments.map((comment, index) => (
           <li key={index}>
@@ -672,28 +698,28 @@ function Profile() {
         }
       </div>
 
+      {/* 팔로우 버튼 */}
+      {!isMaster &&
+        <form onSubmit={handleFollow}>
+          {isFollowing ? 
+            <button className="btn w-100 btn-primary">팔로잉</button>
+            :
+            <button className="btn w-100">팔로우</button>
+          }
+        </form>
+      }
+
       {/* 팔로워 및 팔로잉, 게시물 갯수 */}
-      <div>
-        <ul>
-          <li>
-            <Link to={`/profiles/${username}/follower`}>Follower</Link> 
-            {followerList.length}
-          </li>
-          <li>
-            <Link to={`/profiles/${username}/following`}>Following</Link> 
-            {followingList.length}
-          </li>
-          <li>
-            <b>Posts</b> 
-            {articles.length}
-            </li>
-        </ul>
+      <div className="flex flex-equal text-center py-3 my-3 border-top border-bottom">
+        <div><Link to={`/profiles/${username}/follower`}>팔로워 {followerList.length}</Link></div>
+        <div><Link to={`/profiles/${username}/following`}>팔로잉 {followingList.length}</Link></div>
+        <div>게시물 {articles.length}</div>
       </div>
 
       {/* 게시물 */}
-      <div>
+      <div className="grid">
         {articles.map((article, index) => (
-          <div key={index}>
+          <div key={index} className="item">
             <Link to={`/p/${article._id}`}>
               <img src={`http://localhost:3000/posts/${article.photos[0]}`} />
             </Link>
@@ -771,11 +797,11 @@ function ProfileEdit() {
         </div>
         <div className="form-group">
           <h3>Bio</h3>
-          <input type="text" name="bio" className="form-group" defaultValue={profile.bio} />
+          <input type="text" name="bio" className="w-100" defaultValue={profile.bio} />
         </div>
         <div className="form-group">
           <h3>Submit</h3>
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn">Submit</button>
         </div>
       </form>
     </>
@@ -904,8 +930,12 @@ function Explore() {
   }
   return (
     <>
-      <h1>Explore</h1>
-      <p><Link to="/search">Search</Link></p>
+      <div className="my-3">
+        <Link to="/search" className="fs-3">
+          <FontAwesomeIcon icon={faMagnifyingGlass} /> 검색
+        </Link>
+      </div>
+
       <div className="grid">
         {articles.map((article, index) => 
           <div key={index} className="item">
@@ -959,16 +989,24 @@ function Search() {
   }
   return (
     <>
-      <form>
-        <input type="text" onChange={handleChange} value={word} />
+    <div>
+      <form className="mt-3">
+        <input type="text" className="w-100" onChange={handleChange} value={word} />
       </form>
+
       <ul>
         {users.map((user, index) => (
-          <li key={index}>
-            <Link to={`/profiles/${user.username}`}>{user.username}</Link>
+          <li key={index} className="flex my-3">
+            <div className="avatar">
+              <img src={`http://localhost:3000/user/${user.image}`} />
+            </div>
+            <div className="flex align-cener ms-1">
+              <Link to={`/profiles/${user.username}`}>{user.username}</Link>
+            </div>
           </li>
         ))}
       </ul>
+    </div>
     </>
   )
 
@@ -1073,7 +1111,7 @@ function CreateArticle() {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <h3>Description</h3>
-          <input type="text" className="" name="description" />
+          <input type="text" className="w-100" name="description" />
         </div>
         <div className="form-group">
           <h3>Photos</h3>
@@ -1081,7 +1119,7 @@ function CreateArticle() {
         </div>
         <div className="form-group">
           <h3>Submit</h3>
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn">Submit</button>
         </div>
       </form>
     </>
@@ -1162,30 +1200,46 @@ function SignUp() {
   }
   return (
     <>
-      <h1>Sign Up</h1>
+      <h1>회원가입</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <h3>username</h3>
-          <input type="text" name="username" autoComplete="off" onChange={handleChange} />
-          <div>{validation.username.message}</div>
+          <h3>사용자 이름</h3>
+          <input type="text" name="username" className="w-100" autoComplete="off" onChange={handleChange} />
+          {validation.username.pass ? 
+            <p className="text-success">{validation.username.message}</p>
+            :
+            <p className="text-danger">{validation.username.message}</p>
+          }
         </div>
         <div className="form-group">
-          <h3>email</h3>
-          <input type="text" name="email" autoComplete="off" onChange={handleChange} />
-          <div>{validation.email.message}</div>
+          <h3>이메일</h3>
+          <input type="text" name="email" className="w-100" autoComplete="off" onChange={handleChange} />
+          {validation.email.pass ? 
+            <p className="text-success">{validation.email.message}</p>
+            :
+            <p className="text-danger">{validation.email.message}</p>
+          }
         </div>
         <div className="form-group">
-          <h3>password</h3>
-          <input type="text" name="password" autoComplete="off" onChange={handleChange} />
-          <div>{validation.password.message}</div>
+          <h3>비밀번호</h3>
+          <input type="text" name="password" className="w-100" autoComplete="off" onChange={handleChange} />
+          {validation.password.pass ? 
+            <p className="text-success">{validation.password.message}</p>
+            :
+            <p className="text-danger">{validation.password.message}</p>
+          }
         </div>
         <div className="form-group">
-          <h3>password confirm</h3>
-          <input type="text" name="password_confirm" autoComplete="off" onChange={handleChange} />
-          <div>{validation.passwordConfirm.message}</div>
+          <h3>비밀번호 확인</h3>
+          <input type="text" name="password_confirm" className="w-100" autoComplete="off" onChange={handleChange} />
+          {validation.passwordConfirm.pass ? 
+            <p className="text-success">{validation.passwordConfirm.message}</p>
+            :
+            <p className="text-danger">{validation.passwordConfirm.message}</p>
+          }
         </div>
         <div className="form-group">
-          <h3>Submit</h3>
+          <h3>제출</h3>
           <button type="submit" className="btn">Submit</button>
         </div>
       </form>
@@ -1237,17 +1291,17 @@ function Login() {
       <form onSubmit={handleSubmit}>
         <h1>Login</h1>
         <div className="form-group">
-          <input type="text" className="" name="email" defaultValue="bunny@example.com" autoComplete="off" />
+          <input type="text" className="w-100" name="email" defaultValue="bunny@example.com" autoComplete="off" />
         </div>
         <div className="form-group">
-          <input type="text" className="" name="password" defaultValue="12345678" autoComplete="off" />
+          <input type="text" className="w-100" name="password" defaultValue="12345678" autoComplete="off" />
         </div>
         <div className="form-group">
-          <button className="">Login</button>
+          <button className="btn">Login</button>
         </div>
       </form>
-      <p>{message}</p>
-      <p><Link to="/account/signup">Create account</Link></p>
+      <p className="text-danger">{message}</p>
+      <p><Link to="/account/signup" className="text-primary">Create account</Link></p>
     </>
   )
 }
