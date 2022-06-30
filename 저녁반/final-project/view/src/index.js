@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Outlet, Link,
   useParams, Navigate, useNavigate, useLocation } from "react-router-dom";
 import './index.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faPen, faMagnifyingGlass, faDog, faCompass, faHouse, faEllipsisVertical, faArrowRightFromBracket }
+import { faHeart, faPen, faPow, faMagnifyingGlass, faDog, faCompass, faHouse, faEllipsisVertical, faArrowRightFromBracket }
 from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart, faComment as farComment } from "@fortawesome/free-regular-svg-icons";
 
@@ -297,7 +297,16 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
   const nextBtn = useRef(null);
   const [left, setLeft] = useState(0);
 
+  const [dropdownActive, setDropdownActive] = useState(false);
+
   function deleteArticle() {
+    let res = window.confirm("삭제하시겠습니까?")
+
+    if (!res) {
+      // 취소버튼을 누르면 dropdown이 다시 숨겨진다
+      return setDropdownActive(false);
+    }
+
     fetch(`http://localhost:3000/articles/${postId}`, {
       method: 'DELETE',
       headers: { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
@@ -395,6 +404,13 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
     carouselIndicators[data].classList.add('active');
   }
 
+  const dropdownContent = (
+    <ul>
+      <li><Link to={`/p/${postId}/update`}>수정</Link></li>
+      <li><button className="btn-link" onClick={deleteArticle}>삭제</button></li>
+    </ul>
+  )
+
   return (
     <>
       {/* User avatar & 더보기 버튼 */}
@@ -410,7 +426,7 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
         </div>
         {/* 더보기 버튼 */}
         {isMaster && 
-          <button className="btn-link">
+          <button className="btn-link" onClick={() => setDropdownActive(true)}>
             <FontAwesomeIcon icon={faEllipsisVertical} />
           </button>
         }
@@ -438,13 +454,6 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
         ))}
       </div>
 
-      {/* {isMaster &&
-        <div>
-          <Link to={`/p/${postId}/update`}>수정</Link> {" "} 
-          <button onClick={deleteArticle}>삭제</button>
-        </div>
-      } */}
-
       {/* 좋아요 & 댓글달기 아이콘 */}
       <div className="flex">
         <button className="btn-link fs-3 flex align-center" onClick={handleChange}>
@@ -462,12 +471,14 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
       {/* Description */}
       <div>
         <p>좋아요 {favoriteCount}개</p>
-        <p>{article.description}</p>
+        <p className="pre-line">{article.description}</p>
         <small className="text-secondary">
           {article.created}
         </small>
       </div>
 
+      {/* Dropdown */}
+      <Dropdown active={dropdownActive} setActive={setDropdownActive} content={dropdownContent} />
     </>
   )
 }
@@ -477,10 +488,13 @@ function Comments() {
 
   const params = useParams();
   const postId = params.postId;
+  const auth = useContext(AuthContext);
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [comments, setComments] = useState([]);
+
+  const [dropdownActive, setDropdownActive] = useState(false);
 
   const inputEl = useRef(null);
 
@@ -543,6 +557,15 @@ function Comments() {
     .catch(error => alert(error))
   }
 
+  function showDropdown(commentId) {
+    console.log(commentId)
+    setDropdownActive(true)
+  }
+  
+  const dropdownContent = (
+    <button className="btn-link" onClick={() => deleteComment(null)}>삭제</button>
+  )
+
   if (error) {
     return <h1>Error!</h1>
   }
@@ -562,12 +585,34 @@ function Comments() {
       
       <ul>
         {comments.map((comment, index) => (
-          <li key={index}>
-              {comment.content} {" "}
-              <span onClick={() => deleteComment(comment._id)}>&times;</span>
+          <li key={index} className="my-3">
+            <div className="flex justify-content-between">
+              {/* avatar image and username */}
+              <div className="flex">
+                <div className="avatar">
+                  <img src={`http://localhost:3000/user/${comment.user.image}`} />
+                </div>
+                <div className="flex align-center ms-1">
+                  <Link to={`/profiles/${comment.user.username}`}>{comment.user.username}</Link>
+                </div>
+              </div>
+              {/* 더보기 버튼 */}
+              <div className="flex align-center">
+                {comment.user._id === auth.user._id &&
+                  <button className="btn-link" onClick={() => showDropdown(comment._id)}>
+                    <FontAwesomeIcon icon={faEllipsisVertical} />
+                  </button>
+                }
+              </div>
+            </div>
+            {/* 댓글 내용 */}
+            <p className="">{comment.content}</p>
+            <small className="text-secondary">{comment.created}</small>
           </li>
         ))}
       </ul>
+      {/* Dropdown */}
+      <Dropdown active={dropdownActive} setActive={setDropdownActive} content={dropdownContent} />
     </>
   )
 }
@@ -685,7 +730,7 @@ function Profile() {
       {/* bio */}
       <div>
         <h3>{profile.username}</h3>
-        <p>{profile.bio}</p>
+        <p className="pre-line">{profile.bio}</p>
         {isMaster && 
           <>
             <p>
@@ -739,6 +784,8 @@ function ProfileEdit() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [profile, setProfile] = useState({});
+
+  const textAreaEl = useRef(null);
   
   useEffect(() => {
     fetch(`http://localhost:3000/profiles/${auth.user.username}`)
@@ -775,6 +822,17 @@ function ProfileEdit() {
     })
   }
 
+  function handleTextArea() {
+    let lb = textAreaEl.current.value.match(/\n/g);
+    textAreaEl.current.rows = lb ? (lb.length + 1) : 1
+  }
+
+  useEffect(() => {
+    if (isLoaded) {
+      handleTextArea()
+    }
+  })
+
   if (error) {
     return <h1>Error!</h1>
   }
@@ -797,7 +855,9 @@ function ProfileEdit() {
         </div>
         <div className="form-group">
           <h3>Bio</h3>
-          <input type="text" name="bio" className="w-100" defaultValue={profile.bio} />
+          <textarea className="w-100" rows="1" name="bio" defaultValue={profile.bio} 
+            ref={textAreaEl} onChange={handleTextArea} 
+          />
         </div>
         <div className="form-group">
           <h3>Submit</h3>
@@ -1023,6 +1083,8 @@ function UpdateArticle() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [article, setArticle] = useState(null);
 
+  const textAreaEl = useRef(null);
+
   useEffect(() => {
     fetch(`http://localhost:3000/articles/${postId}`)
     .then(res => {
@@ -1054,6 +1116,18 @@ function UpdateArticle() {
     .catch(error => alert(error))
   }
 
+  function handleTextArea() {
+    let lb = textAreaEl.current.value.match(/\n/g);
+    textAreaEl.current.rows = lb ? (lb.length + 1) : 1;
+  }
+
+  useEffect(() => {
+    // 처음 로드되었을 때 textarea rows를 조절한다
+    if (isLoaded) {
+      handleTextArea()
+    }
+  })
+
   if (error) {
     return <h1>Error!</h1>
   }
@@ -1066,7 +1140,8 @@ function UpdateArticle() {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <h3>Description</h3>
-          <input type="text" name="description" defaultValue={article.description} />
+          <textarea name="description" rows="1" className="w-100" ref={textAreaEl}
+          defaultValue={article.description} onChange={handleTextArea} />
         </div>
         <div className="form-group">
           <h3>Photos</h3>
@@ -1074,7 +1149,7 @@ function UpdateArticle() {
         </div>
         <div className="form-group">
           <h3>Submit</h3>
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn">Submit</button>
         </div>
       </form>
     </>
@@ -1085,6 +1160,7 @@ function CreateArticle() {
   console.log('CreateArticle Loaded!');
 
   const navigate = useNavigate();
+  const textAreaEl = useRef(null);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -1106,12 +1182,19 @@ function CreateArticle() {
     .catch(error => alert('Error!'));
   }
 
+  function handleTextArea() {
+    // line break (줄바꿈)
+    let lb = textAreaEl.current.value.match(/\n/g);
+
+    textAreaEl.current.rows = lb ? (lb.length + 1) : 1;
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <h3>Description</h3>
-          <input type="text" className="w-100" name="description" />
+          <textarea name="description" rows="1" className="w-100" ref={textAreaEl} onChange={handleTextArea} />
         </div>
         <div className="form-group">
           <h3>Photos</h3>
@@ -1305,6 +1388,34 @@ function Login() {
     </>
   )
 }
+
+function Dropdown({ active, setActive, content }) {
+  console.log('Dropdown Loaded!');
+
+  const dropdownEl = useRef(null);
+  const modalEl = useRef(null);
+
+  useEffect(() => {
+    if (active) {
+      // scrollHeight값(readonly)은 변하지 않는다.
+      dropdownEl.current.style.height = dropdownEl.current.scrollHeight + "px";
+      modalEl.current.classList.add("active");
+    } else {
+      dropdownEl.current.style.height = 0
+      modalEl.current.classList.remove("active");
+    }
+  })
+
+  return (
+    <>
+      <div className="modal" ref={modalEl} onClick={() => setActive(false)}></div>
+      <div className="dropdown" ref={dropdownEl}>
+        <div className="p-3">{content}</div>
+      </div>
+    </>
+  )
+}
+
 function NotFound() {
   return (
     <>

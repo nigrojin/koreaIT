@@ -27,6 +27,9 @@ a {
   color: #000;
   text-decoration: none;
 }
+ul {
+  list-style-type: none;
+}
 img {
   width: 100%;
   height: 100%;
@@ -35,6 +38,11 @@ img {
 input[type=text] {
   border: 1px solid #ddd;
   padding: 0.5em;
+}
+textarea {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
 }
 .btn {
   cursor: pointer;
@@ -103,6 +111,16 @@ input[type=text] {
 .text-red {
   color: red;
 }
+/* white-space */
+.pre-line {
+  /* default */
+  /* white-space: normal */
+  /* white-space: nowrap; */
+  /* white-space: pre; */
+  /* white-space: pre-wrap; */
+  white-space: pre-line;
+}
+
 /* border */
 .border-top {
   border-top: 1px solid #ddd;
@@ -292,4 +310,29 @@ input[type=text] {
   height: 25px;
   border-radius: 50%;
   overflow: hidden;
+}
+
+/* dropdown */
+.modal {
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: none;
+}
+.dropdown {
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  transition: 0.5s;
+  border-radius: 25px 25px 0 0;
+  z-index: 10;
+}
+.modal.active {
+  display: block;
 }
