@@ -438,7 +438,7 @@
         toggleTab("g")
     </script> -->
 
-    <style>
+    <!-- <style>
         .tab-content {
             display: none;
         }
@@ -483,11 +483,11 @@
             btn.addEventListener("click", e => {
                 // element.getAttribute(key): element의 key의 value값을 return한다
                 // e.target의 속성 중 data-car 커스텀 속성에 접근한다
-                var id = e.target.getAttribute("data-car")
+                var id = e.target.getAttribute("data-car");
 
                 // 초기화
                 document.querySelectorAll(".tab-content").forEach(tabContent => {
-                    tabContent.classList.remove("active")
+                    tabContent.classList.remove("active");
                 })
 
                 // 해당되는 id를 가진 tab content에 active 클래스를 추가한다
@@ -496,8 +496,437 @@
         })
 
         document.getElementById('g').classList.add("active");
+    </script> -->
 
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       .header {
+            background-color: #ddd;
+            padding: 0.5em;
+       }
+       .nav {
+        display: none;
+       }
+       .nav a {
+        display: block;
+        padding: 0.5em;
+        /* text-align: center; */
+       }
+       .active {
+        display: block;
+       }
+       .menu-btn {
+        cursor: pointer;
+       }
+    </style> -->
+
+    <!-- <h1>Navigation</h1> -->
+
+    <!-- <div class="header">
+        <div class="header-inner">
+            <h2><span class="menu-btn">
+               <i class="fa-solid fa-bars"></i> 
+            </span> Heading</h2>
+        </div>
+        <div class="nav">
+            <a href="">Menu 1</a>
+            <a href="">Menu 2</a>
+            <a href="">Menu 3</a>
+        </div>
+    </div>
+
+    <script>
+        var nav = document.querySelector(".nav");
+        var menuBtn = document.querySelector(".menu-btn")
+
+        menuBtn.addEventListener("click", () => {
+            nav.classList.toggle("active");
+        })
+
+    </script> -->
+
+
+    <!-- <h1>Animation Top Navigation</h1> -->
+
+    <!-- <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 1000px;
+        }
+        .header {
+            background-color: #ddd;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        .nav {
+            height: 0;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+        .nav a {
+            display: block;
+            padding: 0.5em;
+        }
+        .header-inner {
+            padding: 0.5em;
+        }
+        .menu-btn {
+            cursor: pointer;
+        }
+    </style>
+
+    <div class="header">
+        <div class="header-inner">
+            <h2>
+                <span class="menu-btn"><i class="fa-solid fa-bars"></i></span> Company
+            </h2>
+        </div>
+        <div class="nav">
+            <a href="">Home</a>
+            <a href="">About</a>
+            <a href="">Blog</a>
+        </div>
+    </div>
+
+    <script>
+        var nav = document.querySelector(".nav");
+        var menuBtn = document.querySelector(".menu-btn");
+
+        menuBtn.addEventListener("click", () => {
+            // console.log(nav.style) // CSSStyleDeclaration
+            // console.log(nav.style.height) // ""
+
+            if (!nav.style.height) { // ""는 조건에서 false
+                nav.style.height = nav.scrollHeight + "px";
+            } else {
+                nav.style.height = "";
+            }
+        })
+    </script> -->
+
+    <!-- <h1>Animation Side Bar</h1> -->
+
+    <!-- <style>
+        .nav {
+           position: fixed;
+           width: 280px;
+           height: 100%;
+           background-color: #ddd; 
+           top: 0;
+           /* left: 0; */
+           left: -280px;
+           transition: 0.5s;
+           z-index: 1;
+        }
+        .layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 0;
+        }
+    </style>
+
+    
+
+    <div class="nav">
+        <ul>
+            <li>
+                <a href="">Home</a>
+            </li>
+            <li>
+                <a href="">About</a>
+            </li>
+            <li>
+                <a href="">Posts</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="layer" class="layer"></div>
+
+    <button id="btn">메뉴</button>
+
+    <h1>Heading</h1>
+
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, nostrum dolorem. 
+        Numquam consequuntur harum explicabo cum non? 
+        Vel ut voluptatum reiciendis delectus possimus fugit quaerat, 
+        odio eveniet provident mollitia officiis?
+    </p>
+
+    <script>
+        var btn = document.getElementById("btn");
+        // document.querySelector("#btn")와 같다
+        var layer = document.getElementById("layer");
+
+        var nav = document.querySelector(".nav");
+        // HTMLCollection으로 return한다
+        // console.log(document.getElementsByClassName("nav"))
+        // console.log(document.getElementsByClassName("nav")[0])
+
+        btn.addEventListener("click", () => {
+            nav.style.left = "0px";
+            layer.style.display = "block";
+        })
+
+        layer.addEventListener("click", () => {
+            nav.style.left = "-280px";
+            layer.style.display = "none";
+        })
+    </script> -->
+
+    <!-- <style>
+        #img01 {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        .container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+        }
+        #modal-img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+
+    <h1>Modal Image</h1>
+
+    <img id="img01" src="../../img/duck.jpeg" alt="">
+
+    <div id="container" class="container">
+        <img id="modal-img" src="../../img/duck.jpeg" alt="">
+    </div>
+
+    <script>
+        var img01 = document.getElementById("img01");
+        var container = document.getElementById("container");
+        var modalImg = document.getElementById("modal-img");
+
+        img01.addEventListener("click", () => {
+            container.style.display = "block";
+        })
+
+        container.addEventListener("click", (e) => {
+            e.target.style.display = "none";
+            // container.style.display = "none";
+        })
+    </script> -->
+
+    <!-- <style>
+        img {
+            width: 100%;
+        }
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        .thumbnail:hover {
+            opacity: 1;
+        }
+        .container {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform : translateX(-50%);
+            width: 400px;
+            display: none;
+        }
+        .layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+        }
+    </style>
+
+
+    <img class="thumbnail" src="../../img/bunny.jpg" alt="">
+    <img class="thumbnail" src="../../img/cat.jpeg" alt="">
+    <img class="thumbnail" src="../../img/duck.jpeg" alt="">
+
+    <div id="layer" class="layer"></div>
+
+    <div id="container" class="container">
+        <img src="" alt="" id="modal-img">
+    </div>
+
+    <script>
+        var thumbnails = document.querySelectorAll(".thumbnail");
+        var modalImg = document.getElementById("modal-img");
+        var container = document.getElementById("container");
+        var layer = document.getElementById("layer");
+
+        // 썸네일을 클릭했을 때 modal image를 보이게 한다
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener("click", () => {
+                // 클릭한 썸네일의 src를 modalImage에 src에 적용한다
+                // modalImg.src = thumbnail.src;
+                modalImg.src = thumbnail.getAttribute("src");
+
+                container.style.display = "block";
+                layer.style.display = "block"
+            })
+        })
+
+        // Layer를 클릭했을 때 container와 layer를 안보이게 한다
+        layer.addEventListener("click", e => {
+            e.target.style.display = "none";
+            container.style.display = "none";
+        })
+    </script> -->
+
+    <!-- <style>
+        .container {
+            width: 400px;
+            height: 300px;
+        }
+        .display-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .thumbnail-container {
+            font-size: 0;
+        }
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        .thumbnail:hover {
+            opacity: 1;
+        }
+    </style>
+
+    <h1>Q. Slide image를 만들어보세요</h1>
+
+    <div class="container">
+        <img class="display-image" src="../../img/bunny.jpg" alt="">
+    </div>
+
+    <div class="thumbnail-container">
+        <img src="../../img/bunny.jpg" alt="" class="thumbnail">
+        <img src="../../img/cat.jpeg" alt="" class="thumbnail">
+        <img src="../../img/duck.jpeg" alt="" class="thumbnail">
+        <img src="../../img/bird.jpeg" alt="" class="thumbnail">
+    </div>
+
+    <script>
+        // HTMLCollection(4)
+        var thumbnails = document.getElementsByClassName("thumbnail");
+        var displayImage = document.querySelector(".display-image");
+
+        for (thumbnail of thumbnails) {
+            thumbnail.addEventListener("click", e => {
+                // e.target은 클릭한 thumbnail
+                displayImage.src = e.target.src
+            })
+        }
+
+        // thumbnails[0].addEventListener("click", (e) => console.log(e.target.src))
+        // thumbnails[1].addEventListener("click", (e) => console.log(e.target.src))
+        // thumbnails[2].addEventListener("click", (e) => console.log(e.target.src))
+        // thumbnails[3].addEventListener("click", (e) => console.log(e.target.src))
+    </script> -->
+
+    <style>
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        img:first-child {
+            display: block;
+        }
+        .container {
+            width: 200px;
+            height: 200px;
+            border: 3px dashed;
+        }
+    </style>
+
+    <div class="container">
+        <img class="slide" src="../../img/bunny.jpg" alt="">
+        <img class="slide" src="../../img/cat.jpeg" alt="">
+        <img class="slide" src="../../img/duck.jpeg" alt="">
+    </div>
+
+    <div class="nav">
+        <button id="prev" onclick="navigateTo(-1)">Prev</button>
+        <button id="next" onclick="navigateTo(1)">Next</button>
+    </div>
+
+    <script>
+        // img 태그 한개를 가져온다
+        // var img = document.querySelector("img");
+        // console.log(img);
+
+        // var imgs = document.querySelectorAll("img");
+        // console.log(imgs)
+
+        var slides = document.querySelectorAll(".slide");
+
+        var index = 0;
+
+        function navigateTo(data) {
+            // index 값을 구한다
+            index += data;
+
+            // 처음 이미지에서 이전 버튼을 눌렀을 때
+            if (index === -1) {
+                index = slides.length - 1;
+            }
+
+            // 마지막 이미지에서 다음 버튼을 눌렀을 때
+            if (index === slides.length) {
+                index = 0;
+            }
+
+            // 초기화
+            slides.forEach(slide => {
+                slide.style.display = "none";
+            })
+
+            // 해당되는 index의 이미지를 보이게 한다
+            slides[index].style.display = "block";
+        }
     </script>
+
 
 </body>
 </html>
