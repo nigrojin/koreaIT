@@ -256,7 +256,12 @@ app.get('/articles', async (req, res, next) => {
             res.json(articles)
         // 전체 게시물을 가져온다
         } else {
-            const articles = await Article.find().populate('author');
+            const articles = 
+            await Article.find()
+            .populate('author')
+            .skip(req.query.skip)
+            .limit(9)
+
             res.json(articles)
         }
     } catch (error) {
@@ -424,7 +429,10 @@ app.get('/feed', auth, async (req, res, next) => {
         await Article
         .find({ author: followingIds })
         .sort([["created", "descending"]])
-        .populate('author').lean();
+        .populate('author')
+        .skip(req.query.skip)
+        .limit(3)
+        .lean();
         // lean()
         // Mongoose document class의 instance를 POJOs(plain old JavaScript object, 일반 자바스크립트 객체)로 만든다
 
@@ -434,7 +442,9 @@ app.get('/feed', auth, async (req, res, next) => {
             article.isFavorite = favorite ? true : false;
         }
 
-        res.json(articles)
+        setTimeout(() => {
+            res.json(articles)
+        }, 1000)
 
     } catch (error) {
         next(error)
@@ -616,7 +626,8 @@ app.post('/articles/:postId/comments', auth, async (req, res, next) => {
 
         await comment.save();
 
-        res.json(comment)
+        res.json(await comment.populate("user"));
+
     } catch (error) {
         next(error)
     }
