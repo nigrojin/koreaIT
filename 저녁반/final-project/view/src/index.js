@@ -7,12 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faPen, faPow, faMagnifyingGlass, faDog, faCompass, faHouse, faEllipsisVertical, faArrowRightFromBracket }
 from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart, faComment as farComment } from "@fortawesome/free-regular-svg-icons";
+import Carousel from "./component/Carousel";
 
 function App() {
   console.log('App Loaded!');
 
   return (
-    <div className="mx-auto pb-5" style={{ maxWidth: "350px" }} >
+    <div className="mx-auto pb-5 px-3" style={{ maxWidth: "768px" }}>
       <AuthProvider>
         <Router>
           <Routes>
@@ -135,19 +136,21 @@ function Layout() {
 
       {/* Navigation */}
       <div className="fixed-bottom border-top bg-white">
-        <div className="flex flex-equal py-3">
-          <Link to="/" className="text-center">
-            <FontAwesomeIcon icon={faHouse} />
-          </Link> 
-          <Link to="/explore" className="text-center">
-            <FontAwesomeIcon icon={faCompass} />
-          </Link> 
-          <Link to="/create" className="text-center">
-            <FontAwesomeIcon icon={faPen} />  
-          </Link> 
-          <Link to={`/profiles/${auth.user.username}`} className="text-center">
-            <FontAwesomeIcon icon={faDog} />  
-          </Link> 
+        <div className="mx-auto" style={{ maxWidth: "768px" }}>
+          <div className="flex flex-equal py-3">
+            <Link to="/" className="text-center">
+              <FontAwesomeIcon icon={faHouse} />
+            </Link> 
+            <Link to="/explore" className="text-center">
+              <FontAwesomeIcon icon={faCompass} />
+            </Link> 
+            <Link to="/create" className="text-center">
+              <FontAwesomeIcon icon={faPen} />  
+            </Link> 
+            <Link to={`/profiles/${auth.user.username}`} className="text-center">
+              <FontAwesomeIcon icon={faDog} />  
+            </Link> 
+          </div>
         </div>
       </div>
 
@@ -297,14 +300,6 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
   const [isFavorite, setIsFavorite] = useState(isFavoriteInitial);
   const [favoriteCount, setFavoriteCount] = useState(article.favoriteCount);
 
-  // Carousel
-  // document.querySelectorAll('.item');
-  const carouselItems = [];
-  const carouselIndicators = [];
-  const prevBtn = useRef(null);
-  const nextBtn = useRef(null);
-  const [left, setLeft] = useState(0);
-
   const [dropdownActive, setDropdownActive] = useState(false);
 
   function deleteArticle() {
@@ -360,58 +355,7 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
       .catch(error => alert("Error!"))
     }
   }
-
-  function setItemRef(ref) {
-    // 여러개로 출력되는 carousel item을 carouselItems array에 추가한다
-    carouselItems.push(ref);
-  }
-  function setIndicatorRef(ref) {
-    // 여러개로 출력되는 carousel dot을 carouselIndicators array에 추가한다
-    carouselIndicators.push(ref)
-  }
-
-  useEffect(() => {
-    // navigateTo함수가 비동기로 작동해야 하는 이유는
-    // useRef가 컴포넌트가 return할 때 element를 current에 담기 때문이다
-    // { current: null }
-
-    console.log(carouselItems)
-    console.log(carouselIndicators)
-
-    navigateTo(left)
-  })
   
-  // carousel을 작동하게 하는 함수
-  function navigateTo(data) {
-    console.log(data)
-    console.log(prevBtn)
-    console.log(nextBtn)
-
-    carouselItems[0].style.marginLeft = `-${100 * data}%`;
-
-    // active는 display: block으로 만든다.
-    prevBtn.current.classList.add('active');
-    nextBtn.current.classList.add('active');
-
-    // 마지막 이미지일 때, 다음 버튼을 안보이게 한다
-    if (data === carouselItems.length - 1) {
-      nextBtn.current.classList.remove('active');
-    }
-
-    // 첫번째 이미지일 때, 이전 버튼을 안보이게 한다.
-    if (data === 0) {
-      prevBtn.current.classList.remove('active');
-    }
-
-    // Indicator
-    // dot에 .active를 모두 제거한다 (초기화)
-    carouselIndicators.map(indicator => {
-      indicator.classList.remove('active');
-    })
-    // index(data)에 해당하는 dot에 .active class를 추가한다
-    carouselIndicators[data].classList.add('active');
-  }
-
   const dropdownContent = (
     <ul>
       <li><Link to={`/p/${postId}/update`}>수정</Link></li>
@@ -440,27 +384,8 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
         }
       </div>
 
-       {/* Carousel Image & button */}
-      <div className="relative">   
-        <div className="carousel">
-          {article.photos.map((photo, index) => (
-            <div key={index} className="item" ref={itemRef => setItemRef(itemRef)}>
-              <img src={`http://localhost:3000/posts/${photo}`} />
-            </div>
-          ))}
-        </div>
-        <div className="carousel-btn-group">
-          <button className="prev" onClick={() => setLeft(left - 1)} ref={prevBtn}>&#10094;</button>
-          <button className="next" onClick={() => setLeft(left + 1)} ref={nextBtn}>&#10095;</button>
-        </div>
-      </div>
-
-      {/* Carousel Indicator */}
-      <div className="carousel-indicator my-2">
-        {article.photos.map((photo, index) => (
-          <span className="dot" key={index} ref={setIndicatorRef}></span>
-        ))}
-      </div>
+      {/* Carousel */}
+      <Carousel article={article} />
 
       {/* 좋아요 & 댓글달기 아이콘 */}
       <div className="flex">
@@ -934,11 +859,16 @@ function FollowingList() {
   }
   return (
     <>
-      <h1>Following List</h1>
+      <h1>팔로잉</h1>
       <ul>
         {followingList.map((following, index) => (
-          <li key={index}>
-            <Link to={`/profiles/${following.followingId.username}`}>{following.followingId.username}</Link>
+          <li key={index} className="flex my-3">
+            <div className="avatar">
+              <img src={`http://localhost:3000/user/${following.followingId.image}`} />
+            </div>
+            <div className="flex align-center ms-1">
+              <Link to={`/profiles/${following.followingId.username}`}>{following.followingId.username}</Link>
+            </div>
           </li>
         ))}
       </ul>
@@ -980,11 +910,16 @@ function FollowerList() {
   }
   return (
     <>
-      <h1>Following List</h1>
+      <h1>팔로워</h1>
       <ul>
         {followerList.map((follower, index) => (
-          <li key={index}>
-            <Link to={`/profiles/${follower.followerId.username}`}>{follower.followerId.username}</Link>
+          <li key={index} className="flex my-3">
+            <div className="avatar">
+              <img src={`http://localhost:3000/user/${follower.followerId.image}`} /> 
+            </div>
+            <div className="flex align-center ms-1">
+              <Link to={`/profiles/${follower.followerId.username}`}>{follower.followerId.username}</Link>
+            </div>
           </li>
         ))}
       </ul>
