@@ -1,4 +1,5 @@
 /* Intialize */
+@import url('https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap');
 :root {
   /* CSS에서 변수를 사용한다 */
   /* 변수명: 변수 값 */
@@ -83,6 +84,13 @@ textarea {
   width: 100%;
   z-index: 1;
 }
+.fixed-top {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
 
 /* font */
 .fs-3 {
@@ -160,6 +168,10 @@ textarea {
 .py-3 {
   padding-top: 1em;
   padding-bottom: 1em;
+}
+.py-5 {
+  padding-top: 3em;
+  padding-bottom: 3em;
 }
 
 /* margin */
@@ -318,7 +330,9 @@ textarea {
   border-radius: 50%;
   overflow: hidden;
 }
-
+.logo {
+  font-family: 'Lakki Reddy', cursive;
+}
 /* dropdown */
 .modal {
   background-color: rgba(0,0,0,0.5);

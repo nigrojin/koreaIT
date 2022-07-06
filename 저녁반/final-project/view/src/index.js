@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext, createContext } from 'react';
+import React, { useState, useEffect, useRef, useContext, createContext, useMemo, useCallback } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Outlet, Link, 
   useParams, Navigate, useNavigate, useLocation } from "react-router-dom";
@@ -13,7 +13,7 @@ function App() {
   console.log('App Loaded!');
 
   return (
-    <div className="mx-auto pb-5 px-3" style={{ maxWidth: "768px" }}>
+    <div className="mx-auto py-5 px-3" style={{ maxWidth: "768px" }}>
       <AuthProvider>
         <Router>
           <Routes>
@@ -124,13 +124,38 @@ function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const headerEl = useRef(null);
+
+  let prevScrollPos = 0;
+
+  // window.addEventListener("scroll", handleHeader)
+
+  function handleHeader() {
+    console.log(window.pageYOffset);
+
+    let currentScrollPos = window.pageYOffset;
+
+    console.log("prevScrollPos", prevScrollPos);
+    console.log("currentScrollPos", currentScrollPos);
+
+    if (prevScrollPos >= currentScrollPos) {
+      headerEl.current.style.top = "0px"
+    } else {
+      headerEl.current.style.top = `-${headerEl.current.offsetHeight}px`;
+    }
+
+    prevScrollPos = currentScrollPos;
+  }
+
   return (
     <>
       {/* Header */}
-      <div className="py-3 border-bottom">
-        <div className="flex justify-content-between">
-          <button className="btn-link" onClick={() => navigate(-1)}>&larr; Back</button>
-          <div className="fs-3">AnimalFriends</div>
+      <div className="border-bottom fixed-top bg-white" ref={headerEl}>
+        <div className="mx-auto px-3 py-2" style={{ maxWidth: "768px" }}>
+          <div className="flex justify-content-between">
+            <button className="btn-link" onClick={() => navigate(-1)}>&larr; Back</button>
+            <div className="logo fs-3">AnimalFriends</div>
+          </div>
         </div>
       </div>
 
@@ -340,6 +365,7 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
         setFavoriteCount(favoriteCount + 1)
       })
       .catch(error => alert("Error!"));
+      
     } else { // 좋아요를 취소한다
       fetch(`http://localhost:3000/articles/${postId}/favorite`, {
         method: 'DELETE',
@@ -355,13 +381,26 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
       .catch(error => alert("Error!"))
     }
   }
-  
+
   const dropdownContent = (
     <ul>
       <li><Link to={`/p/${postId}/update`}>수정</Link></li>
       <li><button className="btn-link" onClick={deleteArticle}>삭제</button></li>
     </ul>
   )
+  // useMemo(() => fn, deps)
+  // dependency가 바뀔 때만 Carousel컴포넌트가 렌더링 된다
+  // 불필요한 렌더링을 방지한다
+  const carousel = useMemo(() => {
+    return <Carousel article={article} />;
+  }, [article])
+
+  // useCallback(fn, deps)
+  // dependency가 바뀔 때만 컴포넌트가 렌더링 된다
+  // 불필요한 렌더링을 방지한다
+  const dropdown = useCallback(
+    <Dropdown active={dropdownActive} setActive={setDropdownActive} content={dropdownContent} />,
+  [dropdownActive])
 
   return (
     <>
@@ -385,7 +424,7 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
       </div>
 
       {/* Carousel */}
-      <Carousel article={article} />
+      {carousel}
 
       {/* 좋아요 & 댓글달기 아이콘 */}
       <div className="flex">
@@ -411,7 +450,7 @@ function PostItem({ article, isFavorite: isFavoriteInitial }) {
       </div>
 
       {/* Dropdown */}
-      <Dropdown active={dropdownActive} setActive={setDropdownActive} content={dropdownContent} />
+      {dropdown}
     </>
   )
 }
@@ -1347,6 +1386,9 @@ function Login() {
 
   return (
     <>
+      <div className="flex justify-content-center align-center" style={{ height: "200px" }}>
+        <h1 className="logo" style={{ fontSize: "40px" }}>AnimalFriends</h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <h1>Login</h1>
         <div className="form-group">
@@ -1356,11 +1398,14 @@ function Login() {
           <input type="text" className="w-100" name="password" defaultValue="12345678" autoComplete="off" />
         </div>
         <div className="form-group">
-          <button className="btn">Login</button>
+          <button className="btn w-100 btn-primary">Login</button>
         </div>
       </form>
       <p className="text-danger">{message}</p>
       <p><Link to="/account/signup" className="text-primary">Create account</Link></p>
+      <div className="footer text-center py-3">
+        <small>2022 &copy; AnimalFriends</small>
+      </div>
     </>
   )
 }

@@ -140,7 +140,7 @@ async function plantSeeds() {
     await createArticle("monkey", "2");
     await createArticle("monkey", "3");
 
-    console.log("Seeds are successfully planted")
+    console.log("Seeds are successfully planted");
 }
 
 // plantSeeds()
