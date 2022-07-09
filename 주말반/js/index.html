@@ -863,7 +863,7 @@
         // thumbnails[3].addEventListener("click", (e) => console.log(e.target.src))
     </script> -->
 
-    <style>
+    <!-- <style>
         img {
             width: 100%;
             height: 100%;
@@ -925,8 +925,269 @@
             // 해당되는 index의 이미지를 보이게 한다
             slides[index].style.display = "block";
         }
-    </script>
+    </script> -->
 
+    <!-- <style>
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            opacity: 0.8;
+            object-fit: cover;
+            cursor: pointer;
+            /* float은 item에 속성을 적는다 */
+            float: left;
+        }
+        .thumbnail:hover {
+            opacity: 1
+        }
+        .container {
+            width: 400px;
+            height: 300px;
+            position: relative;
+        }
+        .nav {
+            /* position은 absolute */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* display는 flex */
+            display: flex;
+            justify-content: space-between;
+            /* 기본값은 align-items: stretch */
+            align-items: center;
+        }
+        .prev, .next {
+            padding: 0.5em;
+            background-color: #fff;
+            cursor: pointer;
+        }
+    </style>
+
+    <div class="container">
+        <img id="display-image" src="" alt="">
+        <div class="nav">
+            <div class="prev" onclick="navigateTo(-1)">&#10094;</div>
+            <div class="next" onclick="navigateTo(1)">&#10095;</div>
+        </div>
+    </div>
+
+    <div id="thumbnails">
+        <img src="../../img/bunny.jpg" alt="" class="thumbnail" onclick="jumpTo(0)">
+        <img src="../../img/cat.jpeg" alt="" class="thumbnail" onclick="jumpTo(1)">
+        <img src="../../img/duck.jpeg" alt="" class="thumbnail" onclick="jumpTo(2)">
+        <img src="../../img/bird.jpeg" alt="" class="thumbnail" onclick="jumpTo(3)">
+    </div>
+
+    <script>
+        var thumbnails = document.querySelectorAll(".thumbnail");
+        var displayImage = document.getElementById("display-image");
+        var prev = document.querySelector(".prev");
+        var next = document.querySelector(".next");
+
+        // global 전역변수
+        var index = 0;
+
+        // 이전 다음 버튼을 눌렀을 때
+        function navigateTo(data) {
+            index += data;
+
+            // 처음 이미지에서 이전 버튼을 클릭했을 때
+            if (index === -1) {
+                index = thumbnails.length - 1;
+            }
+            // 마지막 이미지에서 다음 버튼을 클릭했을 때
+            if (index === thumbnails.length) {
+                index = 0;
+            }
+
+            getSrc(thumbnails[index].src);
+        }
+
+        // 이미지(thumbnail)를 바로 클릭했을 때
+        function jumpTo(data) {
+            index = data;
+
+            console.log(displayImage)
+
+            getSrc(thumbnails[index].src)
+        }
+
+        function getSrc(src) {
+            displayImage.src = src;
+        }
+
+        navigateTo(0)
+    </script> -->
+
+    <!-- <style>
+        .container {
+            background-color: #ddd;
+            /* display: flex; */
+        } 
+        .item {
+            width: 100px;
+            height: 100px;
+            border: 1px dashed;
+            /* display: inline-block; */
+            float: left;
+        }  
+    </style>
+
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div> -->
+
+    <!-- <p style="border: 1px dashed; width: 200px; white-space: nowrap;">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae dolore minima ut aliquam iste dignissimos, repellendus libero est cumque necessitatibus placeat numquam ex, ducimus dolorum possimus ipsam ratione asperiores magnam.
+    </p> -->
+
+    <!-- <style>
+        .carousel {
+            border: 3px dashed;
+            width: 200px;
+            height: 200px;
+            /* 기본값 */
+            overflow: visible;
+            overflow: hidden;
+            /* 기본값 */
+            /* white-space: normal; */
+            white-space: nowrap;
+            position: relative;
+            font-size: 0;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+            /* 기본값 */
+            /* display: inline-block; */
+        }
+        .nav {
+            position: absolute;
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #prev, #next {
+            /* element를 안보이게 처리한다 */
+            /* element가 차지하는 공간도 없다 */
+            /* display: none; */
+            
+            /* element를 안보이게 처리한다 */
+            visibility: hidden;
+        }
+
+        #prev.active, #next.active {
+            /* display: inline-block; */
+            /* 기본값 */
+            visibility: visible;
+        }
+        .indicator {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .indicator .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 2px;
+        }
+        .dot.active {
+            background-color: #888;
+        }
+    </style>
+
+    <div class="carousel">
+        <img src="../../img/bunny.jpg" alt="">
+        <img src="../../img/cat.jpeg" alt="">
+        <img src="../../img/bird.jpeg" alt="">
+
+        <div class="nav">
+            <button id="prev" onclick="navigateTo(-1)">&#10094;</button>
+            <button id="next" onclick="navigateTo(1)">&#10095;</button>
+        </div>
+
+        <div class="indicator">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+
+
+    <script>
+        var imgs = document.querySelectorAll("img");
+        var prev = document.getElementById("prev");
+        var next = document.getElementById("next");
+        var dots = document.querySelectorAll(".dot");
+
+        var index = 0;
+
+        // 처음 페이지가 로드되었을 때 실행
+        navigateTo(0);
+
+        function navigateTo(data) {
+            index += data;
+
+            console.log(index)
+
+            // 버튼 초기화
+            prev.classList.add("active");
+            next.classList.add("active");
+
+            // 첫번째 이미지 일때
+            if (index === 0) {
+                prev.classList.remove("active")
+            }
+            // 마지막 이미지 일때
+            if (index === imgs.length - 1) {
+                next.classList.remove("active")
+            }
+
+            // 초기화
+            dots.forEach(dot => {
+                dot.classList.remove("active");
+            })
+
+            // active
+            dots[index].classList.add("active");
+
+            imgs[0].style.marginLeft = `-${index * 200}px`
+        }
+    </script> -->
+
+    <h1 id="clock"></h1>
+
+    <script>
+    // 페이지가 로드되었을 때 실행
+    document.getElementById("clock").innerHTML = new Date().toLocaleTimeString();
+
+    // setInterval(callback , ms): ms 주기로 callback을 실행한다
+    // 처음에 ms가 지난 후에 시작한다
+    setInterval(() => {
+        document.getElementById("clock").innerHTML = new Date().toLocaleTimeString();
+    }, 1000)
+    </script>
 
 </body>
 </html>
