@@ -1176,7 +1176,7 @@
         }
     </script> -->
 
-    <h1 id="clock"></h1>
+    <!-- <h1 id="clock"></h1>
 
     <script>
     // 페이지가 로드되었을 때 실행
@@ -1187,6 +1187,125 @@
     setInterval(() => {
         document.getElementById("clock").innerHTML = new Date().toLocaleTimeString();
     }, 1000)
+    </script> -->
+
+    <!-- <script>
+        // var index = 0;
+
+        // setInterval의 callback에 익명함수를 사용한다
+        // setInterval(() => {
+        //     index++
+
+        //     console.log(index)
+        // }, 3000)
+
+        var index = 0;
+
+        // setInterval의 callback에 이름이 있는 함수를 사용한다
+        setInterval(navigateTo, 3000)
+
+        function navigateTo() {
+            index++
+            console.log(index)
+        }
+
+    </script> -->
+
+    
+    <style>
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .carousel {
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+        .item {
+            /* width: 300px;
+            height: 300px; */
+            width: 100%;
+            height: 100%;
+        }
+        .indicator {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ddd;
+            margin: 0 2px;
+            border-radius: 50%;
+        }
+        .dot.active {
+            background-color: #888;
+        }
+    </style>
+
+    <div class="carousel">
+        <div class="item">
+            <img src="../../img/bunny.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="../../img/cat.jpeg" alt="">
+        </div>
+        <div class="item">
+            <img src="../../img/bird.jpeg" alt="">
+        </div>
+
+        <div class="indicator">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <script>
+        var items = document.querySelectorAll(".item");
+        var dots = document.querySelectorAll(".dot");
+        
+        // global variables (전역변수)
+        var index = -1;
+
+        // 페이지가 처음 load되었을 때
+        window.addEventListener("load", () => {
+            navigateTo()
+        })
+        
+        // 3초 간격으로 navigateTo 실행
+        setInterval(navigateTo, 3000);
+
+        // navigateTo
+        function navigateTo() {
+            index++;
+
+            console.log(index)
+
+            // 마지막 이미지일 때
+            if (index === items.length) {
+                index = 0;
+            }
+
+            // 초기화
+            items.forEach(item => {
+                item.style.display = "none";
+            })
+
+            items[index].style.display = "block";
+
+            // 초기화
+            dots.forEach(dot => {
+                dot.classList.remove("active")
+            })
+
+            dots[index].classList.add("active")
+        }
     </script>
 
 </body>
