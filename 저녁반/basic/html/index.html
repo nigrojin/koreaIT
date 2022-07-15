@@ -1,12 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body>
-  <h1>hello world</h1>
+
+<body style="min-height: 5000px">
+
+  <!-- header: semantic tag(element의 이름이 목적을 의미한다) -->
+  <header>
+    <!-- heading: 제목을 작성할 때 주로 쓴다 -->
+    <h1>현대자동차 공식홈페이지</h1>
+    <!-- p: paragraph: 문장을 작성한다 -->
+    <p>당신의 모든 세상</p>
+  </header>
+
+  <!-- nav: navigation, 메뉴 -->
+  <nav>
+    <h2>메뉴</h2>
+    <!-- ul: unordered list 순서가 중요하지 않은 리스트를 만든다 -->
+    <ul>
+      <!-- li: list item 리스트의 아이템을 만든다 -->
+      <li>
+        <!-- a: anchor 링크를 만든다 -->
+        <!-- non semantic로 대체할 수 없다 -->
+        <!-- href: element의 속성(attribute) -->
+        <a href="">현대자동차 쇼케이스</a>
+      </li>
+      <li>
+        <a href="">모델 소개</a>
+      </li>
+      <li>
+        <a href="">모델 비교표</a>
+      </li>
+      <li>
+        <a href="">Contact</a>
+      </li>
+    </ul>
+  </nav>
+  
+  <!-- hr: horizontal rule: 수평선 -->
+  <!-- 닫힘 태그가 없으면 컨텐츠(태그 안에 text 또는 element)를 가질 수 없다 -->
+  <hr>
+
+  <!-- main: main contents(내용)가 주로 온다 -->
+  <main>
+    <!-- 현대자동차 쇼케이스 -->
+    <section>
+      <h2>현대자동차 쇼케이스</h2>
+      <!-- iframe: 다른 html문서 안에 html문서를 추가한다 -->
+      <iframe width="903" height="508" src="https://www.youtube.com/embed/QDP2Otyb9EI" title="IONIQ 6 | 디지털 월드 프리미어 | 현대자동차" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+
+    <!-- 모델 소개 -->
+    <section>
+      <h2>모델 소개</h2>
+
+      <article>
+        <h3>제네시스</h3>
+        <!-- div: divide 다양한 목적으로 사용될 수 있다. 대표적인 none-sematic tag -->
+        <div>
+          <!-- img: 이미지를 추가한다. src(source): 이미지의 경로, alt(alternative): 이미지에 대한 설명 -->
+          <!-- 이미지에 source를 추가하는 방법: 절대경로와 상대경로가 있다 -->
+          <!-- 절대경로: root부터 접근한다 (C드라이브부터 접근한다) -->
+          <!-- 상대경로: 현재 파일의 위치를 기준으로 접근한다 -->
+          <img src="C:\Users\Administrator\Documents\bunny\img\bunny.jpg" alt="" width="200">
+          <p>
+            <!-- span: 문자열안에서 특정한 효과를 줄 때 사용한다 -->
+            <span style="font-weight: bold">Lorem ipsum dolor sit amet consectetur,</span>
+            adipisicing elit. Deleniti fuga esse omnis.
+            <!-- br: breaking rules (줄바꿈) -->
+            <br>
+            Provident sunt cumque voluptas eos, aliquid consequuntur repellendus quam, temporibus
+            <br>
+            esse eaque iste exercitationem deleniti minima veritatis soluta.
+          </p>
+        </div>
+      </article>
+
+      <article>
+        <h3>스타리아</h3>
+        <div>
+          
+        </div>
+      </article>
+
+    </section>
+
+    <!-- 모델 비교표 -->
+    <section>
+
+    </section>
+
+    <!-- Contact -->
+    <section>
+
+    </section>
+  </main>
+
+
+
 </body>
+
 </html>
