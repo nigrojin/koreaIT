@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/4fb6dd7406.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body style="min-height: 2000px">
+  <!-- Header and Navigation -->
+  <div class="header fixed-top bg-black">
+    <div class="hide-mobile p-2 text-white"><span id="menu-btn"><i class="fa-solid fa-bars"></i></span></div>
+    <div id="nav">
+      <ul class="flex flex-col">
+        <li class="col p-2"><a href="#" class="text-white">Home</a></li>
+        <li class="col p-2"><a href="#about" class="text-white">About</li>
+        <li class="col p-2"><a href="#blog" class="text-white">Tour</a></li>
+        <li class="col p-2"><a href="#contact" class="text-white">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main image -->
+  <div class="row">
+    <div class="slide-container">
+      <div class="slide relative">
+        <img src="../../../img/p3/la.jpg" alt="">
+        <div class="bg-text center">
+          <h1>1</h1>
+        </div>
+      </div>
+      <div class="slide relative">
+        <img src="../../../img/p3/ny.jpg" alt="">
+        <div class="bg-text center">
+          <h1>2</h1>
+        </div>
+      </div>
+      <div class="slide relative">
+        <img src="../../../img/p3/chicago.jpg" alt="">
+        <div class="bg-text center">
+          <h1>3</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div id="about" class="row">
+    <div class="mx-auto" style="max-width: 800px">
+      <div class="text-center">
+        <h1>THE BAND</h1>
+        <p>We love music</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum earum, molestias voluptatem id labore et dicta dolorum magni eum aliquid harum tempora, aperiam suscipit dolor ratione saepe, sapiente iure sed.</p>
+      </div>
+
+      <div class="py-3">
+        <div class="flex flex-col flex-equal">
+          <div class="col px-3">
+            <h3 class="text-center">Name</h3>
+            <img src="../../../img/p3/bandmember.jpg" alt="">
+          </div>
+          <div class="col px-3">
+            <h3 class="text-center">Name</h3>
+            <img src="../../../img/p3/bandmember.jpg" alt="">
+          </div>
+          <div class="col px-3">
+            <h3 class="text-center">Name</h3>
+            <img src="../../../img/p3/bandmember.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog(Tour Dates) -->
+  <div id="blog" class="row bg-black py-5">
+    <div class="mx-auto" style="max-width: 800px">
+      <div class="text-center text-white">
+        <h1>TOUR DATES</h1>
+        <p>Remember to book your tickets!</p>
+      </div>
+
+      <div class="bg-white">
+        <ul>
+          <li class="p-2 border-bottom">September</li>
+          <li class="p-2 border-bottom">October</li>
+          <li class="p-2 border-bottom">November</li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col">
+        <div class="col bg-white mx-1 mt-3">
+          <img src="../../../img/p3/newyork.jpg" alt="">
+          <div class="p-2">
+            <h3>Name</h3>
+            <p>Fri 27 Nov 2016</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+            <button class="btn" onclick="showModal()">Buy Tickets</button>
+          </div>
+        </div>
+        <div class="col bg-white mx-1 mt-3">
+          <img src="../../../img/p3/paris.jpg" alt="">
+          <div class="p-2">
+            <h3>Name</h3>
+            <p>Fri 27 Nov 2016</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+            <button class="btn" onclick="showModal()">Buy Tickets</button>
+          </div>
+        </div>
+        <div class="col bg-white mx-1 mt-3">
+          <img src="../../../img/p3/sanfran.jpg" alt="">
+          <div class="p-2">
+            <h3>Name</h3>
+            <p>Fri 27 Nov 2016</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+            <button class="btn" onclick="showModal()">Buy Tickets</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal Form  -->
+  <div id="modal">
+    <div id="modal-content" class="bg-white">
+      <form action="">
+        <h1>Tickets</h1>
+        <div class="form-group">
+          <h3>Tickets, $15 per person</h3>
+          <input type="text" class="w-100" placeholder="How many?">
+        </div>
+        <div class="form-group">
+          <h3>Send to</h3>
+          <input type="text" class="w-100" placeholder="Enter email">
+        </div>
+        <div class="form-group mt-3">
+          <button type="submit" class="w-100 btn">PAY</button>
+        </div>
+        <div class="form-group">
+          <p>Need <a href="">help?</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div id="contact" class="row py-5">
+    <div class="mx-auto px-3" style="max-width: 800px">
+      <div class="text-center">
+        <h1>Contact</h1>
+        <p>Fan? Drop a note!</p>
+      </div>
+
+      <div class="flex flex-col flex-equal">
+        <div class="col py-3">
+          <ul>
+            <li>Chicago, US</li>
+            <li>Phone: +00151515</li>
+            <li>Email: mail@example.com</li>
+          </ul>
+        </div>
+        <div class="col py-3">
+          <form action="">
+            <div class="flex flex-equal">
+              <div class="">
+                <input type="text" class="w-100" placeholder="Name">
+              </div>
+              <div class="ms-1">
+                <input type="text" class="w-100" placeholder="Email">
+              </div>
+            </div>
+            <div class="mt-1">
+              <input type="text" class="w-100" placeholder="Message">
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn">SEND</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="row py-5">
+    <div class="mx-auto px-3" style="max-width: 800px">
+      <img src="../../../img/p3/map.jpg" alt="">
+    </div>
+  </div>
+  <!-- Footer -->
+  <div class="footer bg-light-grey py-5">
+    <div class="text-center">
+      <p>Some icons</p>
+      <small>Powered by w3.css</small>
+    </div>
+  </div>
+
+  <script>
+    var menuBtn = document.getElementById("menu-btn");
+    var nav = document.getElementById("nav");
+
+    var slides = document.querySelectorAll(".slide");
+
+    var modal = document.getElementById("modal");
+
+
+    // Navigation
+    menuBtn.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    })
+
+    var index = -1;
+
+    navigateTo();
+    setInterval(navigateTo, 3000)
+
+    function navigateTo() {
+      index++;
+
+      if (index === slides.length) {
+        index = 0;
+      }
+
+      slides.forEach(slide => {
+        slide.style.display = "none";
+      })
+      slides[index].style.display = "block";
+    }
+
+    function showModal() {
+      modal.classList.add("active");
+    }
+
+    window.addEventListener("click", e => {
+      // 현재 클릭하는 element
+      console.log(e.target);
+
+      if (e.target.id === "modal") {
+        e.target.classList.remove("active");
+      }
+    })
+    
+  </script>
+
+</body>
+</html>
+
