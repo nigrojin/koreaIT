@@ -2,4 +2,10 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  
+  ul 
+    each post in posts
+      li
+        a(href=`/p/${post}`)= post.split('.')[0]
+
+  a(href="/create") New Post

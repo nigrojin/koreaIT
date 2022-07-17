@@ -1,0 +1,45 @@
+extends layout 
+
+block content 
+  h1= title
+
+  h3= post.title.split('.')[0]
+
+  p= post.content
+
+  hr
+  a(href=`/p/${post.title}/update`) Update 
+  button(type="button" onclick=`deletePost("${post.title}")`) Delete
+
+  script.
+    function deletePost(postTitle) {
+      // fetch(url, options): 서버에 요청을 보낸다
+      // 결과값을 Promise로 return한다
+
+      const res = confirm("삭제하시겠습니까?");
+
+      if (!res) { // 취소한 경우
+        return;
+      }
+
+      fetch(`/p/${postTitle}/delete`, {
+        method: "POST"
+      })
+      .then(res => {
+        console.log(res);
+
+        if (!res.ok) {
+          // 커스텀 에러
+          // status가 200이 아니면 error로 처리한다
+          throw res;
+        }
+        // 에러가 없으면 blog list로 이동(대체)한다
+        location.replace('/')
+      })
+      .catch(error => {
+        alert("문제가 발생했습니다. 잠시 후 다시 시도해주세요")
+      })
+
+    }
+
+

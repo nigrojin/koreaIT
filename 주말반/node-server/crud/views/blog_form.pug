@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+  h1= title
+
+  if post
+    form(action=`/p/${post.title}/update` method="POST") 
+      div 
+        input(type="text" name="title" value=post.title.split('.')[0])
+      div
+        textarea(name="content", cols="30", rows="5")= post.content
+      div
+        button Submit
+  
+  else
+    form(action="/create" method="POST") 
+      div 
+        input(type="text" name="title")
+      div
+        textarea(name="content", cols="30", rows="5") 
+      div
+        button Submit
