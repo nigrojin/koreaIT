@@ -8,7 +8,7 @@
   <title>Document</title>
 </head>
 
-<body style="min-height: 5000px">
+<body>
 
   <!-- header: semantic tag(element의 이름이 목적을 의미한다) -->
   <header>
@@ -27,17 +27,17 @@
       <li>
         <!-- a: anchor 링크를 만든다 -->
         <!-- non semantic로 대체할 수 없다 -->
-        <!-- href: element의 속성(attribute) -->
-        <a href="">현대자동차 쇼케이스</a>
+        <!-- href: element의 속성(attribute) 이동할 주소(id 또는 url)를 입력한다 -->
+        <a href="#showcase">현대자동차 쇼케이스</a>
       </li>
       <li>
-        <a href="">모델 소개</a>
+        <a href="#model">모델 소개</a>
       </li>
       <li>
-        <a href="">모델 비교표</a>
+        <a href="#table">모델 비교표</a>
       </li>
       <li>
-        <a href="">Contact</a>
+        <a href="#contact">Contact</a>
       </li>
     </ul>
   </nav>
@@ -49,14 +49,14 @@
   <!-- main: main contents(내용)가 주로 온다 -->
   <main>
     <!-- 현대자동차 쇼케이스 -->
-    <section>
+    <section id="showcase">
       <h2>현대자동차 쇼케이스</h2>
       <!-- iframe: 다른 html문서 안에 html문서를 추가한다 -->
       <iframe width="903" height="508" src="https://www.youtube.com/embed/QDP2Otyb9EI" title="IONIQ 6 | 디지털 월드 프리미어 | 현대자동차" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </section>
 
     <!-- 모델 소개 -->
-    <section>
+    <section id="model">
       <h2>모델 소개</h2>
 
       <article>
@@ -67,7 +67,7 @@
           <!-- 이미지에 source를 추가하는 방법: 절대경로와 상대경로가 있다 -->
           <!-- 절대경로: root부터 접근한다 (C드라이브부터 접근한다) -->
           <!-- 상대경로: 현재 파일의 위치를 기준으로 접근한다 -->
-          <img src="C:\Users\Administrator\Documents\bunny\img\bunny.jpg" alt="" width="200">
+          <img src="C:\Users\Administrator\Documents\bunny\img\bunny.jpg" alt="제네시스" width="200">
           <p>
             <!-- span: 문자열안에서 특정한 효과를 줄 때 사용한다 -->
             <span style="font-weight: bold">Lorem ipsum dolor sit amet consectetur,</span>
@@ -84,25 +84,155 @@
       <article>
         <h3>스타리아</h3>
         <div>
-          
+          <img src="../../../img/cat.jpeg" alt="스타리아" width="200">
+          <p>
+            <b>Lorem ipsum dolor,</b> sit amet consectetur adipisicing elit. 
+            <br>
+            Veniam in deserunt nulla, repellendus voluptas porro earum eligendi ut 
+            <br>
+            et ea voluptatem, modi sapiente sequi enim harum nemo debitis fugiat 
+            voluptates!
+          </p>
+        </div>
+      </article>
+
+      <article>
+        <h3>캐스퍼</h3>
+        <div>
+          <img src="../../../img/duck.jpeg" alt="캐스퍼" width="200">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+            Cupiditate quod deserunt maxime doloremque ipsam unde a quibusdam deleniti? <br>
+            Porro, minus quidem. Dignissimos in commodi consectetur nostrum consequuntur 
+            enim vero itaque.
+          </p>
         </div>
       </article>
 
     </section>
 
     <!-- 모델 비교표 -->
-    <section>
-
+    <section id="table">
+      <h2>모델 비교표</h2>
+      <!-- table: 표. 행과 열로 구성되어 있다 -->
+      <table border="1">
+        <!-- tr: table row (행) -->
+        <tr>
+          <!-- th: table head 제목 -->
+          <th>모델명</th>
+          <th>컬러</th>
+          <th>연비</th>
+          <th>가격</th>
+        </tr>
+        <tr>
+          <!-- td: table data -->
+          <td>제네시스</td>
+          <td>블랙, 화이트</td>
+          <td>15/l</td>
+          <td>1000원</td>
+        </tr>
+        <tr>
+          <td>스타리아</td>
+          <td>블랙, 실버</td>
+          <td>12/l</td>
+          <td>800원</td>
+        </tr>
+        <tr>
+          <td>캐스퍼</td>
+          <td>카키, 레드, 화이트</td>
+          <td>13/l</td>
+          <td>600원</td>
+        </tr>
+      </table>
     </section>
 
     <!-- Contact -->
-    <section>
+    <section id="contact">
+      <!-- 오시는 길 -->
+      <div>
+        <h2>오시는 길</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10647.127993689894!2d126.72716229694909!3d37.49824490296336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7dadae102b2f%3A0xe60e9558b9fd9172!2z7ZiE64yA7J6Q64-Z7LCoIOu2gO2PieygkA!5e0!3m2!1sko!2skr!4v1658141112872!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
 
+      <!-- 연락하기 -->
+      <div>
+        <!-- form: 양식, 서버에 제출하는 데이터 예) 로그인, 회원가입, Contact 등 -->
+        <!-- form action: 요청하는 서버의 url -->
+        <form action="/contact.php">
+          <h2>연락하기</h2>
+          <div>
+            <!-- label: input에 대한 설명을 입력한다. 대체 가능 -->
+            <!-- label for: 어떤 input에 연결된 label인지 나타낸다 (element의 id를 작성한다) -->
+            <label for="">성함</label>
+            <!-- input: 사용자로부터 데이터를 입력받는다 -->
+            <input type="text" placeholder="이름을 입력하세요">
+          </div>
+          <div>
+            <label for="">이메일</label>
+            <input type="text" placeholder="username@example.com">
+          </div>
+          <div>
+            <label for="">성별</label>
+            <!-- select: 유저로부터 데이터를 입력받는다 -->
+            <!-- option: 유저가 선택할 수 있는 옵션 -->
+            <!-- name, value는 서버에서 데이터를 처리하기 위한 속성이다 -->
+            <!-- id는 JavaScript에서 주로 사용한다 -->
+            <select name="gender" id="">
+              <option value="male">남</option>
+              <option value="female">여</option>
+              <option value="private">비공개</option>
+            </select>
+          </div>
+          <div>
+            <h3>관심분야</h3>
+            <input id="car" type="radio" name="interests" value="자동차 구매">
+            <label for="car">자동차 구매</label>
+            <input id="branch" type="radio" name="interests" value="대리점 개설">
+            <label for="branch">대리점 개설</label>
+          </div>
+
+          <div>
+            <textarea name="message" id="" cols="30" rows="10" placeholder="내용을 입력하세요"></textarea>
+          </div>
+
+          <div>
+            <input type="checkbox" name="agree" id="" checked>
+            <label for="">
+              <!-- target = _blank: 새로운 창에서 링크를 연다 -->
+              <!-- target = _self 현재 창에서 링크를 연다. 기본값 -->
+              <a href="https://www.google.com" target="_blank">개인정보 처리방침</a> 
+              에 동의합니다
+            </label>
+          </div>
+        </form>
+      </div>
     </section>
   </main>
 
+  <hr>
+
+  <!-- footer: 웹페이지 가장 하단에 위치한다 -->
+  <!-- 웹페이지의 기타 정보들 (sns주소, 회사의 정책, 이용약관 등) -->
+  <footer>
+    <!-- small: 기본 폰트 사이즈보다 약간 작다 -->
+    <!-- &copy: 엔티티 네임(Entity name) -->
+    <!-- &(ampersand) + name -->
+    <!-- html내에서 특수한 문자를 사용할 수 있다 -->
+    <small>2022 &copy; 현대자동차</small>
+    <p>&#128516</p>
+
+    <!-- ordered list: 리스트에 자동으로 번호가 붙는다 -->
+    <ol>
+      <li>이용약관</li>
+      <li>개인정보 처리방침</li>
+      <li>사이트맵</li>
+    </ol>
+
+    <!-- 엔티티넘버 (Entity number) -->
+    <!-- &# + number -->
+    <!-- html 내에서 특수한 문자를 사용할 수 있다 -->
+  </footer>
 
 
 </body>
-
 </html>
