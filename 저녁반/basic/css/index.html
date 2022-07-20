@@ -46,7 +46,7 @@
   <!-- # class 선택자 -->
   <!-- class로 html element를 선택한다 -->
 
-  <style>
+  <!-- <style>
     div {
       width: 100px;
       height: 200px;
@@ -67,8 +67,332 @@
 
   <div class="oregano"></div>
   <div class="mozzarella"></div>
-  <div class="tomato-sauce"></div>
+  <div class="tomato-sauce"></div> -->
 
+  <!-- <style>
+    div {
+      width: 100px;
+      height: 100px;
+    }
+    .border {
+      border: 1px dashed;
+    }
+    .red {
+      background-color: red;
+    }
+    .rounded {
+      border-radius: 10px;
+    }
+  </style> -->
+
+  <!-- 띄어쓰기를 해서 클래스를 추가할 수 있다 -->
+  <!-- <div class="border red rounded">Div</div> -->
+
+  <!-- <style>
+    /* 클래스이름A + 클래스이름B: A와 B클래스 이름 모두 가진 element를 선택한다 */
+    /* 주의: 띄어쓰기를 해서는 안된다 */
+    .a.b {
+      border: 1px dashed;
+      width: 100px;
+      height: 100px;
+    }
+    .a {
+      background-color: #888;
+    }
+    .b {
+      border-radius: 50%;
+    }
+  </style>
+
+  <div class="a b"></div> -->
+
+  <!-- # id 선택자 -->
+
+  <!-- <style>
+    div {
+      width: 100px;
+      height: 100px;
+      border: 1px dashed;
+    }
+    #foo {
+      background-color: red;
+    }
+    #bar {
+      background-color: blue
+    }
+    /* 아이디 + 클래스: 아이디와 클래스 모두 가진 element를 선택한다 */
+    /* id는 element당 하나씩만 가질 수 있다 */
+    /* 다른 element가 같은 id를 가질 수 없다 */
+    #bar.rounded {
+      border-radius: 50%;
+    }
+  </style>
+
+  <div id="foo" class="rounded">Foo</div>
+  <div id="bar" class="rounded">Bar</div> -->
+
+  <!-- # children과 direct children 선택자 -->
+
+  <!-- <style>
+    div {
+      /* 기본값 */
+      background-color: transparent;
+    }
+    .level1 {
+      width: 200px;
+      height: 200px;
+      background-color: #ddd;
+    }
+    .level2 {
+      width: 100px;
+      height: 100px;
+      /* border-radius: 10px; */
+    }
+    .level3 {
+      width: 50px;
+      height: 50px;
+    }
+    /* children 선택자 */
+    /* parent children: parent + 띄어쓰기 + children */
+    /* parent 아래의 모든 children (모든 element) */
+    .level1 div {
+      border: 1px dashed;
+    }
+    /* parent > (gt) direct chlildren: 바로 아래의 children을 선택한다 */
+    /* .level1 > .level2 {
+      border-radius: 10px;
+    } */
+    .level1 > div {
+      border-radius: 10px;
+    }
+  </style>
+
+  <div class="level1">
+    <div class="level2">
+      <div class="level3"></div>
+    </div>
+  </div> -->
+
+  <!-- # 기타  -->
+
+  <!-- <style>
+    /* classA, classB, ... : 다른 클래스 이름에 같은 속성을 준다 */
+    #foo, #bar {
+      border: 1px dashed;
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+
+  <div id="foo">Foo</div>
+  <div id="bar">Bar</div> -->
+
+  <!-- <style>
+    /* 전체선택자, universal selector */
+    * {
+      text-align: center;
+      /* text-align: left; */
+      border: 1px dashed;
+    }
+    html, body {
+      border: none;
+    }
+  </style>
+
+  <h1>Heading</h1>
+  <p>Paragraph</p>
+  <small>Small</small> -->
+
+  <!-- # Pseudo class와 Pseudo element (가짜 클래스와 가짜 엘리먼트) -->
+
+  <!-- <style>
+    button {
+      padding: 10px;
+      background-color: #888;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    /* Pseudo class */
+    /* class 이름옆에 :name 의 형태로 작성한다 */
+    /* element에 특별한 상태를 정의하기 위해 사용된다 */
+    button:hover {
+      background-color: #555;
+    }
+    input[type=text] {
+      padding: 10px;
+    }
+    input[type=text]:focus {
+      outline: 5px solid red;
+    }
+  </style>
+
+  <button>Button</button>
+  <hr>
+  <input type="text"> -->
+
+  <!-- <style>
+    ul li {
+      font-weight: normal;
+    }
+    /* ul의 children중 첫번째 엘리먼트를 선택한다 */
+    ul li:first-child {
+      font-weight: bold;
+    }
+    ul li:nth-child(2) {
+      text-decoration:line-through;
+    }
+    /* ul의 children중 마지막 element를 선택한다 */
+    ul li:last-child {
+      font-style: italic;
+    }
+  </style>
+
+  <h1>List</h1>
+  <ul>
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+  </ul> -->
+
+  <!-- # Pseudo element -->
+
+  <!-- <style>
+    .container {
+      border: 1px dashed;
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+    }
+    /* parent::after : pseudo element를 parent의 마지막 children 뒤에 추가한다 */
+    /* parent::before : pseudo element를 parent의 첫번째 children 앞에 추가한다 */
+    .container::after {
+      content: "Square";
+      background-color: #888;
+    }
+    span {
+      background-color: red;
+    }
+  </style>
+
+  <div class="container">
+    <span>@</span>
+    <span>@</span>
+  </div>
+
+  <div class="container">
+    <span>@</span>
+    <span>@</span>
+  </div>
+
+  <div class="container">
+    <span>@</span>
+    <span>@</span>
+  </div>
+
+  <div class="container">
+    <span>@</span>
+    <span>@</span>
+  </div> -->
+
+  <!-- # UNIT (CSS의 단위) -->
+  <!-- 1 Absolute length (절대값) -->
+  <!-- 예) px, cm, ... -->
+  <!-- 2 Relative length (상대값) -->
+  <!-- 예) rem, em, %, vh, vw, ... -->
   
+  <!-- <style>
+    .container {
+      width: 100px;
+      height: 100px;
+      border: 1px dashed;
+    }
+  </style>
+
+  <div class="container"></div> -->
+
+  <!-- # Relative length (상대값) -->
+
+  <!-- <style>
+    .container {
+      font-size: 20px;
+    }
+    h1 {
+      border: 1px dashed;
+      font-size: 2em;
+      /* padding, margin에서 1em = 현재 element의 font-size와 같다 */
+      padding: 1em;
+    }
+    p {
+      /* 1em = 부모 element의 font-size */
+      /* em = element */
+      font-size: 1em;
+    }
+    small {
+      font-size: 0.8em;
+    }
+  </style>
+
+  <div class="container">
+    <h1>Heading 1</h1>
+    <p>Paragraph</p>
+    <small>Small</small>
+  </div> -->
+  
+  <!-- <style>
+    /* 1rem(root element): 브라우저의 기본 글자크기 (16px); */
+    .container {
+      font-size: 10px;
+    }
+    h1 {
+      font-size: 2rem;
+      border: 1px dashed;
+      padding: 1rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+    small {
+      font-size: 0.8rem;
+    }
+  </style>
+  
+  <div class="container">
+    <h1>Heading 1</h1>
+    <p>Paragraph</p>
+    <small>Small</small>
+  </div> -->
+
+  <!-- <style>
+    .container {
+      background-color: #ddd;
+      height: 200px;
+    }
+    .item {
+      /* %: 부모 태그 기준 */
+      width: 100%;
+      height: 100%;
+      border: 1px dashed;
+    }
+  </style>
+
+  <div class="container">
+    <div class="item"></div>
+  </div> -->
+  
+  <style>
+    .container {
+      background-color: #ddd;
+      /* viewport-width */
+      /* 100vw = 디바이스 화면 넓이의 100%; */
+      width: 100vw;
+      /* viewport-height */
+      /* 100vh = 디바이스 화면 높이의 100%; */
+      height: 100vh;
+    }
+  </style>
+
+  <div class="container"></div>
+
 </body>
 </html>
