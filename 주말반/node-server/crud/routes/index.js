@@ -21,8 +21,9 @@ var fs = require('fs');
 //   res.render('index', { title: 'Blogs' });
 // });
 
+// Get Method
 router.get('/', (req, res, next) => {
-  // fs.readdir(경로, callback)
+  // fs.readdir(경로, callback) 비동기 함수(asynchronous function)
   // 경로에 있는 파일을 읽고 파일 이름을 array로 return한다
   fs.readdir('data/', (err, posts) => {
     console.log(posts)
@@ -69,11 +70,13 @@ router.get('/p/:postTitle', (req, res, next) => {
   fs.readFile(`data/${req.params.postTitle}`, (err, content) => {
     
     if (err) {
+      // Error handler에서 전달한다
       return next(err)
     }
 
     const post = { title: req.params.postTitle, content }
 
+    // view에 전달
     res.render('blog_detail', { title: 'Blog', post })
   })
 })
